@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "tn-nav-bar": "/tuniao-ui/components/tn-nav-bar/tn-nav-bar",
+    "tn-notice-bar": "/tuniao-ui/components/tn-notice-bar/tn-notice-bar",
+    "tn-lazy-load": "/tuniao-ui/components/tn-lazy-load/tn-lazy-load"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "tn-grid": "/tuniao-ui/components/tn-grid/tn-grid"
+  },
+  "component": true
+}

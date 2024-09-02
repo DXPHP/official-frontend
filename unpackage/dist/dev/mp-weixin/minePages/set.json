@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "设置",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "tn-nav-bar": "/tuniao-ui/components/tn-nav-bar/tn-nav-bar",
+    "tn-modal": "/tuniao-ui/components/tn-modal/tn-modal",
+    "tn-button": "/tuniao-ui/components/tn-button/tn-button",
+    "weixin-user-info-modal": "/uni_modules/tuniaoui-wx-user-info/components/tuniaoui-wx-user-info/tuniaoui-wx-user-info"
+  }
+}

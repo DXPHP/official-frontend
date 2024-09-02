@@ -1,0 +1,45 @@
+@charset "UTF-8";
+/**
+ * 下方引入的为Tuniao UI的集成样式文件，为scss预处理器，其中包含了一些"tn-"开头的自定义变量
+ * 使用的时候，请将下面的一行复制到您的uniapp项目根目录的uni.scss中即可
+ * Tuniao UI自定义的css类名和scss变量，均以"tn-"开头，不会造成冲突，请放心使用 
+ */
+.tn-number-box.data-v-61aeb8b2 {
+  display: inline-flex;
+  align-items: center;
+}
+.tn-number-box__btn__plus.data-v-61aeb8b2, .tn-number-box__btn__minus.data-v-61aeb8b2 {
+  width: 60rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #E6E6E6;
+}
+.tn-number-box__btn__plus.data-v-61aeb8b2 {
+  border-radius: 0 8rpx 8rpx 0;
+}
+.tn-number-box__btn__minus.data-v-61aeb8b2 {
+  border-radius: 8rpx 0 0 8rpx;
+}
+.tn-number-box__btn--disabled.data-v-61aeb8b2 {
+  color: #AAAAAA !important;
+  background: #E6E6E6 !important;
+}
+.tn-number-box__input.data-v-61aeb8b2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 0 4rpx;
+  margin: 0 6rpx;
+  background-color: #E6E6E6;
+}
+.tn-number-box__input--disabled.data-v-61aeb8b2 {
+  color: #AAAAAA !important;
+  background: #E6E6E6 !important;
+}
+

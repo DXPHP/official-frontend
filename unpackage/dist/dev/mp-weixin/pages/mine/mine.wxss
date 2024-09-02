@@ -1,0 +1,368 @@
+@charset "UTF-8";
+/**
+ * 下方引入的为Tuniao UI的集成样式文件，为scss预处理器，其中包含了一些"tn-"开头的自定义变量
+ * 使用的时候，请将下面的一行复制到您的uniapp项目根目录的uni.scss中即可
+ * Tuniao UI自定义的css类名和scss变量，均以"tn-"开头，不会造成冲突，请放心使用 
+ */
+.page-e.data-v-dcbcfe34 {
+  max-height: 100vh;
+}
+/* 底部安全边距 start*/
+.tn-tabbar-height.data-v-dcbcfe34 {
+  min-height: 120rpx;
+  height: calc(140rpx + env(safe-area-inset-bottom) / 2);
+  height: calc(140rpx + constant(safe-area-inset-bottom));
+}
+.tn-color-wallpaper.data-v-dcbcfe34 {
+  color: #1D2541;
+}
+/* 自定义导航栏内容 start */
+.custom-nav.data-v-dcbcfe34 {
+  height: 100%;
+}
+.custom-nav__back.data-v-dcbcfe34 {
+  margin: auto 5rpx;
+  font-size: 40rpx;
+  margin-right: 10rpx;
+  flex-basis: 5%;
+  width: 100rpx;
+  position: absolute;
+}
+/* 自定义导航栏内容 end */
+/* 顶部背景图 start */
+.top-backgroup.data-v-dcbcfe34 {
+  height: 450rpx;
+  z-index: -1;
+}
+.top-backgroup .backgroud-image.data-v-dcbcfe34 {
+  width: 100%;
+  height: 450rpx;
+  z-index: -1;
+}
+/* 顶部背景图 end */
+/* 图标容器5 start */
+.icon5__item.data-v-dcbcfe34 {
+  background-color: #FFFFFF;
+  border-radius: 10rpx;
+  padding: 0rpx;
+  margin: 0rpx;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  transition: -webkit-transform 0.3s linear;
+  transition: transform 0.3s linear;
+  transition: transform 0.3s linear, -webkit-transform 0.3s linear;
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+}
+.icon5__item--icon.data-v-dcbcfe34 {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  margin-bottom: 18rpx;
+  position: relative;
+  z-index: 1;
+}
+/* 用户头像 start */
+.logo-image.data-v-dcbcfe34 {
+  width: 110rpx;
+  height: 110rpx;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.logo-pic.data-v-dcbcfe34 {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  border: 8rpx solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0rpx 0rpx 80rpx 0rpx rgba(0, 0, 0, 0.15);
+  border-radius: 50%;
+  overflow: hidden;
+}
+/* 页面阴影 start*/
+.wallpaper-shadow.data-v-dcbcfe34 {
+  border-radius: 15rpx;
+  box-shadow: 0rpx 0rpx 50rpx 0rpx rgba(0, 0, 0, 0.07);
+}
+/* 页面阴影 end*/
+/* 图标容器15 start */
+.icon15__item.data-v-dcbcfe34 {
+  width: 30%;
+  background-color: #FFFFFF;
+  border-radius: 10rpx;
+  padding: 30rpx;
+  margin: 20rpx 10rpx;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  transition: -webkit-transform 0.3s linear;
+  transition: transform 0.3s linear;
+  transition: transform 0.3s linear, -webkit-transform 0.3s linear;
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+}
+.icon15__item--icon.data-v-dcbcfe34 {
+  width: 100rpx;
+  height: 100rpx;
+  font-size: 60rpx;
+  border-radius: 50%;
+  margin-bottom: 18rpx;
+  position: relative;
+  z-index: 1;
+}
+.icon15__item--icon.data-v-dcbcfe34::after {
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  border-radius: inherit;
+  opacity: 1;
+  -webkit-transform: scale(1, 1);
+          transform: scale(1, 1);
+  background-size: 100% 100%;
+}
+/* 图标容器12 start */
+.icon12__item.data-v-dcbcfe34 {
+  width: 30%;
+  background-color: #FFFFFF;
+  border-radius: 10rpx;
+  padding: 30rpx;
+  margin: 20rpx 10rpx;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  transition: -webkit-transform 0.3s linear;
+  transition: transform 0.3s linear;
+  transition: transform 0.3s linear, -webkit-transform 0.3s linear;
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+}
+.icon12__item--icon.data-v-dcbcfe34 {
+  width: 15rpx;
+  height: 15rpx;
+  font-size: 50rpx;
+  border-radius: 50%;
+  margin-bottom: 38rpx;
+  position: relative;
+  z-index: 1;
+}
+.icon12__item--icon.data-v-dcbcfe34::after {
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  border-radius: inherit;
+  opacity: 1;
+  -webkit-transform: scale(1, 1);
+          transform: scale(1, 1);
+  background-size: 100% 100%;
+}
+/* 图标容器1 start */
+.icon1__item.data-v-dcbcfe34 {
+  background-color: #FFFFFF;
+  border-radius: 10rpx;
+  padding: 30rpx;
+  margin: 20rpx 10rpx;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  transition: -webkit-transform 0.3s linear;
+  transition: transform 0.3s linear;
+  transition: transform 0.3s linear, -webkit-transform 0.3s linear;
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+}
+.icon1__item--icon.data-v-dcbcfe34 {
+  width: 40rpx;
+  height: 40rpx;
+  font-size: 40rpx;
+  border-radius: 50%;
+  position: relative;
+  z-index: 1;
+}
+.icon1__item--icon.data-v-dcbcfe34::after {
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  border-radius: inherit;
+  opacity: 1;
+  -webkit-transform: scale(1, 1);
+          transform: scale(1, 1);
+  background-size: 100% 100%;
+  background-image: url(https://resource.tuniaokj.com/images/cool_bg_image/icon_bg.png);
+}
+/* 图标容器1 end */
+.button-shake.data-v-dcbcfe34 {
+  -webkit-animation: shake-data-v-dcbcfe34 4s infinite;
+          animation: shake-data-v-dcbcfe34 4s infinite;
+}
+@-webkit-keyframes shake-data-v-dcbcfe34 {
+5%, 50% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+}
+10% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+}
+15% {
+    -webkit-transform: scale(1.15);
+            transform: scale(1.15);
+}
+20% {
+    -webkit-transform: scale(1.15) rotate(-5deg);
+            transform: scale(1.15) rotate(-5deg);
+}
+25% {
+    -webkit-transform: scale(1.15) rotate(5deg);
+            transform: scale(1.15) rotate(5deg);
+}
+30% {
+    -webkit-transform: scale(1.15) rotate(-3deg);
+            transform: scale(1.15) rotate(-3deg);
+}
+35% {
+    -webkit-transform: scale(1.15) rotate(2deg);
+            transform: scale(1.15) rotate(2deg);
+}
+40% {
+    -webkit-transform: scale(1.15) rotate(0);
+            transform: scale(1.15) rotate(0);
+}
+}
+@keyframes shake-data-v-dcbcfe34 {
+5%, 50% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+}
+10% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+}
+15% {
+    -webkit-transform: scale(1.15);
+            transform: scale(1.15);
+}
+20% {
+    -webkit-transform: scale(1.15) rotate(-5deg);
+            transform: scale(1.15) rotate(-5deg);
+}
+25% {
+    -webkit-transform: scale(1.15) rotate(5deg);
+            transform: scale(1.15) rotate(5deg);
+}
+30% {
+    -webkit-transform: scale(1.15) rotate(-3deg);
+            transform: scale(1.15) rotate(-3deg);
+}
+35% {
+    -webkit-transform: scale(1.15) rotate(2deg);
+            transform: scale(1.15) rotate(2deg);
+}
+40% {
+    -webkit-transform: scale(1.15) rotate(0);
+            transform: scale(1.15) rotate(0);
+}
+}
+/* 背景波浪高度 */
+.button-number.data-v-dcbcfe34 {
+  width: 100%;
+  height: 150rpx;
+  border-radius: 15rpx;
+  position: relative;
+  z-index: 1;
+}
+/* 动态背景波浪*/
+@-webkit-keyframes move_wave-data-v-dcbcfe34 {
+0% {
+    -webkit-transform: translateX(0) translateZ(0) scaleY(1);
+            transform: translateX(0) translateZ(0) scaleY(1);
+}
+50% {
+    -webkit-transform: translateX(-25%) translateZ(0) scaleY(1);
+            transform: translateX(-25%) translateZ(0) scaleY(1);
+}
+100% {
+    -webkit-transform: translateX(-50%) translateZ(0) scaleY(1);
+            transform: translateX(-50%) translateZ(0) scaleY(1);
+}
+}
+@keyframes move_wave-data-v-dcbcfe34 {
+0% {
+    -webkit-transform: translateX(0) translateZ(0) scaleY(1);
+            transform: translateX(0) translateZ(0) scaleY(1);
+}
+50% {
+    -webkit-transform: translateX(-25%) translateZ(0) scaleY(1);
+            transform: translateX(-25%) translateZ(0) scaleY(1);
+}
+100% {
+    -webkit-transform: translateX(-50%) translateZ(0) scaleY(1);
+            transform: translateX(-50%) translateZ(0) scaleY(1);
+}
+}
+.tnwave.data-v-dcbcfe34 {
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+  z-index: -1;
+  border-radius: 15rpx;
+}
+.waveWrapperInner.data-v-dcbcfe34 {
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  height: 100%;
+}
+.wave.data-v-dcbcfe34 {
+  position: absolute;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background-repeat: repeat no-repeat;
+  background-position: 0 bottom;
+  -webkit-transform-origin: center bottom;
+          transform-origin: center bottom;
+}
+.bgTop.data-v-dcbcfe34 {
+  opacity: 0.1;
+}
+.waveTop.data-v-dcbcfe34 {
+  background-size: 50% 45px;
+}
+.waveAnimation .waveTop.data-v-dcbcfe34 {
+  -webkit-animation: move_wave-data-v-dcbcfe34 4s linear infinite;
+          animation: move_wave-data-v-dcbcfe34 4s linear infinite;
+}
+.bgMiddle.data-v-dcbcfe34 {
+  opacity: 0.2;
+}
+.waveMiddle.data-v-dcbcfe34 {
+  background-size: 50% 40px;
+}
+.waveAnimation .waveMiddle.data-v-dcbcfe34 {
+  -webkit-animation: move_wave-data-v-dcbcfe34 3.5s linear infinite;
+          animation: move_wave-data-v-dcbcfe34 3.5s linear infinite;
+}
+.bgBottom.data-v-dcbcfe34 {
+  opacity: 0.3;
+}
+.waveBottom.data-v-dcbcfe34 {
+  background-size: 50% 35px;
+}
+.waveAnimation .waveBottom.data-v-dcbcfe34 {
+  -webkit-animation: move_wave-data-v-dcbcfe34 2s linear infinite;
+          animation: move_wave-data-v-dcbcfe34 2s linear infinite;
+}
+

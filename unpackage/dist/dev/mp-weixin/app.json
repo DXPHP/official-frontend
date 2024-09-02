@@ -1,0 +1,87 @@
+{
+  "pages": [
+    "pages/index"
+  ],
+  "subPackages": [
+    {
+      "root": "homePages",
+      "pages": [
+        "search",
+        "cooperate",
+        "cooperateDetail",
+        "member",
+        "group",
+        "brand",
+        "about",
+        "culture",
+        "history",
+        "photo",
+        "video",
+        "honor",
+        "map",
+        "base"
+      ]
+    },
+    {
+      "root": "commPages",
+      "pages": [
+        "nav",
+        "product"
+      ]
+    },
+    {
+      "root": "discoveryPages",
+      "pages": [
+        "business",
+        "case"
+      ]
+    },
+    {
+      "root": "newsPages",
+      "pages": [
+        "article"
+      ]
+    },
+    {
+      "root": "minePages",
+      "pages": [
+        "order",
+        "public",
+        "set",
+        "help",
+        "content"
+      ]
+    },
+    {
+      "root": "circlePages",
+      "pages": [
+        "blogger",
+        "blogger_other",
+        "edit",
+        "advertise",
+        "news",
+        "king",
+        "business",
+        "group",
+        "ranking",
+        "details",
+        "reserve",
+        "create",
+        "build",
+        "chat",
+        "chatting"
+      ]
+    }
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "图鸟官网",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "requiredPrivateInfos": [
+    "chooseAddress"
+  ],
+  "usingComponents": {}
+}
