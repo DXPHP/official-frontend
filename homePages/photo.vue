@@ -685,9 +685,9 @@
         console.log(13);
         this.loadStatus = 'loading'
         for (let i = 0; i < 10; i++) {
-          let index = this.$t.number.randomInt(0, this.data.length - 1)
+          let index = this.$tn.number.randomInt(0, this.data.length - 1)
           let item = JSON.parse(JSON.stringify(this.data[index]))
-          item.id = this.$t.uuid()
+          item.id = this.$tn.uuid()
           this.list.push(item)
         }
       },

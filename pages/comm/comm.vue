@@ -713,10 +713,10 @@
       getRandomData() {
         this.loadStatus = 'loading'
         for (let i = 0; i < 10; i++) {
-          let index = this.$t.number.randomInt(0, this.data.length - 1)
+          let index = this.$tn.number.randomInt(0, this.data.length - 1)
           let item = JSON.parse(JSON.stringify(this.data[index]))
           let price = this.getPrice(item.price)
-          item.id = this.$t.uuid()
+          item.id = this.$tn.uuid()
           item.priceInteger = price[0]
           item.priceDecimal = price[1]
           this.list.push(item)

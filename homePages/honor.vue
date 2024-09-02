@@ -170,7 +170,7 @@
       },
       // 随机颜色
       getRandomCoolBg() {
-        return this.$t.color.getRandomCoolBgClass()
+        return this.$tn.color.getRandomCoolBgClass()
       },
     }
   }

@@ -13,9 +13,9 @@ module.exports = {
   beforeCreate() {
     // 将vuex方法挂在在$t中
     // 使用方法: 
-    // 修改vuex的state中的user.name变量为图鸟小菜 => this.$t.vuex('user.name', '图鸟小菜')
-    // 修改vuexde state中的version变量为1.0.1 => this.$t.vuex('version', 1.0.1)
-    this.$t.vuex = (name, value) => {
+    // 修改vuex的state中的user.name变量为图鸟小菜 => this.$tn.vuex('user.name', '图鸟小菜')
+    // 修改vuexde state中的version变量为1.0.1 => this.$tn.vuex('version', 1.0.1)
+    this.$tn.vuex = (name, value) => {
       this.$store.commit('$tStore', {
         name, value
       })

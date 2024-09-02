@@ -436,7 +436,7 @@
 					that.uploadError(index, err)
 				},
 				complete: (res) => {
-					// this.$t.message.closeLoading()
+					// this.$tn.message.closeLoading()
 					that.uploading = false
 					that.uploadFile(index + 1)
 					that.$emit('on-change', res, index, that.lists, that.index)
