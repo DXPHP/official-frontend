@@ -216,7 +216,23 @@
 					{
 						"navigationBarTitleText" : "设置"
 					}
+				},
+				{
+					"path" : "address",
+					"style" : 
+					{
+						"navigationBarTitleText" : "我的地址"
+					}
+				},
+				{
+					"path" : "editAddress",
+					"style" : 
+					{
+						"navigationBarTitleText" : "编辑地址"
+					}
 				}
+				
+				
 			]
 		},
 		{

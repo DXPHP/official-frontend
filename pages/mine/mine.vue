@@ -315,8 +315,11 @@
       
       // 收货地址
       navAddress() {
-        uni.chooseAddress({
-        })
+        // uni.chooseAddress({
+        // })
+		uni.navigateTo({
+			url:'/minePages/address'
+		})
       },
       
       // 单纯短震动

@@ -21,3 +21,17 @@ export const bindMobile = (data) => httpRequest(`user/bindMobile`, 'POST',
 export const authLogin = (data) => httpRequest(`user/authLogin`, 'POST',
 	data
 )
+
+// 地址列表a
+export const addressList = (data) => httpRequest(`address/list`, 'GET',
+	data
+)
+
+//添加和编辑地址
+export const addressEdit = (data) => httpRequest(`address/edit`, 'POST',
+	data
+)
+//设置默认地址
+export const addressDefault = (data) => httpRequest(`address/default`, 'POST',
+	data
+)
