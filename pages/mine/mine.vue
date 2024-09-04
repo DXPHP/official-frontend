@@ -244,6 +244,19 @@
               188****8888</view>
           </view>
         </tn-list-cell>
+		<tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30" @click="tn('/minePages/setApp')" data-number="18266666666">
+		  <view class="tn-flex tn-flex-col-center">
+		    <view
+		      class="icon1__item--icon tn-flex tn-flex-row-center tn-flex-col-center" style="color: #7C8191;">
+		      <view class="tn-icon-set-fill"></view>
+		    </view>
+			<view class="tn-flex tn-flex-row-between" style="width: 100%;">
+				<view class="tn-margin-left-sm">设置</view>
+				<view class="tn-color-gray tn-icon-right"></view>
+			</view>
+		   
+		  </view>
+		</tn-list-cell>
       </view>
 
     </view>

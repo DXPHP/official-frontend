@@ -19,6 +19,13 @@
 					"disableScroll": true
 				}
 			}
+		},
+		{
+			"path" : "pages/login/login",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
 		}
 	],
 	"subPackages": [{
@@ -31,14 +38,14 @@
 					}
 				},
 				{
-					"path": "cooperate",
+					"path": "business",
 					"style": {
 						"navigationBarTitleText": "商业合作",
 						"enablePullDownRefresh": false
 					}
 				},
 				{
-					"path": "cooperateDetail",
+					"path": "businessDetail",
 					"style": {
 						"navigationBarTitleText": "合作详情",
 						"enablePullDownRefresh": false
@@ -97,7 +104,7 @@
 					"path": "video",
 					"style": {
 						"navigationBarTitleText": "宣传短片",
-						"enablePullDownRefresh": false
+						"enablePullDownRefresh": true
 					}
 				},
 				{
@@ -201,6 +208,13 @@
 					"style": {
 						"navigationBarTitleText": "富文本",
 						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path" : "setApp",
+					"style" : 
+					{
+						"navigationBarTitleText" : "设置"
 					}
 				}
 			]

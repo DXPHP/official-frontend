@@ -73,15 +73,15 @@
 			@change="cardSwiper">
 			<swiper-item v-for="(item,index) in swiperList" :key="index" :class="cardCur==index?'cur':''">
 				<view class="swiper-item image-banner">
-					<image :src="item.url" mode="aspectFill" v-if="item.type=='image'"></image>
+					<image :src="item.image" mode="aspectFill" v-if="item.image"></image>
 				</view>
-				<view class="swiper-item-text">
+				<!-- <view class="swiper-item-text">
 					<view class="tn-text-bold tn-color-white" style="font-size: 90rpx;">{{item.title}}</view>
 					<view class="tn-color-white tn-padding-top" style="font-size: 30rpx;">{{item.name}}</view>
 					<view class="tn-text-sm tn-text-bold tn-color-white tn-padding-top-sm tn-padding-bottom-sm">
 						{{item.text}}
 					</view>
-				</view>
+				</view> -->
 			</swiper-item>
 		</swiper>
 		<view class="indication">
@@ -99,7 +99,20 @@
 
 		<!-- 金刚区 start-->
 		<view class="tn-flex tn-padding-top tn-margin-bottom tn-margin-top-xs">
-			<view class="tn-flex-1 tn-radius" @click="tn('/homePages/base')" style="width: 20%;">
+			<view class="tn-flex-1 tn-radius" v-for="(itemMenus,indexMenus) in menusList" @click="tn(itemMenus.path)"
+				style="width: 20%;">
+				<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
+					<view
+						class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur tn-bg-red tn-color-white">
+						<!-- <view class="tn-icon-identity-fill tn-three"></view> -->
+						<image :src="itemMenus.image" mode="aspectFill" style="width: 100rpx;height: 100rpx;"></image>
+					</view>
+					<view class="tn-color-gray--dark tn-text-center tn-text-df">
+						<text class="tn-text-ellipsis">{{itemMenus.name}}</text>
+					</view>
+				</view>
+			</view>
+			<!-- <view class="tn-flex-1 tn-radius" @click="tn('/homePages/base')" style="width: 20%;">
 				<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
 					<view
 						class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur tn-bg-red tn-color-white">
@@ -109,9 +122,9 @@
 						<text class="tn-text-ellipsis">基本信息</text>
 					</view>
 				</view>
-			</view>
+			</view> -->
 
-			<view class="tn-flex-1 tn-radius" @click="tn('/homePages/brand')" style="width: 20%;">
+			<!-- <view class="tn-flex-1 tn-radius" @click="tn('/homePages/brand')" style="width: 20%;">
 				<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
 					<view
 						class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur tn-bg-blue tn-color-white">
@@ -121,8 +134,8 @@
 						<text class="tn-text-ellipsis">品牌介绍</text>
 					</view>
 				</view>
-			</view>
-			<view class="tn-flex-1 tn-radius" @click="tn('/homePages/cooperate')" style="width: 20%;">
+			</view> -->
+			<!-- 	<view class="tn-flex-1 tn-radius" @click="tn('/homePages/cooperate')" style="width: 20%;">
 				<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
 					<view
 						class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur tn-bg-cyan tn-color-white">
@@ -132,7 +145,7 @@
 						<text class="tn-text-ellipsis">合作共赢</text>
 					</view>
 				</view>
-			</view>
+			</view> -->
 			<!-- <view class="tn-flex-1 tn-radius" @click="tn('/homePages/group')" style="width: 20%;">
 				<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
 					<view
@@ -144,7 +157,7 @@
 					</view>
 				</view>
 			</view> -->
-			<view class="tn-flex-1 tn-radius" @click="tn('/homePages/video')" style="width: 20%;">
+			<!-- <view class="tn-flex-1 tn-radius" @click="tn('/homePages/video')" style="width: 20%;">
 				<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
 					<view
 						class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur tn-bg-orange tn-color-white">
@@ -154,7 +167,7 @@
 						<text class="tn-text-ellipsis">宣传短片</text>
 					</view>
 				</view>
-			</view>
+			</view> -->
 			<!-- <view class="tn-flex-1 tn-radius" @click="tn('')" style="width: 20%;">
         <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
           <view class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur tn-bg-purple tn-color-white">
@@ -192,24 +205,24 @@
 		</view>
 		<view
 			class="tn-info__container tn-flex tn-flex-wrap tn-flex-col-center tn-flex-row-between tn-margin-left tn-margin-right">
-			<block v-for="(item, index) in data" :key="index">
+			<block v-for="(item, index) in goodsList" :key="index">
 				<view
-					class="tn-flex tn-flex-direction-row tn-flex-col-center tn-flex-row-between tn-color-white tn-shadow-blur tn-col-6"
+					class="tn-flex tn-flex-direction-row tn-flex-col-center tn-flex-row-between  tn-shadow-blur tn-col-6"
 					@click="tn(item.url)">
-					<view class="product__item home-shadow" @click="tn('/commPages/product')">
+					<view class="product__item home-shadow" @click="tn('/commPages/product?id='+item.id)">
 						<view class="item__image">
-							<tn-lazy-load :threshold="6000" height="100%" :image="item.mainImage" :index="item.id"
+							<tn-lazy-load :threshold="6000" height="100%" :image="item.image" :index="item.id"
 								imgMode="widthFix" style="border-radius: 10rpx 10rpx; 0 0"></tn-lazy-load>
 						</view>
 						<view class="item__data tn-margin-left-sm tn-margin-right-sm">
 							<view class="item__title-container">
-								<text class="item__title tn-color-cat clamp-text-2">{{ item.title }}</text>
+								<text class="item__title tn-color-cat clamp-text-2">{{ item.name }}</text>
 							</view>
-							<view v-if="item.tags && item.tags.length > 0" class="item__tags-container">
+							<!-- 	<view v-if="item.tags && item.tags.length > 0" class="item__tags-container">
 								<view v-for="(tagItem, tagIndex) in item.tags" :key="tagIndex" class="item__tag">
 									{{ tagItem }}
 								</view>
-							</view>
+							</view> -->
 
 							<view class="tn-flex tn-flex-row-between tn-flex-col-between tn-margin-top-xs">
 								<view class="justify-content-item tn-color-red">
@@ -219,7 +232,7 @@
 								<view class="justify-content-item tn-color-gray tn-text-center"
 									style="padding-top: 5rpx;">
 									<text class="tn-icon-rocket tn-padding-right-xs tn-text-lg"></text>
-									<text class="tn-text-df">{{ item.likeCount }}</text>
+									<text class="tn-text-df">{{ item.likes }}</text>
 								</view>
 							</view>
 						</view>
@@ -246,23 +259,25 @@
 		</view>
 
 		<!-- 热图推荐-->
-		<view class="tn-flex tn-margin-left tn-margin-right tn-margin-top tn-margin-bottom-xl"
-			@click="tn('/discoveryPages/case')">
-			<view class="tn-flex-2">
+		<view class="tn-flex tn-margin-left tn-margin-right tn-margin-top tn-margin-bottom-xl">
+			<view class="tn-flex-2" @click="tn('/discoveryPages/case?id='+caseList[0].id)">
 				<view class="image-pic tn-margin-right tn-shadow-blur"
-					style="background-image:url('https://cdn.nlark.com/yuque/0/2021/jpeg/280373/1639125729796-assets/web-upload/bce6460b-5834-472e-90ba-cbdaa27dbdb8.jpeg')">
+					:style="'background-image:url('+caseList[0].image+')'">
+					
 					<view class="image-tuniao1">
 					</view>
 				</view>
 			</view>
-			<view class="tn-flex-1">
-				<view class="image-pic tn-shadow-blur"
-					style="background-image:url('https://cdn.nlark.com/yuque/0/2021/jpeg/280373/1639141294401-assets/web-upload/08600888-2166-4daf-9d82-ed4ebce7e39b.jpeg')">
+			<view class="tn-flex-1" v-if="caseList.length>2">
+				<view class="image-pic tn-shadow-blur" @click="tn('/discoveryPages/case?id='+caseList[1].id)"
+					:style="'background-image:url('+caseList[0].image+')'">
 					<view class="image-tuniao2">
 					</view>
 				</view>
+				
 				<view class="image-pic tn-margin-top tn-shadow-blur"
-					style="background-image:url('https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1666436108228-assets/web-upload/6b76e5af-edc4-4883-ae15-fd0e44eadde2.jpeg')">
+					@click="tn('/discoveryPages/case?id='+caseList[2].id)"
+					:style="'background-image:url('+caseList[0].image+')'">
 					<view class="image-tuniao2">
 					</view>
 				</view>
@@ -282,7 +297,7 @@
 		</view>
 
 		<block v-for="(item, index) in news" :key="index">
-			<view class="article-shadow tn-margin tn-bg-white" @click="tn('/newsPages/article')">
+			<view class="article-shadow tn-margin tn-bg-white" @click="tn('/newsPages/article?id='+item.id)">
 				<view class="tn-flex">
 
 					<view class="tn-margin-sm tn-padding-top-xs" style="width: 100%;">
@@ -291,23 +306,26 @@
 						</view>
 						<view class="tn-padding-top-xs" style="min-height: 90rpx;">
 							<text class="tn-text-df tn-color-gray clamp-text-2 tn-text-justify">
-								{{ item.desc }}
+								{{ item.content }}
 							</text>
 						</view>
 						<view class="tn-flex tn-flex-row-between tn-flex-col-between tn-margin-top-sm">
-							<view v-for="(label_item,label_index) in item.label" :key="label_index"
+							<!-- <view v-for="(label_item,label_index) in item.label" :key="label_index"
 								class="justify-content-item tn-tag-content__item tn-margin-right tn-text-sm tn-text-bold">
 								<text class="tn-tag-content__item--prefix">#</text> {{ label_item }}
+							</view> -->
+							<view class="">
+
 							</view>
 							<view class="justify-content-item tn-color-gray tn-text-center" style="padding-top: 5rpx;">
-								<text class="tn-icon-rocket tn-padding-right-xs tn-text-lg"></text>
-								<text class="tn-padding-right tn-text-df">{{ item.collectionCount }}</text>
+								<text class="tn-icon-eye tn-padding-right-xs tn-text-lg"></text>
+								<text class="tn-padding-right tn-text-df">{{ item.view }}</text>
 								<text class="tn-icon-like-lack tn-padding-right-xs tn-text-lg"></text>
-								<text class="tn-text-df">{{ item.likeCount }}</text>
+								<text class="tn-text-df">{{ item.likes }}</text>
 							</view>
 						</view>
 					</view>
-					<view class="image-pic tn-margin-sm" :style="'background-image:url(' + item.userAvatar + ')'">
+					<view class="image-pic tn-margin-sm" :style="'background-image:url(' + item.image + ')'">
 						<view class="image-article">
 						</view>
 					</view>
@@ -366,13 +384,13 @@
 			</view>
 		</view>
 		<view class="tn-info__container tn-flex tn-flex-wrap tn-flex-col-center tn-margin-left tn-margin-right">
-			<block v-for="(item, index) in data" :key="index">
+			<block v-for="(item, index) in cooperationList" :key="index">
 				<view
 					class="tn-flex tn-flex-direction-row tn-flex-col-center tn-flex-row-between tn-color-white tn-shadow-blur tn-col-3"
-					@click="tn(item.url)">
+					@click="tn()">
 					<view class="partner__item home-shadow" @click="tn('/commPages/product')">
 						<view class="item__image">
-							<tn-lazy-load :threshold="6000" height="144" :image="item.mainImage" :index="item.id"
+							<tn-lazy-load :threshold="6000" height="144" :image="item.image" :index="item.id"
 								imgMode="aspectFill" style="border-radius: 10rpx;"></tn-lazy-load>
 						</view>
 					</view>
@@ -430,12 +448,18 @@
 </template>
 
 <script>
+	import {
+		index
+	} from '@/api/home.js'
 	export default {
 		name: 'Home',
 		data() {
 			return {
 				cardCur: 0,
 				isAndroid: true,
+				cooperationList: [],
+				caseList: [],
+				menusList: [],
 				swiperList: [{
 					id: 0,
 					type: 'image',
@@ -528,7 +552,7 @@
 						url: '/homePages/map'
 					}
 				],
-				data: [{
+				goodsList: [{
 						title: '酷炫发现页面',
 						userName: '试试就逝世',
 						mainImage: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1661311316649-assets/web-upload/4de21afc-9abe-4c2a-b9fb-919d5537eb88.jpeg',
@@ -661,8 +685,19 @@
 			} else {
 				this.isAndroid = true
 			}
+			this.getData()
+
 		},
 		methods: {
+			async getData() {
+				let res = await index()
+				this.swiperList = res.data.banner
+				this.menusList = res.data.menus
+				this.goodsList = res.data.goods
+				this.caseList = res.data.cases
+				this.news = res.data.news
+				this.cooperationList = res.data.cooperation
+			},
 			openLocation() {
 				wx.vibrateShort();
 				uni.openLocation({

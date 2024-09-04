@@ -136,7 +136,8 @@
   left: 50%;
   margin-left: -25%;
 }
-.tnphone-white-min .area-l.data-v-7c8314a8, .tnphone-white-min .area-r.data-v-7c8314a8 {
+.tnphone-white-min .area-l.data-v-7c8314a8,
+.tnphone-white-min .area-r.data-v-7c8314a8 {
   width: 70rpx;
   height: 16rpx;
   position: absolute;

@@ -157,7 +157,7 @@
 .button-0.data-v-a042031a {
   position: fixed;
   /* bottom:200rpx;
-      right: 20rpx; */
+        right: 20rpx; */
   bottom: 52%;
   right: 30rpx;
   z-index: 1001;
@@ -168,7 +168,7 @@
 .button-1.data-v-a042031a {
   position: fixed;
   /* bottom:200rpx;
-      right: 20rpx; */
+        right: 20rpx; */
   bottom: 41%;
   right: 30rpx;
   z-index: 1001;
@@ -178,7 +178,7 @@
 .button-2.data-v-a042031a {
   position: fixed;
   /* bottom:200rpx;
-      right: 20rpx; */
+        right: 20rpx; */
   bottom: 33%;
   right: 30rpx;
   z-index: 1001;
@@ -188,7 +188,7 @@
 .button-3.data-v-a042031a {
   position: fixed;
   /* bottom:200rpx;
-      right: 20rpx; */
+        right: 20rpx; */
   bottom: 25%;
   right: 30rpx;
   z-index: 1001;
@@ -228,7 +228,8 @@
           animation: suspension-data-v-a042031a 3s ease-in-out infinite;
 }
 @-webkit-keyframes suspension-data-v-a042031a {
-0%, 100% {
+0%,
+  100% {
     -webkit-transform: translateY(0);
             transform: translateY(0);
 }
@@ -238,7 +239,8 @@
 }
 }
 @keyframes suspension-data-v-a042031a {
-0%, 100% {
+0%,
+  100% {
     -webkit-transform: translateY(0);
             transform: translateY(0);
 }
@@ -255,7 +257,7 @@
   flex-direction: row;
   position: fixed;
   /* bottom:200rpx;
-    right: 20rpx; */
+      right: 20rpx; */
   left: 5rpx;
   top: 5rpx;
   z-index: 1001;

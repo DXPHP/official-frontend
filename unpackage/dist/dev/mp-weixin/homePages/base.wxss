@@ -21,8 +21,8 @@
   background-repeat: no-repeat;
   background-position: top;
   border-radius: 0;
-  -webkit-clip-path: polygon(160rpx 0, 100% 0, 100% 100%, 0 100%, 0 60rpx, 145rpx 50rpx);
-          clip-path: polygon(160rpx 0, 100% 0, 100% 100%, 0 100%, 0 60rpx, 145rpx 50rpx);
+  -webkit-clip-path: polygon(200rpx 0, 100% 0, 100% 100%, 0 100%, 0 60rpx, 165rpx 50rpx);
+          clip-path: polygon(200rpx 0, 100% 0, 100% 100%, 0 100%, 0 60rpx, 165rpx 50rpx);
 }
 /* 用户头像 start */
 .logo-image.data-v-3114e009 {

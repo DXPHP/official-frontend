@@ -13,24 +13,24 @@
 			<view class="cube__container">
 				<view class="cube__container__body">
 					<view class="cube__container__body__item cube__container__body__item--front"
-						:style="{backgroundImage: `url(${userInfo.avatar[0]})`}"></view>
+						:style="{backgroundImage: `url(${companyInfo.company.logo})`}"></view>
 					<view class="cube__container__body__item cube__container__body__item--back"
-						:style="{backgroundImage: `url(${userInfo.avatar[0]})`}"></view>
+						:style="{backgroundImage: `url(${companyInfo.company.logo})`}"></view>
 					<view class="cube__container__body__item cube__container__body__item--right"
-						:style="{backgroundImage: `url(${userInfo.avatar[1]})`}"></view>
+						:style="{backgroundImage: `url(${companyInfo.company.logo})`}"></view>
 					<view class="cube__container__body__item cube__container__body__item--left"
-						:style="{backgroundImage: `url(${userInfo.avatar[1]})`}"></view>
+						:style="{backgroundImage: `url(${companyInfo.company.logo})`}"></view>
 					<view class="cube__container__body__item cube__container__body__item--top"
-						:style="{backgroundImage: `url(${userInfo.avatar[2]})`}"></view>
+						:style="{backgroundImage: `url(${companyInfo.company.logo})`}"></view>
 					<view class="cube__container__body__item cube__container__body__item--bottom"
-						:style="{backgroundImage: `url(${userInfo.avatar[2]})`}"></view>
+						:style="{backgroundImage: `url(${companyInfo.company.logo})`}"></view>
 				</view>
 			</view>
 
 
 			<view class='tn-text-center tn-margin-top-lg'>
-				<view class="tn-padding tn-text-bold tn-text-lg">{{ userInfo.username }}</view>
-				<view class="tn-padding-bottom-xl tn-text-lg">{{ userInfo.desc }}</view>
+				<view class="tn-padding tn-text-bold tn-text-lg">{{ companyInfo.company.name }}</view>
+				<view class="tn-padding-bottom-xl tn-text-lg">{{ companyInfo.company.address }}</view>
 			</view>
 		</view>
 		<!-- 边距间隔 -->
@@ -38,7 +38,7 @@
 		<view class="">
 			<tn-sticky :offsetTop="0" :customNavHeight="vuex_custom_bar_height" @fixed="fixed" @unfixed="unfixed">
 				<view class="" :style="isFixed?'background-color: #ffffff;':''">
-					<tn-tabs :list="fixedList" :current="current" :isScroll="false" activeColor="#000" bold="true"
+					<tn-tabs :list="fixedList" :current="current" :isScroll="false" activeColor="#000" :bold="true"
 						:fontSize="32" :badgeOffset="[20, 50]" @change="tabChange"></tn-tabs>
 				</view>
 
@@ -49,17 +49,17 @@
 
 		<view class="" v-if="current==0">
 			<view class="" style="padding: 30rpx 20rpx;">
-				<tn-waterfall ref="waterfall" v-model="list" @finish="handleWaterFallFinish">
+				<tn-waterfall ref="waterfall" v-model="companyInfo.album" @finish="handleWaterFallFinish">
 					<template v-slot:left="{ leftList }">
-						<view v-for="(item, index) in leftList" :key="item.id" class="product__item" @click="">
+						<view v-for="(item, index) in leftList" :key="item.id" class="product__item" @click="tn('/homePages/photo?id='+item.id)">
 							<view class="item__image">
-								<tn-lazy-load :threshold="6000" height="100%" :image="item.mainImage" :index="item.id"
+								<tn-lazy-load :threshold="6000" height="100%" :image="item.image" :index="item.id"
 									imgMode="widthFix"></tn-lazy-load>
 							</view>
 							<!-- <text class="item__title tn-color-black">{{ item.title }}</text> -->
-								<view class="item__data">
+							<view class="item__data">
 								<view class="item__title-container">
-									<text class="item__title tn-color-black">{{ item.title }}</text>
+									<text class="item__title tn-color-black">{{ item.name }}</text>
 								</view>
 								<!-- <view v-if="item.tags && item.tags.length > 0" class="item__tags-container">
 									<view v-for="(tagItem, tagIndex) in item.tags" :key="tagIndex" class="item__tag">
@@ -70,17 +70,17 @@
 					</template>
 					<template v-slot:right="{ rightList }">
 						<view v-for="(item, index) in rightList" :key="item.id" class="product__item"
-							@click="tn('/pageA/photo/photo')">
+							@click="tn('/homePages/photo?id='+item.id)">
 							<view class="item__image">
-								<tn-lazy-load :threshold="6000" height="100%" :image="item.mainImage" :index="item.id"
+								<tn-lazy-load :threshold="6000" height="100%" :image="item.image" :index="item.id"
 									imgMode="widthFix"></tn-lazy-load>
 							</view>
 							<!-- <text class="item__title tn-color-black">{{ item.title }}</text> -->
 							<view class="item__data">
 								<view class="item__title-container">
-									<text class="item__title tn-color-black">{{ item.title }}</text>
+									<text class="item__title tn-color-black">{{ item.name }}</text>
 								</view>
-							<!-- 	<view v-if="item.tags && item.tags.length > 0" class="item__tags-container">
+								<!-- 	<view v-if="item.tags && item.tags.length > 0" class="item__tags-container">
 									<view v-for="(tagItem, tagIndex) in item.tags" :key="tagIndex" class="item__tag">
 										{{ tagItem }}</view>
 								</view> -->
@@ -94,13 +94,13 @@
 		<view class="" v-if="current==1">
 			<!-- 发展历程 start-->
 			<view class="tn-flex tn-flex-wrap tn-padding-bottom">
-				<view class="king-list tn-margin-top-sm">
+				<view class="king-list tn-margin-top-sm" v-for="(item,index) in info.develop" :key="item.id">
+
 
 					<view class="king-icon">
 						<text class='tn-icon-trophy tn-color-white tn-text-lg tn-bg-blue tn-round tn-padding-xs'></text>
-						<text class='tn-text-xl tn-margin-left tn-color-gray'>2022-03-12</text>
+						<text class='tn-text-xl tn-margin-left tn-color-gray'>{{item.that_time}}</text>
 					</view>
-
 					<view class='king-item  tn-icon-circle-fill tn-color-red'>
 						<view class="article-shadow tn-bg-white" @click="tn('')">
 							<view class="tn-flex">
@@ -112,41 +112,7 @@
 								<view class="tn-margin-sm tn-padding-top-xs" style="width: 100%;">
 									<view class="" style="min-height: 105rpx;">
 										<text class="tn-text-df tn-color-gray clamp-text-2 tn-text-justify">
-											推出图鸟UI，嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻
-										</text>
-
-									</view>
-									<view class="tn-flex tn-flex-row-between tn-flex-col-between">
-										<view
-											class="justify-content-item tn-tag-content__item tn-margin-right tn-text-sm tn-text-bold">
-											<text class="tn-tag-content__item--prefix">#</text> 开源项目
-										</view>
-										<view
-											class="justify-content-item tn-color-gray tn-text-center tn-color-gray--disabled"
-											style="padding-top: 5rpx;">
-											<!-- <text class="tn-icon-footprint tn-padding-right-xs tn-text-lg"></text>
-			               <text class="tn-padding-right tn-text-df">232</text> -->
-											<text class="tn-icon-rocket tn-padding-right-xs tn-text-lg"></text>
-											<text class="tn-text-df">129</text>
-										</view>
-									</view>
-								</view>
-							</view>
-						</view>
-					</view>
-
-					<view class='king-item  tn-icon-circle-fill tn-color-red'>
-						<view class="article-shadow tn-bg-white" @click="tn('')">
-							<view class="tn-flex">
-								<view class="image-pic tn-margin-left-sm tn-margin-top-sm tn-margin-bottom-sm img-solid"
-									style="background-image:url('https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1663571007436-assets/web-upload/e3fdeb91-d8d1-4187-8d91-593559543af3.jpeg');width: 160rpx;height: 160rpx;background-size: cover;">
-									<view class="image-article">
-									</view>
-								</view>
-								<view class="tn-margin-sm tn-padding-top-xs" style="width: 100%;">
-									<view class="" style="min-height: 105rpx;">
-										<text class="tn-text-df tn-color-gray clamp-text-2 tn-text-justify">
-											发展历程发展历程发展历程发展历程
+											{{item.event}}
 										</text>
 
 									</view>
@@ -159,7 +125,7 @@
 											class="justify-content-item tn-color-gray tn-text-center tn-color-gray--disabled"
 											style="padding-top: 5rpx;">
 											<!-- <text class="tn-icon-footprint tn-padding-right-xs tn-text-lg"></text>
-			               <text class="tn-padding-right tn-text-df">232</text> -->
+						       <text class="tn-padding-right tn-text-df">232</text> -->
 											<text class="tn-icon-rocket tn-padding-right-xs tn-text-lg"></text>
 											<text class="tn-text-df">129</text>
 										</view>
@@ -171,159 +137,8 @@
 
 
 
-					<view class="king-icon">
-						<text class='tn-icon-trophy tn-color-white tn-text-lg tn-bg-blue tn-round tn-padding-xs'></text>
-						<text class='tn-text-xl tn-margin-left tn-color-gray'>2019-12-12</text>
-					</view>
-
-					<view class='king-item  tn-icon-circle-fill tn-color-red'>
-						<view class="article-shadow tn-bg-white" @click="tn('')">
-							<view class="tn-flex">
-								<view class="image-pic tn-margin-left-sm tn-margin-top-sm tn-margin-bottom-sm img-solid"
-									style="background-image:url('https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1663571007436-assets/web-upload/e3fdeb91-d8d1-4187-8d91-593559543af3.jpeg');width: 160rpx;height: 160rpx;background-size: cover;">
-									<view class="image-article">
-									</view>
-								</view>
-								<view class="tn-margin-sm tn-padding-top-xs" style="width: 100%;">
-									<view class="" style="min-height: 105rpx;">
-										<text class="tn-text-df tn-color-gray clamp-text-2 tn-text-justify">
-											注册图鸟科技，蜗居小小工作室
-										</text>
-
-									</view>
-									<view class="tn-flex tn-flex-row-between tn-flex-col-between">
-										<view
-											class="justify-content-item tn-tag-content__item tn-margin-right tn-text-sm tn-text-bold">
-											<text class="tn-tag-content__item--prefix">#</text> 图鸟科技
-										</view>
-										<view
-											class="justify-content-item tn-color-gray tn-text-center tn-color-gray--disabled"
-											style="padding-top: 5rpx;">
-											<!-- <text class="tn-icon-footprint tn-padding-right-xs tn-text-lg"></text>
-			               <text class="tn-padding-right tn-text-df">232</text> -->
-											<text class="tn-icon-rocket tn-padding-right-xs tn-text-lg"></text>
-											<text class="tn-text-df">129</text>
-										</view>
-									</view>
-								</view>
-							</view>
-						</view>
-					</view>
-
-					<view class='king-item  tn-icon-circle-fill tn-color-red'>
-						<view class="article-shadow tn-bg-white" @click="tn('')">
-							<view class="tn-flex">
-								<view class="image-pic tn-margin-left-sm tn-margin-top-sm tn-margin-bottom-sm img-solid"
-									style="background-image:url('https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1663571007436-assets/web-upload/e3fdeb91-d8d1-4187-8d91-593559543af3.jpeg');width: 160rpx;height: 160rpx;background-size: cover;">
-									<view class="image-article">
-									</view>
-								</view>
-								<view class="tn-margin-sm tn-padding-top-xs" style="width: 100%;">
-									<view class="" style="min-height: 105rpx;">
-										<text class="tn-text-df tn-color-gray clamp-text-2 tn-text-justify">
-											发展历程发展历程发展历程发展历程
-										</text>
-
-									</view>
-									<view class="tn-flex tn-flex-row-between tn-flex-col-between">
-										<view
-											class="justify-content-item tn-tag-content__item tn-margin-right tn-text-sm tn-text-bold">
-											<text class="tn-tag-content__item--prefix">#</text> 随便聊聊
-										</view>
-										<view
-											class="justify-content-item tn-color-gray tn-text-center tn-color-gray--disabled"
-											style="padding-top: 5rpx;">
-											<!-- <text class="tn-icon-footprint tn-padding-right-xs tn-text-lg"></text>
-			               <text class="tn-padding-right tn-text-df">232</text> -->
-											<text class="tn-icon-rocket tn-padding-right-xs tn-text-lg"></text>
-											<text class="tn-text-df">129</text>
-										</view>
-									</view>
-								</view>
-							</view>
-						</view>
-					</view>
 
 
-					<view class="king-icon">
-						<text class='tn-icon-trophy tn-color-white tn-text-lg tn-bg-blue tn-round tn-padding-xs'></text>
-						<text class='tn-text-xl tn-margin-left tn-color-gray'>2018-06-19</text>
-					</view>
-
-					<view class='king-item  tn-icon-circle-fill tn-color-red'>
-						<view class="article-shadow tn-bg-white" @click="tn('')">
-							<view class="tn-flex">
-								<view class="image-pic tn-margin-left-sm tn-margin-top-sm tn-margin-bottom-sm img-solid"
-									style="background-image:url('https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1663571007436-assets/web-upload/e3fdeb91-d8d1-4187-8d91-593559543af3.jpeg');width: 160rpx;height: 160rpx;background-size: cover;">
-									<view class="image-article">
-									</view>
-								</view>
-								<view class="tn-margin-sm tn-padding-top-xs" style="width: 100%;">
-									<view class="" style="min-height: 105rpx;">
-										<text class="tn-text-df tn-color-gray clamp-text-2 tn-text-justify">
-											毕业嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻
-										</text>
-
-									</view>
-									<view class="tn-flex tn-flex-row-between tn-flex-col-between">
-										<view
-											class="justify-content-item tn-tag-content__item tn-margin-right tn-text-sm tn-text-bold">
-											<text class="tn-tag-content__item--prefix">#</text> 毕业季
-										</view>
-										<view
-											class="justify-content-item tn-color-gray tn-text-center tn-color-gray--disabled"
-											style="padding-top: 5rpx;">
-											<!-- <text class="tn-icon-footprint tn-padding-right-xs tn-text-lg"></text>
-			               <text class="tn-padding-right tn-text-df">232</text> -->
-											<text class="tn-icon-rocket tn-padding-right-xs tn-text-lg"></text>
-											<text class="tn-text-df">232</text>
-										</view>
-									</view>
-								</view>
-							</view>
-						</view>
-					</view>
-
-
-					<view class="king-icon">
-						<text
-							class='tn-icon-footprint tn-color-white tn-text-lg tn-bg-blue tn-round tn-padding-xs'></text>
-						<text class='tn-text-xl tn-margin-left tn-color-gray'>2018-01-11</text>
-					</view>
-
-					<view class='king-item  tn-icon-circle-fill tn-color-red'>
-						<view class="article-shadow tn-bg-white" @click="tn('')">
-							<view class="tn-flex">
-								<view class="image-pic tn-margin-left-sm tn-margin-top-sm tn-margin-bottom-sm img-solid"
-									style="background-image:url('https://cdn.nlark.com/yuque/0/2021/jpeg/280373/1629788206008-assets/web-upload/b82bc25b-c18f-4cd8-80ef-a1e9694d099a.jpeg');width: 160rpx;height: 160rpx;background-size: cover;">
-									<view class="image-article">
-									</view>
-								</view>
-								<view class="tn-margin-sm tn-padding-top-xs" style="width: 100%;">
-									<view class="" style="min-height: 105rpx;">
-										<text class="tn-text-df tn-color-gray clamp-text-2 tn-text-justify">
-											注册图鸟工作室，在大学宿舍内，迈出了图鸟的第一步
-										</text>
-
-									</view>
-									<view class="tn-flex tn-flex-row-between tn-flex-col-between">
-										<view
-											class="justify-content-item tn-tag-content__item tn-margin-right tn-text-sm tn-text-bold">
-											<text class="tn-tag-content__item--prefix">#</text> 工作室
-										</view>
-										<view
-											class="justify-content-item tn-color-gray tn-text-center tn-color-gray--disabled"
-											style="padding-top: 5rpx;">
-											<!-- <text class="tn-icon-footprint tn-padding-right-xs tn-text-lg"></text>
-			               <text class="tn-padding-right tn-text-df">232</text> -->
-											<text class="tn-icon-rocket tn-padding-right-xs tn-text-lg"></text>
-											<text class="tn-text-df">129</text>
-										</view>
-									</view>
-								</view>
-							</view>
-						</view>
-					</view>
 				</view>
 			</view>
 			<!--发展历程 end-->
@@ -332,17 +147,18 @@
 			<view class="tn-text-center">
 				<!-- 比例图文 start-->
 				<view class="tn-flex tn-flex-wrap tn-padding-bottom">
-					<block v-for="(item, index) in content" :key="index">
+					<block v-for="(item, index) in info.honor" :key="index">
 						<view class="" style="width: 50%;" @click="tn('/pageA/product/product')">
 							<view class="tn-margin-xs img-shadow" style="border-radius: 10rpx;">
 								<view class="" style="position: absolute;padding: 20rpx 15rpx 15rpx 15rpx;">
 									<text class="tn-icon-honor-fill tn-text-xl"></text>
 								</view>
 								<view class="tn-padding-sm" style="position: absolute;">
-									<text class="tn-padding-left-lg tn-padding-top-sm tn-text-sm">{{ item.date }}</text>
+									<text
+										class="tn-padding-left-lg tn-padding-top-sm tn-text-sm">{{ item.that_time }}</text>
 								</view>
 								<view class="" style="padding: 15rpx;">
-									<view class="image-picbook" :style="'background-image:url(' + item.mainImage + ')'">
+									<view class="image-picbook" :style="'background-image:url(' + item.image + ')'">
 										<view class="image-book">
 										</view>
 									</view>
@@ -353,7 +169,7 @@
 										<view class=" ">
 											<view class="tn-text-center">
 												<text
-													class="tn-color-black tn-text-sm tn-text-bold">{{ item.userName }}</text>
+													class="tn-color-black tn-text-sm tn-text-bold">{{ item.title }}</text>
 											</view>
 										</view>
 									</view>
@@ -371,17 +187,18 @@
 			<view class="tn-text-center">
 				<!-- 比例图文 start-->
 				<view class="tn-flex tn-flex-wrap tn-padding-bottom">
-					<block v-for="(item, index) in content" :key="index">
+					<block v-for="(item, index) in info.certificate" :key="index">
 						<view class="" style="width: 50%;" @click="tn('/pageA/product/product')">
 							<view class="tn-margin-xs img-shadow" style="border-radius: 10rpx;">
 								<view class="" style="position: absolute;padding: 20rpx 15rpx 15rpx 15rpx;">
 									<text class="tn-icon-honor-fill tn-text-xl"></text>
 								</view>
 								<view class="tn-padding-sm" style="position: absolute;">
-									<text class="tn-padding-left-lg tn-padding-top-sm tn-text-sm">{{ item.date }}</text>
+									<text
+										class="tn-padding-left-lg tn-padding-top-sm tn-text-sm">{{ item.that_time }}</text>
 								</view>
 								<view class="" style="padding: 15rpx;">
-									<view class="image-picbook" :style="'background-image:url(' + item.mainImage + ')'">
+									<view class="image-picbook" :style="'background-image:url(' + item.image + ')'">
 										<view class="image-book">
 										</view>
 									</view>
@@ -392,7 +209,7 @@
 										<view class=" ">
 											<view class="tn-text-center">
 												<text
-													class="tn-color-black tn-text-sm tn-text-bold">{{ item.userName }}</text>
+													class="tn-color-black tn-text-sm tn-text-bold">{{ item.title }}</text>
 											</view>
 										</view>
 									</view>
@@ -416,23 +233,20 @@
 
 <script>
 	import template_page_mixin from '@/libs/mixin/template_page_mixin.js'
+	import {
+		companyBaseInfo,
+		company
+	} from '@/api/home.js'
 	export default {
 		name: 'TemplateBase',
 		mixins: [template_page_mixin],
 		data() {
 			return {
+				companyInfo: {},
+				info: {},
 				isFixed: false,
 				// 内容默认隐藏显示的高度
 				contentHideShowHeight: 0,
-				userInfo: {
-					avatar: [
-						'https://resource.tuniaokj.com/images/blogger/blogger_avatar_1.jpeg',
-						'https://resource.tuniaokj.com/images/blogger/blogger_avatar_2.jpeg',
-						'https://resource.tuniaokj.com/images/blogger/blogger_avatar_3.jpeg',
-					],
-					username: '图鸟北北',
-					desc: '你是不是傻，菜的一撇的北北'
-				},
 				current: 0,
 				fixedList: [{
 						name: '相册'
@@ -441,663 +255,25 @@
 						name: '历程'
 					},
 					{
-						name: '荣誉',
-						count: '99+'
+						name: '荣誉'
 					},
 					{
 						name: '资质'
 					}
 				],
-				content: [{
-						userAvatar: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1664005699051-assets/web-upload/442e94f1-d8e5-44ae-bfe5-b1a227bde9af.jpeg',
-						date: '2023年',
-						userName: '高新技术企业',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1676018969127-assets/web-upload/882c2c08-bea1-41d1-a04c-b32ce2a84e16.jpeg',
-						viewUserCount: 87
-					},
-					{
-						userAvatar: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1664005699076-assets/web-upload/3ecd9644-c948-41a1-8d1c-e1bab0ff08dd.jpeg',
-						date: '2022年',
-						userName: 'AAA守信用证书',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1676019388981-assets/web-upload/8b357eb0-9e9e-4935-af8e-381bfd797230.jpeg',
-						viewUserCount: 63
-					},
-					{
-						userAvatar: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1664005699098-assets/web-upload/e8b29292-72fc-4c1e-9d7c-fd9dba31cb62.jpeg',
-						date: '2022年',
-						userName: '诚信企业家',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1676019771441-assets/web-upload/06be7d13-b592-448d-9621-35636994dcf0.jpeg',
-						viewUserCount: 208
-					},
-					{
-						userAvatar: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1664005699075-assets/web-upload/aaee3258-46b7-43ae-aaf2-02f3dff5f960.jpeg',
-						date: '2021年',
-						userName: 'AAA级信用企业',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1676019771380-assets/web-upload/58ac8930-4fe0-499a-a4d9-97a9d2e1c939.jpeg',
-						viewUserCount: 16
-					},
-					{
-						userAvatar: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1664015047529-assets/web-upload/af73d987-7e47-4ab9-8cc7-9ced5611552c.jpeg',
-						date: '2021年',
-						userName: 'AAA级资信企业',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1676020020678-assets/web-upload/23fd85b7-cce6-4251-a7fd-33de3b338099.jpeg',
-						viewUserCount: 902
-					},
-					{
-						userAvatar: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1664015223286-assets/web-upload/a389d645-024b-4804-9515-cf1cc6e8b5c0.jpeg',
-						date: '2021年',
-						userName: 'AAA级重合同守信用企业',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1676020020699-assets/web-upload/8200b86e-33dd-42ad-b5cf-84c53c58ebed.jpeg',
-						viewUserCount: 88
-					},
-					{
-						userAvatar: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1664180031265-assets/web-upload/e85aa00d-d9f9-45a5-8f46-9927fad5c348.jpeg',
-						date: '2021年',
-						userName: 'AAA级诚信供应商',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1676020663234-assets/web-upload/2eb50c08-599b-4c5b-9613-afa0ea719bdd.jpeg',
-						viewUserCount: 106
-					},
-					{
-						userAvatar: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1664005699017-assets/web-upload/d9b5d713-fa5e-4213-8a25-bbe8086a6008.jpeg',
-						date: '2021年',
-						userName: '广大华软校友企业',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1676020663225-assets/web-upload/b3ac5eb2-c979-428f-9cc8-6c7397cab00f.jpeg',
-						viewUserCount: 66
-					},
-					{
-						userAvatar: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1664005699069-assets/web-upload/20b02200-47de-4a03-8dd0-6fe8aa575e36.jpeg',
-						date: '2021年',
-						userName: 'AAA级诚信经营企业',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1675956894244-assets/web-upload/73949d55-14a3-4a53-bd3f-59c983005d6e.jpeg',
-						viewUserCount: 129
-					}
-				],
+
 				/* 瀑布流*/
 				loadStatus: 'loadmore',
-				list: [],
-				data: [{
-						title: '酷炫外卖首页',
-						userName: '试试就逝世',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1671437658295-assets/web-upload/05620a1f-452e-4a14-9d30-f6c66ee4be1c.jpeg',
-						userImage: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1664005699098-assets/web-upload/e8b29292-72fc-4c1e-9d7c-fd9dba31cb62.jpeg',
-						storeType: 1, // 1 自营 2 第三方店铺
-						newProduct: true, // 是否为新品
-						tags: ['首页', '美食'],
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 338
-						},
-					},
-					{
-						title: '内容发布页',
-						userName: '你的名字',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1683185481047-assets/web-upload/1659a1f2-d66c-4eb9-9545-1419ee65f158.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg',
-						storeType: 1, // 1 自营 2 第三方店铺
-						newProduct: false, // 是否为新品
-						tags: ['表单', '新建'],
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 289
-						},
-					},
-					{
-						title: '商品详情，带购物车动画',
-						userName: '青梅煮马',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1683551116287-assets/web-upload/62bcb362-2f09-403e-8381-286e9f74487c.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg',
-						storeType: 1, // 1 自营 2 第三方店铺
-						newProduct: true, // 是否为新品
-						tags: ['男生头像', '情侣头像'],
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 381
-						},
-					},
-					{
-						title: '简约个人中心页',
-						userName: '你的名字',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1683551116230-assets/web-upload/a67a2574-41a1-447b-8b4c-cdaf69a14a53.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg',
-						storeType: 1, // 1 自营 2 第三方店铺
-						newProduct: true, // 是否为新品
-						tags: [],
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 526
-						},
-					},
-					{
-						title: '消息通知页面',
-						userName: '坟头草三米高',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1683551116251-assets/web-upload/808c7cd2-2aa5-49ac-a2d4-5ba8b6e4475c.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg',
-						storeType: 1, // 1 自营 2 第三方店铺
-						newProduct: false, // 是否为新品
-						tags: [],
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 372
-						},
-					},
-					{
-						title: '弹窗领红包',
-						userName: '不许凶我',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1664179989916-assets/web-upload/eda197eb-42ce-44b1-9b14-fce3481db603.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg',
-						storeType: 2, // 1 自营 2 第三方店铺
-						newProduct: false, // 是否为新品
-						tags: ['弹窗', '模态窗'],
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 694
-						},
-					},
-					{
-						title: '系统设置',
-						userName: 'seventeen',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1664015047023-assets/web-upload/147b0b7f-8253-4b92-bc1d-e28db7f54096.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg',
-						storeType: 2, // 1 自营 2 第三方店铺
-						newProduct: false, // 是否为新品
-						tags: [],
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 508
-						},
-					},
-					{
-						title: '金融理财首页',
-						userName: '你的名字',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1683551116291-assets/web-upload/c4c0d31c-88ee-42c7-99ba-139ef206aaed.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg',
-						storeType: 1, // 1 自营 2 第三方店铺
-						newProduct: false, // 是否为新品
-						tags: [],
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 923
-						},
-					},
-					{
-						title: '图片视频编辑上传',
-						userName: '图鸟东东',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1683551116288-assets/web-upload/fc1aa566-9be3-4185-be44-1d36cf84c1f9.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg',
-						storeType: 1, // 1 自营 2 第三方店铺
-						newProduct: false, // 是否为新品
-						tags: [],
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 989
-						},
-					},
-					{
-						title: '路线导航',
-						userName: '此处凶姐承包',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1683551116293-assets/web-upload/15169708-1cc1-4699-89ad-5e675351698f.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg',
-						storeType: 1, // 1 自营 2 第三方店铺
-						newProduct: false, // 是否为新品
-						tags: [],
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 129
-						},
-					},
-					{
-						title: '系统设置',
-						userName: 'seventeen',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1683551116322-assets/web-upload/e8c4a23d-a981-4d07-9711-d4aee997438a.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg',
-						storeType: 2, // 1 自营 2 第三方店铺
-						newProduct: false, // 是否为新品
-						tags: [],
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 508
-						},
-					},
-					{
-						title: '金融理财首页',
-						userName: '你的名字',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1683551116292-assets/web-upload/6ade2579-cbd2-4755-8552-02e8d9e9056e.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg',
-						storeType: 1, // 1 自营 2 第三方店铺
-						newProduct: false, // 是否为新品
-						tags: [],
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 923
-						},
-					},
-					{
-						title: '图片视频编辑上传',
-						userName: '图鸟东东',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1683551116283-assets/web-upload/ffb5ec95-a1f9-40ba-954b-790723fa860f.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg',
-						storeType: 1, // 1 自营 2 第三方店铺
-						newProduct: false, // 是否为新品
-						tags: [],
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 989
-						},
-					},
-					{
-						title: '路线导航',
-						userName: '此处凶姐承包',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1683551116300-assets/web-upload/b46d51a8-aaa9-4600-9394-818216e7dc8c.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg',
-						storeType: 1, // 1 自营 2 第三方店铺
-						newProduct: false, // 是否为新品
-						tags: [],
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 129
-						},
-					},
-					{
-						title: '系统设置',
-						userName: 'seventeen',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1683551116302-assets/web-upload/18c27289-a7f1-4870-8d7d-77b72b280db9.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg',
-						storeType: 2, // 1 自营 2 第三方店铺
-						newProduct: false, // 是否为新品
-						tags: [],
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 508
-						},
-					},
-					{
-						title: '金融理财首页',
-						userName: '你的名字',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1683551116276-assets/web-upload/98845528-391c-43cf-843f-cef54e8daee5.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg',
-						storeType: 1, // 1 自营 2 第三方店铺
-						newProduct: false, // 是否为新品
-						tags: [],
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 923
-						},
-					},
-					{
-						title: '图片视频编辑上传',
-						userName: '图鸟东东',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1683551116297-assets/web-upload/13e24266-297c-4574-b726-5b252fd179b4.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg',
-						storeType: 1, // 1 自营 2 第三方店铺
-						newProduct: false, // 是否为新品
-						tags: [],
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 989
-						},
-					},
-					{
-						title: '路线导航',
-						userName: '此处凶姐承包',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1683551116254-assets/web-upload/584529de-6ac8-4c7c-8187-821217a5846e.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg',
-						storeType: 1, // 1 自营 2 第三方店铺
-						newProduct: false, // 是否为新品
-						tags: [],
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 129
-						},
-					},
-					{
-						title: '系统设置',
-						userName: 'seventeen',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1683551116243-assets/web-upload/71243e8f-7c98-4a1d-adc1-e603e1029303.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg',
-						storeType: 2, // 1 自营 2 第三方店铺
-						newProduct: false, // 是否为新品
-						tags: [],
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 508
-						},
-					},
-					{
-						title: '金融理财首页',
-						userName: '你的名字',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1683551116261-assets/web-upload/4fd332a1-171f-4b54-9423-41b08513b8ab.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg',
-						storeType: 1, // 1 自营 2 第三方店铺
-						newProduct: false, // 是否为新品
-						tags: [],
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 923
-						},
-					},
-					{
-						title: '图片视频编辑上传',
-						userName: '图鸟东东',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1683551116279-assets/web-upload/f9c0ca30-93d7-4b7c-86fb-ff899d7cfd26.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg',
-						storeType: 1, // 1 自营 2 第三方店铺
-						newProduct: false, // 是否为新品
-						tags: [],
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 989
-						},
-					},
-					{
-						title: '路线导航',
-						userName: '此处凶姐承包',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1683551116283-assets/web-upload/00db3659-b29f-4964-8d32-13f3789ccd5a.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg',
-						storeType: 1, // 1 自营 2 第三方店铺
-						newProduct: false, // 是否为新品
-						tags: [],
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 129
-						},
-					},
-					{
-						title: '路线导航',
-						userName: '此处凶姐承包',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1683551116254-assets/web-upload/96b7cdd7-cbf6-44fa-bf1a-326f35262f0c.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg',
-						storeType: 1, // 1 自营 2 第三方店铺
-						newProduct: false, // 是否为新品
-						tags: [],
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 129
-						},
-					}
-				],
+
 			}
 		},
 		computed: {
 
 		},
 		onLoad() {
-			this.getRandomData()
+			this.getData()
+			this.getBaseData()
+		
 		},
 		onReady() {
 
@@ -1109,24 +285,24 @@
 
 		},
 		methods: {
+			// 获取企业信息
+			async getData() {
+				this.loadStatus = 'loading'
+				let res = await company()
+				this.companyInfo = res.data
+			},
+			async getBaseData() {
+
+				let res = await companyBaseInfo()
+				this.info = res.data
+			},
 			fixed(e) {
 				this.isFixed = true
 			},
 			unfixed(n) {
 				this.isFixed = false
 			},
-			/* 瀑布流*/
-			// 获取随机数据
-			getRandomData() {
-				console.log(13);
-				this.loadStatus = 'loading'
-				for (let i = 0; i < 10; i++) {
-					let index = this.$tn.number.randomInt(0, this.data.length - 1)
-					let item = JSON.parse(JSON.stringify(this.data[index]))
-					item.id = this.$tn.uuid()
-					this.list.push(item)
-				}
-			},
+			
 			// 瀑布流加载完毕事件
 			handleWaterFallFinish() {
 				this.loadStatus = 'loadmore'
@@ -1134,6 +310,12 @@
 			// tab选项卡切换
 			tabChange(index) {
 				this.current = index
+			},
+			// 跳转
+			tn(e) {
+				uni.navigateTo({
+					url: e,
+				});
 			},
 		}
 	}
@@ -1160,7 +342,7 @@
 		// background-attachment:fixed;
 		background-position: top;
 		border-radius: 0;
-		clip-path: polygon(160rpx 0, 100% 0, 100% 100%, 0 100%, 0 60rpx, 145rpx 50rpx);
+		clip-path: polygon(200rpx 0, 100% 0, 100% 100%, 0 100%, 0 60rpx, 165rpx 50rpx);
 	}
 
 	/* 用户头像 start */

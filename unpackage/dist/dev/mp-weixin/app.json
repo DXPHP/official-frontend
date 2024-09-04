@@ -1,14 +1,15 @@
 {
   "pages": [
-    "pages/index"
+    "pages/index",
+    "pages/login/login"
   ],
   "subPackages": [
     {
       "root": "homePages",
       "pages": [
         "search",
-        "cooperate",
-        "cooperateDetail",
+        "business",
+        "businessDetail",
         "member",
         "group",
         "brand",
@@ -49,7 +50,8 @@
         "public",
         "set",
         "help",
-        "content"
+        "content",
+        "setApp"
       ]
     },
     {

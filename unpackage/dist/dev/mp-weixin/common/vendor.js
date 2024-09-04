@@ -200,6 +200,142 @@ module.exports = _isNativeReflectConstruct, module.exports.__esModule = true, mo
 
 /***/ }),
 
+/***/ 171:
+/*!*******************************!*\
+  !*** E:/GUANWANG/api/home.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.videosList = exports.photosList = exports.newsDetail = exports.login = exports.index = exports.goodsList = exports.goodsDetail = exports.culture = exports.companyBaseInfo = exports.company = exports.casesList = exports.caseDetail = exports.business = exports.bindMobile = exports.authLogin = void 0;
+var _request = __webpack_require__(/*! ../common/request */ 87);
+// api/已经在请求封装中加入
+
+// 获取首页信息
+var index = function index(data) {
+  return (0, _request.httpRequest)("index/index", 'GET', data);
+};
+
+// 账号登录
+exports.index = index;
+var login = function login(data) {
+  return (0, _request.httpRequest)("user/login", 'POST', data);
+};
+
+// 绑定手机号
+exports.login = login;
+var bindMobile = function bindMobile(data) {
+  return (0, _request.httpRequest)("user/bindMobile", 'POST', data);
+};
+//小程序授权登录
+exports.bindMobile = bindMobile;
+var authLogin = function authLogin(data) {
+  return (0, _request.httpRequest)("user/authLogin", 'POST', data);
+};
+
+// 视频列表
+exports.authLogin = authLogin;
+var videosList = function videosList(data) {
+  return (0, _request.httpRequest)("index/videosList", 'GET', data);
+};
+// 案例列表
+exports.videosList = videosList;
+var casesList = function casesList(data) {
+  return (0, _request.httpRequest)("index/casesList", 'GET', data);
+};
+// 产品列表
+exports.casesList = casesList;
+var goodsList = function goodsList(data) {
+  return (0, _request.httpRequest)("index/goodsList", 'GET', data);
+};
+//资讯详情
+exports.goodsList = goodsList;
+var newsDetail = function newsDetail(data) {
+  return (0, _request.httpRequest)("index/newsDetail", 'GET', data);
+};
+// 案例详情
+exports.newsDetail = newsDetail;
+var caseDetail = function caseDetail(data) {
+  return (0, _request.httpRequest)("index/caseDetail", 'GET', data);
+};
+// 产品详情
+exports.caseDetail = caseDetail;
+var goodsDetail = function goodsDetail(data) {
+  return (0, _request.httpRequest)("index/goodsDetail", 'GET', data);
+};
+
+// 公司基本信息
+exports.goodsDetail = goodsDetail;
+var companyBaseInfo = function companyBaseInfo(data) {
+  return (0, _request.httpRequest)("index/companyBaseInfo", 'GET', data);
+};
+
+//
+// 公司信息
+exports.companyBaseInfo = companyBaseInfo;
+var company = function company(data) {
+  return (0, _request.httpRequest)("index/company", 'GET', data);
+};
+
+// 相片列表
+exports.company = company;
+var photosList = function photosList(data) {
+  return (0, _request.httpRequest)("index/photosList", 'GET', data);
+};
+// 商圈列表
+exports.photosList = photosList;
+var business = function business(data) {
+  return (0, _request.httpRequest)("index/business", 'GET', data);
+};
+// 企业文化
+exports.business = business;
+var culture = function culture(data) {
+  return (0, _request.httpRequest)("index/culture", 'GET', data);
+};
+exports.culture = culture;
+
+/***/ }),
+
+/***/ 172:
+/*!****************************************!*\
+  !*** E:/GUANWANG/utils/commonUtils.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.previewImage = previewImage;
+function previewImage(img, index) {
+  // 预览图片
+  uni.previewImage({
+    urls: img,
+    current: index,
+    longPressActions: {
+      itemList: ['发送给朋友', '保存图片', '收藏'],
+      success: function success(data) {
+        console.log('选中了第' + (data.tapIndex + 1) + '个按钮,第' + (data.index + 1) + '张图片');
+      },
+      fail: function fail(err) {
+        console.log(err.errMsg);
+      }
+    }
+  });
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+
 /***/ 18:
 /*!******************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/toConsumableArray.js ***!
@@ -1747,7 +1883,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"图鸟模板-官网","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"图鸟模板-官网","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -8790,7 +8926,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"图鸟模板-官网","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"图鸟模板-官网","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -8811,14 +8947,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"图鸟模板-官网","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"图鸟模板-官网","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"图鸟模板-官网","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"图鸟模板-官网","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -8914,7 +9050,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"图鸟模板-官网","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"图鸟模板-官网","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -9341,6 +9477,111 @@ internalMixin(Vue);
 /***/ (function(module, exports) {
 
 
+
+/***/ }),
+
+/***/ 267:
+/*!****************************************!*\
+  !*** E:/GUANWANG/utils/updateUtils.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.updateUserInfo = updateUserInfo;
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 82));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 84));
+var _user = __webpack_require__(/*! @/api/user.js */ 86);
+var _db = __webpack_require__(/*! @/common/db.js */ 88);
+var _config = __webpack_require__(/*! @/common/config.js */ 90);
+var storage_userInfo = _config.storageKey.storage_userInfo;
+function updateUserInfo() {
+  return _updateUserInfo.apply(this, arguments);
+}
+function _updateUserInfo() {
+  _updateUserInfo = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
+    var res_user;
+    return _regenerator.default.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return (0, _user.userinfo)();
+          case 2:
+            res_user = _context.sent;
+            (0, _db.setStorage)(storage_userInfo, JSON.stringify(res_user.data));
+            return _context.abrupt("return", res_user.data);
+          case 5:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return _updateUserInfo.apply(this, arguments);
+}
+
+/***/ }),
+
+/***/ 268:
+/*!********************************************!*\
+  !*** E:/GUANWANG/utils/uploadFileUtils.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.uploadFilePromise = uploadFilePromise;
+var _db = __webpack_require__(/*! @/common/db.js */ 88);
+var _config = __webpack_require__(/*! @/common/config.js */ 90);
+var storage_token = _config.storageKey.storage_token;
+// 图片上传---公共
+function uploadFilePromise(url) {
+  console.log('urlurl', url);
+  return new Promise(function (resolve, reject) {
+    // uni.showLoading({
+    // 	title: '上传中~'
+    // })
+    var a = uni.uploadFile({
+      url: "".concat(_config.baseURL, "/api/common/upload"),
+      // 仅为示例，非真实的接口地址
+      filePath: url,
+      header: {
+        token: (0, _db.getStorage)(storage_token)
+      },
+      name: 'file',
+      formData: {
+        user: 'test'
+      },
+      success: function success(res) {
+        console.log('res', res);
+        var data = JSON.parse(res.data);
+        if (data.code == 0) uni.$u.toast(data.msg || '上传出错了');
+        // uni.hideLoading()
+        setTimeout(function () {
+          resolve(data.data);
+        }, 1000);
+      },
+      fail: function fail(err) {
+        console.log('err11', err);
+        // uni.hideLoading()
+        reject(JSON.parse(res.data));
+      }
+    });
+  });
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
 
@@ -11629,59 +11870,6 @@ function isUndefined(val) {
 
 /***/ }),
 
-/***/ 436:
-/*!************************************************************!*\
-  !*** E:/GUANWANG/tuniao-ui/libs/mixin/components_color.js ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = {
-  data: function data() {},
-  props: {
-    // 背景颜色
-    backgroundColor: {
-      type: String,
-      default: ''
-    },
-    // 字体颜色
-    fontColor: {
-      type: String,
-      default: ''
-    },
-    // 字体大小
-    fontSize: {
-      type: Number,
-      default: 0
-    },
-    // 字体大小单位
-    fontUnit: {
-      type: String,
-      default: 'rpx'
-    }
-  },
-  computed: {
-    backgroundColorStyle: function backgroundColorStyle() {
-      return this.$tn.color.getBackgroundColorStyle(this.backgroundColor);
-    },
-    backgroundColorClass: function backgroundColorClass() {
-      return this.$tn.color.getBackgroundColorInternalClass(this.backgroundColor);
-    },
-    fontColorStyle: function fontColorStyle() {
-      return this.$tn.color.getFontColorStyle(this.fontColor);
-    },
-    fontColorClass: function fontColorClass() {
-      return this.$tn.color.getFontColorInternalClass(this.fontColor);
-    },
-    fontSizeStyle: function fontSizeStyle() {
-      return this.$tn.string.getLengthUnitValue(this.fontSize, this.fontUnit);
-    }
-  },
-  methods: {}
-};
-
-/***/ }),
-
 /***/ 44:
 /*!*********************************************************************!*\
   !*** E:/GUANWANG/tuniao-ui/libs/luch-request/core/buildFullPath.js ***!
@@ -11713,62 +11901,6 @@ function buildFullPath(baseURL, requestedURL) {
     return (0, _combineURLs.default)(baseURL, requestedURL);
   }
   return requestedURL;
-}
-
-/***/ }),
-
-/***/ 444:
-/*!********************************************************!*\
-  !*** E:/GUANWANG/tuniao-ui/libs/function/applyEven.js ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.debounceFun = debounceFun;
-exports.throttleFun = throttleFun;
-//防抖
-function debounceFun(func) {
-  var delay = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 500;
-  //定时器
-  var timer;
-  return function () {
-    var _this = this;
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-    // 清除之前设置的定时器
-    clearTimeout(timer);
-    timer = setTimeout(function () {
-      func.apply(_this, args);
-    }, delay);
-  };
-}
-
-//节流
-function throttleFun(func) {
-  var delay = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 500;
-  //定时器
-  var timer = null;
-  return function () {
-    var _this2 = this;
-    for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-      args[_key2] = arguments[_key2];
-    }
-    if (!timer) {
-      timer = setTimeout(function () {
-        //执行前清空
-        timer = null;
-        console.log("执行了");
-        func.apply(_this2, args);
-      }, delay);
-    }
-  };
 }
 
 /***/ }),
@@ -11825,6 +11957,115 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = combineURLs;
 function combineURLs(baseURL, relativeURL) {
   return relativeURL ? baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '') : baseURL;
+}
+
+/***/ }),
+
+/***/ 462:
+/*!************************************************************!*\
+  !*** E:/GUANWANG/tuniao-ui/libs/mixin/components_color.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {
+  data: function data() {},
+  props: {
+    // 背景颜色
+    backgroundColor: {
+      type: String,
+      default: ''
+    },
+    // 字体颜色
+    fontColor: {
+      type: String,
+      default: ''
+    },
+    // 字体大小
+    fontSize: {
+      type: Number,
+      default: 0
+    },
+    // 字体大小单位
+    fontUnit: {
+      type: String,
+      default: 'rpx'
+    }
+  },
+  computed: {
+    backgroundColorStyle: function backgroundColorStyle() {
+      return this.$tn.color.getBackgroundColorStyle(this.backgroundColor);
+    },
+    backgroundColorClass: function backgroundColorClass() {
+      return this.$tn.color.getBackgroundColorInternalClass(this.backgroundColor);
+    },
+    fontColorStyle: function fontColorStyle() {
+      return this.$tn.color.getFontColorStyle(this.fontColor);
+    },
+    fontColorClass: function fontColorClass() {
+      return this.$tn.color.getFontColorInternalClass(this.fontColor);
+    },
+    fontSizeStyle: function fontSizeStyle() {
+      return this.$tn.string.getLengthUnitValue(this.fontSize, this.fontUnit);
+    }
+  },
+  methods: {}
+};
+
+/***/ }),
+
+/***/ 463:
+/*!********************************************************!*\
+  !*** E:/GUANWANG/tuniao-ui/libs/function/applyEven.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.debounceFun = debounceFun;
+exports.throttleFun = throttleFun;
+//防抖
+function debounceFun(func) {
+  var delay = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 500;
+  //定时器
+  var timer;
+  return function () {
+    var _this = this;
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+    // 清除之前设置的定时器
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      func.apply(_this, args);
+    }, delay);
+  };
+}
+
+//节流
+function throttleFun(func) {
+  var delay = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 500;
+  //定时器
+  var timer = null;
+  return function () {
+    var _this2 = this;
+    for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      args[_key2] = arguments[_key2];
+    }
+    if (!timer) {
+      timer = setTimeout(function () {
+        //执行前清空
+        timer = null;
+        console.log("执行了");
+        func.apply(_this2, args);
+      }, delay);
+    }
+  };
 }
 
 /***/ }),
@@ -15526,9 +15767,9 @@ module.exports = {
     var _this = this;
     // 将vuex方法挂在在$t中
     // 使用方法: 
-    // 修改vuex的state中的user.name变量为图鸟小菜 => this.$t.vuex('user.name', '图鸟小菜')
-    // 修改vuexde state中的version变量为1.0.1 => this.$t.vuex('version', 1.0.1)
-    this.$t.vuex = function (name, value) {
+    // 修改vuex的state中的user.name变量为图鸟小菜 => this.$tn.vuex('user.name', '图鸟小菜')
+    // 修改vuexde state中的version变量为1.0.1 => this.$tn.vuex('version', 1.0.1)
+    this.$tn.vuex = function (name, value) {
       _this.$store.commit('$tStore', {
         name: name,
         value: value
@@ -15619,6 +15860,66 @@ module.exports = _iterableToArrayLimit, module.exports.__esModule = true, module
 
 /***/ }),
 
+/***/ 75:
+/*!**************************************!*\
+  !*** E:/GUANWANG/utils/dataUtils.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.deepClone = deepClone;
+exports.toast = toast;
+var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 13));
+function deepClone(obj) {
+  var hash = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new WeakMap();
+  // 处理非对象或null的情况  
+  if (obj === null || (0, _typeof2.default)(obj) !== 'object') {
+    return obj;
+  }
+
+  // 处理日期对象  
+  if (obj instanceof Date) {
+    return new Date(obj);
+  }
+
+  // 处理数组  
+  if (Array.isArray(obj)) {
+    var _clone = [];
+    hash.set(obj, _clone);
+    obj.forEach(function (item) {
+      _clone.push(deepClone(item, hash));
+    });
+    return _clone;
+  }
+
+  // 处理普通对象  
+  var clone = {};
+  hash.set(obj, clone);
+  for (var key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      // 检查循环引用  
+      if (hash.has(obj[key])) {
+        clone[key] = hash.get(obj[key]);
+      } else {
+        clone[key] = deepClone(obj[key], hash);
+      }
+    }
+  }
+  return clone;
+}
+function toast(val) {
+  console.log('this66666666', this);
+}
+
+/***/ }),
+
 /***/ 8:
 /*!***************************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js ***!
@@ -15636,98 +15937,6 @@ function _unsupportedIterableToArray(o, minLen) {
   if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return arrayLikeToArray(o, minLen);
 }
 module.exports = _unsupportedIterableToArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
-/***/ 81:
-/*!*****************************************************!*\
-  !*** E:/GUANWANG/libs/mixin/template_page_mixin.js ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(uni) {var _regeneratorRuntime = __webpack_require__(/*! @babel/runtime/regenerator */ 82);
-var _asyncToGenerator = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 84);
-/**
- * 演示页面mixin
- */
-module.exports = {
-  data: function data() {
-    return {};
-  },
-  onLoad: function onLoad() {
-    // 更新顶部导航栏信息
-    this.updateCustomBarInfo();
-  },
-  methods: {
-    // 点击左上角返回按钮时触发事件
-    goBack: function goBack() {
-      // 通过判断当前页面的页面栈信息，是否有上一页进行返回，如果没有则跳转到首页
-      var pages = getCurrentPages();
-      if (pages && pages.length > 0) {
-        var firstPage = pages[0];
-        if (pages.length == 1 && (!firstPage.route || firstPage.route != 'pages/index')) {
-          uni.reLaunch({
-            url: '/pages/index'
-          });
-        } else {
-          uni.navigateBack({
-            delta: 1
-          });
-        }
-      } else {
-        uni.reLaunch({
-          url: '/pages/index'
-        });
-      }
-    },
-    // 更新顶部导航栏信息
-    updateCustomBarInfo: function updateCustomBarInfo() {
-      var _this = this;
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee() {
-        var customBarHeight, statusBarHeight, navBarInfo;
-        return _regeneratorRuntime.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                // 获取vuex中的自定义顶栏的高度
-                customBarHeight = _this.vuex_custom_bar_height;
-                statusBarHeight = _this.vuex_status_bar_height; // 如果获取失败则重新获取
-                if (customBarHeight) {
-                  _context.next = 15;
-                  break;
-                }
-                _context.prev = 3;
-                _context.next = 6;
-                return _this.$t.updateCustomBar();
-              case 6:
-                navBarInfo = _context.sent;
-                customBarHeight = navBarInfo.customBarHeight;
-                statusBarHeight = navBarInfo.statusBarHeight;
-                _context.next = 15;
-                break;
-              case 11:
-                _context.prev = 11;
-                _context.t0 = _context["catch"](3);
-                setTimeout(function () {
-                  _this.updateCustomBarInfo();
-                }, 10);
-                return _context.abrupt("return");
-              case 15:
-                // 更新vuex中的导航栏信息
-                _this.$t.vuex('vuex_status_bar_height', statusBarHeight);
-                _this.$t.vuex('vuex_custom_bar_height', customBarHeight);
-              case 17:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, null, [[3, 11]]);
-      }))();
-    }
-  }
-};
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
 
@@ -16108,6 +16317,510 @@ module.exports = _asyncToGenerator, module.exports.__esModule = true, module.exp
 
 /***/ }),
 
+/***/ 85:
+/*!*****************************************************!*\
+  !*** E:/GUANWANG/libs/mixin/template_page_mixin.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(uni) {var _regeneratorRuntime = __webpack_require__(/*! @babel/runtime/regenerator */ 82);
+var _asyncToGenerator = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 84);
+/**
+ * 演示页面mixin
+ */
+module.exports = {
+  data: function data() {
+    return {};
+  },
+  onLoad: function onLoad() {
+    // 更新顶部导航栏信息
+    this.updateCustomBarInfo();
+  },
+  methods: {
+    // 点击左上角返回按钮时触发事件
+    goBack: function goBack() {
+      // 通过判断当前页面的页面栈信息，是否有上一页进行返回，如果没有则跳转到首页
+      var pages = getCurrentPages();
+      if (pages && pages.length > 0) {
+        var firstPage = pages[0];
+        if (pages.length == 1 && (!firstPage.route || firstPage.route != 'pages/index')) {
+          uni.reLaunch({
+            url: '/pages/index'
+          });
+        } else {
+          uni.navigateBack({
+            delta: 1
+          });
+        }
+      } else {
+        uni.reLaunch({
+          url: '/pages/index'
+        });
+      }
+    },
+    // 更新顶部导航栏信息
+    updateCustomBarInfo: function updateCustomBarInfo() {
+      var _this = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee() {
+        var customBarHeight, statusBarHeight, navBarInfo;
+        return _regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                // 获取vuex中的自定义顶栏的高度
+                customBarHeight = _this.vuex_custom_bar_height;
+                statusBarHeight = _this.vuex_status_bar_height; // 如果获取失败则重新获取
+                if (customBarHeight) {
+                  _context.next = 15;
+                  break;
+                }
+                _context.prev = 3;
+                _context.next = 6;
+                return _this.$tn.updateCustomBar();
+              case 6:
+                navBarInfo = _context.sent;
+                customBarHeight = navBarInfo.customBarHeight;
+                statusBarHeight = navBarInfo.statusBarHeight;
+                _context.next = 15;
+                break;
+              case 11:
+                _context.prev = 11;
+                _context.t0 = _context["catch"](3);
+                setTimeout(function () {
+                  _this.updateCustomBarInfo();
+                }, 10);
+                return _context.abrupt("return");
+              case 15:
+                // 更新vuex中的导航栏信息
+                _this.$tn.vuex('vuex_status_bar_height', statusBarHeight);
+                _this.$tn.vuex('vuex_custom_bar_height', customBarHeight);
+              case 17:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[3, 11]]);
+      }))();
+    }
+  }
+};
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+
+/***/ 86:
+/*!*******************************!*\
+  !*** E:/GUANWANG/api/user.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.userinfo = exports.login = exports.bindMobile = exports.authLogin = void 0;
+var _request = __webpack_require__(/*! ../common/request */ 87);
+// api/已经在请求封装中加入
+
+// 获取用户信息
+var userinfo = function userinfo(data) {
+  return (0, _request.httpRequest)("user/userinfo", 'GET', data);
+};
+
+// 账号登录
+exports.userinfo = userinfo;
+var login = function login(data) {
+  return (0, _request.httpRequest)("user/login", 'POST', data);
+};
+
+// 绑定手机号
+exports.login = login;
+var bindMobile = function bindMobile(data) {
+  return (0, _request.httpRequest)("user/bindMobile", 'POST', data);
+};
+//小程序授权登录
+exports.bindMobile = bindMobile;
+var authLogin = function authLogin(data) {
+  return (0, _request.httpRequest)("user/authLogin", 'POST', data);
+};
+exports.authLogin = authLogin;
+
+/***/ }),
+
+/***/ 87:
+/*!*************************************!*\
+  !*** E:/GUANWANG/common/request.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.httpRequest = httpRequest;
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 82));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 84));
+var _db = __webpack_require__(/*! @/common/db.js */ 88);
+var _urlUtils = __webpack_require__(/*! @/utils/urlUtils.js */ 89);
+var _config = __webpack_require__(/*! @/common/config.js */ 90);
+var storage_token = _config.storageKey.storage_token,
+  storage_userInfo = _config.storageKey.storage_userInfo,
+  storage_backRoute = _config.storageKey.storage_backRoute;
+
+// 创建一个请求队列（可选，用于取消未完成的请求）
+// let requestQueue = new Map();
+// 请求拦截器（在请求发送前做些什么）
+function requestInterceptor(config) {
+  // 在这里你可以添加一些逻辑，比如添加公共的 headers、token 等
+  // 假设我们有一个 token 需要添加到 headers 中
+  var token = (0, _db.getStorage)(storage_token); // 假设这是从本地存储中获取的 token
+  if (token) {
+    config.header['token'] = "".concat(token);
+  }
+
+  // 如果有需要，你可以将请求添加到队列中以便后续取消
+  // requestQueue.set(config.url, config);
+
+  return config;
+}
+// 将对象转换为查询字符串的辅助函数
+function paramsSerializer(params) {
+  return Object.keys(params).map(function (key) {
+    return encodeURIComponent(key) + '=' + encodeURIComponent(params[key]);
+  }).join('&');
+}
+
+// 根据后端返回状态码再次处理
+function statusCodeProcess(responseData) {
+  var data = responseData.data,
+    code = responseData.code,
+    msg = responseData.msg;
+
+  // 根据状态码进行不同的处理
+  switch (code) {
+    case 1:
+      // 请求成功
+      // 通常这里直接返回数据
+      return responseData;
+    case 401:
+      // 未授权
+      // 重定向到登录页面，或者提示用户登录
+      console.log('55555');
+      // console.error(msg);
+      (0, _db.removeStorage)(storage_token);
+      (0, _db.removeStorage)(storage_userInfo);
+      setTimeout(function () {
+        uni.reLaunch({
+          url: '/pages/login/login'
+        });
+      }, 300);
+    default:
+      uni.showToast({
+        icon: 'none',
+        title: msg
+      });
+    // 对于未知的状态码，可能也想要记录错误日志并抛出一个错误
+    // console.error(msg);
+  }
+}
+
+var that = void 0;
+// 响应拦截器
+function responseInterceptor(response) {
+  console.log('thisis', that);
+  // 假设 response.data 是实际的数据，response.statusCode 是状态码
+  // 注意：uni.request 的实际结构可能不同，你需要根据实际情况调整
+  var data = response.data,
+    statusCode = response.statusCode;
+  console.log('请求返回', response);
+  // 根据状态码进行不同的处理
+  switch (statusCode) {
+    case 200:
+      // 请求成功
+      // 通常这里直接返回数据
+      return statusCodeProcess(data);
+    case 201:
+      // 创建成功
+      // 某些情况下可能需要特殊处理，比如返回新创建的资源的 ID
+      // return { ...data, newId: data.id }; // 示例
+      return statusCodeProcess(data);
+    case 400:
+      // 客户端错误，如请求参数
+      // 可以抛出一个错误，以便调用者知道发生了什么
+      console.error('Bad Request: ' + (data.message || data.msg || 'Invalid request parameters'));
+      uni.showToast({
+        icon: 'none',
+        title: '未知错误，请联系管理员'
+      });
+    case 401:
+      // 未授权
+      // 可以重定向到登录页面，或者提示用户登录
+      // 这里只是抛出一个错误
+      return statusCodeProcess(data);
+    case 403:
+      // 禁止访问
+      // 抛出一个错误，告知用户他们没有权限访问该
+      console.error('Forbidden: You do not have access to this resource');
+      uni.showToast({
+        icon: 'none',
+        title: '禁止访问，请联系管理员'
+      });
+    case 404:
+      // 未找到资源
+      // 抛出一个错误，告知用户资源不
+      console.error('Not Found: The resource you requested could not be found');
+      uni.showToast({
+        icon: 'none',
+        title: '未找到资源，请联系管理员'
+      });
+    case 500:
+      // 服务器内部错误
+      // 可以记录错误日志，并抛出一个错误告知用户
+      uni.showToast({
+        icon: 'none',
+        title: '网络出错了，请联系管理员'
+      });
+      console.error('Internal Server Error:', data);
+
+    // 你可以添加更多的状态码处理...
+
+    default:
+      uni.showToast({
+        icon: 'none',
+        title: '未知错误，请联系管理员'
+      });
+      // 对于未知的状态码，可能也想要记录错误日志并抛出一个
+      console.error('Unknown Error:', statusCode, data);
+  }
+}
+
+// 封装 uni.request
+function httpRequest(url) {
+  var method = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'GET';
+  var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+  var header = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+  // 如果是 GET 请求，则将 data 附加到 URL 的查询字符串上
+  if (method.toUpperCase() === 'GET') {
+    // url += '?' + paramsSerializer(data);
+    if (paramsSerializer(data)) {
+      url += '?' + paramsSerializer(data);
+    }
+    console.log('拼好的请求路径', url, paramsSerializer(data));
+  }
+
+  // 应用请求拦截器
+  var config = requestInterceptor({
+    url: url,
+    method: method,
+    data: data,
+    header: header
+  });
+  return new Promise(function (resolve, reject) {
+    uni.request({
+      url: _config.baseURL + 'api/' + config.url,
+      method: config.method,
+      data: config.method.toUpperCase() === 'GET' ? {} : config.data,
+      // GET 请求时不需要 data
+      header: config.header,
+      success: function () {
+        var _success = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee(res) {
+          var responseData;
+          return _regenerator.default.wrap(function _callee$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  _context.prev = 0;
+                  // 应用响应拦截器
+                  responseData = responseInterceptor(res); // 如果 responseInterceptor 返回了一个 Promise，我们需要等待它
+                  _context.t0 = responseData instanceof Promise;
+                  if (!_context.t0) {
+                    _context.next = 7;
+                    break;
+                  }
+                  _context.next = 6;
+                  return responseData.catch();
+                case 6:
+                  _context.t0 = _context.sent;
+                case 7:
+                  if (!_context.t0) {
+                    _context.next = 11;
+                    break;
+                  }
+                  responseData.then(resolve).catch(reject);
+                  _context.next = 12;
+                  break;
+                case 11:
+                  resolve(responseData);
+                case 12:
+                  _context.next = 17;
+                  break;
+                case 14:
+                  _context.prev = 14;
+                  _context.t1 = _context["catch"](0);
+                  // 捕获响应拦截器中抛出的错误
+                  reject(_context.t1);
+                case 17:
+                case "end":
+                  return _context.stop();
+              }
+            }
+          }, _callee, null, [[0, 14]]);
+        }));
+        function success(_x) {
+          return _success.apply(this, arguments);
+        }
+        return success;
+      }(),
+      fail: function fail(err) {
+        reject(err);
+      }
+    });
+  });
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+
+/***/ 88:
+/*!********************************!*\
+  !*** E:/GUANWANG/common/db.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.clearStorage = clearStorage;
+exports.getStorage = getStorage;
+exports.removeStorage = removeStorage;
+exports.setStorage = setStorage;
+//取值
+function getStorage(key) {
+  var sync = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+  var defaults = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+  try {
+    if (sync) {
+      var data = uni.getStorageSync(key);
+      if (data.data && data.type == 'object') {
+        return data.data;
+      }
+      if (data) {
+        return data;
+      } else {
+        return defaults;
+      }
+    } else {
+      var _data = '';
+      uni.getStorage({
+        key: key,
+        success: function success(res) {
+          _data = res.data;
+        }
+      });
+      if (_data) {
+        return _data;
+      } else {
+        return defaults;
+      }
+    }
+  } catch (e) {
+    return defaults;
+  }
+}
+
+//赋值
+function setStorage(key, value) {
+  var sync = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+  try {
+    if (sync) {
+      return uni.setStorageSync(key, value);
+    } else {
+      uni.setStorage({
+        key: key,
+        data: value
+      });
+    }
+  } catch (e) {}
+}
+
+//移除
+function removeStorage(key) {
+  var sync = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+  try {
+    if (sync) {
+      return uni.removeStorageSync(key);
+    } else {
+      uni.removeStorage({
+        key: key
+      });
+    }
+  } catch (e) {
+    return false;
+  }
+}
+
+//清空
+function clearStorage() {
+  var sync = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+  try {
+    if (sync) {
+      return uni.clearStorageSync();
+    } else {
+      uni.clearStorage();
+    }
+  } catch (e) {
+    return false;
+  }
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+
+/***/ 89:
+/*!*************************************!*\
+  !*** E:/GUANWANG/utils/urlUtils.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.constructNowUrl = constructNowUrl;
+exports.constructUrl = constructUrl;
+function constructUrl(path, params) {
+  var queryString = Object.keys(params).map(function (key) {
+    return "".concat(encodeURIComponent(key), "=").concat(encodeURIComponent(params[key]));
+  }).join('&');
+  return "".concat(path, "?").concat(queryString);
+}
+function constructNowUrl() {
+  // 获取到当前页面的路由信息，但无法直接获取到页面内的数据
+  var pages = getCurrentPages();
+  // pages 是一个数组，数组最后一个元素是当前页面  
+  var currentPage = pages[pages.length - 1];
+  var pageRoute = currentPage.route;
+  var options = currentPage.options;
+  return constructUrl(pageRoute, options);
+}
+
+/***/ }),
+
 /***/ 9:
 /*!*****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/arrayLikeToArray.js ***!
@@ -16123,6 +16836,41 @@ function _arrayLikeToArray(arr, len) {
   return arr2;
 }
 module.exports = _arrayLikeToArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 90:
+/*!************************************!*\
+  !*** E:/GUANWANG/common/config.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.storageKey = exports.baseURL = exports.aliBaseUrl = void 0;
+var prefix = 'gw_';
+var storageKey = {
+  storage_token: "".concat(prefix, "token"),
+  storage_userInfo: "".concat(prefix, "userInfo"),
+  storage_backRoute: "".concat(prefix, "backRoute"),
+  storage_shareUserId: "".concat(prefix, "shareUserId")
+};
+
+// 开发测试环境的域名
+// let soketBaseUrl = 'ws://192.168.1.21:8282'
+exports.storageKey = storageKey;
+var aliBaseUrl = 'https://nnshanghui.oss-cn-guangzhou.aliyuncs.com/';
+exports.aliBaseUrl = aliBaseUrl;
+var baseURL = 'http://192.168.1.21:88/';
+
+// 正式环境时切换正式环境的域名
+exports.baseURL = baseURL;
+if (false) {}
 
 /***/ })
 

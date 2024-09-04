@@ -12,58 +12,64 @@
 		<!-- 页面内容 start-->
 		<swiper class="card-swiper" :circular="true" :autoplay="true" duration="500" interval="18000"
 			@change="cardSwiper">
-			<swiper-item v-for="(item,index) in swiperList" :key="index" :class="cardCur==index?'cur':''">
+			<swiper-item v-for="(item,index) in list" :key="index" :class="cardCur==index?'cur':''">
 				<view class="swiper-item image-banner">
-					<image :src="item.url" mode="aspectFill" v-if="item.type=='image'"></image>
+					<image :src="item.images[0]" mode="aspectFill"></image>
 				</view>
 				<view class="tn-text-df tn-text-bold tnloukong">{{item.title}}</view>
 				<view class="swiper-item-text">
-					<view class="tn-text-lg tn-text-bold tn-color-white">{{item.name}}</view>
+					<!-- <view class="tn-text-lg tn-text-bold tn-color-white">{{item.name}}</view> -->
 				</view>
 			</swiper-item>
 		</swiper>
 		<view class="indication">
-			<block v-for="(item,index) in swiperList" :key="index">
+			<block v-for="(item,index) in list" :key="index">
 				<view class="spot" :class="cardCur==index?'active':''"></view>
 			</block>
 		</view>
 		<view class="" style="padding-bottom: 60rpx;margin-top: -100rpx;z-index: 999; position: relative;">
-		<view class="">
-		  <block v-for="(item, index) in news" :key="index">
-		    <view class="article-shadow tn-margin tn-bg-white" @click="tn('/homePages/cooperateDetail')">
-		      <view class="tn-flex">
-		        
-		        <view class="tn-margin-sm tn-padding-top-xs" style="width: 100%;">
-		          <view class="tn-text-lg tn-text-bold clamp-text-1 tn-text-justify">
-		            <text class="">{{ item.title }}</text>
-		          </view>
-		          <view class="tn-padding-top-xs" style="min-height: 90rpx;">
-		            <text class="tn-text-df tn-color-gray clamp-text-2 tn-text-justify">
-		              {{ item.desc }}
-		            </text>
-		          </view>
-		          <view class="tn-flex tn-flex-row-between tn-flex-col-between tn-margin-top-sm">
-		            <view v-for="(label_item,label_index) in item.label" :key="label_index"
-		              class="justify-content-item tn-tag-content__item tn-margin-right tn-text-sm tn-text-bold">
-		              <text class="tn-tag-content__item--prefix">#</text> {{ label_item }}
-		            </view>
-		            <view class="justify-content-item tn-color-gray tn-text-center" style="padding-top: 5rpx;">
-		              <!-- <text class="tn-icon-rocket tn-padding-right-xs tn-text-lg"></text>
+			<view class="">
+				<block v-for="(item, index) in list" :key="index">
+					<view class="article-shadow tn-margin tn-bg-white" @click="tn('/homePages/cooperateDetail')">
+						<view class="tn-flex">
+
+							<view class="tn-margin-sm tn-padding-top-xs" style="width: 100%;">
+								<view class="tn-text-lg tn-text-bold clamp-text-1 tn-text-justify">
+									<text class="">{{ item.title }}</text>
+								</view>
+								<view class="tn-padding-top-xs" style="min-height: 90rpx;">
+									<text class="tn-text-df tn-color-gray clamp-text-2 tn-text-justify">
+										{{ item.content }}
+									</text>
+								</view>
+								<view class="tn-flex tn-flex-row-between tn-flex-col-between tn-margin-top-sm">
+									<view v-for="(label_item,label_index) in item.label" :key="label_index"
+										class="justify-content-item tn-tag-content__item tn-margin-right tn-text-sm tn-text-bold">
+										<text class="tn-tag-content__item--prefix">#</text> {{ label_item }}
+									</view>
+									<view class="justify-content-item tn-color-gray tn-text-center"
+										style="padding-top: 5rpx;">
+										<!-- <text class="tn-icon-rocket tn-padding-right-xs tn-text-lg"></text>
 		              <text class="tn-padding-right tn-text-df">{{ item.collectionCount }}</text> -->
-		              <text class="tn-icon-eye tn-padding-right-xs tn-text-lg"></text>
-		              <text class="tn-text-df">{{ item.likeCount }}</text>
-		            </view>
-		          </view>
-		        </view>
-		        <view class="image-pic tn-margin-sm" :style="'background-image:url(' + item.userAvatar + ')'">
-		          <view class="image-article">
-		          </view>
-		        </view>
-		      </view>
-		    </view>
-		  </block>
-		  
-		</view>
+										<text class="tn-icon-eye tn-padding-right-xs tn-text-lg"></text>
+										<text class="tn-text-df">{{ item.likes }}</text>
+									</view>
+								</view>
+							</view>
+							<view class="image-pic tn-margin-sm"
+								:style="'background-image:url(' + item.images[0] + ')'">
+								<view class="image-article">
+								</view>
+							</view>
+						</view>
+					</view>
+				</block>
+				<view class="tn-padding-top-lg tn-flex tn-flex-col-center tn-flex-row-center">
+					<tn-load-more :status="loadStatus" v-if="listStatus === 0"></tn-load-more>
+					<tn-empty mode="network" v-if="listStatus === 2"></tn-empty>
+					<tn-empty mode="data" v-if="listStatus === 1"></tn-empty>
+				</view>
+			</view>
 
 		</view>
 
@@ -105,102 +111,82 @@
 
 <script>
 	import template_page_mixin from '@/libs/mixin/template_page_mixin.js'
+	import {
+		business
+	} from '@/api/home.js'
 	export default {
 		name: 'TemplateContent',
 		mixins: [template_page_mixin],
 		data() {
 			return {
 				cardCur: 0,
-				swiperList: [{
-				  id: 0,
-				  type: 'image',
-				  title: '我不喜欢带伞',
-				  name: '因为雨水从不滴落在我心上',
-				  url: 'https://resource.tuniaokj.com/images/swiper/banner-animate3.png',
-				  }, {
-				  id: 1,
-				  type: 'image',
-				  title: '图鸟南南',
-				  name: '欢迎加入东东们',
-				  url: 'https://resource.tuniaokj.com/images/swiper/banner-animate2.png',
-				  }, {
-				    id: 2,
-				    type: 'image',
-				    title: '图鸟北北',
-				    name: '微信号 tnkewo',
-				    url: 'https://resource.tuniaokj.com/images/swiper/banner-animate3.png',
-				  }, {
-				    id: 3,
-				    type: 'image',
-				    title: '图鸟猪猪',
-				    name: '努力成为大佬',
-				    url: 'https://resource.tuniaokj.com/images/shop/banner2.jpg',
-				  }
-				],
-				news: [{
-				    userAvatar: 'https://resource.tuniaokj.com/images/blogger/blogger_beibei.jpg',
-				    userName: '可我会像',
-				    date: '2021年12月20日',
-				    color: 'cyan',
-				    label: ['供应'],
-				    title: '3D家具模型了解一下？',
-				    desc: '家具模型应有尽有',
-				    mainImage: 'https://resource.tuniaokj.com/images/shop/prototype1.jpg',
-				    viewUser: {
-				      latestUserAvatar: [{
-				          src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-				        },
-				        {
-				          src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-				        },
-				        {
-				          src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-				        },
-				        {
-				          src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-				        },
-				      ],
-				      viewUserCount: 987
-				    },
-				    collectionCount: 567,
-				    commentCount: 69,
-				    likeCount: 65
-				  },
-				  {
-				    userAvatar: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg',
-				    userName: '可我会像',
-				    date: '2021年12月20日',
-				    color: 'blue',
-				    label: ['需求'],
-				    title: '为什么资讯不显示时间？',
-				    desc: '你确定你经常更新文章吗？',
-				    mainImage: 'https://resource.tuniaokj.com/images/shop/computer2.jpg',
-				    viewUser: {
-				      latestUserAvatar: [{
-				          src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-				        },
-				        {
-				          src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-				        },
-				        {
-				          src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-				        },
-				        {
-				          src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-				        },
-				      ],
-				      viewUserCount: 321
-				    },
-				    collectionCount: 654,
-				    commentCount: 232,
-				    likeCount: 543
-				  }
-				],
+				loadStatus: 'loading',
+				listStatus: 0,
+				params: {
+					page: 1,
+					//  pageSize: 10,
+				},
+				list:[]
+
 			}
 		},
+		onLoad() {
+			this.getList()
+		},
+		// 下拉刷新
+		onPullDownRefresh() {
+			// 初始化数据
+			this.init();
+			this.getList('refresh');
+		},
+		// 触底加载
+		onReachBottom() {
+			// 如果数据加载完毕 不再调用方法
+			if (this.loadStatus == 'nomore') return;
+			// 否则调用数据加载方法
+			this.params.page++;
+			this.getList();
+		},
 		methods: {
+			// 初始化数据
+			init() {
+				this.loadStatus = 'loading';
+				this.params.page = 1
+				this.listStatus = 0;
+			},
+			async getList(refresh) {
+				let params = {
+					...this.params
+				}
+				try {
+					let res = await business(params)
+					let list = res.data.list //拿到数据格式可能不同----只需要修改这里
+					let curPageLen = list.length; //数据列表长度
+					if (this.params.page == 1) this.list = []; // 如果数据是第一页 需置空数据列表重新加载
+					if (curPageLen != 0) {
+						this.list = this.list.concat(list); //追加新数据
+						// 如果传回数组长度小于10 数据加载完毕。 反之数据可以继续加载
+						curPageLen < 10 ? this.loadStatus = 'nomore' : this.loadStatus = 'loading';
+					} else {
+						this.loadStatus = 'nomore'; //数据加载完毕
+						// 如果首次加载 数据列表为空
+						if (this.params.page == 1) this.listStatus = 1;
+					}
+					// 如果点击下拉加载
+					if (refresh) {
+						uni.stopPullDownRefresh();
+					}
+				} catch (error) {
+					// 在这里处理错误  
+					this.listStatus = 2;
+					console.error('捕获到错误：', error);
+					// 你可以根据错误类型或错误信息来执行不同的操作  
+				}
+
+			},
+			/* ------------------加载数据列表 end------------------------  */
 			cardSwiper(e) {
-			  this.cardCur = e.detail.current
+				this.cardCur = e.detail.current
 			},
 			tn(e) {
 				uni.navigateTo({

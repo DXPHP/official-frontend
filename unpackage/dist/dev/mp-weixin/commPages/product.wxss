@@ -272,7 +272,7 @@
   background-color: rgba(0, 0, 0, 0.15);
   position: absolute;
   /* bottom:200rpx;
-    right: 20rpx; */
+      right: 20rpx; */
   top: 700rpx;
   right: 30rpx;
   z-index: 1001;

@@ -1,0 +1,74 @@
+import {
+	httpRequest
+} from '../common/request'
+// api/已经在请求封装中加入
+
+
+// 获取首页信息
+export const index = (data) => httpRequest(`index/index`, 'GET',
+	data
+)
+
+// 账号登录
+export const login = (data) => httpRequest(`user/login`, 'POST',
+	data
+)
+
+// 绑定手机号
+export const bindMobile = (data) => httpRequest(`user/bindMobile`, 'POST',
+	data
+)
+//小程序授权登录
+export const authLogin = (data) => httpRequest(`user/authLogin`, 'POST',
+	data
+)
+
+// 视频列表
+export const videosList = (data) => httpRequest(`index/videosList`, 'GET',
+	data
+)
+// 案例列表
+export const casesList = (data) => httpRequest(`index/casesList`, 'GET',
+	data
+)
+// 产品列表
+export const goodsList = (data) => httpRequest(`index/goodsList`, 'GET',
+	data
+)
+//资讯详情
+export const newsDetail = (data) => httpRequest(`index/newsDetail`, 'GET',
+	data
+)
+// 案例详情
+export const caseDetail = (data) => httpRequest(`index/caseDetail`, 'GET',
+	data
+)
+// 产品详情
+export const goodsDetail = (data) => httpRequest(`index/goodsDetail`, 'GET',
+	data
+)
+
+
+// 公司基本信息
+export const companyBaseInfo = (data) => httpRequest(`index/companyBaseInfo`, 'GET',
+	data
+)
+
+//
+// 公司信息
+export const company = (data) => httpRequest(`index/company`, 'GET',
+	data
+)
+
+// 相片列表
+export const photosList = (data) => httpRequest(`index/photosList`, 'GET',
+	data
+)
+// 商圈列表
+export const business = (data) => httpRequest(`index/business`, 'GET',
+	data
+)
+// 企业文化
+export const culture = (data) => httpRequest(`index/culture`, 'GET',
+	data
+)

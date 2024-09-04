@@ -75,6 +75,22 @@
   border-bottom: 20rpx solid rgba(241, 241, 241, 0.8);
 }
 /* 间隔线 end*/
+.logo-image1.data-v-56d8c034 {
+  width: 150rpx;
+  height: 150rpx;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  border: 2rpx solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0rpx 0rpx 80rpx 0rpx rgba(0, 0, 0, 0.15);
+  border-radius: 50%;
+  position: relative;
+}
+.logo-image1 .logo-camera.data-v-56d8c034 {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
 /* 用户头像 start */
 .logo-image.data-v-56d8c034 {
   width: 80rpx;

@@ -99,7 +99,7 @@ var components
 try {
   components = {
     tnTabbar: function () {
-      return Promise.all(/*! import() | tuniao-ui/components/tn-tabbar/tn-tabbar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-tabbar/tn-tabbar")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-tabbar/tn-tabbar.vue */ 389))
+      return Promise.all(/*! import() | tuniao-ui/components/tn-tabbar/tn-tabbar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-tabbar/tn-tabbar")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-tabbar/tn-tabbar.vue */ 415))
     },
   }
 } catch (e) {
@@ -162,29 +162,30 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _dataUtils = __webpack_require__(/*! @/utils/dataUtils.js */ 75);
 var Home = function Home() {
-  __webpack_require__.e(/*! require.ensure | pages/home/home */ "pages/home/home").then((function () {
-    return resolve(__webpack_require__(/*! ./home/home.vue */ 396));
+  Promise.all(/*! require.ensure | pages/home/home */[__webpack_require__.e("common/vendor"), __webpack_require__.e("pages/home/home")]).then((function () {
+    return resolve(__webpack_require__(/*! ./home/home.vue */ 422));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var Comm = function Comm() {
-  __webpack_require__.e(/*! require.ensure | pages/comm/comm */ "pages/comm/comm").then((function () {
-    return resolve(__webpack_require__(/*! ./comm/comm.vue */ 403));
+  Promise.all(/*! require.ensure | pages/comm/comm */[__webpack_require__.e("common/vendor"), __webpack_require__.e("pages/comm/comm")]).then((function () {
+    return resolve(__webpack_require__(/*! ./comm/comm.vue */ 429));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var Discovery = function Discovery() {
-  __webpack_require__.e(/*! require.ensure | pages/discovery/discovery */ "pages/discovery/discovery").then((function () {
-    return resolve(__webpack_require__(/*! ./discovery/discovery.vue */ 410));
+  Promise.all(/*! require.ensure | pages/discovery/discovery */[__webpack_require__.e("common/vendor"), __webpack_require__.e("pages/discovery/discovery")]).then((function () {
+    return resolve(__webpack_require__(/*! ./discovery/discovery.vue */ 436));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var News = function News() {
   __webpack_require__.e(/*! require.ensure | pages/news/news */ "pages/news/news").then((function () {
-    return resolve(__webpack_require__(/*! ./news/news.vue */ 417));
+    return resolve(__webpack_require__(/*! ./news/news.vue */ 443));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var Mine = function Mine() {
   __webpack_require__.e(/*! require.ensure | pages/mine/mine */ "pages/mine/mine").then((function () {
-    return resolve(__webpack_require__(/*! ./mine/mine.vue */ 424));
+    return resolve(__webpack_require__(/*! ./mine/mine.vue */ 450));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -240,6 +241,7 @@ var _default = {
     };
   },
   onLoad: function onLoad(options) {
+    (0, _dataUtils.toast)();
     var index = Number(options.index || 0);
     // 根据底部tabbar菜单列表设置对应页面的加载情况
     this.tabberPageLoadFlag = this.tabbarList.map(function (item, tabbar_index) {
@@ -255,7 +257,10 @@ var _default = {
     // 瀑布流导航页面滚动到底部
     tabbarPageScrollLower: function tabbarPageScrollLower(e) {
       if (this.currentIndex === 1) {
-        this.$refs.comm.getRandomData && this.$refs.comm.getRandomData();
+        this.$refs.comm.isReachBottom && this.$refs.comm.isReachBottom();
+      }
+      if (this.currentIndex === 2) {
+        this.$refs.discovery.isReachBottom && this.$refs.discovery.isReachBottom();
       }
     },
     // 切换导航页面

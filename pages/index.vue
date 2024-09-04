@@ -46,6 +46,9 @@
   import News from './news/news.vue'
   import Mine from './mine/mine.vue'
   
+  	import {
+  		toast
+  	} from '@/utils/dataUtils.js'
   export default {
     components: {
       Home,
@@ -105,6 +108,7 @@
       }
     },
     onLoad(options) {
+		toast()
       const index = Number(options.index || 0)
       // 根据底部tabbar菜单列表设置对应页面的加载情况
       this.tabberPageLoadFlag = this.tabbarList.map((item, tabbar_index) => {
@@ -122,8 +126,11 @@
       // 瀑布流导航页面滚动到底部
       tabbarPageScrollLower(e) {
         if (this.currentIndex === 1) {
-          this.$refs.comm.getRandomData && this.$refs.comm.getRandomData()
+          this.$refs.comm.isReachBottom && this.$refs.comm.isReachBottom()
         }
+		if (this.currentIndex === 2) {
+		  this.$refs.discovery.isReachBottom && this.$refs.discovery.isReachBottom()
+		}
       },
 
       // 切换导航页面
