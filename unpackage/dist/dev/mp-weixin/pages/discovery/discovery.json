@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "tn-load-more": "/tuniao-ui/components/tn-load-more/tn-load-more",
-    "tn-empty": "/tuniao-ui/components/tn-empty/tn-empty"
-  },
-  "component": true
-}

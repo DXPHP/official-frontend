@@ -1,7 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "tn-popup": "/tuniao-ui/components/tn-popup/tn-popup",
-    "tn-button": "/tuniao-ui/components/tn-button/tn-button"
-  }
-}
