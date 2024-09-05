@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "tn-list-cell": "/tuniao-ui/components/tn-list-cell/tn-list-cell",
-    "tn-modal": "/tuniao-ui/components/tn-modal/tn-modal"
-  },
-  "component": true
-}

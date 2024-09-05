@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "tn-line-progress": "/tuniao-ui/components/tn-line-progress/tn-line-progress"
-  },
-  "component": true
-}

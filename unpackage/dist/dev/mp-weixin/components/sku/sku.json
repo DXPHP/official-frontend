@@ -1,7 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "tn-number-box": "/tuniao-ui/components/tn-number-box/tn-number-box",
-    "tn-button": "/tuniao-ui/components/tn-button/tn-button"
-  }
-}
