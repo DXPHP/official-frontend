@@ -35,3 +35,8 @@ export const addressEdit = (data) => httpRequest(`address/edit`, 'POST',
 export const addressDefault = (data) => httpRequest(`address/default`, 'POST',
 	data
 )
+
+// 地址详情
+export const addressDetail = (data) => httpRequest(`address/detail`, 'GET',
+	data
+)
