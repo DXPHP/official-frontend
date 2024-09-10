@@ -263,7 +263,7 @@
 			<view class="tn-flex-2" @click="tn('/discoveryPages/case?id='+caseList[0].id)">
 				<view class="image-pic tn-margin-right tn-shadow-blur"
 					:style="'background-image:url('+caseList[0].image+')'">
-					
+
 					<view class="image-tuniao1">
 					</view>
 				</view>
@@ -274,7 +274,7 @@
 					<view class="image-tuniao2">
 					</view>
 				</view>
-				
+
 				<view class="image-pic tn-margin-top tn-shadow-blur"
 					@click="tn('/discoveryPages/case?id='+caseList[2].id)"
 					:style="'background-image:url('+caseList[0].image+')'">
@@ -343,7 +343,7 @@
 			</view>
 		</view>
 		<view class="tn-shadow-blur tn-margin">
-			<map class="map tn-shadow-blur" :latitude="latitude" :longitude="longitude" :markers="covers"
+			<map class="map tn-shadow-blur" :latitude="company.lat" :longitude="company.lng" :markers="covers"
 				@click="openLocation" :enable-scroll="false" :enable-zoom="false">
 			</map>
 			<view class="shop-shadow tn-margin tn-color-black tn-bg-white map-footerabsalute" @click="openLocation">
@@ -352,13 +352,14 @@
 						<view class="tn-flex tn-flex-col-center tn-flex-row-left">
 							<view class="tn-padding tn-color-black">
 								<view class="tn-padding-right-sm tn-text-lg tn-text-bold">
-									广州图鸟科技有限公司 · 图鸟国际
+									{{company.name}}
 								</view>
 								<view
 									class="tn-padding-right tn-padding-top-xs tn-text-ellipsis tn-text-xs tn-color-gray">
-									<text class="">距离你12.8km</text>
+									<text class="">{{company.address}}</text>
+									<!-- 	<text class="">距离你12.8km</text>
 									<text class="tn-padding-left-xs">驾车24分钟</text>
-									<text class="tn-padding-left-xs">公交地铁2小时</text>
+									<text class="tn-padding-left-xs">公交地铁2小时</text> -->
 								</view>
 							</view>
 						</view>
@@ -666,6 +667,12 @@
 						likeCount: 543
 					}
 				],
+				company: {
+					address: "广西壮族自治区南宁市兴宁区东州路23号",
+					lat: "22.789635",
+					lng: "108.448807",
+					name: "广西绿宁渣土运输有限公司"
+				},
 				id: 0, // 使用 marker点击事件 需要填写id
 				title: 'map',
 				latitude: 22.961836,
@@ -697,14 +704,18 @@
 				this.caseList = res.data.cases
 				this.news = res.data.news
 				this.cooperationList = res.data.cooperation
+				this.list = res.data.notice.map(res1 => res1.title)
+				this.company = res.data.company
+				this.covers[0].latitude = res.data.company.lat
+				this.covers[0].longitude = res.data.company.lng
 			},
 			openLocation() {
 				wx.vibrateShort();
 				uni.openLocation({
-					longitude: 113.3298396012573,
-					latitude: 22.961803525530176,
-					name: '祈福新村',
-					address: '祈福新村'
+					longitude: this.company.lng,
+					latitude: this.company.lat,
+					name: this.company.name,
+					address: this.company.address
 				})
 			},
 			// cardSwiper

@@ -145,7 +145,15 @@
 						"navigationBarTitleText": "产品详情",
 						"enablePullDownRefresh": false
 					}
+				},
+				{
+					"path": "order",
+					"style": {
+						"navigationBarTitleText": "下单",
+						"enablePullDownRefresh": false
+					}
 				}
+				
 			]
 		}, {
 			"root": "discoveryPages",
@@ -162,7 +170,15 @@
 						"navigationBarTitleText": "项目案例",
 						"enablePullDownRefresh": false
 					}
+				},
+				{
+					"path": "orderDetail",
+					"style": {
+						"navigationBarTitleText": "订单详情",
+						"enablePullDownRefresh": false
+					}
 				}
+				
 			]
 		}, {
 			"root": "newsPages",

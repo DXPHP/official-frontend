@@ -102,3 +102,24 @@ export function isNullAndUnDef(val) {
 export function isNullOrUnDef(val) {
   return isUnDef(val) || isNull(val);
 }
+
+
+// 判断普通类型是否为空
+export function isFalse(val) {
+	let arr = [undefined, null, 'NaN', '']
+	for (var i = 0; i < arr.length; i++) {
+		if (arr[i] == val) {
+			return false
+		}
+	}
+	return true
+}
+
+
+// 判断对象是否为空
+export function isEmptyObj(obj) {
+	for (var key in obj) {
+		return true;
+	}
+	return false;
+}

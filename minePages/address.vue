@@ -1,5 +1,5 @@
 <template>
-	<view class="tn-safe-area-inset-bottom" style="width:750rpx;box-sizing: border-box;">
+	<view class="tn-safe-area-inset-bottom" style="width:750rpx;box-sizing: border-box;padding-bottom: 140rpx;">
 		<!-- 顶部自定义导航 -->
 		<tn-nav-bar fixed alpha customBack>
 			<view slot="back" class='tn-custom-nav-bar__back' @click="goBack">
@@ -9,7 +9,6 @@
 		</tn-nav-bar>
 
 		<view :style="{paddingTop: vuex_custom_bar_height + 'px'}">
-
 			<radio-group @change="radioGroupChange" placement="column">
 				<view class="tn-shadow-gray  tn-radius tn-margin-sm tn-padding-sm" v-for="(item,index) in list"
 					:key="index">
@@ -68,12 +67,12 @@
 				<view class="tn-flex tn-flex-col-center tn-flex-row-center"
 					style="width: 750rpx;box-sizing: border-box;">
 					<view v-if="isChoosed=='1' && list.length > 0" @click="chooseAddress"
-						class="tn-flex tn-flex-col-center tn-flex-row-center">
-						<tn-button width="300rpx" backgroundColor="tn-main-gradient-red"
+						class="tn-flex tn-flex-col-center tn-flex-row-center tn-margin-xs">
+						<tn-button size="lg" width="300rpx" backgroundColor="tn-main-gradient-red"
 							fontColor="#ffffff">确认</tn-button>
 					</view>
 
-					<view class="tn-flex tn-flex-col-center tn-flex-row-center"
+					<view class="tn-flex tn-flex-col-center tn-flex-row-center tn-margin-xs"
 						@click="tn('/minePages/editAddress?isChoosed='+isChoosed+'&isChoosedId='+isChoosedId)">
 						<tn-button size="lg" :width="(isChoosed=='1' && list.length > 0)?'300rpx':'600rpx'"
 							backgroundColor="tn-main-gradient-red" fontColor="#ffffff">新增收获地址</tn-button>
@@ -203,7 +202,7 @@
 				// 存入本地
 				setStorage('defaultAddress', JSON.stringify(this.copyAddress))
 				uni.redirectTo({
-					url: '/pages_index/confirm_order/confirm_order'
+					url: '/commPages/order'
 				})
 			},
 			address_deleteFn(itemid) {

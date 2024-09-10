@@ -107,7 +107,7 @@
 				</view>
 			</view>
 		</view> -->
-<!-- 
+		<!-- 
 		<tn-scroll-list :indicator="false">
 			<view class="tn-flex tn-margin">
 				<view class="tn-margin-right-sm" v-for="(item, index) in 10" :key="index">
@@ -221,7 +221,7 @@
 
 		<!-- 选择弹框 -->
 		<!-- popup会有延迟，采用这种方式来优化弹窗的优化体验-->
-		<sku-modal v-model="showSkuModal"></sku-modal>
+		<sku-modal v-model="showSkuModal" :data="info" @confirm="confirm"></sku-modal>
 
 		<view class='tn-tabbar-height'></view>
 
@@ -392,8 +392,18 @@
 					url: e,
 				});
 			},
-
-
+			confirm(e) {
+				console.log('没拿到返回的数据了', e)
+				let info = {
+					name:this.info.name,
+					...e.val,
+					num:e.num,
+					id:this.info.id
+				}
+				uni.navigateTo({
+					url: '/commPages/order?info=' + JSON.stringify(info)
+				})
+			},
 			// 获取顶部销售信息容器相关信息
 			getTopInfoRect() {
 				this._tGetRect('#top-info').then((res) => {

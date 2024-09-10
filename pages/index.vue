@@ -131,6 +131,9 @@
 		if (this.currentIndex === 2) {
 		  this.$refs.discovery.isReachBottom && this.$refs.discovery.isReachBottom()
 		}
+		if (this.currentIndex === 3) {
+		  this.$refs.news.isReachBottom && this.$refs.news.isReachBottom()
+		}
       },
 
       // 切换导航页面

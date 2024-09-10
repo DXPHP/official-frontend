@@ -72,3 +72,36 @@ export const business = (data) => httpRequest(`index/business`, 'GET',
 export const culture = (data) => httpRequest(`index/culture`, 'GET',
 	data
 )
+
+
+// 资讯列表
+export const newsList = (data) => httpRequest(`index/newsList`, 'GET',
+	data
+)
+
+// 应用消息
+export const appinfo = (data) => httpRequest(`common/appinfo`, 'GET',
+	data
+)
+
+// 点赞列表
+export const myLikes = (data) => httpRequest(`support/myLikes`, 'GET',
+	data
+)
+
+
+// 常见问题
+export const faq = (data) => httpRequest(`support/faq`, 'GET',
+	data
+)
+
+
+// 政策协议
+export const protocol = (data) => httpRequest(`support/protocol`, 'GET',
+	data
+)
+
+// 意见反馈
+export const feedback = (data) => httpRequest(`support/feedback`, 'POST',
+	data
+)

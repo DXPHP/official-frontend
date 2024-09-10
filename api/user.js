@@ -40,3 +40,11 @@ export const addressDefault = (data) => httpRequest(`address/default`, 'POST',
 export const addressDetail = (data) => httpRequest(`address/detail`, 'GET',
 	data
 )
+
+
+// 修改用户信息
+export const profile = (data) => httpRequest(`user/profile`, 'POST',
+	data
+)
+
+
