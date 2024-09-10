@@ -163,7 +163,7 @@
 							</view>
 						</view>
 					</view>
-					<view class="tn-padding-sm tn-margin-xs tn-radius" @click="tn('/minePages/help')">
+					<view class="tn-padding-sm tn-margin-xs tn-radius" >
 						<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
 							<view
 								class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-bg-blue--light">
@@ -230,7 +230,7 @@
 					</button>
 				</tn-list-cell>
 				<tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30">
-					<button class="tn-flex tn-flex-col-center tn-button--clear-style">
+					<button class="tn-flex tn-flex-col-center tn-button--clear-style" @click="tn('/minePages/help')">
 						<view class="icon1__item--icon tn-flex tn-flex-row-center tn-flex-col-center"
 							style="color: #7C8191;">
 							<view class="tn-icon-help-fill"></view>

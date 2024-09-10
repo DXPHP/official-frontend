@@ -227,6 +227,13 @@
 					}
 				},
 				{
+					"path": "feedBack",
+					"style": {
+						"navigationBarTitleText": "问题反馈",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
 					"path" : "setApp",
 					"style" : 
 					{
