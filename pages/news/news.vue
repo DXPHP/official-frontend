@@ -23,7 +23,7 @@
 			<!-- 不建议写时间，因为写了时间，你就要经常更新文章了鸭-->
 			<view class="">
 				<block v-for="(item, index) in list" :key="index">
-					<view class="article-shadow tn-margin tn-bg-white" @click="tn('/newsPages/article')">
+					<view class="article-shadow tn-margin tn-bg-white" @click="tn('/newsPages/article?id='+item.id)">
 						<view class="tn-flex">
 
 							<view class="tn-margin-sm tn-padding-top-xs" style="width: 100%;">

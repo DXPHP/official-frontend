@@ -48,3 +48,7 @@ export const profile = (data) => httpRequest(`user/profile`, 'POST',
 )
 
 
+// 点赞列表
+export const myLikes = (data) => httpRequest(`support/myLikes`, 'GET',
+	data
+)

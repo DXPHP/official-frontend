@@ -43,7 +43,7 @@
 					<tn-waterfall ref="waterfall" v-model="list" @finish="handleWaterFallFinish">
 						<template v-slot:left="{ leftList }">
 							<view v-for="(item, index) in leftList" :key="item.id" class="product__item home-shadow"
-								@click="tn('/commPages/product')">
+								@click="tn('/commPages/product?id='+item.id)">
 								<view class="item__image">
 									<tn-lazy-load :threshold="6000" height="100%" :image="item.image"
 										:index="item.id" imgMode="widthFix"></tn-lazy-load>
@@ -113,7 +113,7 @@
 								</view>
 							</view>
 							<view v-for="(item, index) in rightList" :key="item.id" class="product__item home-shadow"
-								@click="tn('/commPages/product')">
+								@click="tn('/commPages/product?id='+item.id)">
 								<view class="item__image">
 									<tn-lazy-load :threshold="6000" height="100%" :image="item.image"
 										:index="item.id" imgMode="widthFix"></tn-lazy-load>

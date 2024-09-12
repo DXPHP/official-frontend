@@ -147,7 +147,7 @@
 		<!-- 图文 -->
 		<view class="tn-flex tn-flex-direction-column tn-margin-bottom-xl">
 			<block v-for="(item,index) in list" :key="index">
-				<view class="tn-blogger-content2__wrap" @click="tn('/discoveryPages/case')">
+				<view class="tn-blogger-content2__wrap" @click="tn('/discoveryPages/case?id='+item.id)">
 					<view class="tn-shadow-blur image-pic"
 						:style="'background-image:url(' + item.image + ');background-size: cover;background-position: center;'">
 						<view class="image-design">

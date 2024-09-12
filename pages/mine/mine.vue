@@ -152,7 +152,7 @@
 							</view>
 						</view>
 					</view>
-					<view class="tn-padding-sm tn-margin-xs tn-radius" @click="tn('/minePages/set')">
+					<view class="tn-padding-sm tn-margin-xs tn-radius" @click="tn('/minePages/like')">
 						<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
 							<view
 								class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-bg-blue--light">
@@ -163,7 +163,7 @@
 							</view>
 						</view>
 					</view>
-					<view class="tn-padding-sm tn-margin-xs tn-radius" >
+					<view class="tn-padding-sm tn-margin-xs tn-radius" @click="tn('/minePages/message')">
 						<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
 							<view
 								class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-bg-blue--light">
@@ -243,7 +243,8 @@
 				</tn-list-cell>
 
 				<tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30">
-					<button class="tn-flex tn-flex-col-center tn-button--clear-style" open-type="feedback">
+					<button class="tn-flex tn-flex-col-center tn-button--clear-style"
+						@click="tn('/minePages/feedBack')">
 						<view class="icon1__item--icon tn-flex tn-flex-row-center tn-flex-col-center"
 							style="color: #7C8191;">
 							<view class="tn-icon-tip-fill"></view>
@@ -346,11 +347,14 @@
 			appinfo().then(res => {
 				this.appInfo = res.data
 			})
-			let info = getStorage(storage_userInfo)
-			console.log('info', info)
-			this.userInfo = JSON.parse(info).userinfo
+			this.updateInfo()
 		},
+
 		methods: {
+			updateInfo() {
+				let info = getStorage(storage_userInfo)
+				this.userInfo = JSON.parse(info).userinfo
+			},
 			// 跳转
 			tn(e) {
 				uni.navigateTo({

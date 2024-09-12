@@ -50,20 +50,31 @@
 		</view>
 
 		<!-- 悬浮按钮-->
-		<view class="tn-flex tn-flex-row-between tn-footerfixed">
-			<view class="tn-flex-1 justify-content-item tn-margin-xs tn-text-center">
-				<tn-button backgroundColor="tn-main-gradient-aquablue" padding="40rpx 0" width="90%" :fontSize="28">
-					<text class="tn-color-white">点赞鼓励</text>
-					<text class="tn-icon-like-lack tn-padding-left-xs tn-color-white"></text>
-				</tn-button>
+		<view class="evaluate-box" v-if="!commentShow">
+
+			<view class="evaluate-input" @click="toComment(id,0)">
+				点击开始评论
 			</view>
-			<view class="tn-flex-1 justify-content-item tn-margin-xs tn-text-center">
-				<tn-button backgroundColor="#tn-main-gradient-cyan" padding="40rpx 0" width="90%" :fontSize="28"
-					open-type="share">
-					<text class="tn-color-white">分享好友</text>
-					<text class="tn-icon-wechat tn-padding-left-xs tn-color-white"></text>
-				</tn-button>
+			<view class="evaluate-icon">
+				<view class="evaluate-icon" @click="sendGood">
+					<text :class="info.is_likes?'tn-icon-like-fill text-red':'tn-icon-like'" style="font-size: 60rpx;margin-right: 10rpx;"></text>
+
+					<view class="m-l-8">
+						{{info.likes}}
+					</view>
+				</view>
+				<view class="evaluate-icon" @click="toComment(id,0)">
+					<text class="tn-icon-comment" style="font-size: 60rpx;margin-right: 10rpx;"></text>
+					<view class="m-l-8">
+						{{info.comment}}
+					</view>
+				</view>
 			</view>
+
+		</view>
+		<view class="" v-show="commentShow">
+			<myEvaluateDialog ref="pinglun" @closeScrollview="closeScrollview" comment_type="3">
+			</myEvaluateDialog>
 		</view>
 
 		<view class='tn-tabbar-height'></view>
@@ -74,14 +85,19 @@
 <script>
 	import template_page_mixin from '@/libs/mixin/template_page_mixin.js'
 	import {
-		newsDetail
+		newsDetail,
+		likes
 	} from '@/api/home.js'
+	import myEvaluateDialog from '@/components/myEvaluateDialog/myEvaluateDialog.vue'
 	export default {
+		components: {
+			myEvaluateDialog
+		},
 		name: 'TemplateNews',
 		mixins: [template_page_mixin],
 		data() {
 			return {
-				
+
 				groupList: [{
 						src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
 					},
@@ -99,7 +115,8 @@
 					},
 				],
 				id: '',
-				info: {}
+				info: {},
+				commentShow: false,
 
 			}
 		},
@@ -108,6 +125,26 @@
 			this.getData()
 		},
 		methods: {
+			toComment(id, user_id) {
+				this.commentShow = true
+				this.$refs.pinglun.open(id, user_id)
+			},
+			sendGood() {
+				likes({
+					relation_id: this.id,
+					likes_type: 3
+				}).then(res => {
+					this.getData(1)
+					uni.$u.toast(res.msg)
+				})
+			},
+			closeScrollview() {
+				// 点击评论里面的叉叉，就会关闭评论
+				// this.$refs.pinglun.close();
+				this.commentShow = false
+				this.getData(1)
+			},
+
 			async getData() {
 				let res = await newsDetail({
 					id: this.id
@@ -125,6 +162,37 @@
 </script>
 
 <style lang="scss" scoped>
+	// 评论 start
+	.evaluate-box {
+		z-index: 999;
+		width: 100%;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		padding: 10rpx 30rpx 30rpx;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		.evaluate-input {
+			flex: 1;
+			padding: 20rpx 16rpx;
+
+		}
+
+		.evaluate-icon {
+			display: flex;
+			align-items: center;
+			margin: 0 10rpx;
+		}
+
+		.text-red {
+			color: #ff0000;
+		}
+
+	}
+
 	/* 胶囊*/
 	.tn-custom-nav-bar__back {
 		width: 100%;

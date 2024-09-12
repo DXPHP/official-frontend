@@ -11,39 +11,39 @@
 
 		<view>
 
-			<swiper class="card-swiper" :circular="true" vertical="true" :autoplay="false" duration="500"
+			<swiper class="card-swiper" :circular="false" vertical="true" :autoplay="false" duration="500"
 				interval="5000" @change="cardSwiper">
 				<swiper-item v-for="(item,index) in list" :key="index" :class="cardCur==index?'cur':''">
-					<view class="swiper-item image-banner">
-
-
-						<video :id="`video-${item.id}`" :src="item.mp4" :show-loading='false' :show-play-btn='false'
-							:show-fullscreen-btn='false' :controls='false' :autoplay='false' :enable-play-gesture='true'
-							loop style="height: 100vh;width: 100vw;"></video>
-
-
+					<view class="swiper-item image-banner" @click="changePlay(index)">
+						<video :id="`video-${item.id}`" :src="item.url" :show-loading='false' :show-play-btn='false'
+							:show-fullscreen-btn='false' :controls='false' :autoplay='false'
+							:enable-play-gesture='false' loop style="height: 100vh;width: 100vw;"></video>
+						<view class="play-btn" v-show="cardCur==index && !isPlay">
+							<text class="tn-icon-play-fill"
+								style="font-size: 120rpx;color: #f3f3f3;opacity: 0.5;"></text>
+						</view>
 					</view>
 					<view class="swiper-item-icon image-banner">
 						<view class="">
 							<view class="user-pic button-0">
 								<view class="user-image">
-									<view class="tn-shadow-blur"
+									<!-- <view class="tn-shadow-blur"
 										:style="'background-image:url('+ item.url + ');width: 87rpx;height: 87rpx;background-size: cover;overflow: hidden;'">
-									</view>
+									</view> -->
 								</view>
 							</view>
 							<view
 								class="icon15__item--icon tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center tn-shadow-blur button-1">
 								<view class="tn-icon-like-fill" style="font-size: 70rpx;"></view>
 								<view class="tn-margin-top-xs" style="font-size: 20rpx;position: relative;">
-									{{item.like}}
+									{{item.likes}}
 								</view>
 							</view>
 							<view
 								class="icon15__item--icon tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center tn-shadow-blur button-2">
 								<view class="tn-icon-message-fill" style="font-size: 70rpx;"></view>
 								<view class="tn-margin-top-xs" style="font-size: 20rpx;position: relative;">
-									{{item.message}}
+									{{item.comment}}
 								</view>
 							</view>
 							<view
@@ -52,7 +52,7 @@
 								<button class="tn-flex-col-center tn-button--clear-style" open-type="share">
 									<view class="tn-icon-send-fill" style="font-size: 70rpx;"></view>
 									<view class="tn-margin-top-xs" style="font-size: 20rpx;position: relative;">
-										{{item.share}}
+										{{item.view}}
 									</view>
 								</button>
 
@@ -62,7 +62,7 @@
 						<view class="swiper-item-text">
 							<view class="tn-color-white tn-text-xl">
 								<text class="tn-icon-topics tn-padding-right-xs"></text>
-								<text class="tn-text-bold">{{item.user}}</text>
+								<!-- <text class="tn-text-bold">{{item.user}}</text> -->
 
 							</view>
 							<view class="tn-color-white tn-padding-top-xs tn-text-lg clamp-text-2" style="width: 72%;">
@@ -139,51 +139,19 @@
 					//  pageSize: 10,
 				},
 				cardCur: 0,
-				list: [{
-					id: 0,
-					type: 'image',
-					url: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1664005699066-assets/web-upload/f7a37b29-506a-4e79-937f-826334902bb4.jpeg',
-					mp4: 'https://resource.tuniaokj.com/images/new/111.mp4',
-					user: '图鸟猪猪',
-					title: '晚风轻踩着云朵，月亮在贩售快乐，你从银河背后靠近我，我与星辉一同为你沉沦。。',
-					like: '12.9W',
-					message: '1.6W',
-					share: '2.2W'
-				}, {
-					id: 1,
-					type: 'image',
-					url: 'https://resource.tuniaokj.com/images/blogger/blogger_beibei.jpg',
-					mp4: 'https://resource.tuniaokj.com/images/new/22.mp4',
-					user: '图鸟北北',
-					title: '我不喜欢带伞，因为雨水从不滴落在我的心上；心若向阳，无惧远方。。',
-					like: '231',
-					message: '35',
-					share: '16'
-				}, {
-					id: 2,
-					type: 'image',
-					url: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1664179989916-assets/web-upload/eda197eb-42ce-44b1-9b14-fce3481db603.jpeg',
-					mp4: 'https://resource.tuniaokj.com/images/new/111.mp4',
-					user: '你的名字',
-					title: '为什么我没能早点遇见你...',
-					like: '292',
-					message: '108',
-					share: '63'
-				}, {
-					id: 3,
-					type: 'image',
-					url: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1664005699053-assets/web-upload/8645ea3a-e0a9-4422-8364-cc5ede305c9f.jpeg',
-					mp4: 'https://resource.tuniaokj.com/images/new/33.mp4',
-					user: '不许凶我',
-					title: '有些记忆会被时间焚烧',
-					like: '1.06K',
-					message: '868',
-					share: '606'
-				}],
+				list: [],
+				isPlay: true
 			}
 		},
-		onLoad() {
-			this.getList()
+		async onLoad() {
+			await this.getList()
+			const videoContext = uni.createVideoContext(`video-${this.list[0]['id']}`, this)
+			// #ifdef H5
+			videoContext.play()
+			// #endif
+			// #ifndef H5
+			videoContext.play()
+			// #endif
 		},
 		// 下拉刷新
 		onPullDownRefresh() {
@@ -200,6 +168,25 @@
 			this.getList();
 		},
 		methods: {
+			changePlay(index) {
+				this.isPlay = !this.isPlay
+				const videoContext = uni.createVideoContext(`video-${this.list[index]['id']}`, this)
+				if (this.isPlay) {
+					// #ifdef H5
+					videoContext.play()
+					// #endif
+					// #ifndef H5
+					videoContext.play()
+					// #endif
+				} else {
+					// #ifdef MP-WEIXIN
+					videoContext.stop()
+					// #endif
+					// #ifndef MP-WEIXIN
+					videoContext.pause()
+					// #endif
+				}
+			},
 
 			/* ------------------加载数据列表 start------------------------  */
 			// 初始化数据
@@ -208,14 +195,14 @@
 				this.params.page = 1
 				this.listStatus = 0;
 			},
-			async getList() {
+			async getList(refresh) {
 				let params = {
 					...this.params
 
 				}
 				try {
 					let res = await videosList(params)
-					let list = res.data //拿到数据格式可能不同----只需要修改这里
+					let list = res.data.list //拿到数据格式可能不同----只需要修改这里
 					let curPageLen = list.length; //数据列表长度
 					if (this.params.page == 1) this.list = []; // 如果数据是第一页 需置空数据列表重新加载
 					if (curPageLen != 0) {
@@ -230,6 +217,13 @@
 					// 如果点击下拉加载
 					if (refresh) {
 						uni.stopPullDownRefresh();
+						const videoContext = uni.createVideoContext(`video-${this.list[0]['id']}`, this)
+						// #ifdef H5
+						videoContext.play()
+						// #endif
+						// #ifndef H5
+						videoContext.play()
+						// #endif
 					}
 				} catch (error) {
 					// 在这里处理错误  
@@ -262,6 +256,7 @@
 						// #endif
 					}
 				}
+				this.isPlay=true
 			},
 			// 暂停所有视频
 			stopAllVideo() {},
@@ -330,6 +325,21 @@
 		left: 0rpx;
 		box-sizing: border-box;
 		overflow: initial;
+		position: relative;
+	}
+
+	.play-btn {
+		position: absolute;
+		left: 0;
+		right: 140rpx;
+		top: 120rpx;
+		bottom: 340rpx;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding-left: 140rpx;
+		padding-top: 220rpx;
+
 	}
 
 	.card-swiper swiper-item .swiper-item {

@@ -253,7 +253,23 @@
 					{
 						"navigationBarTitleText" : "编辑地址"
 					}
+				},
+				{
+					"path" : "like",
+					"style" : 
+					{
+						"navigationBarTitleText" : "我的点赞"
+					}
+				},
+				{
+					"path" : "message",
+					"style" : 
+					{
+						"navigationBarTitleText" : "我的消息"
+					}
 				}
+				
+				
 				
 				
 			]

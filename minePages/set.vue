@@ -187,7 +187,7 @@
 						<view class="tn-flex tn-flex-col-center tn-flex-row-center tn-text-lg tn-color-grey">
 							<view class="logo-image1" @click="getImage">
 								<view class="tn-shadow-blur"
-									:style="'background-image:url('+info.avatar+');width: 80rpx;height: 80rpx;background-size: cover;'">
+									:style="'background-image:url('+info.avatar+');width: 100%;height: 100%;background-size: cover;border-radius: 50%;'">
 								</view>
 								<view class="logo-camera">
 									<text class="tn-icon-camera" style="font-size: 50rpx;"></text>
@@ -221,7 +221,8 @@
 	import template_page_mixin from '@/libs/mixin/template_page_mixin.js'
 	import WxUserInfoModal from '@/uni_modules/tuniaoui-wx-user-info/components/tuniaoui-wx-user-info/tuniaoui-wx-user-info.vue'
 	import {
-		bindMobile
+		bindMobile,
+		profile
 	} from '@/api/user.js'
 	import {
 		updateUserInfo
@@ -230,10 +231,8 @@
 		uploadFilePromise
 	} from '@/utils/uploadFileUtils.js'
 
-
 	import {
 		getStorage,
-
 	} from '@/common/db.js';
 	import {
 		storageKey,
@@ -380,13 +379,24 @@
 				this.showAuthorizationModal = true
 				// #endif
 				// #ifndef MP-WEIXIN
-				this.info.nickname = {
+				console.log('useeee', this.user)
+				this.info = {
 					nickname: this.user.nickname,
 					avatar: this.user.avatar
 				}
 				this.show4 = true
 				// #endif
 
+			},
+			// 修改用户信息
+			updatedUserInfo() {
+				profile({
+					nickname: this.user.nickname,
+					avatar: this.user.avatar
+				}).then(res => {
+					this.$tn.message.toast('修改成功')
+					let data = updateUserInfo()
+				})
 			},
 
 			// 获取到的用户信息
@@ -395,6 +405,7 @@
 				this.user.avatar = result.fullurl
 				this.user.nickname = info.nickname
 				this.showAuthorizationModal = false
+				this.updatedUserInfo()
 				console.log('获取到的用户信息', info)
 			},
 			// 获取到的用户信息
@@ -404,7 +415,8 @@
 				this.user.nickname = this.info.nickname
 				this.user.avatar = this.info.avatar
 				this.show4 = false
-				console.log('获取到的用户信息', info)
+				this.updatedUserInfo()
+				
 			},
 
 
