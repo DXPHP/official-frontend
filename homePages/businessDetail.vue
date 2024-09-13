@@ -1,130 +1,81 @@
 <template>
-	<view class="template-product tn-safe-area-inset-bottom">
-		<!-- 顶部自定义导航 -->
-		<tn-nav-bar fixed alpha customBack>
-			<view slot="back" class='tn-custom-nav-bar__back' @click="goBack">
-				<text class='icon tn-icon-left'></text>
-				<text class='icon tn-icon-home-capsule-fill'></text>
-			</view>
-		</tn-nav-bar>
+	<view class="template-news tn-safe-area-inset-bottom">
 
-		<swiper class="card-swiper" :circular="true" :autoplay="true" duration="500" interval="5000"
-			@change="cardSwiper">
-			<swiper-item v-for="(item,index) in swiperList" :key="index" :class="cardCur==index?'cur':''">
-				<view class="swiper-item image-banner">
-					<image :src="item.url" mode="aspectFill" v-if="item.type=='image'"></image>
+		<view class="tn-navbg" :style="{height: vuex_custom_bar_height + 'px'}">
+			<!-- 顶部自定义导航 -->
+			<tn-nav-bar fixed alpha customBack>
+				<view slot="back" class='tn-custom-nav-bar__back' @click="goBack">
+					<text class='icon tn-icon-left'></text>
+					<text class='icon tn-icon-home-capsule-fill'></text>
 				</view>
-			</swiper-item>
-		</swiper>
-		<view class="indication">
-			<block v-for="(item,index) in swiperList" :key="index">
-				<view class="spot" :class="cardCur==index?'active':''"></view>
-			</block>
+			</tn-nav-bar>
 		</view>
 
-		<view class="tn-margin">
-			<view class="tn-flex tn-flex-row-between">
-				<view class="justify-content-item tn-text-bold tn-margin-top-xs" style="font-size: 38rpx;">
-					图鸟官网通用前端模板
-				</view>
-				<view class="justify-content-item">
-					<view
-						class="icon15__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur button-1"
-						@click="tn('/pageA/pano/pano')">
-						<!-- <view class="tn-icon-share-circle tn-color-white"></view> -->
-						<button class="tn-button--clear-style" open-type="share" style="border-radius: 0;">
-							<view class="tn-icon-share-circle tn-color-white"></view>
-						</button>
-					</view>
-				</view>
-			</view>
-			<view class="tn-flex tn-flex-row-between tn-margin-top">
-				<view class="justify-content-item tn-text-bold tn-color-purplered">
-					<text class="" style="font-size: 50rpx;">118.00</text>
-					<text class="tn-padding-left-xs" style="font-size: 30rpx;">￥</text>
-				</view>
-				<view class="justify-content-item tn-color-gray tn-padding-top-xs">
-					<view class="">浏览 16</view>
-				</view>
-			</view>
-		</view>
-
-		<!-- 边距间隔 -->
-		<view class="tn-strip-bottom"></view>
-
-		<view class="tn-margin-top-sm">
+		<view class="tn-margin-top-xs" :style="{paddingTop: vuex_custom_bar_height + 'px'}">
 			<view class="nav_title--wrap">
-				<view class="nav_title tn-cool-bg-color-6">
-					<text class="tn-icon-star tn-padding-right-sm tn-text-xxl"></text>
-					<text class="tn-text-xl">图鸟科技 · 界面预览</text>
-					<text class="tn-icon-star tn-padding-left-sm tn-text-xxl"></text>
+				<view class="nav_title tn-main-gradient-blue">
+					<!-- <text class="tn-icon-rocket tn-padding-right-sm"></text> -->
+					{{info.data.title}}
+					<!-- <text class="tn-icon-rocket tn-padding-left-sm"></text> -->
 				</view>
+			</view>
+
+
+			<view class="news-img tn-padding">
+				<rich-text :nodes="info.data.content"></rich-text>
+				<!-- <image src='https://resource.tuniaokj.com/images/advertise/3.jpg' mode='widthFix' class=''></image> -->
+
+			</view>
+
+
+		</view>
+
+		<view class="tn-margin-top tn-padding-top-sm tn-margin-bottom">
+			<view class="see">
+				<view class="justify-content-item tn-flex tn-flex-col-center">
+					<!-- <view style="margin-left: 15rpx;margin-right: 6rpx;transform: scale(0.85);">
+						<tn-avatar-group :lists="groupList" size="sm"></tn-avatar-group>
+					</view>
+					<text class="tn-color-gray">86人</text> -->
+				</view>
+				<view class="justify-content-item tn-color-gray tn-text-center tn-margin-right"
+					style="padding-top: 5rpx;">
+					<text class="tn-icon-eye tn-text-lg" style="padding-right: 5rpx;"></text>
+					<text class="tn-padding-right tn-text-df">{{info.data.view}}</text>
+					<!-- <text class="tn-icon-like-lack tn-text-lg" style="padding-right: 5rpx;"></text>
+					<text class="tn-text-df">{{info.data.likes}}</text> -->
+				</view>
+
 			</view>
 		</view>
 
-		<tn-scroll-list :indicator="false">
-			<view class="tn-flex tn-margin">
-				<view class="tn-margin-right-sm" v-for="(item, index) in 10" :key="index">
-					<view class="image-pic" @tap="previewProductImage"
-						style="background-image:url('https://resource.tuniaokj.com/images/uniapp_market/1.jpg');">
-						<view class="image-good">
-						</view>
+		<!-- 悬浮按钮-->
+		<view class="evaluate-box" v-if="!commentShow">
+
+			<view class="evaluate-input" @click="toComment(id,0)">
+				点击开始评论
+			</view>
+			<view class="evaluate-icon">
+				<view class="evaluate-icon" @click="sendGood">
+					<text :class="info.is_likes?'tn-icon-like-fill text-red':'tn-icon-like'"
+						style="font-size: 60rpx;margin-right: 10rpx;"></text>
+
+					<view class="m-l-8">
+						{{info.data.likes}}
+					</view>
+				</view>
+				<view class="evaluate-icon" @click="toComment(id,0)">
+					<text class="tn-icon-comment" style="font-size: 60rpx;margin-right: 10rpx;"></text>
+					<view class="m-l-8">
+						{{info.data.comment}}
 					</view>
 				</view>
 			</view>
-		</tn-scroll-list>
 
-		<!-- 边距间隔 -->
-		<view class="tn-strip-bottom"></view>
-		<view class="tn-margin-top-sm">
-			<view class="nav_title--wrap">
-				<view class="nav_title tn-cool-bg-color-6">
-					<text class="tn-icon-star tn-padding-right-sm tn-text-xxl"></text>
-					<text class="tn-text-xl">图鸟科技 · 产品详情</text>
-					<text class="tn-icon-star tn-padding-left-sm tn-text-xxl"></text>
-				</view>
-			</view>
 		</view>
-
-		<view class="content-backgroup tn-margin">
-			<image
-				src='https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1680077186004-assets/web-upload/c3551495-0ef4-4666-9fc5-cd4c5bc251de.jpeg'
-				mode='widthFix' class='backgroud-image'></image>
-			<image
-				src='https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1680077186004-assets/web-upload/c3551495-0ef4-4666-9fc5-cd4c5bc251de.jpeg'
-				mode='widthFix' class='backgroud-image'></image>
-			<image
-				src='https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1680077186004-assets/web-upload/c3551495-0ef4-4666-9fc5-cd4c5bc251de.jpeg'
-				mode='widthFix' class='backgroud-image'></image>
-		</view>
-		<view id="top-info" class="tn-footerfixed tn-safe-area-inset-bottom tn-bg-white"
-			:style="{transform: `translateY(${topInfoTranslateY}px)`}">
-			<view class="tn-flex tn-flex-row-between tn-flex-col-center">
-				<view class="tn-flex-2 justify-content-item tn-color-gray">
-					<view class="tn-flex tn-flex-row-center">
-						<view class="tn-flex-1" @click="goBack">
-							<view class="tn-icon-home-in" style="font-size: 42rpx;"></view>
-							<view class="tn-text-center tn-text-sm tn-padding-top-xs">首页</view>
-						</view>
-						<view class="tn-flex-1 tn-padding-right-xl">
-							<button class="tn-button--clear-style" open-type="contact" style="border-radius: 0;">
-								<view class="tn-icon-service-simple" style="font-size: 42rpx;"></view>
-								<view class="tn-text-center tn-text-sm tn-padding-top-xs">客服</view>
-							</button>
-						</view>
-					</view>
-				</view>
-				<view class="tn-flex-3 justify-content-item tn-padding-top-sm tn-padding-bottom-sm"
-					@tap.stop="openSkuModal">
-					<tn-button shape="round" backgroundColor="tn-main-gradient-red" padding="38rpx 0" width="92%"
-						:fontSize="30" shadow>
-						<text class="tn-color-white" hover-class="tn-hover" :hover-stay-time="150">
-							立即联系
-						</text>
-					</tn-button>
-				</view>
-			</view>
-
+		<view>
+			<myEvaluateDialog ref="pinglun" @closeScrollview="closeScrollview" comment_type="1">
+			</myEvaluateDialog>
 		</view>
 
 		<view class='tn-tabbar-height'></view>
@@ -133,143 +84,88 @@
 </template>
 
 <script>
-	import SkuModal from '@/components/sku/sku.vue'
 	import template_page_mixin from '@/libs/mixin/template_page_mixin.js'
+	import {
+		businessDetail,
+		likes
+	} from '@/api/home.js'
+	import myEvaluateDialog from '@/components/myEvaluateDialog/myEvaluateDialog.vue'
 	export default {
 		components: {
-			SkuModal
+			myEvaluateDialog
 		},
-		name: 'TemplateProduct',
+		name: 'TemplateNews',
 		mixins: [template_page_mixin],
 		data() {
 			return {
-				cardCur: 0,
-				swiperList: [{
-					id: 0,
-					type: 'image',
-					title: '免费开源',
-					name: '商业合作请联系作者',
-					text: '微信：tnkewo',
-					url: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1680077186016-assets/web-upload/e2ce2561-0532-471e-b612-41863c81da98.jpeg',
-				}, {
-					id: 1,
-					type: 'image',
-					title: '图鸟南南',
-					name: '欢迎加入东东们',
-					text: '如果你也有不错的作品',
-					url: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1675956894200-assets/web-upload/8cbc12f4-f04a-4271-a38f-07b5ccabe214.jpeg',
-				}, {
-					id: 2,
-					type: 'image',
-					title: '图鸟西西',
-					name: '一起玩转scss',
-					text: '用最少的代码做最骚的效果',
-					url: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1675956894159-assets/web-upload/0e1e0010-211f-4a21-b7dd-2799b1f39188.jpeg',
-				}, {
-					id: 3,
-					type: 'image',
-					title: '图鸟北北',
-					name: '微信号 tnkewo',
-					text: '商业合作请联系作者',
-					url: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1676020663234-assets/web-upload/2eb50c08-599b-4c5b-9613-afa0ea719bdd.jpeg',
-				}],
-				countOptions: [{
-					icon: 'star',
-					text: '收藏'
-				}, {
-					icon: 'share-circle',
-					text: '分享',
-				}],
-				customButtonGroups: [{
-					text: '咨询客服',
-					backgroundColor: 'tn-cool-bg-color-5',
-					color: '#FFFFFF'
-				}, {
-					text: '立即购买',
-					backgroundColor: 'tn-cool-bg-color-15--reverse',
-					color: '#FFFFFF'
-				}],
-				tagList: [{
-						color: 'red',
-						title: "真皮",
-					},
-					{
-						color: 'cyan',
-						title: "简约",
-					},
-					{
-						color: 'blue',
-						title: "猛犸",
-					},
-					{
-						color: 'green',
-						title: "互联网",
-					},
-					{
-						color: 'orange',
-						title: "免费",
-					},
-					{
-						color: 'purplered',
-						title: "配色",
-					},
-					{
-						color: 'purple',
-						title: "软件开发",
-					},
-					{
-						color: 'brown',
-						title: "插画",
-					},
-					{
-						color: 'yellowgreen',
-						title: "C4D",
-					},
-					{
-						color: 'grey',
-						title: "海报",
-					}
-				],
 
-				topInfo: {
-					height: 0,
+				groupList: [{
+						src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
+					},
+					{
+						src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
+					},
+					{
+						src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
+					},
+					{
+						src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
+					},
+					{
+						src: 'https://resource.tuniaokj.com/images/blogger/blogger_beibei.jpg'
+					},
+				],
+				id: '',
+				info: {
+					data: {
+						title: '',
+						content: '',
+						likes: 0,
+						comment: 0
+					}
 				},
-				topInfoTranslateY: 0,
-				prevScrollTop: 0
+				commentShow: false,
+
 			}
 		},
-		onReady() {
-			this.getTopInfoRect()
-		},
-		onPageScroll(e) {
-			this.handlePageScroll(e.scrollTop)
+		onLoad(e) {
+			this.id = e.id
+			this.getData()
 		},
 		methods: {
-			// 预览图片
-			previewProductImage() {
-				wx.previewImage({
-					urls: ['https://resource.tuniaokj.com/images/uniapp_market/1.jpg',
-						'https://resource.tuniaokj.com/images/uniapp_market/1.jpg',
-						'https://resource.tuniaokj.com/images/uniapp_market/1.jpg',
-						'https://resource.tuniaokj.com/images/uniapp_market/1.jpg',
-						'https://resource.tuniaokj.com/images/uniapp_market/1.jpg',
-						'https://resource.tuniaokj.com/images/uniapp_market/1.jpg',
-						'https://resource.tuniaokj.com/images/uniapp_market/1.jpg',
-						'https://resource.tuniaokj.com/images/uniapp_market/1.jpg',
-						'https://resource.tuniaokj.com/images/uniapp_market/1.jpg',
-						'https://resource.tuniaokj.com/images/uniapp_market/1.jpg'
-					]
+			toComment(id, user_id) {
+				this.commentShow = true
+				this.$refs.pinglun.open(id, user_id)
+			},
+			sendGood() {
+				likes({
+					relation_id: this.id,
+					likes_type: 1
+				}).then(res => {
+					this.getData(1)
+					
+					uni.showToast({
+						icon: 'none',
+						title: res.msg
+					})
 				})
 			},
-
-			// 打开选择弹框
-			openSkuModal() {
-				
+			closeScrollview() {
+				// 点击评论里面的叉叉，就会关闭评论
+				// this.$refs.pinglun.close();
+				this.commentShow = false
+				this.getData(1)
 			},
 
-			// cardSwiper
-			cardSwiper(e) {
-				this.cardCur = e.detail.current
+			async getData(num) {
+				let params = {
+					id: this.id
+				}
+				if (num) {
+					params.reload = 1
+				}
+				let res = await businessDetail(params)
+				this.info = res.data
 			},
 			// 跳转
 			tn(e) {
@@ -277,65 +173,43 @@
 					url: e,
 				});
 			},
-
-
-			// 获取顶部销售信息容器相关信息
-			getTopInfoRect() {
-				this._tGetRect('#top-info').then((res) => {
-					if (!res) {
-						setTimeout(() => {
-							this.getTopInfoRect()
-						}, 50)
-						return
-					}
-					this.topInfo.height = res.height
-				})
-			},
-			// 处理页面滚动事件
-			handlePageScroll(scrollTop) {
-				console.log(scrollTop);
-				if (this.prevScrollTop > scrollTop) {
-
-					// 内容下滑，即手指从下往上滚
-					this.topInfoTranslateY = 0
-				} else {
-					// 内容上滑，即手指从上往下滚
-					if (scrollTop > this.topInfo.height) {
-						this.topInfoTranslateY = this.topInfo.height
-					}
-
-				}
-
-				this.prevScrollTop = scrollTop
-			},
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
-	.template-product {}
+	// 评论 start
+	.evaluate-box {
+		z-index: 999;
+		width: 100%;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		padding: 10rpx 30rpx 30rpx;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border-top: 1rpx solid #e1e1e1;
 
-	.tn-tabbar-height {
-		min-height: 20rpx;
-		height: calc(40rpx + env(safe-area-inset-bottom) / 2);
-	}
+		.evaluate-input {
+			flex: 1;
+			padding: 20rpx;
+			background-color: #f3f3f3;
+			color: #666666;
 
-	/* 用户头像 start */
-	.logo-image {
-		width: 110rpx;
-		height: 110rpx;
-		position: relative;
-	}
+		}
 
-	.logo-pic {
-		background-size: cover;
-		background-repeat: no-repeat;
-		// background-attachment:fixed;
-		background-position: top;
-		box-shadow: 0rpx 0rpx 80rpx 0rpx rgba(0, 0, 0, 0.15);
-		border-radius: 10rpx;
-		overflow: hidden;
-		// background-color: #FFFFFF;
+		.evaluate-icon {
+			display: flex;
+			align-items: center;
+			margin: 0 10rpx;
+		}
+
+		.text-red {
+			color: #ff0000;
+		}
+
 	}
 
 	/* 胶囊*/
@@ -378,86 +252,34 @@
 		}
 	}
 
-	/* 轮播视觉差 start */
-	.card-swiper {
-		height: 750rpx !important;
-	}
-
-	.card-swiper swiper-item {
-		width: 750rpx !important;
-		left: 0rpx;
-		box-sizing: border-box;
-		// padding: 0rpx 30rpx 90rpx 30rpx;
-		overflow: initial;
-	}
-
-	.card-swiper swiper-item .swiper-item {
+	/* 顶部渐变*/
+	.tn-navbg {
+		background: linear-gradient(-120deg, #F15BB5, #9A5CE5, #01BEFF, #00F5D4);
+		/* background: linear-gradient(-120deg,  #9A5CE5, #01BEFF, #00F5D4, #43e97b); */
+		/* background: linear-gradient(-120deg,#c471f5, #ec008c, #ff4e50,#f9d423); */
+		/* background: linear-gradient(-120deg, #0976ea, #c471f5, #f956b6, #ea7e0a); */
+		background-size: 500% 500%;
+		animation: gradientBG 15s ease infinite;
+		position: fixed;
+		top: 0;
 		width: 100%;
-		display: block;
-		height: 100%;
-		transform: scale(1);
-		transition: all 0.2s ease-in 0s;
-		overflow: hidden;
+		z-index: 100;
 	}
 
-	.card-swiper swiper-item.cur .swiper-item {
-		transform: none;
-		transition: all 0.2s ease-in 0s;
+	@keyframes gradientBG {
+		0% {
+			background-position: 0% 50%;
+		}
+
+		50% {
+			background-position: 100% 50%;
+		}
+
+		100% {
+			background-position: 0% 50%;
+		}
 	}
 
-	.image-banner {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.image-banner image {
-		width: 100%;
-		height: 100%;
-	}
-
-	/* 轮播指示点 start*/
-	.indication {
-		z-index: 9999;
-		width: 100%;
-		height: 36rpx;
-		position: absolute;
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.spot {
-		background-color: #FFFFFF;
-		opacity: 0.6;
-		width: 10rpx;
-		height: 10rpx;
-		border-radius: 20rpx;
-		top: -60rpx;
-		margin: 0 8rpx !important;
-		position: relative;
-	}
-
-	.spot.active {
-		opacity: 1;
-		width: 30rpx;
-		background-color: #FFFFFF;
-	}
-
-	/* 间隔线 start*/
-	.tn-strip-bottom-min {
-		width: 100%;
-		border-bottom: 1rpx solid #F8F9FB;
-	}
-
-	/* 间隔线 start*/
-	.tn-strip-bottom {
-		width: 100%;
-		border-bottom: 20rpx solid rgba(241, 241, 241, 0.8);
-	}
-
-	/* 间隔线 end*/
 	/* 标题 start */
 	.nav_title {
 		-webkit-background-clip: text;
@@ -467,62 +289,79 @@
 			position: relative;
 			display: flex;
 			height: 120rpx;
-			font-size: 46rpx;
+			font-size: 42rpx;
 			align-items: center;
 			justify-content: center;
 			font-weight: bold;
-			background-image: url(https://resource.tuniaokj.com/images/title_bg/title44.png);
+			background-image: url(https://resource.tuniaokj.com/images/title_bg/title00.png);
 			background-size: cover;
 		}
 	}
 
 	/* 标题 end */
 
-	/* 用户头像 start */
-	.user-image {
-		width: 90rpx;
-		height: 90rpx;
+	/* 富文本图示意 start */
+	.news-img {
+		z-index: -1;
+		padding-bottom: 40rpx;
+
+		image {
+			width: 100%;
+			margin: 20rpx 0;
+			// height: 3373rpx;
+			// z-index: -1;
+		}
+	}
+
+	/* 资讯主图 start*/
+	.image-article {
+		border-radius: 8rpx;
+		width: 200rpx;
+		height: 200rpx;
 		position: relative;
 	}
 
-	.user-pic {
+	.image-pic {
+		border: 1rpx solid #F8F7F8;
 		background-size: cover;
 		background-repeat: no-repeat;
 		// background-attachment:fixed;
 		background-position: top;
-		border-radius: 50%;
+		border-radius: 10rpx;
+	}
+
+	.article-shadow {
+		border-radius: 15rpx;
+		box-shadow: 0rpx 0rpx 50rpx 0rpx rgba(0, 0, 0, 0.07);
+	}
+
+	/* 文字截取*/
+	.clamp-text-1 {
+		-webkit-line-clamp: 1;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		text-overflow: ellipsis;
 		overflow: hidden;
-		background-color: #FFFFFF;
 	}
 
-	/* 底部*/
-	.tn-footerfixed {
-		position: fixed;
-		background-color: rgba(255, 255, 255, 0.5);
-		box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(0, 0, 0, 0.07);
-		bottom: 0;
-		width: 100%;
-		transition: all 0.25s ease-out;
-		will-change: transform;
-		z-index: 100;
-	}
-
-	/* 底部 start*/
-	.footerfixed {
-		position: fixed;
-		width: 100%;
-		bottom: 0;
-		z-index: 999;
-		box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(0, 0, 0, 0.07);
+	.clamp-text-2 {
+		-webkit-line-clamp: 2;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		text-overflow: ellipsis;
+		overflow: hidden;
 	}
 
 	/* 标签内容 start*/
 	.tn-tag-content {
 		&__item {
 			display: inline-block;
-			line-height: 45rpx;
-			padding: 10rpx 30rpx;
-			margin: 20rpx 20rpx 5rpx 0rpx;
+			line-height: 35rpx;
+			color: #1D2541;
+			background-color: #F3F2F7;
+			border-radius: 10rpx;
+			font-size: 22rpx;
+			padding: 5rpx 15rpx;
 
 			&--prefix {
 				padding-right: 10rpx;
@@ -530,25 +369,11 @@
 		}
 	}
 
-	/* 标签内容 end*/
 
-	/* 内容图 start */
-	.content-backgroup {
-		z-index: -1;
-
-		.backgroud-image {
-			width: 100%;
-		}
-	}
-
-	/* 内容图 end */
-
-	/* 商家商品 start*/
-	.tn-blogger-content {
+	/* 大单图 start*/
+	.tn-blogger-content2 {
 		&__wrap {
-			box-shadow: 0rpx 0rpx 50rpx 0rpx rgba(0, 0, 0, 0.07);
-			border-radius: 20rpx;
-			margin: 15rpx;
+			padding: 30rpx;
 		}
 
 		&__info {
@@ -561,22 +386,23 @@
 		&__label {
 			&__item {
 				line-height: 45rpx;
-				padding: 0 10rpx;
+				padding: 0 20rpx;
 				margin: 5rpx 18rpx 0 0;
 
 				&--prefix {
-					color: #E83A30;
+					color: #00FFC8;
 					padding-right: 10rpx;
 				}
 			}
 
 			&__desc {
-				line-height: 35rpx;
+				line-height: 55rpx;
 			}
 		}
 
 		&__main-image {
-			border-radius: 16rpx 16rpx 0 0;
+			box-shadow: 0rpx 5rpx 40rpx 0rpx rgba(43, 158, 246, 0.2);
+			border-radius: 16rpx;
 
 			&--1 {
 				max-width: 690rpx;
@@ -597,89 +423,60 @@
 		}
 
 		&__count-icon {
-			font-size: 24rpx;
+			font-size: 40rpx;
 			padding-right: 5rpx;
 		}
 	}
 
-	.image-good {
-		width: 180rpx;
-		height: 300rpx;
-		position: relative;
-	}
-
-	.image-pic {
-		border: 1rpx solid #F8F7F8;
-		background-size: cover;
-		background-repeat: no-repeat;
-		// background-attachment:fixed;
-		background-position: center;
-		border-radius: 20rpx;
-	}
-
-	.image-book {
-		padding: 150rpx 0rpx;
-		font-size: 16rpx;
+	.image-design {
+		padding: 160rpx 0rpx;
+		font-size: 40rpx;
 		font-weight: 300;
 		position: relative;
 	}
 
-	.image-picbook {
+	.image-pic {
 		background-size: cover;
 		background-repeat: no-repeat;
 		// background-attachment:fixed;
 		background-position: top;
-		border-radius: 15rpx 15rpx 0 0;
+		border-radius: 10rpx;
 	}
 
-	/* 按钮 */
-	.button-1 {
-		background-color: rgba(0, 0, 0, 0.15);
-		position: absolute;
-		/* bottom:200rpx;
-      right: 20rpx; */
-		top: 700rpx;
-		right: 30rpx;
-		z-index: 1001;
-		border-radius: 100px;
+	/* 文章内容 end*/
+
+	/* 底部悬浮按钮 start*/
+	.tn-tabbar-height {
+		min-height: 100rpx;
+		height: calc(120rpx + env(safe-area-inset-bottom) / 2);
 	}
 
-	/* 图标容器15 start */
-	.icon15 {
-		&__item {
-			width: 30%;
+	.tn-footerfixed {
+		position: fixed;
+		width: 100%;
+		bottom: calc(30rpx + env(safe-area-inset-bottom));
+		z-index: 1024;
+		box-shadow: 0 1rpx 6rpx rgba(0, 0, 0, 0);
 
-			// border-radius: 10rpx;
-			padding: 30rpx;
-			margin: 20rpx 10rpx;
-			transform: scale(1);
-			transition: transform 0.3s linear;
-			transform-origin: center center;
-
-			&--icon {
-				width: 100rpx;
-				height: 100rpx;
-				font-size: 60rpx;
-				border-radius: 50%;
-				margin-bottom: 18rpx;
-				z-index: 1;
-
-				&::after {
-					content: " ";
-					position: absolute;
-					z-index: -1;
-					width: 100%;
-					height: 100%;
-					left: 0;
-					bottom: 0;
-					border-radius: inherit;
-					opacity: 1;
-					transform: scale(1, 1);
-					background-size: 100% 100%;
-
-
-				}
-			}
-		}
 	}
+
+	/* 底部悬浮按钮 end*/
+
+	/* 查看*/
+	.see {
+		display: flex;
+		justify-content: space-between;
+		padding-top: 10rpx;
+		border-radius: 6rpx;
+		color: #666;
+		line-height: 1.6;
+	}
+
+	/* 间隔线 start*/
+	.tn-strip-bottom {
+		width: 100%;
+		border-bottom: 20rpx solid rgba(241, 241, 241, 0.8);
+	}
+
+	/* 间隔线 end*/
 </style>

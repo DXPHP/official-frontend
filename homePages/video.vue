@@ -18,31 +18,34 @@
 						<video :id="`video-${item.id}`" :src="item.url" :show-loading='false' :show-play-btn='false'
 							:show-fullscreen-btn='false' :controls='false' :autoplay='false'
 							:enable-play-gesture='false' loop style="height: 100vh;width: 100vw;"></video>
-						<view class="play-btn" v-show="cardCur==index && !isPlay">
+						<view class="play-btn" v-if="cardCur==index && !isPlay">
 							<text class="tn-icon-play-fill"
 								style="font-size: 120rpx;color: #f3f3f3;opacity: 0.5;"></text>
 						</view>
 					</view>
 					<view class="swiper-item-icon image-banner">
 						<view class="">
-							<view class="user-pic button-0">
+							<!-- <view class="user-pic button-0">
 								<view class="user-image">
-									<!-- <view class="tn-shadow-blur"
+									<view class="tn-shadow-blur"
 										:style="'background-image:url('+ item.url + ');width: 87rpx;height: 87rpx;background-size: cover;overflow: hidden;'">
-									</view> -->
+									</view>
 								</view>
-							</view>
-							<view
+							</view> -->
+							<view @click.stop="sendGood(index)"
 								class="icon15__item--icon tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center tn-shadow-blur button-1">
-								<view class="tn-icon-like-fill" style="font-size: 70rpx;"></view>
-								<view class="tn-margin-top-xs" style="font-size: 20rpx;position: relative;">
+								<view :class="item.is_likes?'tn-icon-like-fill text-red':'tn-icon-like'"
+									style="font-size: 70rpx;"></view>
+								<view class="tn-margin-top-xs tn-margin-bottom-xs"
+									style="font-size: 20rpx;position: relative;">
 									{{item.likes}}
 								</view>
 							</view>
-							<view
+							<view @click.stop="toComment(item.id,0)"
 								class="icon15__item--icon tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center tn-shadow-blur button-2">
 								<view class="tn-icon-message-fill" style="font-size: 70rpx;"></view>
-								<view class="tn-margin-top-xs" style="font-size: 20rpx;position: relative;">
+								<view class="tn-margin-top-xs tn-margin-bottom-xs"
+									style="font-size: 20rpx;position: relative;">
 									{{item.comment}}
 								</view>
 							</view>
@@ -52,7 +55,7 @@
 								<button class="tn-flex-col-center tn-button--clear-style" open-type="share">
 									<view class="tn-icon-send-fill" style="font-size: 70rpx;"></view>
 									<view class="tn-margin-top-xs" style="font-size: 20rpx;position: relative;">
-										{{item.view}}
+										<!-- {{item.view}} -->
 									</view>
 								</button>
 
@@ -62,11 +65,14 @@
 						<view class="swiper-item-text">
 							<view class="tn-color-white tn-text-xl">
 								<text class="tn-icon-topics tn-padding-right-xs"></text>
-								<!-- <text class="tn-text-bold">{{item.user}}</text> -->
+								<text class="tn-text-bold">
+									<!-- {{item.user}} -->
+									{{item.title}}
+								</text>
 
 							</view>
 							<view class="tn-color-white tn-padding-top-xs tn-text-lg clamp-text-2" style="width: 72%;">
-								{{item.title}}
+								<!-- {{item.title}} -->
 							</view>
 						</view>
 
@@ -79,17 +85,20 @@
               <view class="spot" :class="cardCur==index?'active':''"></view>
           </block>
       </view> -->
-
+			<view>
+				<myEvaluateDialog ref="pinglun" @closeScrollview="closeScrollview" comment_type="5">
+				</myEvaluateDialog>
+			</view>
 
 			<view class="tn-padding-top-lg tn-flex tn-flex-col-center tn-flex-row-center">
-				<tn-load-more :status="loadStatus" v-if="listStatus === 0"></tn-load-more>
+				<tn-load-more :status="loadStatus" v-if="listStatus === 0 && loadStatus=='loading'"></tn-load-more>
 				<tn-empty mode="network" v-if="listStatus === 2"></tn-empty>
 				<tn-empty mode="data" v-if="listStatus === 1"></tn-empty>
 			</view>
 		</view>
 
 
-		<view class="edit tnxuanfu" @click="goBack">
+		<!-- <view class="edit tnxuanfu" @click="goBack">
 			<view class="bg0 pa">
 				<view class="bg1">
 					<image src="https://resource.tuniaokj.com/images/my/my6.png" class="button-shop shadow"></image>
@@ -117,7 +126,7 @@
 					</view>
 				</view>
 			</view>
-		</view>
+		</view> -->
 
 	</view>
 </template>
@@ -125,9 +134,15 @@
 <script>
 	import template_page_mixin from '@/libs/mixin/template_page_mixin.js'
 	import {
-		videosList
+		videosList,
+		likes
 	} from '@/api/home.js'
+
+	import myEvaluateDialog from '@/components/myEvaluateDialog/myEvaluateDialog.vue'
 	export default {
+		components: {
+			myEvaluateDialog
+		},
 		name: 'TemplateResult',
 		mixins: [template_page_mixin],
 		data() {
@@ -168,8 +183,28 @@
 			this.getList();
 		},
 		methods: {
+			toComment(id, user_id) {
+
+				this.$refs.pinglun.open(id, user_id)
+			},
+			sendGood(index) {
+				likes({
+					relation_id: this.list[index].id,
+					likes_type: 5
+				}).then(res => {
+					this.list[index].is_likes = this.list[index].is_likes == 0 ? 1 : 0
+					this.list[index].is_likes == 0 ? this.list[index].likes-- : this.list[index].likes++
+
+				})
+			},
+			closeScrollview() {
+				// 点击评论里面的叉叉，就会关闭评论
+				// this.getData(1)
+			},
 			changePlay(index) {
+
 				this.isPlay = !this.isPlay
+				console.log('66666', this.isPlay)
 				const videoContext = uni.createVideoContext(`video-${this.list[index]['id']}`, this)
 				if (this.isPlay) {
 					// #ifdef H5
@@ -256,7 +291,7 @@
 						// #endif
 					}
 				}
-				this.isPlay=true
+				this.isPlay = true
 			},
 			// 暂停所有视频
 			stopAllVideo() {},
@@ -275,6 +310,10 @@
 </script>
 
 <style lang="scss" scoped>
+	.text-red {
+		color: #ff0000;
+	}
+
 	/* 胶囊*/
 	.tn-custom-nav-bar__back {
 		width: 100%;

@@ -10,7 +10,7 @@
 
 
 		<!-- 页面内容 start-->
-		<swiper class="card-swiper" :circular="true" :autoplay="true" duration="500" interval="18000"
+		<!-- 	<swiper class="card-swiper" :circular="true" :autoplay="true" duration="500" interval="18000"
 			@change="cardSwiper">
 			<swiper-item v-for="(item,index) in list" :key="index" :class="cardCur==index?'cur':''">
 				<view class="swiper-item image-banner">
@@ -18,19 +18,20 @@
 				</view>
 				<view class="tn-text-df tn-text-bold tnloukong">{{item.title}}</view>
 				<view class="swiper-item-text">
-					<!-- <view class="tn-text-lg tn-text-bold tn-color-white">{{item.name}}</view> -->
+					<view class="tn-text-lg tn-text-bold tn-color-white">{{item.name}}</view>
 				</view>
 			</swiper-item>
-		</swiper>
-		<view class="indication">
+		</swiper> -->
+		<!-- <view class="indication">
 			<block v-for="(item,index) in list" :key="index">
 				<view class="spot" :class="cardCur==index?'active':''"></view>
 			</block>
-		</view>
-		<view class="" style="padding-bottom: 60rpx;margin-top: -100rpx;z-index: 999; position: relative;">
+		</view> -->
+		<!-- <view class="" style="padding-bottom: 60rpx;margin-top: -100rpx;z-index: 999; position: relative;"> -->
+		<view :style="{paddingTop: vuex_custom_bar_height + 'px'}">
 			<view class="">
 				<block v-for="(item, index) in list" :key="index">
-					<view class="article-shadow tn-margin tn-bg-white" @click="tn('/homePages/cooperateDetail')">
+					<view class="article-shadow tn-margin tn-bg-white" @click="tn('/homePages/businessDetail?id='+item.id)">
 						<view class="tn-flex">
 
 							<view class="tn-margin-sm tn-padding-top-xs" style="width: 100%;">
@@ -126,7 +127,7 @@
 					page: 1,
 					//  pageSize: 10,
 				},
-				list:[]
+				list: []
 
 			}
 		},

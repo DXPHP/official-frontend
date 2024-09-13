@@ -52,3 +52,14 @@ export const profile = (data) => httpRequest(`user/profile`, 'POST',
 export const myLikes = (data) => httpRequest(`support/myLikes`, 'GET',
 	data
 )
+
+
+// 发送短信验证码
+export const send = (data) => httpRequest(`sms/send`, 'POST',
+	data
+)
+
+// 注册
+export const register = (data) => httpRequest(`user/register`, 'POST',
+	data
+)

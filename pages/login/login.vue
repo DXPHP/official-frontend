@@ -76,7 +76,7 @@
 							</view>
 							<view class="login__info__item__input__content">
 								<input maxlength="20" placeholder-class="input-placeholder" placeholder="请输入注册手机号码"
-									v-model="signUp.account" />
+									v-model="signUp.mobile" />
 							</view>
 						</view>
 
@@ -156,7 +156,9 @@
 	import {
 		authLogin,
 		userinfo,
-		login
+		login,
+		register,
+		send
 	} from '@/api/user.js'
 	import {
 		getStorage,
@@ -229,7 +231,7 @@
 					password: ''
 				},
 				signUp: {
-					account: '',
+					mobile: '',
 					code: '',
 					password: ''
 				},
@@ -279,11 +281,11 @@
 			// 手机号登录
 			async accountLogin() {
 				if (this.currentModeIndex === 0) {
-					
+
 					if (!this.signIn.account) return this.$tn.message.toast('请先输入手机号')
 					if (!this.signIn.password) return this.$tn.message.toast('请先输入密码')
 					this.$tn.message.loading('登录中')
-					let res =await login({
+					let res = await login({
 						...this.signIn
 					})
 					this.$tn.message.closeLoading()
@@ -297,8 +299,30 @@
 						uni.reLaunch({
 							url: '/pages/index'
 						})
-					}, 2000);
-					
+					}, 1000);
+
+				}
+
+				if (this.currentModeIndex === 1) {
+					if (!this.signUp.mobile) return this.$tn.message.toast('请先输入手机号')
+					if (!this.signUp.password) return this.$tn.message.toast('请先输入密码')
+					if (!this.signUp.password) return this.$tn.message.toast('请先输入验证码')
+					this.$tn.message.loading('注册中')
+					let res = await register({
+						...this.signUp
+					})
+					this.$tn.message.closeLoading()
+					console.log('resresres', res)
+					setStorage(storage_token, res.data.userinfo.token)
+					setStorage(storage_userInfo,
+						JSON.stringify(
+							res.data))
+					this.$tn.message.toast(res.msg)
+					setTimeout(function() {
+						uni.reLaunch({
+							url: '/pages/index'
+						})
+					}, 1000);
 				}
 			},
 			// 微信登录
@@ -373,14 +397,21 @@
 			},
 			// 获取验证码
 			getCode() {
+				if (!this.signUp.mobile) return this.$tn.message.toast('请先填写手机号')
 				if (this.$refs.code.canGetCode) {
 					this.$tn.message.loading('正在获取验证码')
-					setTimeout(() => {
+					send({
+						mobile: this.signUp.mobile,
+						event: 'register'
+					}).then(res => {
 						this.$tn.message.closeLoading()
 						this.$tn.message.toast('验证码已经发送')
 						// 通知组件开始计时
 						this.$refs.code.start()
-					}, 2000)
+					})
+					// setTimeout(() => {
+
+					// }, 2000)
 				} else {
 					this.$tn.message.toast(this.$refs.code.secNum + '秒后再重试')
 				}

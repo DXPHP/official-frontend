@@ -387,7 +387,7 @@
 		<view class="tn-info__container tn-flex tn-flex-wrap tn-flex-col-center tn-margin-left tn-margin-right">
 			<block v-for="(item, index) in cooperationList" :key="index">
 				<view
-					class="tn-flex tn-flex-direction-row tn-flex-col-center tn-flex-row-between tn-color-white tn-shadow-blur tn-col-3"
+					class="tn-flex tn-flex-direction-row tn-flex-col-center tn-flex-row-between tn-color-white tn-shadow-blur tn-col-3 tn-margin-top-xs"
 					@click="tn()">
 					<view class="partner__item home-shadow" @click="tn('/commPages/product')">
 						<view class="item__image">

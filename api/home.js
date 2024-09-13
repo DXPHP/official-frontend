@@ -68,6 +68,12 @@ export const photosList = (data) => httpRequest(`index/photosList`, 'GET',
 export const business = (data) => httpRequest(`index/business`, 'GET',
 	data
 )
+// 商圈详情
+export const businessDetail = (data) => httpRequest(`index/businessDetail`, 'GET',
+	data
+)
+
+
 // 企业文化
 export const culture = (data) => httpRequest(`index/culture`, 'GET',
 	data

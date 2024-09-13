@@ -15,14 +15,14 @@
 			<view class="nav_title--wrap">
 				<view class="nav_title tn-main-gradient-blue">
 					<!-- <text class="tn-icon-rocket tn-padding-right-sm"></text> -->
-					{{info.title}}
+					{{info.data.title}}
 					<!-- <text class="tn-icon-rocket tn-padding-left-sm"></text> -->
 				</view>
 			</view>
 
 
 			<view class="news-img tn-padding">
-				<rich-text :nodes="info.content"></rich-text>
+				<rich-text :nodes="info.data.content"></rich-text>
 				<!-- <image src='https://resource.tuniaokj.com/images/advertise/3.jpg' mode='widthFix' class=''></image> -->
 
 			</view>
@@ -41,9 +41,9 @@
 				<view class="justify-content-item tn-color-gray tn-text-center tn-margin-right"
 					style="padding-top: 5rpx;">
 					<text class="tn-icon-eye tn-text-lg" style="padding-right: 5rpx;"></text>
-					<text class="tn-padding-right tn-text-df">{{info.view}}</text>
-					<text class="tn-icon-like-lack tn-text-lg" style="padding-right: 5rpx;"></text>
-					<text class="tn-text-df">{{info.likes}}</text>
+					<text class="tn-padding-right tn-text-df">{{info.data.view}}</text>
+					<!-- <text class="tn-icon-like-lack tn-text-lg" style="padding-right: 5rpx;"></text>
+					<text class="tn-text-df">{{info.data.likes}}</text> -->
 				</view>
 
 			</view>
@@ -57,22 +57,23 @@
 			</view>
 			<view class="evaluate-icon">
 				<view class="evaluate-icon" @click="sendGood">
-					<text :class="info.is_likes?'tn-icon-like-fill text-red':'tn-icon-like'" style="font-size: 60rpx;margin-right: 10rpx;"></text>
+					<text :class="info.is_likes?'tn-icon-like-fill text-red':'tn-icon-like'"
+						style="font-size: 60rpx;margin-right: 10rpx;"></text>
 
 					<view class="m-l-8">
-						{{info.likes}}
+						{{info.data.likes}}
 					</view>
 				</view>
 				<view class="evaluate-icon" @click="toComment(id,0)">
 					<text class="tn-icon-comment" style="font-size: 60rpx;margin-right: 10rpx;"></text>
 					<view class="m-l-8">
-						{{info.comment}}
+						{{info.data.comment}}
 					</view>
 				</view>
 			</view>
 
 		</view>
-		<view class="" v-show="commentShow">
+		<view>
 			<myEvaluateDialog ref="pinglun" @closeScrollview="closeScrollview" comment_type="3">
 			</myEvaluateDialog>
 		</view>
@@ -115,7 +116,14 @@
 					},
 				],
 				id: '',
-				info: {},
+				info: {
+					data: {
+						title: '',
+						content: '',
+						likes: 0,
+						comment: 0
+					}
+				},
 				commentShow: false,
 
 			}
@@ -135,7 +143,10 @@
 					likes_type: 3
 				}).then(res => {
 					this.getData(1)
-					uni.$u.toast(res.msg)
+					uni.showToast({
+						icon: 'none',
+						title: res.msg
+					})
 				})
 			},
 			closeScrollview() {
@@ -145,10 +156,14 @@
 				this.getData(1)
 			},
 
-			async getData() {
-				let res = await newsDetail({
+			async getData(num) {
+				let params = {
 					id: this.id
-				})
+				}
+				if (num) {
+					params.reload = 1
+				}
+				let res = await newsDetail(params)
 				this.info = res.data
 			},
 			// 跳转
@@ -174,10 +189,13 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		border-top: 1rpx solid #e1e1e1;
 
 		.evaluate-input {
 			flex: 1;
-			padding: 20rpx 16rpx;
+			padding: 20rpx;
+			background-color: #f3f3f3;
+			color: #666666;
 
 		}
 

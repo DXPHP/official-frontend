@@ -1,9 +1,17 @@
 <template>
-	<view class="feedBack tn-bg-white">
-		<view class="tn-padding">
+
+	<view class="feedBack tn-bg-white tn-safe-area-inset-bottom">
+		<!-- 顶部自定义导航 -->
+		<tn-nav-bar fixed alpha customBack>
+			<view slot="back" class='tn-custom-nav-bar__back' @click="goBack">
+				<text class='icon tn-icon-left'></text>
+				<text class='icon tn-icon-home-capsule-fill'></text>
+			</view>
+		</tn-nav-bar>
+		<view class="tn-padding" :style="{paddingTop: vuex_custom_bar_height + 'px'}">
 			<tn-form labelPosition="top" :model="model1" :rules="rules" ref="uForm" :labelWidth="80">
 				<tn-form-item label="问题标签" prop="userInfo.type" required ref="item1">
-					<view class="tn-margin-left-xs  tn-padding-xs tn-flex tn-flex-row-center  tn-flex-wrap">
+					<view class=" tn-flex tn-flex-col-center  tn-flex-wrap">
 						<view class="tn-margin-left-xs tn-margin-top-xs" v-for="(item,index) in radiolist1">
 							<tn-tag :fontColor="item.type==model1.userInfo.type?'#3668fc':'#ccc'"
 								:backgroundColor="item.type==model1.userInfo.type?'#3668fc':'#ccc'" plain
@@ -27,9 +35,9 @@
 			</tn-form>
 		</view>
 		<view class="stick-bottom tn-padding-bottom-sm">
-			<view @click="submit" style="width: 100%;display: flex;justify-content: center;">
-				<tn-button width="96%" shadow shape="round" fontColor="tn-color-white" backgroundColor="tn-bg-blue" :fontSize="24"
-					height="auto" padding="26rpx 18rpx">提交</tn-button>
+			<view @click="submit" style="width: 750rpx;display: flex;justify-content: center;box-sizing: border-box;">
+				<tn-button width="640rpx" shadow shape="round" fontColor="tn-color-white" backgroundColor="tn-bg-blue"
+					:fontSize="24" height="auto" padding="26rpx 18rpx">提交</tn-button>
 			</view>
 		</view>
 
@@ -37,6 +45,7 @@
 </template>
 
 <script>
+	import template_page_mixin from '@/libs/mixin/template_page_mixin.js'
 	import {
 		feedback
 	} from '@/api/home.js'
@@ -52,6 +61,7 @@
 		storage_token
 	} = storageKey
 	export default {
+		mixins: [template_page_mixin],
 		data() {
 			return {
 				token: '',
@@ -152,6 +162,45 @@
 </script>
 
 <style lang="scss" scoped>
+	/* 胶囊*/
+	.tn-custom-nav-bar__back {
+		width: 100%;
+		height: 100%;
+		position: relative;
+		display: flex;
+		justify-content: space-evenly;
+		align-items: center;
+		box-sizing: border-box;
+		background-color: rgba(0, 0, 0, 0.15);
+		border-radius: 1000rpx;
+		border: 1rpx solid rgba(255, 255, 255, 0.5);
+		color: #FFFFFF;
+		font-size: 18px;
+	
+		.icon {
+			display: block;
+			flex: 1;
+			margin: auto;
+			text-align: center;
+		}
+	
+		&:before {
+			content: " ";
+			width: 1rpx;
+			height: 110%;
+			position: absolute;
+			top: 22.5%;
+			left: 0;
+			right: 0;
+			margin: auto;
+			transform: scale(0.5);
+			transform-origin: 0 0;
+			pointer-events: none;
+			box-sizing: border-box;
+			opacity: 0.7;
+			background-color: #FFFFFF;
+		}
+	}
 	.stick-bottom {
 		z-index: 999;
 		width: 100%;
@@ -162,7 +211,7 @@
 	}
 
 	.feedBack {
-		height: 100%;
+
 		padding-bottom: 100rpx;
 	}
 

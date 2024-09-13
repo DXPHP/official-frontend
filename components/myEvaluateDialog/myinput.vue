@@ -2,18 +2,18 @@
 	<view>
 		<!-- <u-popup mode="bottom" v-model="pop_show" :mask="false"> -->
 		<view class="bg_white p-t-10" :style="[{height:boxHeight+textLineHeight+'px'}]" @click.stop="">
-			<view class="flex justify_bettwen  bg_grey box_radius m-l-20 m-r-20 m-b-10 p-l-30 ">
+			<view class="input-box">
 				<textarea ref="myinput" auto-height :show-confirm-bar="false" :adjust-position='false' v-model="msg"
 					class="im-input c-333 m-t-10 m-b-10" confirm-type="send" maxlength="-1" @focus.stop="InputFocus"
 					@confirm="sendMsg(msg,'')" @blur="InputBlur" :focus="isFocus"
-					:placeholder="comment_user?'回复'+comment_user:'有爱评论，说点好听的～'"
+					:placeholder="commentUser?'回复'+commentUser:'有爱评论，说点好听的～'"
 					@keyboardheightchange="keyboardheightchange" @linechange="linechange" />
 				<view class="flex">
 					<view class="im-menus font-size-28" hover-class="tap" @click.stop="showAppBox(1)">🙂</view>
 					<!-- <view class="im-menus font-size-28 mr-10" hover-class="tap" v-if="!msg" @click="chooseImg">📷</view> -->
 					<view v-if="msg">
-						<button size="" class="button_box bg_primay box_shadow" @tap.stop="sendMsg(msg,'')"
-							:disabled="is_loading" :loading="is_loading" style="border-radius:24rpx">发送</button>
+						<button  class="button_box" @tap.stop="sendMsg(msg,'')"
+							:disabled="isLoading" :loading="isLoading">发送</button>
 					</view>
 				</view>
 			</view>
@@ -38,24 +38,22 @@
 			myemoji
 		},
 		props: {
-			comment_user: {
+			commentUser: {
 				type: String,
 				default: ''
 			}
 		},
 		data() {
 			return {
-				is_loading: false,
+				isLoading: false,
 				appBox: 0,
 				isFocus: false,
 				KeyboardHeight: 0,
 				myeditor: '',
 				msg: '',
 				emojiList2: [],
-				pad_bottom: 0,
 				boxHeight: 46,
 				emojiHeight: 300,
-				is_open: false,
 				textLineHeight: 0,
 				statusBarHeight: 0,
 			}
@@ -107,7 +105,7 @@
 			},
 			// 点击发送发送
 			sendMsg(content, file) {
-				this.is_loading = true
+				this.isLoading = true
 				let content_c = content.trim()
 				if (!content_c && !file) return this.$toast({
 					title: '不可以发送空白消息'
@@ -137,7 +135,7 @@
 				this.boxHeight = 46
 				this.hideEmoji()
 				this.isFocus = false
-				this.is_loading = false
+				this.isLoading = false
 			},
 			// 弹起键盘
 			openInout() {
@@ -171,7 +169,7 @@
 			},
 			clearMsg(e) {
 				this.msg = ''
-				this.is_loading = false
+				this.isLoading = false
 			},
 			InputFocus(e) {
 				this.appBox = 0
@@ -182,38 +180,33 @@
 	}
 </script>
 <style lang="scss" scoped>
+	.input-box{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 10rpx 20rpx;
+		margin: 0 20rpx;
+		background-color: #e2e2e2;
+		border-radius: 8rpx;
+	}
 	.flex {
 		display: flex;
 	}
-	
-	.flex1 {
-		flex: 1;
+	.bg_white{
+		background-color: #ffffff;
 	}
-	
-	.flex_column {
-		flex-direction: column;
+	.m-t-10{
+		margin-top: 10rpx;
 	}
-	
-	.flex_wrap {
-		flex-wrap: wrap;
+	.m-b-10{
+		margin-bottom: 10rpx;
 	}
-	
-	.justify_bettwen {
-		justify-content: space-between;
+	.p-t-10{
+		padding-top: 10rpx;
 	}
-	
-	.justify_arround {
-		justify-content: space-around;
+	.button_box{
+		background-color: aqua;
 	}
-	
-	.justify_center {
-		justify-content: center;
-	}
-	
-	.align_center {
-		align-items: center;
-	}
-	
 	.button_box ::after {
 		border: none
 	}

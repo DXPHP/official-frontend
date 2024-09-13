@@ -15,14 +15,14 @@
 			<view class="nav_title--wrap">
 				<view class="nav_title tn-main-gradient-blue">
 					<!-- <text class="tn-icon-rocket tn-padding-right-sm"></text> -->
-					{{info.title}}
+					{{info.data.title}}
 					<!-- <text class="tn-icon-rocket tn-padding-left-sm"></text> -->
 				</view>
 			</view>
 
 
 			<view class="news-img tn-padding">
-				<rich-text :nodes="info.content"></rich-text>
+				<rich-text :nodes="info.data.content"></rich-text>
 				<!-- <image src='https://resource.tuniaokj.com/images/advertise/10.jpg' mode='widthFix' class=''></image> -->
 			</view>
 
@@ -40,16 +40,16 @@
 				<view class="justify-content-item tn-color-gray tn-text-center tn-margin-right"
 					style="padding-top: 5rpx;">
 					<text class="tn-icon-eye tn-text-lg" style="padding-right: 5rpx;"></text>
-					<text class="tn-padding-right tn-text-df">{{info.view}}</text>
-					<text class="tn-icon-like-lack tn-text-lg" style="padding-right: 5rpx;"></text>
-					<text class="tn-text-df">{{info.likes}}</text>
+					<text class="tn-padding-right tn-text-df">{{info.data.view}}</text>
+					<!-- <text class="tn-icon-like-lack tn-text-lg" style="padding-right: 5rpx;"></text>
+					<text class="tn-text-df">{{info.likes}}</text> -->
 				</view>
 
 			</view>
 		</view>
 
 
-		>
+		
 
 
 		<!-- 悬浮按钮-->
@@ -67,28 +67,35 @@
         </tn-button>
       </view>
     </view> -->
+		<!-- 悬浮按钮-->
+		<view class="evaluate-box" v-if="!commentShow">
 
-		<view class="footerfixed tn-bg-white tn-safe-area-inset-bottom">
-			<view class="tn-flex tn-flex-row-between tn-flex-col-center">
-				<view class="tn-flex-1 justify-content-item tn-color-gray">
-					<view class="tn-flex tn-flex-row-center tn-flex-col-center">
-						<view class="tn-flex tn-padding-right tn-padding-left">
-							<text class="tn-icon-comment" style="font-size: 45rpx;"></text>
-						</view>
-						<view class="tn-flex tn-padding-right">
-							<text class="tn-text-df">289人 已咨询</text>
-						</view>
+			<view class="evaluate-input" @click="toComment(id,0)">
+				点击开始评论
+			</view>
+			<view class="evaluate-icon">
+				<view class="evaluate-icon" @click="sendGood">
+					<text :class="info.is_likes?'tn-icon-like-fill text-red':'tn-icon-like'"
+						style="font-size: 60rpx;margin-right: 10rpx;"></text>
+
+					<view class="m-l-8">
+						{{info.data.likes}}
 					</view>
 				</view>
-				<view class="tn-flex-1 justify-content-item tn-padding-sm tn-main-gradient-red">
-					<tn-button shape="round" backgroundColor="#3668fc00" width="100%" open-type="contact">
-						<text class="tn-color-white tn-text-xl" hover-class="tn-hover" :hover-stay-time="150">
-							案例咨询
-						</text>
-					</tn-button>
+				<view class="evaluate-icon" @click="toComment(id,0)">
+					<text class="tn-icon-comment" style="font-size: 60rpx;margin-right: 10rpx;"></text>
+					<view class="m-l-8">
+						{{info.data.comment}}
+					</view>
 				</view>
 			</view>
+
 		</view>
+		<view>
+			<myEvaluateDialog ref="pinglun" @closeScrollview="closeScrollview" comment_type="2">
+			</myEvaluateDialog>
+		</view>
+
 
 		<view class='tn-tabbar-height'></view>
 
@@ -98,13 +105,19 @@
 <script>
 	import template_page_mixin from '@/libs/mixin/template_page_mixin.js'
 	import {
-		caseDetail
+		caseDetail,
+		likes
 	} from '@/api/home.js'
+	import myEvaluateDialog from '@/components/myEvaluateDialog/myEvaluateDialog.vue'
 	export default {
+		components: {
+			myEvaluateDialog
+		},
 		name: 'TemplateNews',
 		mixins: [template_page_mixin],
 		data() {
 			return {
+				commentShow: false,
 				groupList: [{
 						src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
 					},
@@ -131,10 +144,36 @@
 			this.getData()
 		},
 		methods: {
-			async getData() {
-				let res = await caseDetail({
-					id: this.id
+			toComment(id, user_id) {
+				this.commentShow = true
+				this.$refs.pinglun.open(id, user_id)
+			},
+			sendGood() {
+				likes({
+					relation_id: this.id,
+					likes_type: 2
+				}).then(res => {
+					this.getData(1)
+					uni.showToast({
+						icon: 'none',
+						title: res.msg
+					})
 				})
+			},
+			closeScrollview() {
+				// 点击评论里面的叉叉，就会关闭评论
+				// this.$refs.pinglun.close();
+				this.commentShow = false
+				this.getData(1)
+			},
+			async getData(num) {
+				let params = {
+					id: this.id
+				}
+				if (num) {
+					params.reload = 1
+				}
+				let res = await caseDetail(params)
 				this.info = res.data
 			},
 			// 跳转
@@ -148,6 +187,40 @@
 </script>
 
 <style lang="scss" scoped>
+	
+	// 评论 start
+		.evaluate-box {
+			z-index: 999;
+			width: 100%;
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			padding: 10rpx 30rpx 30rpx;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			border-top: 1rpx solid #e1e1e1;
+	
+			.evaluate-input {
+				flex: 1;
+				padding: 20rpx;
+				background-color: #f3f3f3;
+				color: #666666;
+	
+			}
+	
+			.evaluate-icon {
+				display: flex;
+				align-items: center;
+				margin: 0 10rpx;
+			}
+	
+			.text-red {
+				color: #ff0000;
+			}
+	
+		}
 	/* 胶囊*/
 	.tn-custom-nav-bar__back {
 		width: 100%;
