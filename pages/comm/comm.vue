@@ -17,9 +17,9 @@
 		<view class="tn-margin-top-sm" :style="{paddingTop: vuex_custom_bar_height - 10 + 'px'}">
 			<swiper class="card-swiper" @click="tn('/homePages/navigation')" :circular="true" :autoplay="true"
 				duration="500" interval="8000" @change="cardSwiper">
-				<swiper-item v-for="(item,index) in swiperList" :key="index" :class="cardCur==index?'cur':''">
+				<swiper-item v-for="(item,index) in list" :key="index" :class="cardCur==index?'cur':''">
 					<view class="swiper-item image-banner"
-						:style="'background-image:url('+ item.url + ');background-size: cover;border-radius: 15rpx;'">
+						:style="'background-image:url('+ item.image + ');background-size: cover;border-radius: 15rpx;'">
 					</view>
 					<!-- <view class="swiper-item-text">
             <view class="tn-text-bold tn-color-white" style="font-size: 50rpx;">{{item.title}}</view>
@@ -37,16 +37,16 @@
 
 
 		<view class="">
-			<view class="" v-if="current==0">
+			<view class="">
 
 				<view class="" style="padding: 30rpx 20rpx;">
-					<tn-waterfall ref="waterfall" v-model="list" @finish="handleWaterFallFinish">
+					<tn-waterfall ref="waterfall" v-model="list" >
 						<template v-slot:left="{ leftList }">
 							<view v-for="(item, index) in leftList" :key="item.id" class="product__item home-shadow"
 								@click="tn('/commPages/product?id='+item.id)">
 								<view class="item__image">
-									<tn-lazy-load :threshold="6000" height="100%" :image="item.image"
-										:index="item.id" imgMode="widthFix"></tn-lazy-load>
+									<tn-lazy-load :threshold="6000" height="100%" :image="item.image" :index="item.id"
+										imgMode="widthFix"></tn-lazy-load>
 								</view>
 								<view class="item__data tn-margin-left-sm tn-margin-right-sm">
 									<view class="item__title-container">
@@ -69,7 +69,7 @@
 										</view>
 										<view class="justify-content-item tn-color-gray tn-text-center"
 											style="padding-top: 5rpx;">
-											<text class="tn-icon-rocket tn-padding-right-xs tn-text-lg"></text>
+											<text class="tn-icon-like tn-padding-right-xs tn-text-lg"></text>
 											<text class="tn-text-df">{{ item.likes }}</text>
 										</view>
 									</view>
@@ -101,7 +101,7 @@
 							</view>
 						</template>
 						<template v-slot:right="{ rightList }">
-							<view class="tn-text-bold home-shadow tn-main-gradient-blue tn-color-white"
+							<!-- <view class="tn-text-bold home-shadow tn-main-gradient-blue tn-color-white"
 								style="height: 160rpx;margin: 0 10rpx 20rpx 10rpx;border-radius: 10rpx;"
 								@click="tn('/commPages/nav')">
 								<view class="tn-padding-left tn-padding-top-lg">
@@ -111,12 +111,12 @@
 									看看都有什么
 									<text class="tn-icon-link tn-padding-left-xs"></text>
 								</view>
-							</view>
+							</view> -->
 							<view v-for="(item, index) in rightList" :key="item.id" class="product__item home-shadow"
 								@click="tn('/commPages/product?id='+item.id)">
 								<view class="item__image">
-									<tn-lazy-load :threshold="6000" height="100%" :image="item.image"
-										:index="item.id" imgMode="widthFix"></tn-lazy-load>
+									<tn-lazy-load :threshold="6000" height="100%" :image="item.image" :index="item.id"
+										imgMode="widthFix"></tn-lazy-load>
 								</view>
 								<view class="item__data tn-margin-left-sm tn-margin-right-sm">
 									<view class="item__title-container">
@@ -138,7 +138,7 @@
 										</view>
 										<view class="justify-content-item tn-color-gray tn-text-center"
 											style="padding-top: 5rpx;">
-											<text class="tn-icon-rocket tn-padding-right-xs tn-text-lg"></text>
+											<text class="tn-icon-like tn-padding-right-xs tn-text-lg"></text>
 											<text class="tn-text-df">{{ item.likes }}</text>
 										</view>
 									</view>
@@ -173,279 +173,6 @@
 
 			</view>
 
-
-			<view class="" v-if="current==1">
-
-				<view class="" style="padding: 30rpx 20rpx;">
-					<tn-waterfall ref="waterfall" v-model="list" @finish="handleWaterFallFinish">
-						<template v-slot:left="{ leftList }">
-							<view v-for="(item, index) in leftList" :key="item.id" class="product__item home-shadow"
-								@click="tn('/commPages/product')">
-								<view class="item__image">
-									<tn-lazy-load :threshold="6000" height="100%" :image="item.image"
-										:index="item.id" imgMode="widthFix"></tn-lazy-load>
-								</view>
-								<view class="item__data tn-margin-left-sm tn-margin-right-sm">
-									<view class="item__title-container">
-										<text class="item__title tn-color-cat clamp-text-2">{{ item.name }}</text>
-									</view>
-									<view v-if="item.tags && item.tags.length > 0" class="item__tags-container">
-										<view v-for="(tagItem, tagIndex) in item.tags" :key="tagIndex"
-											class="item__tag">{{ tagItem }}</view>
-									</view>
-									<!-- <view class="item__price-container tn-color-red">
-                    <text class="item__price--unit">￥</text>
-                    <text class="item__price--integer">{{ item.price }}</text>
-                    <text class="tn-color-gray tn-text-sm tn-padding-left-sm" style="font-size: 24rpx;">{{ item.likes }} 人咨询</text>
-                  </view> -->
-
-									<view class="tn-flex tn-flex-row-between tn-flex-col-between tn-margin-top-xs">
-										<view class="justify-content-item tn-color-red">
-											<text class="tn-text-sm">￥</text>
-											<text class="tn-text-xl">{{ item.price }}</text>
-										</view>
-										<view class="justify-content-item tn-color-gray tn-text-center"
-											style="padding-top: 5rpx;">
-											<text class="tn-icon-rocket tn-padding-right-xs tn-text-lg"></text>
-											<text class="tn-text-df">{{ item.likes }}</text>
-										</view>
-									</view>
-
-
-									<!-- <view class="tn-flex tn-flex-row-between tn-flex-col-center tn-padding-top-xs">
-                    <view class="justify-content-item">
-                      <view class="tn-flex tn-flex-col-center tn-flex-row-left">
-                        <view class="logo-pic">
-                          <view class="logo-image">
-                            <view class="" :style="'background-image:url('+ item.userImage +');width: 40rpx;height: 40rpx;background-size: cover;'">
-                            </view>
-                          </view>
-                        </view>
-                        <view class="tn-padding-left-xs">
-                          <text class="tn-color-gray tn-text-sm">{{ item.userName }}</text>
-                        </view>
-                  
-                      </view>
-                    </view>
-                    <view class="justify-content-item">
-                      <text class="tn-icon-fire tn-color-gray tn-padding-right-xs"></text>
-                      <text class="tn-color-gray">{{ item.viewUser.viewUserCount }}</text>
-                    </view>
-                  </view> -->
-
-
-								</view>
-							</view>
-						</template>
-						<template v-slot:right="{ rightList }">
-							<view class="tn-text-bold home-shadow tn-main-gradient-blue tn-color-white"
-								style="height: 160rpx;margin: 0 10rpx 20rpx 10rpx;border-radius: 10rpx;"
-								@click="tn('/commPages/nav')">
-								<view class="tn-padding-left tn-padding-top-lg">
-									导航 · 图鸟生态
-								</view>
-								<view class="tn-padding-left tn-padding-top-xs">
-									看看都有什么
-									<text class="tn-icon-link tn-padding-left-xs"></text>
-								</view>
-							</view>
-							<view v-for="(item, index) in rightList" :key="item.id" class="product__item home-shadow"
-								@click="tn('/commPages/product')">
-								<view class="item__image">
-									<tn-lazy-load :threshold="6000" height="100%" :image="item.mainImage"
-										:index="item.id" imgMode="widthFix"></tn-lazy-load>
-								</view>
-								<view class="item__data tn-margin-left-sm tn-margin-right-sm">
-									<view class="item__title-container">
-										<text class="item__title tn-color-cat clamp-text-2">{{ item.title }}</text>
-									</view>
-									<view class="item__tags-container">
-										<view v-for="(tagItem, tagIndex) in item.tags" :key="tagIndex"
-											class="item__tag">{{ tagItem }}</view>
-									</view>
-									<!-- <view class="item__price-container tn-color-red">
-                    <text class="item__price--unit">￥</text>
-                    <text class="item__price--integer">{{ item.price }}</text>
-                    <text class="tn-color-gray tn-text-sm tn-padding-left-sm" style="font-size: 24rpx;">{{ item.likes }} 人咨询</text>
-                  </view> -->
-									<view class="tn-flex tn-flex-row-between tn-flex-col-between tn-margin-top-xs">
-										<view class="justify-content-item tn-color-red">
-											<text class="tn-text-sm">￥</text>
-											<text class="tn-text-xl">{{ item.price }}</text>
-										</view>
-										<view class="justify-content-item tn-color-gray tn-text-center"
-											style="padding-top: 5rpx;">
-											<text class="tn-icon-rocket tn-padding-right-xs tn-text-lg"></text>
-											<text class="tn-text-df">{{ item.likes }}</text>
-										</view>
-									</view>
-									<!-- <view class="tn-flex tn-flex-row-between tn-flex-col-center tn-padding-top-xs">
-                    <view class="justify-content-item">
-                      <view class="tn-flex tn-flex-col-center tn-flex-row-left">
-                        <view class="logo-pic">
-                          <view class="logo-image">
-                            <view class="" :style="'background-image:url('+ item.userImage +');width: 40rpx;height: 40rpx;background-size: cover;'">
-                            </view>
-                          </view>
-                        </view>
-                        <view class="tn-padding-left-xs">
-                          <text class="tn-color-gray tn-text-sm">{{ item.userName }}</text>
-                        </view>
-                  
-                      </view>
-                    </view>
-                    <view class="justify-content-item">
-                      <text class="tn-icon-fire tn-color-gray tn-padding-right-xs"></text>
-                      <text class="tn-color-gray">{{ item.viewUser.viewUserCount }}</text>
-                    </view>
-                  </view> -->
-								</view>
-							</view>
-						</template>
-					</tn-waterfall>
-				</view>
-
-
-
-
-			</view>
-
-
-			<view class="" v-if="current==2">
-
-				<view class="" style="padding: 30rpx 20rpx;">
-					<tn-waterfall ref="waterfall" v-model="list" @finish="handleWaterFallFinish">
-						<template v-slot:left="{ leftList }">
-							<view v-for="(item, index) in leftList" :key="item.id" class="product__item home-shadow"
-								@click="tn('/commPages/product')">
-								<view class="item__image">
-									<tn-lazy-load :threshold="6000" height="100%" :image="item.mainImage"
-										:index="item.id" imgMode="widthFix"></tn-lazy-load>
-								</view>
-								<view class="item__data tn-margin-left-sm tn-margin-right-sm">
-									<view class="item__title-container">
-										<text class="item__title tn-color-cat clamp-text-2">{{ item.title }}</text>
-									</view>
-									<view v-if="item.tags && item.tags.length > 0" class="item__tags-container">
-										<view v-for="(tagItem, tagIndex) in item.tags" :key="tagIndex"
-											class="item__tag">{{ tagItem }}</view>
-									</view>
-									<!-- <view class="item__price-container tn-color-red">
-                    <text class="item__price--unit">￥</text>
-                    <text class="item__price--integer">{{ item.price }}</text>
-                    <text class="tn-color-gray tn-text-sm tn-padding-left-sm" style="font-size: 24rpx;">{{ item.likes }} 人咨询</text>
-                  </view> -->
-
-									<view class="tn-flex tn-flex-row-between tn-flex-col-between tn-margin-top-xs">
-										<view class="justify-content-item tn-color-red">
-											<text class="tn-text-sm">￥</text>
-											<text class="tn-text-xl">{{ item.price }}</text>
-										</view>
-										<view class="justify-content-item tn-color-gray tn-text-center"
-											style="padding-top: 5rpx;">
-											<text class="tn-icon-rocket tn-padding-right-xs tn-text-lg"></text>
-											<text class="tn-text-df">{{ item.likes }}</text>
-										</view>
-									</view>
-
-
-									<!-- <view class="tn-flex tn-flex-row-between tn-flex-col-center tn-padding-top-xs">
-                    <view class="justify-content-item">
-                      <view class="tn-flex tn-flex-col-center tn-flex-row-left">
-                        <view class="logo-pic">
-                          <view class="logo-image">
-                            <view class="" :style="'background-image:url('+ item.userImage +');width: 40rpx;height: 40rpx;background-size: cover;'">
-                            </view>
-                          </view>
-                        </view>
-                        <view class="tn-padding-left-xs">
-                          <text class="tn-color-gray tn-text-sm">{{ item.userName }}</text>
-                        </view>
-                  
-                      </view>
-                    </view>
-                    <view class="justify-content-item">
-                      <text class="tn-icon-fire tn-color-gray tn-padding-right-xs"></text>
-                      <text class="tn-color-gray">{{ item.viewUser.viewUserCount }}</text>
-                    </view>
-                  </view> -->
-
-
-								</view>
-							</view>
-						</template>
-						<template v-slot:right="{ rightList }">
-							<view class="tn-text-bold home-shadow tn-main-gradient-blue tn-color-white"
-								style="height: 160rpx;margin: 0 10rpx 20rpx 10rpx;border-radius: 10rpx;"
-								@click="tn('/commPages/nav')">
-								<view class="tn-padding-left tn-padding-top-lg">
-									导航 · 图鸟生态
-								</view>
-								<view class="tn-padding-left tn-padding-top-xs">
-									看看都有什么
-									<text class="tn-icon-link tn-padding-left-xs"></text>
-								</view>
-							</view>
-							<view v-for="(item, index) in rightList" :key="item.id" class="product__item home-shadow"
-								@click="tn('/commPages/product')">
-								<view class="item__image">
-									<tn-lazy-load :threshold="6000" height="100%" :image="item.mainImage"
-										:index="item.id" imgMode="widthFix"></tn-lazy-load>
-								</view>
-								<view class="item__data tn-margin-left-sm tn-margin-right-sm">
-									<view class="item__title-container">
-										<text class="item__title tn-color-cat clamp-text-2">{{ item.title }}</text>
-									</view>
-									<view class="item__tags-container">
-										<view v-for="(tagItem, tagIndex) in item.tags" :key="tagIndex"
-											class="item__tag">{{ tagItem }}</view>
-									</view>
-									<!-- <view class="item__price-container tn-color-red">
-                    <text class="item__price--unit">￥</text>
-                    <text class="item__price--integer">{{ item.price }}</text>
-                    <text class="tn-color-gray tn-text-sm tn-padding-left-sm" style="font-size: 24rpx;">{{ item.likes }} 人咨询</text>
-                  </view> -->
-									<view class="tn-flex tn-flex-row-between tn-flex-col-between tn-margin-top-xs">
-										<view class="justify-content-item tn-color-red">
-											<text class="tn-text-sm">￥</text>
-											<text class="tn-text-xl">{{ item.price }}</text>
-										</view>
-										<view class="justify-content-item tn-color-gray tn-text-center"
-											style="padding-top: 5rpx;">
-											<text class="tn-icon-rocket tn-padding-right-xs tn-text-lg"></text>
-											<text class="tn-text-df">{{ item.likes }}</text>
-										</view>
-									</view>
-									<!-- <view class="tn-flex tn-flex-row-between tn-flex-col-center tn-padding-top-xs">
-                    <view class="justify-content-item">
-                      <view class="tn-flex tn-flex-col-center tn-flex-row-left">
-                        <view class="logo-pic">
-                          <view class="logo-image">
-                            <view class="" :style="'background-image:url('+ item.userImage +');width: 40rpx;height: 40rpx;background-size: cover;'">
-                            </view>
-                          </view>
-                        </view>
-                        <view class="tn-padding-left-xs">
-                          <text class="tn-color-gray tn-text-sm">{{ item.userName }}</text>
-                        </view>
-                  
-                      </view>
-                    </view>
-                    <view class="justify-content-item">
-                      <text class="tn-icon-fire tn-color-gray tn-padding-right-xs"></text>
-                      <text class="tn-color-gray">{{ item.viewUser.viewUserCount }}</text>
-                    </view>
-                  </view> -->
-								</view>
-							</view>
-						</template>
-					</tn-waterfall>
-				</view>
-
-
-
-
-			</view>
 
 			<view class="tn-padding-top-lg tn-flex tn-flex-col-center tn-flex-row-center">
 				<tn-load-more :status="loadStatus" v-if="listStatus === 0"></tn-load-more>
@@ -486,322 +213,27 @@
 					//  pageSize: 10,
 				},
 				current: 0,
+				type: '1',
 				scrollList: [{
-						name: '推荐'
+						name: '推荐',
+						type: '1'
 					},
 					{
-						name: '最新'
+						name: '最新',
+						type: '2'
 					},
 					{
-						name: '最热'
+						name: '最热',
+						type: '3'
 					}
 				],
 				cardCur: 0,
-				swiperList: [{
-					id: 0,
-					type: 'image',
-					title: '合作勾搭',
-					name: '作者微信 tnkewo',
-					url: 'https://cdn.nlark.com/yuque/0/2021/jpeg/280373/1637114629128-assets/web-upload/4f31b7b1-15c9-4363-b77c-02511905b0c4.jpeg',
-				}, {
-					id: 1,
-					type: 'image',
-					title: '海量分享',
-					name: '总有你想不到的创意',
-					url: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1668686455314-assets/web-upload/965b8479-863f-43ad-b89e-628839855cce.jpeg',
-				}, {
-					id: 2,
-					type: 'image',
-					title: '酷炫多彩',
-					name: '更多彩蛋等你探索',
-					url: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1668686455574-assets/web-upload/35e9ec1c-2dfd-4908-a8ae-f7a52b5868fe.jpeg',
-				}, {
-					id: 3,
-					type: 'image',
-					title: '适配多端',
-					name: 'APP、微信小程序、H5、Finclip',
-					url: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1668685780490-assets/web-upload/9df40671-e4f6-4742-af05-66887e81258e.jpeg',
-				}, {
-					id: 4,
-					type: 'image',
-					title: '',
-					name: '',
-					url: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1668685913448-assets/web-upload/7e474304-6de8-4e52-bb2d-b37cf6ebea75.jpeg',
-				}],
+				swiperList: [],
 
 				/* 瀑布流*/
 				loadStatus: 'loadmore',
 				list: [],
-				data: [{
-						title: '酷炫发现页面',
-						userName: '试试就逝世',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1661311316649-assets/web-upload/4de21afc-9abe-4c2a-b9fb-919d5537eb88.jpeg',
-						userImage: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1664005699098-assets/web-upload/e8b29292-72fc-4c1e-9d7c-fd9dba31cb62.jpeg',
-						storeType: 1, // 1 自营 2 第三方店铺
-						newProduct: true, // 是否为新品
-						tags: ['首页'],
-						price: 1.29,
-						likes: 2,
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 338
-						},
-					},
-					{
-						title: '圈子页面',
-						userName: '你的名字',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1661311317595-assets/web-upload/d0effa8c-78f5-477f-b070-481840860bfe.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg',
-						storeType: 1, // 1 自营 2 第三方店铺
-						newProduct: false, // 是否为新品
-						tags: ['表单', '新建'],
-						price: 0.05,
-						likes: 21,
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 289
-						},
-					},
-					{
-						title: '分类页面',
-						userName: '青梅煮马',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1649251556232-assets/web-upload/041b5cc9-2b8d-4d69-87b7-0441c4aefc92.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg',
-						storeType: 1, // 1 自营 2 第三方店铺
-						newProduct: true, // 是否为新品
-						tags: ['分类', '功能入口'],
-						price: 2.18,
-						likes: 6,
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 381
-						},
-					},
-					{
-						title: '新年活动页面',
-						userName: '你的名字',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1648173855092-assets/web-upload/c9d704b6-53a1-4021-a415-efb01fd23efb.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg',
-						newProduct: true, // 是否为新品
-						tags: ['首页', '新年活动'],
-						price: 0.01,
-						likes: 54,
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 526
-						},
-					},
-					{
-						title: '名片首页',
-						userName: '坟头草三米高',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1648118577434-assets/web-upload/64689435-f0e9-4f6b-bb30-927cd28be18d.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg',
-						newProduct: false, // 是否为新品
-						tags: [],
-						price: 1.08,
-						likes: 43,
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 372
-						},
-					},
-					{
-						title: '官网页面',
-						userName: '不许凶我',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1648118569596-assets/web-upload/4a310720-62d8-46db-9605-22bbf55e5d95.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg',
-						storeType: 2, // 1 自营 2 第三方店铺
-						storeType: 2, // 1 自营 2 第三方店铺
-						newProduct: false, // 是否为新品
-						tags: ['官网'],
-						price: 0.01,
-						likes: 0,
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 694
-						},
-					},
-					{
-						title: '组件页面',
-						userName: 'seventeen',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1648118575211-assets/web-upload/30620690-02eb-4939-8d75-72075f1717dd.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg',
-						storeType: 2, // 1 自营 2 第三方店铺
-						newProduct: false, // 是否为新品
-						tags: [],
-						price: 1.88,
-						likes: 21,
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 508
-						},
-					},
-					{
-						title: '官网模板',
-						userName: '你的名字',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1648118569642-assets/web-upload/dc58fb91-92e2-4807-92cc-f277a9038fff.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg',
-						storeType: 1, // 1 自营 2 第三方店铺
-						newProduct: false, // 是否为新品
-						tags: [],
-						price: 1.29,
-						likes: 39,
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 923
-						},
-					},
-					{
-						title: '博客页面',
-						userName: '图鸟东东',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1648118569457-assets/web-upload/b1bd35ad-1e7e-4d83-97c2-27eba8f5efdb.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg',
-						storeType: 1, // 1 自营 2 第三方店铺
-						newProduct: false, // 是否为新品
-						tags: [],
-						price: 0.05,
-						likes: 66,
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 989
-						},
-					},
-					{
-						title: '扫码页面',
-						userName: '此处凶姐承包',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2021/jpeg/280373/1640501433262-assets/web-upload/c8c99c94-e4d4-4b48-a853-bea4a19ff17b.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg',
-						storeType: 1, // 1 自营 2 第三方店铺
-						newProduct: false, // 是否为新品
-						tags: ['扫码', '功能页'],
-						price: 0.01,
-						likes: 12,
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 129
-						},
-					}
-				],
+
 			}
 		},
 		onLoad() {
@@ -829,7 +261,8 @@
 			},
 			async getList(refresh) {
 				let params = {
-					...this.params
+					...this.params,
+					type: this.type
 
 				}
 				try {
@@ -872,6 +305,9 @@
 			// tab选项卡切换
 			tabChange(index) {
 				this.current = index
+				this.type = this.scrollList[index].type
+				this.init()
+				this.getList()
 			},
 
 

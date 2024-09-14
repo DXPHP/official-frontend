@@ -52,7 +52,14 @@ export const profile = (data) => httpRequest(`user/profile`, 'POST',
 export const myLikes = (data) => httpRequest(`support/myLikes`, 'GET',
 	data
 )
-
+// 我的消息
+export const myNotification = (data) => httpRequest(`support/myNotification`, 'GET',
+	data
+)
+// 我的消息数量
+export const notifiedCount = (data) => httpRequest(`support/notifiedCount`, 'GET',
+	data
+)
 
 // 发送短信验证码
 export const send = (data) => httpRequest(`sms/send`, 'POST',

@@ -2,7 +2,7 @@
 	<view class="start-index">
 		<view v-if="tabberPageLoadFlag[0]" :style="{display: currentIndex === 0 ? '' : 'none'}">
 			<scroll-view class="custom-tabbar-page" scroll-y enable-back-to-top @scrolltolower="tabbarPageScrollLower">
-				<Home ref="home"></Home>
+				<Home ref="home" @change="switchTabbar"></Home>
 			</scroll-view>
 		</view>
 		<view v-if="tabberPageLoadFlag[1]" :style="{display: currentIndex === 1 ? '' : 'none'}">
@@ -129,6 +129,9 @@
 				}
 				if (this.currentIndex === 3) {
 					this.$refs.news.isReachBottom && this.$refs.news.isReachBottom()
+				}
+				if (this.currentIndex === 4) {
+					this.$refs.mine.updateInfo && this.$refs.mine.updateInfo()
 				}
 			},
 

@@ -8,38 +8,24 @@
       </view>
     </tn-nav-bar> -->
 
-		<view class="top-backgroup">
+		<!-- <view class="top-backgroup">
 			<image
 				src='https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1666862894380-assets/web-upload/e3a97a87-7b21-442a-be37-f6dae7750eae.jpeg'
 				mode='widthFix' class='backgroud-image'></image>
-		</view>
+		</view> -->
 
-		<swiper class="card-swiper" :circular="true" :autoplay="false" duration="500" interval="5000"
+	<!-- 	<swiper class="card-swiper" :circular="true" :autoplay="false" duration="500" interval="5000"
 			previous-margin="170rpx" next-margin="170rpx" @change="cardSwiper" style="margin-top: -470rpx;">
 			<swiper-item v-for="(item,index) in swiperList" :key="index" :class="cardCur==index?'cur':''">
 				<view class="tnphone-white-min swiper-item  wow fadeInLeft2">
 					<view class="skin wow fadeInRight2">
 						<view class="screen wow fadeInUp2">
-							<!-- <view class="head">
-        			  <text>{{item.name}}</text>
-        		  </view> -->
+					
 							<view class="peak wow">
 								<view class="sound"></view>
 								<view class="lens"></view>
 							</view>
-							<!-- <view class="area-l">
-        			  <view class="">
-                  <text class="tn-icon-all"></text>
-                  <text class="tn-icon-wifi tn-padding-left-xs"></text>
-        			  </view>
-        		  </view>
-        		  <view class="area-r">
-        			  <view class="">
-                  <text class="tn-icon-light"></text>
-                  <text class="tn-icon-time tn-padding-left-xs"></text>
-                </view>
-        		  </view> -->
-							<!-- <view class="talk"></view> -->
+						
 
 							<view class="image-banner">
 								<image :src="item.url" mode="aspectFill" v-if="item.type=='image'"></image>
@@ -49,7 +35,7 @@
 					</view>
 				</view>
 			</swiper-item>
-		</swiper>
+		</swiper> -->
 
 
 		<!--    <view class="">
@@ -64,15 +50,12 @@
 
 
 		<!-- 方式4 start-->
-		<view class="tn-flex tn-flex-wrap">
+		<!-- <view class="tn-flex tn-flex-wrap">
 			<view v-for="(item, index) in iconData" :key="index" style="width: 25%;"
 				@click="tn('/discoveryPages/business')">
 				<view class="tn-margin-bottom tn-margin-top-sm">
 					<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
-						<!-- 预留的图片形式 -->
-						<!-- <view class="icon4__item--icon tn-flex tn-flex-row-center tn-flex-col-center" :style="'background-image:url('+ item.url +');background-size:100% 100%;background-size: cover;'">
-            </view> -->
-						<!-- 字体图标形式-->
+			
 						<view
 							class="icon4__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur tn-cool-color-icon4"
 							:class="['tn-cool-bg-color-' + item.color]">
@@ -84,7 +67,7 @@
 					</view>
 				</view>
 			</view>
-		</view>
+		</view> -->
 		<!-- 方式4 end-->
 
 

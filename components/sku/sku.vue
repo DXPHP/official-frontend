@@ -29,7 +29,7 @@
 						<view class="justify-content-item" style="color: #FF6E16;">
 							<text class="tn-text-lg tn-text-bold"></text>
 							<text class="tn-padding-right-xs tn-text-xs">￥</text>
-							<text class="tn-text-bold" style="font-size: 40rpx;">{{info.price}}</text>
+							<text class="tn-text-bold" style="font-size: 40rpx;">{{dataInfo.price}}</text>
 							<!-- <text class="tn-padding-left-sm tn-text-xs">优惠价格</text> -->
 						</view>
 						<view class="justify-content-item tn-round tn-text-xs tn-color-orangered">
@@ -47,7 +47,8 @@
 					<view v-for="(item, index) in tagList1" :key="index"
 						class="tn-tag-content__item tn-margin-right tn-text-sm tn-text-bold"
 						:class="[item.select ? 'tag-select' : 'tag-select-no ']" @click="handleClick1(index)">
-						<image :src="item.image" mode="aspectFill" style="width: 40rpx;height: 40rpx;margin-right: 10rpx;"></image>
+						<image :src="item.image" mode="aspectFill"
+							style="width: 40rpx;height: 40rpx;margin-right: 10rpx;"></image>
 						<!-- <text :class="['tn-icon-' + item.icon]"></text> -->
 						{{ item.spec_name }}
 					</view>
@@ -66,7 +67,7 @@
 						数量
 					</view>
 					<view class="justify-content-item" style="">
-						<tn-number-box v-model="valueNum" :min="1" :max="20" :disabledInput="true"></tn-number-box>
+						<tn-number-box v-model="valueNum" :min="1" :max="dataInfo.maxNum" :disabledInput="true"></tn-number-box>
 					</view>
 				</view>
 			</scroll-view>
@@ -137,6 +138,10 @@
 						select: false
 					},
 				],
+				dataInfo: {
+					maxNum: 20,
+					price: 0
+				}
 			}
 		},
 		watch: {
@@ -149,6 +154,7 @@
 			data: {
 				handler(val) {
 					this.info = val
+					this.dataInfo.price=this.info.price
 					let data = val.spec
 					data.forEach(res => {
 						res.select = false
@@ -170,6 +176,9 @@
 						if (res.spec_id != this.tagList1[index].spec_id) {
 							console.log('点击率变化6666666', res.spec_id)
 							res.select = false
+						}else{
+							this.dataInfo.price=res.price
+							this.dataInfo.maxNum=res.stock
 						}
 					})
 				}
@@ -207,8 +216,8 @@
 
 <style lang="scss" scoped>
 	.tag-select {
-		color: #07C160;
-		border: 1rpx solid #07C160;
+		color: #e83845;
+		border: 1rpx solid #e83845;
 		background-color: #FFFFFF;
 		border-radius: 16rpx;
 	}

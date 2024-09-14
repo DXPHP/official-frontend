@@ -164,13 +164,18 @@
 						</view>
 					</view>
 					<view class="tn-padding-sm tn-margin-xs tn-radius" @click="tn('/minePages/message')">
-						<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
+						<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center"
+							style="position: relative;">
 							<view
 								class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-bg-blue--light">
 								<view class="tn-icon-message tn-color-wallpaper"></view>
 							</view>
 							<view class="tn-text-center">
 								<text class="tn-text-ellipsis">我的消息</text>
+							</view>
+							<view v-if="messageNum>0"
+								style="height: 60rpx;width: 60rpx;border-radius: 50%;background-color: #ff0000;color: #ffffff;display: flex;justify-content: center;align-items: center;position: absolute;top: -40rpx;right: 0rpx;">
+								{{messageNum}}
 							</view>
 						</view>
 					</view>
@@ -323,6 +328,10 @@
 		appinfo
 	} from '@/api/home.js'
 	import {
+		notifiedCount
+	} from '@/api/user.js'
+
+	import {
 		getStorage
 	} from '@/common/db.js';
 	import {
@@ -335,6 +344,7 @@
 		name: 'Mine',
 		data() {
 			return {
+				messageNum: 0,
 				show1: false,
 				appInfo: {},
 				userInfo: {
@@ -354,6 +364,9 @@
 			updateInfo() {
 				let info = getStorage(storage_userInfo)
 				this.userInfo = JSON.parse(info).userinfo
+				notifiedCount().then(res => {
+					this.messageNum = res.data.count
+				})
 			},
 			// 跳转
 			tn(e) {

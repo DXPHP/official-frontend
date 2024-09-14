@@ -194,7 +194,7 @@
 		</view> -->
 
 		<!-- 标题-->
-		<view class="tn-flex tn-flex-row-between tn-flex-col-center tn-margin-top" @click="tn('')">
+		<view class="tn-flex tn-flex-row-between tn-flex-col-center tn-margin-top" @click="switchTab(1)">
 			<view class="justify-content-item tn-margin tn-text-bold tn-text-xl blue-title">
 				推荐产品
 			</view>
@@ -231,7 +231,7 @@
 								</view>
 								<view class="justify-content-item tn-color-gray tn-text-center"
 									style="padding-top: 5rpx;">
-									<text class="tn-icon-rocket tn-padding-right-xs tn-text-lg"></text>
+									<text class="tn-icon-like tn-padding-right-xs tn-text-lg"></text>
 									<text class="tn-text-df">{{ item.likes }}</text>
 								</view>
 							</view>
@@ -248,7 +248,7 @@
 		</view>
 
 		<!-- 标题-->
-		<view class="tn-flex tn-flex-row-between tn-flex-col-center tn-margin-top" @click="tn('')">
+		<view class="tn-flex tn-flex-row-between tn-flex-col-center tn-margin-top"  @click="switchTab(2)">
 			<view class="justify-content-item tn-margin tn-text-bold tn-text-xl blue-title">
 				热门案例
 			</view>
@@ -286,7 +286,7 @@
 
 
 		<!-- 标题-->
-		<view class="tn-flex tn-flex-row-between tn-flex-col-center tn-margin-top" @click="tn('')">
+		<view class="tn-flex tn-flex-row-between tn-flex-col-center tn-margin-top" @click="switchTab(3)">
 			<view class="justify-content-item tn-margin tn-text-bold tn-text-xl blue-title">
 				企业资讯
 			</view>
@@ -387,7 +387,7 @@
 		<view class="tn-info__container tn-flex tn-flex-wrap tn-flex-col-center tn-margin-left tn-margin-right">
 			<block v-for="(item, index) in cooperationList" :key="index">
 				<view
-					class="tn-flex tn-flex-direction-row tn-flex-col-center tn-flex-row-between tn-color-white tn-shadow-blur tn-col-3 tn-margin-top-xs"
+					class="tn-flex tn-flex-direction-row tn-flex-col-center tn-flex-row-between tn-color-white tn-shadow-blur tn-col-3 tn-margin-top-sm"
 					@click="tn()">
 					<view class="partner__item home-shadow" @click="tn('/commPages/product')">
 						<view class="item__image">
@@ -712,8 +712,8 @@
 			openLocation() {
 				wx.vibrateShort();
 				uni.openLocation({
-					longitude: this.company.lng,
-					latitude: this.company.lat,
+					longitude: Number(this.company.lng),
+					latitude: Number(this.company.lat),
 					name: this.company.name,
 					address: this.company.address
 				})
@@ -722,11 +722,15 @@
 			cardSwiper(e) {
 				this.cardCur = e.detail.current
 			},
+			switchTab(e) {
+				this.$emit('change',e)
+			},
 			// 跳转
 			tn(e) {
 				uni.navigateTo({
 					url: e,
 				});
+
 			},
 		}
 	}

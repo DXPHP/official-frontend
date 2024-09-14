@@ -163,9 +163,10 @@
 			<view class="tn-flex tn-flex-row-between tn-flex-col-center">
 				<view class="tn-flex-2 justify-content-item tn-color-gray">
 					<view class="tn-flex tn-flex-row-center">
-						<view class="tn-flex-1" @click="goBack">
-							<view class="tn-icon-home-in" style="font-size: 42rpx;"></view>
-							<view class="tn-text-center tn-text-sm tn-padding-top-xs">首页</view>
+						<view class="tn-flex-1" @click="sendGood">
+							<view :class="info.is_likes?'tn-icon-like-fill text-red':'tn-icon-like'"
+								style="font-size: 42rpx;"></view>
+							<view class="tn-text-center tn-text-sm tn-padding-top-xs">收藏</view>
 						</view>
 						<view class="tn-flex-1 tn-padding-right-xl">
 							<button class="tn-button--clear-style" open-type="contact" style="border-radius: 0;">
@@ -232,7 +233,8 @@
 	import SkuModal from '@/components/sku/sku.vue'
 	import template_page_mixin from '@/libs/mixin/template_page_mixin.js'
 	import {
-		goodsDetail
+		goodsDetail,
+		likes
 	} from '@/api/home.js'
 	export default {
 		components: {
@@ -353,6 +355,18 @@
 			this.handlePageScroll(e.scrollTop)
 		},
 		methods: {
+			sendGood() {
+				likes({
+					relation_id: this.id,
+					likes_type: 4
+				}).then(res => {
+					this.getData(1)
+					uni.showToast({
+						icon: 'none',
+						title: res.msg
+					})
+				})
+			},
 			async getData() {
 				let res = await goodsDetail({
 					id: this.id
@@ -395,10 +409,10 @@
 			confirm(e) {
 				console.log('没拿到返回的数据了', e)
 				let info = {
-					name:this.info.name,
+					name: this.info.name,
 					...e.val,
-					num:e.num,
-					id:this.info.id
+					num: e.num,
+					id: this.info.id
 				}
 				uni.navigateTo({
 					url: '/commPages/order?info=' + JSON.stringify(info)
@@ -438,6 +452,9 @@
 </script>
 
 <style lang="scss" scoped>
+	.text-red{
+		color: #E83A30;
+	}
 	.template-product {}
 
 	.tn-tabbar-height {

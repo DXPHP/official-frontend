@@ -10,8 +10,33 @@
 				</view>
 			</tn-nav-bar>
 		</view>
-
+<view class="top-backgroup">
+			<image
+				src='https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1666862894380-assets/web-upload/e3a97a87-7b21-442a-be37-f6dae7750eae.jpeg'
+				mode='widthFix' class='backgroud-image'></image>
+		</view>
 		<view class="tn-margin-top-xs" :style="{paddingTop: vuex_custom_bar_height + 'px'}">
+			<swiper class="card-swiper" :circular="true" :autoplay="false" duration="500" interval="5000"
+				previous-margin="170rpx" next-margin="170rpx" @change="cardSwiper" style="margin-top: -470rpx;">
+				<swiper-item v-for="(item,index) in swiperList" :key="index" :class="cardCur==index?'cur':''">
+					<view class="tnphone-white-min swiper-item  wow fadeInLeft2">
+						<view class="skin wow fadeInRight2">
+							<view class="screen wow fadeInUp2">
+						
+								<view class="peak wow">
+									<view class="sound"></view>
+									<view class="lens"></view>
+								</view>
+
+								<view class="image-banner">
+									<image :src="item" mode="aspectFill"></image>
+								</view>
+
+							</view>
+						</view>
+					</view>
+				</swiper-item>
+			</swiper>
 			<view class="nav_title--wrap">
 				<view class="nav_title tn-main-gradient-blue">
 					<!-- <text class="tn-icon-rocket tn-padding-right-sm"></text> -->
@@ -49,7 +74,7 @@
 		</view>
 
 
-		
+
 
 
 		<!-- 悬浮按钮-->
@@ -134,7 +159,8 @@
 						src: 'https://resource.tuniaokj.com/images/blogger/blogger_beibei.jpg'
 					},
 				],
-
+				cardCur: 0,
+				swiperList: [],
 				id: '',
 				info: {}
 			}
@@ -144,6 +170,9 @@
 			this.getData()
 		},
 		methods: {
+			cardSwiper(e) {
+				this.cardCur = e.detail.current
+			},
 			toComment(id, user_id) {
 				this.commentShow = true
 				this.$refs.pinglun.open(id, user_id)
@@ -175,6 +204,7 @@
 				}
 				let res = await caseDetail(params)
 				this.info = res.data
+				this.swiperList = res.data.data.images
 			},
 			// 跳转
 			tn(e) {
@@ -187,40 +217,277 @@
 </script>
 
 <style lang="scss" scoped>
+	/* 阴影 start*/
+	.home-shadow {
+		border-radius: 15rpx;
+		box-shadow: 0rpx 0rpx 50rpx 0rpx rgba(0, 0, 0, 0.07);
+	}
 	
-	// 评论 start
-		.evaluate-box {
-			z-index: 999;
+	
+	/* .tnphone-white-min 细边框*/
+	.tnphone-white-min {
+		width: 380rpx;
+		height: 800rpx;
+		border-radius: 40rpx;
+		background: #E9E5F3;
+		padding: 7rpx;
+		display: table;
+		color: #333;
+		box-sizing: border-box;
+		box-shadow: 0rpx 10rpx 50rpx 0rpx rgba(0, 0, 0, 0.15);
+		margin: 70rpx auto;
+		cursor: default;
+		position: relative
+	}
+	
+	.tnphone-white-min .skin {
+		width: 100%;
+		height: 100%;
+		border-radius: 40rpx;
+		background: #E9E5F3;
+		padding: 10rpx;
+	}
+	
+	.tnphone-white-min .screen {
+		width: 100%;
+		height: 100%;
+		border-radius: 30rpx;
+		background: #E9E5F3;
+		position: relative;
+		overflow: hidden
+	}
+	
+	.tnphone-white-min .head {
+		width: 100%;
+		height: 90rpx;
+		text-align: center;
+		position: absolute;
+		padding: 45rpx 15rpx 10rpx 15rpx;
+	}
+	
+	.tnphone-white-min .peak {
+		left: 22%;
+		width: 56%;
+		height: 27rpx;
+		margin: -2rpx auto 0rpx;
+		border-radius: 0 0 20rpx 20rpx;
+		background: #E9E5F3;
+		position: absolute
+	}
+	
+	.tnphone-white-min .sound {
+		width: 48rpx;
+		height: 6rpx;
+		border-radius: 15rpx;
+		background: #555;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		margin-left: -24rpx;
+		margin-top: -10rpx;
+		box-shadow: 0rpx 4rpx 4rpx 0rpx #444 inset
+	}
+	
+	.tnphone-white-min .lens {
+		width: 6rpx;
+		height: 6rpx;
+		border-radius: 50%;
+		background: #2c5487;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		margin-left: 34rpx;
+		margin-top: -10rpx
+	}
+	
+	.tnphone-white-min .talk {
+		width: 50%;
+		height: 6rpx;
+		border-radius: 15rpx;
+		background: rgba(0, 0, 0, .3);
+		position: absolute;
+		bottom: 8rpx;
+		left: 50%;
+		margin-left: -25%
+	}
+	
+	.tnphone-white-min .area-l,
+	.tnphone-white-min .area-r {
+		width: 70rpx;
+		height: 16rpx;
+		position: absolute;
+		top: 6rpx
+	}
+	
+	.tnphone-white-min .area-l {
+		left: 0;
+		text-align: center;
+		font-size: 12rpx;
+		line-height: 22rpx;
+		text-indent: 10rpx;
+		font-weight: 600;
+		padding-left: 20rpx;
+	}
+	
+	.tnphone-white-min .area-r {
+		right: 0;
+		text-align: center;
+		font-size: 12rpx;
+		line-height: 22rpx;
+		text-indent: 10rpx;
+		font-weight: 600;
+		padding-right: 20rpx;
+	}
+	
+	.tnphone-white-min .fa-feed {
+		float: left;
+		font-size: 12rpx !important;
+		transform: rotate(-45deg);
+		margin-top: 4rpx;
+		margin-right: 8rpx
+	}
+	
+	.tnphone-white-min .fa-battery-full {
+		float: left;
+		font-size: 12rpx !important;
+		margin-top: 6rpx
+	}
+	
+	.tnphone-white-min .fa-chevron-left {
+		float: left;
+		margin-top: 4rpx
+	}
+	
+	.tnphone-white-min .fa-cog {
+		float: right;
+		margin-top: 4rpx
+	}
+	
+	.tnphone-white-min .btn01 {
+		width: 3rpx;
+		height: 28rpx;
+		border-radius: 3rpx 0 0 3rpx;
+		background: #222;
+		position: absolute;
+		top: 105rpx;
+		left: -3rpx
+	}
+	
+	.tnphone-white-min .btn02 {
+		width: 3rpx;
+		height: 54rpx;
+		border-radius: 3rpx 0 0 3rpx;
+		background: #222;
+		position: absolute;
+		top: 160rpx;
+		left: -3rpx
+	}
+	
+	.tnphone-white-min .btn03 {
+		width: 3rpx;
+		height: 54rpx;
+		border-radius: 3rpx 0 0 3rpx;
+		background: #222;
+		position: absolute;
+		top: 230rpx;
+		left: -3rpx
+	}
+	
+	.tnphone-white-min .btn04 {
+		width: 3rpx;
+		height: 86rpx;
+		border-radius: 0 3rpx 3rpx 0;
+		background: #222;
+		position: absolute;
+		top: 180rpx;
+		right: -3rpx
+	}
+	
+	/* 顶部背景图 start */
+	.top-backgroup {
+		height: 450rpx;
+		z-index: -1;
+	
+		.backgroud-image {
 			width: 100%;
-			position: fixed;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			padding: 10rpx 30rpx 30rpx;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			border-top: 1rpx solid #e1e1e1;
-	
-			.evaluate-input {
-				flex: 1;
-				padding: 20rpx;
-				background-color: #f3f3f3;
-				color: #666666;
-	
-			}
-	
-			.evaluate-icon {
-				display: flex;
-				align-items: center;
-				margin: 0 10rpx;
-			}
-	
-			.text-red {
-				color: #ff0000;
-			}
-	
+			height: 446rpx;
+			// z-index: -1;
 		}
+	}
+	
+	/* 顶部背景图 end */
+	/* 轮播样机样式 start*/
+	.card-swiper {
+		height: 810rpx !important;
+	}
+	
+	.card-swiper swiper-item {
+		width: 260rpx !important;
+		// left: 170rpx;
+		// width: 380rpx !important;
+		// left: 185rpx;
+		box-sizing: border-box;
+		padding: 0rpx 15rpx 90rpx 15rpx;
+		overflow: initial;
+	}
+	
+	.card-swiper swiper-item .swiper-item {
+		display: block;
+		transform: scale(0.45);
+		transition: all 0.2s ease-in 0s;
+		overflow: hidden;
+	}
+	
+	.card-swiper swiper-item.cur .swiper-item {
+		transform: scale(0.65);
+		transition: all 0.2s ease-in 0s;
+	}
+	
+	.image-banner {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	.image-banner image {
+		width: 100%;
+		height: 770rpx;
+		// border: 1rpx solid red;
+	}
+	// 评论 start
+	.evaluate-box {
+		z-index: 999;
+		width: 100%;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		padding: 10rpx 30rpx 30rpx;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border-top: 1rpx solid #e1e1e1;
+
+		.evaluate-input {
+			flex: 1;
+			padding: 20rpx;
+			background-color: #f3f3f3;
+			color: #666666;
+
+		}
+
+		.evaluate-icon {
+			display: flex;
+			align-items: center;
+			margin: 0 10rpx;
+		}
+
+		.text-red {
+			color: #ff0000;
+		}
+
+	}
+
 	/* 胶囊*/
 	.tn-custom-nav-bar__back {
 		width: 100%;

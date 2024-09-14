@@ -155,10 +155,14 @@
 				},
 				cardCur: 0,
 				list: [],
-				isPlay: true
+				isPlay: true,
+				id: ''
 			}
 		},
-		async onLoad() {
+		async onLoad(e) {
+			if (e && e.id) {
+				this.id = e.id
+			}
 			await this.getList()
 			const videoContext = uni.createVideoContext(`video-${this.list[0]['id']}`, this)
 			// #ifdef H5
@@ -233,7 +237,9 @@
 			async getList(refresh) {
 				let params = {
 					...this.params
-
+				}
+				if (this.id) {
+					params.id = this.id
 				}
 				try {
 					let res = await videosList(params)
