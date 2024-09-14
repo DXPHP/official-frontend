@@ -61,7 +61,7 @@
 				</view>
 			</view>
 
-			<view class="tn-flex tn-flex-row-between tn-strip-bottom-min tn-padding" @click="showModal3">
+			<!-- 	<view class="tn-flex tn-flex-row-between tn-strip-bottom-min tn-padding" @click="showModal3">
 				<view class="justify-content-item">
 					<view class="tn-text-bold tn-text-lg">
 						姓名
@@ -73,8 +73,8 @@
 				<view class="justify-content-item tn-text-lg tn-color-grey">
 					<view class="tn-icon-right tn-padding-top"></view>
 				</view>
-			</view>
-			<picker @change="bindPickerChange" :value="index" :range="array">
+			</view> -->
+			<!-- <picker @change="bindPickerChange" :value="index" :range="array">
 				<view class="tn-flex tn-flex-row-between tn-strip-bottom-min tn-padding">
 					<view class="justify-content-item">
 						<view class="tn-text-bold tn-text-lg">
@@ -89,8 +89,8 @@
 						<view class="tn-icon-right tn-padding-top"></view>
 					</view>
 				</view>
-			</picker>
-			<picker @change="bindDateChange" mode="date" :value="date" :start="startDate" :end="endDate">
+			</picker> -->
+			<!-- 	<picker @change="bindDateChange" mode="date" :value="date" :start="startDate" :end="endDate">
 				<view class="tn-flex tn-flex-row-between tn-strip-bottom-min tn-padding">
 					<view class="justify-content-item">
 						<view class="tn-text-bold tn-text-lg">
@@ -104,8 +104,8 @@
 						<view class="tn-icon-right tn-padding-top"></view>
 					</view>
 				</view>
-			</picker>
-			<picker @change="bindPickerChange1" :value="index1" :range="array1">
+			</picker> -->
+			<!-- 	<picker @change="bindPickerChange1" :value="index1" :range="array1">
 				<view class="tn-flex tn-flex-row-between tn-strip-bottom-min tn-padding">
 					<view class="justify-content-item">
 						<view class="tn-text-bold tn-text-lg">
@@ -119,7 +119,7 @@
 						<view class="tn-icon-right tn-padding-top"></view>
 					</view>
 				</view>
-			</picker>
+			</picker> -->
 			<tn-modal v-model="show1" :custom="true" :showCloseBtn="true">
 				<view class="custom-modal-content">
 					<view class="">
@@ -303,13 +303,14 @@
 			},
 			async bindWechatPhone(e) {
 				let that = this
-				if (e.detail.errMsg != 'getPhoneNumber:ok') return 1
+				if (e.errMsg != 'getPhoneNumber:ok') return 1
 				let res = await bindMobile({
-					code: e.detail.code
+					code: e.code
 				})
-				let data = updateUserInfo()
+				let data = await updateUserInfo()
 				this.user.mobile = data.userinfo.mobile
-				console.log('绑定成功', res)
+				this.show2 = false
+
 			},
 			// 跳转
 			tn(e) {
@@ -416,7 +417,7 @@
 				this.user.avatar = this.info.avatar
 				this.show4 = false
 				this.updatedUserInfo()
-				
+
 			},
 
 
