@@ -168,7 +168,7 @@
 								style="font-size: 42rpx;"></view>
 							<view class="tn-text-center tn-text-sm tn-padding-top-xs">收藏</view>
 						</view>
-						<view class="tn-flex-1 tn-padding-right-xl">
+						<view class="tn-flex-1 tn-padding-right-xl" @click="makePhoneCall('18778813224')">
 							<button class="tn-button--clear-style" open-type="contact" style="border-radius: 0;">
 								<view class="tn-icon-service-simple" style="font-size: 42rpx;"></view>
 								<view class="tn-text-center tn-text-sm tn-padding-top-xs">客服</view>
@@ -355,6 +355,12 @@
 			this.handlePageScroll(e.scrollTop)
 		},
 		methods: {
+			makePhoneCall(num) {
+				uni.makePhoneCall({
+					phoneNumber: num
+				});
+			},
+			
 			sendGood() {
 				likes({
 					relation_id: this.id,

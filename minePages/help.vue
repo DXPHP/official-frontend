@@ -20,10 +20,10 @@
 				</view>
 			</view>
 			<view class="tn-flex tn-flex-row-between tn-strip-bottom-min tn-padding tn-margin-top-xs"
-				v-for="(item, index) in helpList" :key="index" @click="tn('/minePages/content')">
+				v-for="(item, index) in helpList" :key="index" @click="tn('/minePages/content?data='+JSON.stringify(item.answer))">
 				<view class="justify-content-item">
 					<view class="tn-text-df">
-						{{ item.q }}
+						{{ item.question }}
 					</view>
 				</view>
 				<view class="justify-content-item tn-text-lg tn-color-grey">
@@ -31,14 +31,14 @@
 				</view>
 			</view>
 
-			<view class="tn-flex tn-flex-row-between tn-padding tn-strip-bottom-min tn-strip-top">
+			<!-- <view class="tn-flex tn-flex-row-between tn-padding tn-strip-bottom-min tn-strip-top">
 				<view class="justify-content-item">
 					<view class="tn-text-bold tn-text-lg">
 						登录问题
 					</view>
 				</view>
-			</view>
-			<view class="tn-flex tn-flex-row-between tn-strip-bottom-min tn-padding tn-margin-top-xs"
+			</view> -->
+			<!-- <view class="tn-flex tn-flex-row-between tn-strip-bottom-min tn-padding tn-margin-top-xs"
 				v-for="(item, index) in helpList" :key="index" @click="tn('/minePages/content')">
 				<view class="justify-content-item">
 					<view class="tn-text-df">
@@ -48,16 +48,16 @@
 				<view class="justify-content-item tn-text-lg tn-color-grey">
 					<view class="tn-icon-right"></view>
 				</view>
-			</view>
-
+			</view> -->
+<!-- 
 			<view class="tn-flex tn-flex-row-between tn-padding tn-strip-bottom-min tn-strip-top">
 				<view class="justify-content-item">
 					<view class="tn-text-bold tn-text-lg">
 						其他问题
 					</view>
 				</view>
-			</view>
-			<view class="tn-flex tn-flex-row-between tn-strip-bottom-min tn-padding tn-margin-top-xs"
+			</view> -->
+	<!-- 		<view class="tn-flex tn-flex-row-between tn-strip-bottom-min tn-padding tn-margin-top-xs"
 				v-for="(item, index) in helpList" :key="index" @click="tn('/minePages/content')">
 				<view class="justify-content-item">
 					<view class="tn-text-df">
@@ -67,12 +67,12 @@
 				<view class="justify-content-item tn-text-lg tn-color-grey">
 					<view class="tn-icon-right"></view>
 				</view>
-			</view>
+			</view> -->
 
 		</view>
 
 
-		<view
+	<!-- 	<view
 			class="tn-footerfixed tn-flex tn-flex-row-between tn-flex-col-center tn-padding tn-safe-area-inset-bottom tn-bg-white"
 			@click="showModal">
 			<view class="justify-content-item tn-padding-bottom">
@@ -103,7 +103,7 @@
 					<text class="tn-text-sm">人工客服</text>
 				</view>
 			</view>
-		</view>
+		</view> -->
 
 		<tn-modal v-model="show1" :custom="true">
 			<view class="custom-modal-content">

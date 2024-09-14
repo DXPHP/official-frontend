@@ -261,7 +261,7 @@
 					</button>
 				</tn-list-cell>
 
-				<tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30" @click="callPhoneNumber"
+				<!-- <tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30" @click="callPhoneNumber"
 					data-number="18266666666">
 					<view class="tn-flex tn-flex-col-center">
 						<view class="icon1__item--icon tn-flex tn-flex-row-center tn-flex-col-center"
@@ -274,7 +274,7 @@
 							{{appInfo.customer_service}}
 						</view>
 					</view>
-				</tn-list-cell>
+				</tn-list-cell> -->
 				<tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30"
 					@click="tn('/minePages/setApp')" data-number="18266666666">
 					<view class="tn-flex tn-flex-col-center">

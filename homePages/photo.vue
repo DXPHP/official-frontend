@@ -94,14 +94,7 @@
 								<tn-lazy-load :threshold="6000" height="100%" :image="item.image" :index="item.id"
 									imgMode="widthFix"></tn-lazy-load>
 							</view>
-							<!-- <view class="item__data">
-                  <view class="item__title-container">
-                    <text class="item__title tn-color-black">{{ item.title }}</text>
-                  </view>
-                  <view v-if="item.tags && item.tags.length > 0" class="item__tags-container">
-                    <view v-for="(tagItem, tagIndex) in item.tags" :key="tagIndex" class="item__tag">{{ tagItem }}</view>
-                  </view>
-                </view> -->
+					
 						</view>
 					</template>
 					<template v-slot:right="{ rightList }">
@@ -111,14 +104,7 @@
 								<tn-lazy-load :threshold="6000" height="100%" :image="item.image" :index="item.id"
 									imgMode="widthFix"></tn-lazy-load>
 							</view>
-							<!-- <view class="item__data">
-                  <view class="item__title-container">
-                    <text class="item__title tn-color-black">{{ item.title }}</text>
-                  </view>
-                  <view v-if="item.tags && item.tags.length > 0" class="item__tags-container">
-                    <view v-for="(tagItem, tagIndex) in item.tags" :key="tagIndex" class="item__tag">{{ tagItem }}</view>
-                  </view>
-                </view> -->
+							
 						</view>
 					</template>
 				</tn-waterfall>
@@ -172,7 +158,8 @@
 					page: 1,
 					//  pageSize: 10,
 				},
-				id: ''
+				id: '',
+				list:[]
 
 
 			}
