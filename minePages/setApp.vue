@@ -11,6 +11,28 @@
 		</view>
 		<view :style="{paddingTop: vuex_custom_bar_height + 'px'}">
 			<view class="wallpaper-shadow  tn-margin-bottom-lg">
+				<tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30"
+					@click="tn('/minePages/agreement?type='+'about ')">
+					<view class="tn-flex tn-flex-col-center">
+						<view class="icon1__item--icon tn-flex tn-flex-row-center tn-flex-col-center"
+							style="color: #7C8191;">
+							<view class="tn-icon-bookmark-fill"></view>
+						</view>
+						<view class="tn-margin-left-sm tn-flex-1">关于我们</view>
+						<view class="tn-color-gray tn-icon-right"></view>
+					</view>
+				</tn-list-cell>
+				<tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30"
+					@click="tn('/minePages/agreement?type='+'clause')">
+					<view class="tn-flex tn-flex-col-center">
+						<view class="icon1__item--icon tn-flex tn-flex-row-center tn-flex-col-center"
+							style="color: #7C8191;">
+							<view class="tn-icon-safe-fill"></view>
+						</view>
+						<view class="tn-margin-left-sm tn-flex-1">隐私政策</view>
+						<view class="tn-color-gray tn-icon-right"></view>
+					</view>
+				</tn-list-cell>
 				<!-- 	<tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30">
 					<button class="tn-flex tn-flex-col-center tn-button--clear-style" open-type="getPhoneNumber"
 						@getphonenumber="bindWechatPhone">
@@ -123,6 +145,13 @@
 		},
 
 		methods: {
+			// 跳转
+			tn(e) {
+				uni.navigateTo({
+					url: e,
+				});
+			},
+			
 			Logout() {
 				let that = this
 				uni.showModal({

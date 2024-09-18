@@ -8,27 +8,43 @@
 			</view>
 		</tn-nav-bar>
 		<view class="tn-margin tn-text-center" :style="{paddingTop: vuex_custom_bar_height + 'px'}">
-			{{content}}
+			<view class="tn-flex tn-flex-col-center tn-flex-row-center tn-padding tn-text-lg tn-text-bold">
+				{{title}}
+			</view>
+			<rich-text :nodes="content"></rich-text>
 		</view>
 	</view>
 </template>
 
 <script>
 	import template_page_mixin from '@/libs/mixin/template_page_mixin.js'
+	import {
+		protocol
+	} from '@/api/user.js'
 	export default {
 		name: 'TemplateContent',
 		mixins: [template_page_mixin],
 		data() {
 			return {
-				content:'',
+				content: '',
+				title: '',
+				type: ''
 			}
 		},
 		onLoad(e) {
-			if (e && e.data) {
-				this.content = JSON.parse(e.data)
+			if (e && e.type) {
+				this.type = e.type
+				this.getData()
 			}
 		},
 		methods: {
+			async getData() {
+				let res = await protocol({
+					type: this.type
+				})
+				this.content = res.data.content
+				this.title = res.data.title
+			}
 
 		}
 	}

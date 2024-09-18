@@ -31,12 +31,12 @@
 				<view class="justify-content-item">
 					<view class="tn-flex tn-flex-col-center tn-flex-row-left">
 						<view class="tn-color-white" style="width: 70vw;">
-							<view class="tn-padding-right tn-text-xxl tn-text-bold">
+							<!-- <view class="tn-padding-right tn-text-xxl tn-text-bold">
 								公司照片
 							</view>
 							<view class="tn-padding-right tn-padding-top-sm tn-text-ellipsis tn-text-sm">
 								<text class="tn-padding-right-sm">图鸟_凶姐 & 写真图集</text>
-							</view>
+							</view> -->
 						</view>
 					</view>
 				</view>

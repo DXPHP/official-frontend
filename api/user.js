@@ -70,3 +70,8 @@ export const send = (data) => httpRequest(`sms/send`, 'POST',
 export const register = (data) => httpRequest(`user/register`, 'POST',
 	data
 )
+
+// 政策协议
+export const protocol = (data) => httpRequest(`support/protocol`, 'GET',
+	data
+)

@@ -41,29 +41,28 @@
 			<tn-nav-bar fixed :isBack="false" :bottomShadow="false" backgroundColor="#FFFFFF00">
 				<view class="custom-nav tn-flex tn-flex-col-center tn-flex-row-left">
 					<!-- 图标logo -->
-					<view class="custom-nav__back" @click="tn('/homePages/about')">
+					<!-- <view class="custom-nav__back" @click="tn('/homePages/about')"> -->
 						<!-- 图片模式-->
-						<view class="logo-pic tn-shadow-blur"
+						<!-- <view class="logo-pic tn-shadow-blur"
 							style="background-image:url('https://resource.tuniaokj.com/images/logo/logo2.png')">
 							<view class="logo-image">
 							</view>
-						</view>
+						</view> -->
 						<!-- 如果有图片那就放图片，如果没有，那就删掉上面的放字体icon -->
 						<!-- <view class="tn-icon-left"></view> -->
-					</view>
+					<!-- </view> -->
 					<!-- 搜索框 -->
-					<view class="custom-nav__search tn-flex tn-flex-col-center tn-flex-row-center"
+					<!-- <view class="custom-nav__search tn-flex tn-flex-col-center tn-flex-row-center"
 						@click="tn('/homePages/search')">
 						<view class="custom-nav__search__box tn-flex tn-flex-col-center tn-flex-row-left"
 							style="background-color: rgba(230,230,230,0.3);">
-							<!-- <view class="custom-nav__search__icon tn-icon-search tn-color-white"></view>
-              <view class="custom-nav__search__text tn-padding-left-xs tn-color-white">搜索 图鸟模板</view> -->
+							
 							<view class="tn-color-white" style="width: 100%;">
 								<tn-notice-bar :list="searlist" mode="vertical" leftIconName="search"
 									:duration="6000"></tn-notice-bar>
 							</view>
 						</view>
-					</view>
+					</view> -->
 				</view>
 			</tn-nav-bar>
 		</view>

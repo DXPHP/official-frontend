@@ -192,7 +192,7 @@
 							style="color: #7C8191;">
 							<view class="tn-icon-plane-fill"></view>
 						</view>
-						<view class="tn-margin-left-sm tn-flex-1">开源地址</view>
+						<view class="tn-margin-left-sm tn-flex-1">项目地址</view>
 						<view class="tn-color-gray tn-icon-right"></view>
 					</view>
 				</tn-list-cell>
@@ -413,7 +413,7 @@
 			copySource() {
 				wx.vibrateShort();
 				uni.setClipboardData({
-					data: "https://ext.dcloud.net.cn/publisher?id=356088",
+					data: "https://gitee.com/weifd/official-frontend",
 				})
 			},
 		}

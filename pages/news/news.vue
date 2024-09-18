@@ -1,7 +1,7 @@
 <template>
 	<view class="news tn-safe-area-inset-bottom">
 
-		<swiper class="card-swiper" :circular="true" :autoplay="true" duration="500" interval="18000"
+		<!-- <swiper class="card-swiper" :circular="true" :autoplay="true" duration="500" interval="18000"
 			@change="cardSwiper">
 			<swiper-item v-for="(item,index) in swiperList" :key="index" :class="cardCur==index?'cur':''">
 				<view class="swiper-item image-banner">
@@ -17,9 +17,11 @@
 			<block v-for="(item,index) in swiperList" :key="index">
 				<view class="spot" :class="cardCur==index?'active':''"></view>
 			</block>
-		</view>
+		</view> -->
+		<view :style="{paddingTop: vuex_custom_bar_height + 'px'}">
 
-		<view class="" style="padding-bottom: 60rpx;margin-top: -100rpx;z-index: 999; position: relative;">
+		</view>
+		<view class="" style="padding-bottom: 60rpx;;z-index: 999; position: relative;">
 			<!-- 不建议写时间，因为写了时间，你就要经常更新文章了鸭-->
 			<view class="">
 				<block v-for="(item, index) in list" :key="index">
@@ -41,7 +43,7 @@
 										<text class="tn-tag-content__item--prefix">#</text> {{ label_item }}
 									</view> -->
 									<view class="">
-										
+
 									</view>
 									<view class="justify-content-item tn-color-gray tn-text-center"
 										style="padding-top: 5rpx;">
@@ -52,8 +54,7 @@
 									</view>
 								</view>
 							</view>
-							<view class="image-pic tn-margin-sm"
-								:style="'background-image:url(' + item.image + ')'">
+							<view class="image-pic tn-margin-sm" :style="'background-image:url(' + item.image + ')'">
 								<view class="image-article">
 								</view>
 							</view>

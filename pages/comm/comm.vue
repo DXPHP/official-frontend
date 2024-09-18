@@ -4,9 +4,9 @@
 		<!-- 顶部自定义导航 -->
 		<tn-nav-bar :isBack="false" :bottomShadow="false" backgroundColor="#FFFFFF">
 			<view class="custom-nav tn-flex tn-flex-col-center tn-flex-row-left">
-				<view class="custom-nav__back" @click="tn('/homePages/search')">
+				<!-- <view class="custom-nav__back" @click="tn('/homePages/search')">
 					<view class="tn-icon-search-menu-fill"></view>
-				</view>
+				</view> -->
 				<view class="" style="width: 62vw;overflow: hidden;margin-top: 36rpx;">
 					<tn-tabs :list="scrollList" :current="current" @change="tabChange" activeColor="#000" :bold="true"
 						:fontSize="36"></tn-tabs>
@@ -15,24 +15,24 @@
 		</tn-nav-bar>
 
 		<view class="tn-margin-top-sm" :style="{paddingTop: vuex_custom_bar_height - 10 + 'px'}">
-			<swiper class="card-swiper" @click="tn('/homePages/navigation')" :circular="true" :autoplay="true"
+		<!-- 	<swiper class="card-swiper" @click="tn('/homePages/navigation')" :circular="true" :autoplay="true"
 				duration="500" interval="8000" @change="cardSwiper">
 				<swiper-item v-for="(item,index) in list" :key="index" :class="cardCur==index?'cur':''">
 					<view class="swiper-item image-banner"
 						:style="'background-image:url('+ item.image + ');background-size: cover;border-radius: 15rpx;'">
 					</view>
-					<!-- <view class="swiper-item-text">
+					<view class="swiper-item-text">
             <view class="tn-text-bold tn-color-white" style="font-size: 50rpx;">{{item.title}}</view>
             <view class="tn-color-white tn-padding-top" style="font-size: 30rpx;">{{item.name}}</view>
             <view class="tn-text-sm tn-text-bold tn-color-white tn-padding-top-sm tn-padding-bottom-sm">{{item.text}}</view>
-          </view> -->
+          </view>
 				</swiper-item>
-			</swiper>
-			<view class="indication">
+			</swiper> -->
+			<!-- <view class="indication">
 				<block v-for="(item,index) in swiperList" :key="index">
 					<view class="spot" :class="cardCur==index?'active':''"></view>
 				</block>
-			</view>
+			</view> -->
 		</view>
 
 
