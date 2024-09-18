@@ -667,18 +667,17 @@
 					}
 				],
 				company: {
-					address: "广西壮族自治区南宁市兴宁区东州路23号",
-					lat: "22.789635",
-					lng: "108.448807",
-					name: "广西绿宁渣土运输有限公司"
+					address: "广东省广州市海珠区赤岗街道23号",
+					lat: "23.10647",
+					lng: "113.32446",
+					name: "帆布国际装修有限公司"
 				},
 				id: 0, // 使用 marker点击事件 需要填写id
 				title: 'map',
-				latitude: 22.961836,
-				longitude: 113.330067,
+				
 				covers: [{
-					latitude: 22.961836,
-					longitude: 113.330067,
+					latitude: 23.10647,
+					longitude:113.32446,
 					iconPath: 'https://cdn.nlark.com/yuque/0/2023/png/280373/1675936271542-assets/web-upload/8f3d0a29-cad4-4e4d-995b-0e08467dff02.png'
 				}]
 

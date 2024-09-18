@@ -134,8 +134,9 @@
 		},
 		methods: {
 			toComment(id, user_id) {
-				this.commentShow = true
 				this.$refs.pinglun.open(id, user_id)
+				this.commentShow = true
+
 			},
 			sendGood() {
 				likes({
