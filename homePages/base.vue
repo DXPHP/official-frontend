@@ -148,7 +148,7 @@
 				<!-- 比例图文 start-->
 				<view class="tn-flex tn-flex-wrap tn-padding-bottom">
 					<block v-for="(item, index) in info.honor" :key="index">
-						<view class="" style="width: 50%;" @click="tn('/pageA/product/product')">
+						<view class="" style="width: 50%;" @click="previewImage([item.image])">
 							<view class="tn-margin-xs img-shadow" style="border-radius: 10rpx;">
 								<view class="" style="position: absolute;padding: 20rpx 15rpx 15rpx 15rpx;">
 									<text class="tn-icon-honor-fill tn-text-xl"></text>
@@ -188,7 +188,7 @@
 				<!-- 比例图文 start-->
 				<view class="tn-flex tn-flex-wrap tn-padding-bottom">
 					<block v-for="(item, index) in info.certificate" :key="index">
-						<view class="" style="width: 50%;" @click="tn('/pageA/product/product')">
+						<view class="" style="width: 50%;" @click="previewImage([item.image])">
 							<view class="tn-margin-xs img-shadow" style="border-radius: 10rpx;">
 								<view class="" style="position: absolute;padding: 20rpx 15rpx 15rpx 15rpx;">
 									<text class="tn-icon-honor-fill tn-text-xl"></text>
@@ -285,6 +285,22 @@
 
 		},
 		methods: {
+			previewImage(img, index) {
+				// 预览图片
+				uni.previewImage({
+					urls: img,
+					current: index,
+					longPressActions: {
+						itemList: ['发送给朋友', '保存图片', '收藏'],
+						success: function(data) {
+							console.log('选中了第' + (data.tapIndex + 1) + '个按钮,第' + (data.index + 1) + '张图片');
+						},
+						fail: function(err) {
+							console.log(err.errMsg);
+						}
+					}
+				});
+			},
 			// 获取企业信息
 			async getData() {
 				this.loadStatus = 'loading'

@@ -388,7 +388,7 @@
 				<view
 					class="tn-flex tn-flex-direction-row tn-flex-col-center tn-flex-row-between tn-color-white tn-shadow-blur tn-col-3 tn-margin-top-sm"
 					@click="tn()">
-					<view class="partner__item home-shadow" @click="tn('/commPages/product')">
+					<view class="partner__item home-shadow" >
 						<view class="item__image">
 							<tn-lazy-load :threshold="6000" height="144" :image="item.image" :index="item.id"
 								imgMode="aspectFill" style="border-radius: 10rpx;"></tn-lazy-load>
