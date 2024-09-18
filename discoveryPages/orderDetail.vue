@@ -11,17 +11,17 @@
 			<view class=" tn-margin-top-xs tn-radius  tn-bg-white tn-padding-xs">
 				<view class="tn-flex tn-flex-col-center tn-padding-xs">
 					<text class="tn-icon-loading"></text><text
-						class="tn-padding-left-xs tn-text-lg">{{filterStatus()}}</text>
+						class="tn-padding-left-xs tn-text-lg tn-text-bold">{{filterStatus()}}</text>
 				</view>
-				<!-- 	<view class="tn-text-xs tn-padding-xs tn-text-gray">
+				<!-- 	<view class=" tn-padding-xs tn-text-gray">
 					{{orderInfo.order_status_desc}}
 				</view> -->
 			</view>
 			<view class=" tn-margin-top-xs tn-radius tn-bg-white tn-padding-xs">
 				<view class="tn-flex tn-flex-col-center tn-padding-xs">
-					<text class="tn-icon-identity"></text><text class="tn-padding-left-xs">收货信息</text>
+					<text class="tn-icon-identity"></text><text class="tn-padding-left-xs tn-text-bold">收货信息</text>
 				</view>
-				<view class="tn-text-gray tn-text-xs tn-padding-xs ">
+				<view class="tn-text-gray  tn-padding-xs ">
 					<view class="">
 						{{orderInfo.contact}} {{orderInfo.phone}}
 					</view>
@@ -38,14 +38,14 @@
 					<text class="tn-icon-logistics"></text><text class="tn-padding-left-xs">收货信息</text><text
 						class="tn-padding-left-xs ">配送信息</text>
 				</view>
-				<view class="tn-text-xs tn-padding-xs tn-text-gray">
+				<view class=" tn-padding-xs tn-text-gray">
 					配送方式：{{orderInfo.express}}
 				</view>
-				<view class="tn-text-xs tn-padding-xs tn-text-gray tn-flex tn-flex-col-center">
+				<view class=" tn-padding-xs tn-text-gray tn-flex tn-flex-col-center">
 					物流单号：{{orderInfo.express_number}} <text class="copy_text"
 						@click="copy(orderInfo.express_number)">复制</text>
 				</view>
-				<!-- <view class="wuliu_tag tn-flex tn-flex-col-center tn-radius tn-text-xs"
+				<!-- <view class="wuliu_tag tn-flex tn-flex-col-center tn-radius "
 					@click="tn('/pages_index/loginstics_tracking/loginstics_tracking')">
 					<text class="text_ellipsis"
 						style="width: 650rpx;">{{orderInfo.status=='待收货'?'派送中，【深圳市】【深证某某某】安排某某某某某某':'您已签收，签收时间为2023-12-25 12:00:00'}}</text>
@@ -60,13 +60,13 @@
 					</view>
 
 					<view class="tn-flex tn-flex-1 tn-flex-direction-row tn-margin-left-xs tn-flex-row-between">
-						<view class="tn-text-xs">
+						<view class="">
 							<text class="shangpin_content_ellipsis">{{orderInfo.goods_name}}</text>
 							<view class="">
 								{{orderInfo.spec_name}}
 							</view>
 						</view>
-						<view class="tn-text-xs tn-text-gray tn-flex tn-flex-row-between tn-margin-top-xs">
+						<view class=" tn-text-gray tn-flex tn-flex-row-between tn-margin-top-xs">
 							<view class="fw tn-color-red-dark">
 								￥{{orderInfo.goods_price}}
 							</view>
@@ -76,7 +76,7 @@
 						</view>
 					</view>
 				</view>
-				<view class="tn-text-xs">
+				<view class="">
 
 					<view class="tn-flex tn-flex-col-center tn-flex-row-between tn-padding-xs">
 						<text class="tn-text-gray">商品总额</text><text>￥{{orderInfo.goods_price}}</text>
@@ -93,9 +93,9 @@
 			</view>
 			<view class=" tn-margin-top-xs tn-radius tn-bg-white tn-padding-xs">
 				<view class="tn-flex tn-flex-col-center tn-padding-xs">
-					<text class="tn-icon-order"></text><text class="tn-padding-left-xs">订单信息</text>
+					<text class="tn-icon-order"></text><text class="tn-padding-left-xs tn-text-bold">订单信息</text>
 				</view>
-				<view class="tn-text-xs">
+				<view class="">
 					<view class="tn-flex tn-flex-col-center tn-flex-row-between tn-padding-xs">
 						<text class="tn-text-gray">订单编号</text>
 						<view class="tn-flex tn-flex-col-center">

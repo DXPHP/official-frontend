@@ -90,6 +90,7 @@
 	import {
 		addressList,
 		addressDefault,
+		addressDelete
 	} from '@/api/user.js';
 	import {
 		getStorage,
@@ -218,14 +219,14 @@
 							if (address.id == itemid) {
 								setStorage('defaultAddress', {})
 							}
-							address_delete({
+							addressDelete({
 								id: itemid
 							}).then(res => {
 								that.getAddressList()
 								setTimeout(function() {
 									uni.showToast({
 										title: res.msg,
-										duration: 2000
+										duration: 1000
 									});
 								}, 1000)
 							})

@@ -41,16 +41,16 @@
 			<tn-nav-bar fixed :isBack="false" :bottomShadow="false" backgroundColor="#FFFFFF00">
 				<view class="custom-nav tn-flex tn-flex-col-center tn-flex-row-left">
 					<!-- 图标logo -->
-					<!-- <view class="custom-nav__back" @click="tn('/homePages/about')"> -->
+					<view class="custom-nav__back" @click="tn('/homePages/about')">
 						<!-- 图片模式-->
-						<!-- <view class="logo-pic tn-shadow-blur"
+						<view class="logo-pic tn-shadow-blur"
 							style="background-image:url('https://resource.tuniaokj.com/images/logo/logo2.png')">
 							<view class="logo-image">
 							</view>
-						</view> -->
+						</view>
 						<!-- 如果有图片那就放图片，如果没有，那就删掉上面的放字体icon -->
 						<!-- <view class="tn-icon-left"></view> -->
-					<!-- </view> -->
+					</view>
 					<!-- 搜索框 -->
 					<!-- <view class="custom-nav__search tn-flex tn-flex-col-center tn-flex-row-center"
 						@click="tn('/homePages/search')">

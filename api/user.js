@@ -27,6 +27,10 @@ export const addressList = (data) => httpRequest(`address/list`, 'GET',
 	data
 )
 
+//删除地址
+export const addressDelete = (data) => httpRequest(`address/delete`, 'POST',
+	data
+)
 //添加和编辑地址
 export const addressEdit = (data) => httpRequest(`address/edit`, 'POST',
 	data
