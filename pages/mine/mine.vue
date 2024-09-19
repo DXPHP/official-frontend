@@ -375,7 +375,7 @@
 				});
 			},
 
-			// 跳转到小匠UI
+			// 跳转到智途UI
 			navTuniaoUI() {
 				// uni.navigateToMiniProgram({
 				// 	appId: 'wxf3d81a452b88ff4b'

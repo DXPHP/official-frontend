@@ -26,7 +26,7 @@
                 <view class="tn-padding-right tn-color-black">
                   
                   <view class="tn-padding-left-sm tn-text-bold tn-margin-top-sm" style="max-width: 62vw;">
-                    小匠_北北
+                    智途_北北
                   </view>
                   <view class="tn-flex tn-flex-col-center">
                     <view class="tn-bg-gray--light tn-margin-sm tn-padding-sm" style="max-width: 62vw;border-radius: 0 15rpx 15rpx 15rpx;">
@@ -59,7 +59,7 @@
                 <view class="tn-padding-right tn-color-black">
                   
                   <view class="tn-padding-left-sm tn-text-bold tn-margin-top-sm" style="max-width: 62vw;">
-                    小匠_北北
+                    智途_北北
                   </view>
                   <view class="tn-flex tn-flex-col-center">
                     <view class="tn-bg-gray--light tn-margin-sm tn-padding-sm" style="max-width: 62vw;border-radius: 0 15rpx 15rpx 15rpx;">
@@ -92,7 +92,7 @@
                 <view class="tn-padding-right tn-color-black">
                   
                   <view class="tn-padding-left-sm tn-text-bold tn-margin-top-sm" style="max-width: 62vw;">
-                    小匠_北北
+                    智途_北北
                   </view>
                   <view class="tn-flex tn-flex-col-center">
                     <view class="tnchat2 tn-margin-sm" style="max-width: 62vw;">
@@ -124,7 +124,7 @@
                 <view class="tn-padding-right tn-color-black">
                   
                   <view class="tn-padding-left-sm tn-text-bold tn-margin-top-sm" style="max-width: 62vw;">
-                    小匠_锋哥
+                    智途_锋哥
                   </view>
                   <view class="tn-flex tn-flex-col-center">
                     <view class="tnchat3 tn-margin-sm" style="max-width: 62vw;">
@@ -156,7 +156,7 @@
                 <view class="tn-padding-right tn-color-black">
                   
                   <view class="tn-padding-left-sm tn-text-bold tn-margin-top-sm" style="max-width: 62vw;">
-                    小匠_锋哥
+                    智途_锋哥
                   </view>
                   <view class="tn-flex tn-flex-col-center">
                     <view class="tnchat3 tn-margin-sm" style="max-width: 62vw;">
@@ -187,7 +187,7 @@
                 
                 <view class="tn-padding-left tn-color-black">
                   <view class="tn-padding-right tn-text-bold tn-margin-top-sm tn-text-right" style="max-width: 62vw;">
-                    小匠_东东
+                    智途_东东
                   </view>
                   <view class="tn-flex tn-flex-col-center">
                     <view class="">
@@ -219,7 +219,7 @@
                 
                 <view class="tn-padding-left tn-color-black">
                   <view class="tn-padding-right tn-text-bold tn-margin-top-sm tn-text-right" style="max-width: 62vw;">
-                    小匠_东东
+                    智途_东东
                   </view>
                   <view class="tn-flex tn-flex-col-center">
                     <view class="">
@@ -257,7 +257,7 @@
                 <view class="tn-padding-right tn-color-black">
                   
                   <view class="tn-padding-left-sm tn-text-bold tn-margin-top-sm" style="max-width: 62vw;">
-                    小匠_静言
+                    智途_静言
                   </view>
                   <view class="tn-flex tn-flex-col-center">
                     <view class="tnchat5 tn-margin-sm" style="max-width: 62vw;">
@@ -289,7 +289,7 @@
                 <view class="tn-padding-right tn-color-black">
                   
                   <view class="tn-padding-left-sm tn-text-bold tn-margin-top-sm" style="max-width: 62vw;">
-                    小匠_西西
+                    智途_西西
                   </view>
                   <view class="tn-flex tn-flex-col-center">
                     <view class="tnchat6 tn-margin-sm" style="max-width: 62vw;">
@@ -321,7 +321,7 @@
                 <view class="tn-padding-right tn-color-black">
                   
                   <view class="tn-padding-left-sm tn-text-bold tn-margin-top-sm" style="max-width: 62vw;">
-                    小匠_Jaylen
+                    智途_Jaylen
                   </view>
                   <view class="tn-flex tn-flex-col-center">
                     <view class="tnchat7 tn-margin-sm" style="max-width: 62vw;">
@@ -353,7 +353,7 @@
                 <view class="tn-padding-right tn-color-black">
                   
                   <view class="tn-padding-left-sm tn-text-bold tn-margin-top-sm" style="max-width: 62vw;">
-                    小匠_Jaylen
+                    智途_Jaylen
                   </view>
                   <view class="tn-flex tn-flex-col-center">
                     <view class="tn-margin-sm" style="max-width: 62vw;">
@@ -389,7 +389,7 @@
                 <view class="tn-padding-right tn-color-black">
                   
                   <view class="tn-padding-left-sm tn-text-bold tn-margin-top-sm" style="max-width: 62vw;">
-                    小匠_锋哥
+                    智途_锋哥
                   </view>
                   <view class="tn-flex tn-flex-col-center">
                     <view class="tnchat3 tn-margin-sm" style="max-width: 62vw;">
@@ -421,7 +421,7 @@
                 <view class="tn-padding-right tn-color-black">
                   
                   <view class="tn-padding-left-sm tn-text-bold tn-margin-top-sm" style="max-width: 62vw;">
-                    小匠_肯德
+                    智途_肯德
                   </view>
                   <view class="tn-flex tn-flex-col-center">
                     <view class="tn-margin-sm tn-padding-sm" style="max-width: 62vw;border-radius: 0 15rpx 15rpx 15rpx;background-color: #FFF00D;">
@@ -453,7 +453,7 @@
                 <view class="tn-padding-right tn-color-black">
                   
                   <view class="tn-padding-left-sm tn-text-bold tn-margin-top-sm" style="max-width: 62vw;">
-                    小匠_肯德
+                    智途_肯德
                   </view>
                   <view class="tn-flex tn-flex-col-center">
                     <view class="tn-margin-sm tn-padding-sm" style="max-width: 62vw;border-radius: 0 15rpx 15rpx 15rpx;background-color: #00FFC6;">

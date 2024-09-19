@@ -75,7 +75,7 @@
 				{
 					"path": "about",
 					"style": {
-						"navigationBarTitleText": "小匠品牌",
+						"navigationBarTitleText": "智途品牌",
 						"enablePullDownRefresh": false
 					}
 				},
@@ -135,7 +135,7 @@
 			"pages": [{
 					"path": "nav",
 					"style": {
-						"navigationBarTitleText": "小匠导航",
+						"navigationBarTitleText": "智途导航",
 						"enablePullDownRefresh": false
 					}
 				},
@@ -395,7 +395,7 @@
 	"globalStyle": {
 		"navigationStyle": "custom",
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "小匠-官网",
+		"navigationBarTitleText": "智途-官网",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	}

@@ -102,7 +102,7 @@
 			<view class="nav_title--wrap">
 				<view class="nav_title tn-cool-bg-color-6">
 					<text class="tn-icon-star tn-padding-right-sm tn-text-xxl"></text>
-					<text class="tn-text-xl">小匠科技 · 界面预览</text>
+					<text class="tn-text-xl">智途科技 · 界面预览</text>
 					<text class="tn-icon-star tn-padding-left-sm tn-text-xxl"></text>
 				</view>
 			</view>
@@ -137,7 +137,7 @@
 			<view class="nav_title--wrap">
 				<view class="nav_title tn-cool-bg-color-6">
 					<text class="tn-icon-star tn-padding-right-sm tn-text-xxl"></text>
-					<text class="tn-text-xl">小匠科技 · 产品详情</text>
+					<text class="tn-text-xl">智途科技 · 产品详情</text>
 					<text class="tn-icon-star tn-padding-left-sm tn-text-xxl"></text>
 				</view>
 			</view>

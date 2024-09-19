@@ -102,7 +102,7 @@
               <text class="tn-padding-left-sm">高级UI设计师</text>
             </view>
             <view class="tn-padding-right tn-padding-top-xs tn-padding-left-sm tn-text-ellipsis">
-              <text class="tn-color-black tn-text-bold">广州小匠科技有限公司</text>
+              <text class="tn-color-black tn-text-bold">广州智途科技有限公司</text>
             </view>
           </view>
         </view>
@@ -132,7 +132,7 @@
     <tn-landscape :show="show2" @close="closeLandscape">
       <view class="tn-text-center" @click="navTuniaoUI">
         <image src="https://resource.tuniaokj.com/images/landscape/2022-new-year.png" mode="widthFix"></image>
-        <text class="tn-text-lg tn-color-white tn-padding-top-lg">—— 小匠UI，2022年已上线 ——</text>
+        <text class="tn-text-lg tn-color-white tn-padding-top-lg">—— 智途UI，2022年已上线 ——</text>
       </view>
     </tn-landscape>
         
@@ -160,28 +160,28 @@
         }, {
           id: 1,
           type: 'image',
-          title: '小匠南南',
+          title: '智途南南',
           name: '欢迎加入东东们',
           text: '如果你也有不错的作品',
           url: 'https://resource.tuniaokj.com/images/swiper/read.jpg',
         }, {
           id: 2,
           type: 'image',
-          title: '小匠西西',
+          title: '智途西西',
           name: '一起玩转scss',
           text: '用最少的代码做最骚的效果',
           url: 'https://resource.tuniaokj.com/images/swiper/deer.jpg',
         }, {
           id: 3,
           type: 'image',
-          title: '小匠北北',
+          title: '智途北北',
           name: '微信号 tnkewo',
           text: '商业合作请联系作者',
           url: 'https://resource.tuniaokj.com/images/swiper/swiper3.jpg',
         }, {
           id: 4,
           type: 'image',
-          title: '小匠猪猪',
+          title: '智途猪猪',
           name: '努力成为大佬',
           text: '一起加油吖',
           url: 'https://resource.tuniaokj.com/images/shop/banner2.jpg',
@@ -278,7 +278,7 @@
         this.show2 = false
       },
       
-      // 跳转到小匠UI
+      // 跳转到智途UI
       navTuniaoUI() {
         uni.navigateToMiniProgram({
           appId: 'wxf3d81a452b88ff4b'

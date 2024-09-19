@@ -16,7 +16,7 @@
       <view class="nav_title--wrap">
         <view class="nav_title tn-cool-bg-color-6">
           <!-- <text class="tn-icon-fire tn-padding-right-sm"></text> -->
-            小匠模板上线啦
+            智途模板上线啦
           <!-- <text class="tn-icon-fire tn-padding-left-sm"></text> -->
         </view>
       </view>

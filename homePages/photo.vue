@@ -7,7 +7,7 @@
 				<text class='icon tn-icon-discover-fill'></text>
 			</view>
 			<view class="tn-flex tn-flex-col-center tn-flex-row-center" :style="[navBarStyle2]">
-				<view class="tn-text-bold tn-text-xl">小匠科技随拍</view>
+				<view class="tn-text-bold tn-text-xl">智途科技随拍</view>
 			</view>
 		</tn-nav-bar>
 
@@ -35,7 +35,7 @@
 								公司照片
 							</view>
 							<view class="tn-padding-right tn-padding-top-sm tn-text-ellipsis tn-text-sm">
-								<text class="tn-padding-right-sm">小匠_凶姐 & 写真图集</text>
+								<text class="tn-padding-right-sm">智途_凶姐 & 写真图集</text>
 							</view> -->
 						</view>
 					</view>
@@ -61,8 +61,8 @@
 				<image class="tn-radius"
 					src='https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1683185728989-assets/web-upload/af525e21-57d0-4403-9c13-bf073d632638.jpeg'
 					mode='aspectFill' style="width: 100%;"></image>
-				<view class="tn-text-justify tn-padding-top">注意：相册图集本人为 小匠_凶姐</view>
-				<view class="tn-text-justify tn-padding-top">凶姐照片未经授权，请勿将此相册图集另作其他任何非商业、商业用途，如有疑问，请微信咨询小匠 tnkewo</view>
+				<view class="tn-text-justify tn-padding-top">注意：相册图集本人为 智途_凶姐</view>
+				<view class="tn-text-justify tn-padding-top">凶姐照片未经授权，请勿将此相册图集另作其他任何非商业、商业用途，如有疑问，请微信咨询智途 tnkewo</view>
 			</view>
 		</tn-modal>
 

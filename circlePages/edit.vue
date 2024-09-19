@@ -123,7 +123,7 @@
           },
           {
             color: 'blue',
-            title: "小匠",
+            title: "智途",
           },
           {
             color: 'green',

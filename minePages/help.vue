@@ -90,7 +90,7 @@
 							<text class="tn-padding-left-sm">高级UI设计师</text>
 						</view>
 						<view class="tn-padding-right tn-padding-top-xs tn-padding-left-sm tn-text-ellipsis">
-							<text class="tn-color-black tn-text-bold">广州小匠科技有限公司</text>
+							<text class="tn-color-black tn-text-bold">广州智途科技有限公司</text>
 						</view>
 					</view>
 				</view>

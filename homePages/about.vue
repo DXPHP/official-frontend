@@ -17,7 +17,7 @@
 
 			<view style="padding: 360rpx 40rpx 0;line-height: 80rpx;">
 				<view class="tn-text-xxl tn-padding-top">
-					Hi !  你好吖，欢迎来到小匠官网
+					Hi !  你好吖，欢迎来到智途官网
 				</view>
 				<view class="tn-text-xxl tn-padding-top-xl">
 					项目正式上线于2024年9月
@@ -34,7 +34,7 @@
 				</view>
 				<view class=" tn-text-xxl tn-padding-top-xl">
 					<view class="tn-text-xxl">
-						小匠网络
+						智途网络
 					</view>
 					<view class="tn-text-xxl ">
 						助力您在工作事业上
