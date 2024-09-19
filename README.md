@@ -107,4 +107,4 @@ location / {
 如有任何疑问或合作意向，请通过以下方式联系我们：
 
 - 邮箱：1019925645@qq.com  
-- WX：![输入图片说明](public/uploads/demo/3aa2cf45f6de6f2be759434f29a6ddaa.jpg)
+- WX：![输入图片说明](https://gitee.com/weifd/official-backend/raw/master/public/uploads/demo/3aa2cf45f6de6f2be759434f29a6ddaa.jpg)
