@@ -105,7 +105,7 @@
 								style="height: 160rpx;margin: 0 10rpx 20rpx 10rpx;border-radius: 10rpx;"
 								@click="tn('/commPages/nav')">
 								<view class="tn-padding-left tn-padding-top-lg">
-									导航 · 图鸟生态
+									导航 · 小匠生态
 								</view>
 								<view class="tn-padding-left tn-padding-top-xs">
 									看看都有什么

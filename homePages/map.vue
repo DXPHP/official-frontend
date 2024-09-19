@@ -17,7 +17,7 @@
             <view class="tn-flex tn-flex-col-center tn-flex-row-left">
               <view class="tn-padding tn-color-black">
                 <view class="tn-padding-right-sm tn-text-lg tn-text-bold">
-                  广州图鸟科技有限公司 · 图鸟国际
+                  广州小匠科技有限公司 · 小匠国际
                 </view>
                 <view class="tn-padding-right tn-padding-top-xs tn-text-ellipsis tn-text-xs tn-color-gray">
                   <text class="">距离你12.8km</text>

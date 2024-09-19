@@ -117,7 +117,7 @@
       <!-- 更多信息-->
       <view class="tn-flex tn-flex-row-between tn-margin tn-padding-top-lg" @click="tn('')" >
         <view class="justify-content-item tn-text-lg  tn-text-bold">
-          图鸟开源项目
+          小匠开源项目
         </view>
         <view class="justify-content-item tn-text-lg tn-color-gray">
           <!-- <text class="tn-padding-xs">全部</text> -->
@@ -145,7 +145,7 @@
           </view>
         </view>
         <view class="tn-text-justify clamp-text-2 tn-padding-top-sm tn-color-gray--dark">
-          图鸟UI使用文档，一文读懂图鸟UI。
+          小匠UI使用文档，一文读懂小匠UI。
         </view>
       </view>
       
@@ -168,7 +168,7 @@
           </view>
         </view>
         <view class="tn-text-justify clamp-text-2 tn-padding-top-sm tn-color-gray--dark">
-          图鸟UI快速搭建uniapp项目、组件按需引入视频教程，视频长度4分钟。
+          小匠UI快速搭建uniapp项目、组件按需引入视频教程，视频长度4分钟。
         </view>
       </view>
       
@@ -182,7 +182,7 @@
               </view>
             </view>
             <view class="tn-flex tn-margin-left-xs" style="width: 400rpx;">
-              <text class="clamp-text-1 tn-text-bold">图鸟素材社区</text>
+              <text class="clamp-text-1 tn-text-bold">小匠素材社区</text>
             </view>
           </view>
           <view class="tn-color-gray">
@@ -191,7 +191,7 @@
           </view>
         </view>
         <view class="tn-text-justify clamp-text-2 tn-padding-top-sm tn-color-gray--dark">
-          图鸟免费商用素材，链接地址直接下载原图，或群公告获取素材包进行下载。
+          小匠免费商用素材，链接地址直接下载原图，或群公告获取素材包进行下载。
         </view>
       </view>
       
@@ -205,7 +205,7 @@
               </view>
             </view>
             <view class="tn-flex tn-margin-left-xs" style="width: 400rpx;">
-              <text class="clamp-text-1 tn-text-bold">图鸟UI</text>
+              <text class="clamp-text-1 tn-text-bold">小匠UI</text>
             </view>
           </view>
           <view class="tn-color-gray">
@@ -214,7 +214,7 @@
           </view>
         </view>
         <view class="tn-text-justify clamp-text-2 tn-padding-top-sm tn-color-gray--dark">
-          图鸟UI发布于DCloud插件市场上的免费可商用开源地址，支持适配微信小程序、APP、H5。
+          小匠UI发布于DCloud插件市场上的免费可商用开源地址，支持适配微信小程序、APP、H5。
         </view>
       </view>
       
@@ -343,7 +343,7 @@
               </view>
             </view>
             <view class="tn-flex tn-margin-left-xs" style="width: 400rpx;">
-              <text class="clamp-text-1 tn-text-bold">图鸟国际学院教务处电话</text>
+              <text class="clamp-text-1 tn-text-bold">小匠国际学院教务处电话</text>
             </view>
           </view>
           <view class="tn-color-gray">
@@ -363,7 +363,7 @@
               </view>
             </view>
             <view class="tn-flex tn-margin-left-xs" style="width: 400rpx;">
-              <text class="clamp-text-1 tn-text-bold">图鸟国际学院医务室电话</text>
+              <text class="clamp-text-1 tn-text-bold">小匠国际学院医务室电话</text>
             </view>
           </view>
           <view class="tn-color-gray">
@@ -383,7 +383,7 @@
               </view>
             </view>
             <view class="tn-flex tn-margin-left-xs" style="width: 400rpx;">
-              <text class="clamp-text-1 tn-text-bold">图鸟国际学院邮编</text>
+              <text class="clamp-text-1 tn-text-bold">小匠国际学院邮编</text>
             </view>
           </view>
           <view class="tn-color-gray">
@@ -403,7 +403,7 @@
               </view>
             </view>
             <view class="tn-flex tn-margin-left-xs" style="width: 400rpx;">
-              <text class="clamp-text-1 tn-text-bold">图鸟科技-公众号</text>
+              <text class="clamp-text-1 tn-text-bold">小匠科技-公众号</text>
             </view>
           </view>
           <view class="tn-color-gray">

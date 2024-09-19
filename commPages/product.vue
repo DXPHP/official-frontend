@@ -102,7 +102,7 @@
 			<view class="nav_title--wrap">
 				<view class="nav_title tn-cool-bg-color-6">
 					<text class="tn-icon-star tn-padding-right-sm tn-text-xxl"></text>
-					<text class="tn-text-xl">图鸟科技 · 界面预览</text>
+					<text class="tn-text-xl">小匠科技 · 界面预览</text>
 					<text class="tn-icon-star tn-padding-left-sm tn-text-xxl"></text>
 				</view>
 			</view>
@@ -137,7 +137,7 @@
 			<view class="nav_title--wrap">
 				<view class="nav_title tn-cool-bg-color-6">
 					<text class="tn-icon-star tn-padding-right-sm tn-text-xxl"></text>
-					<text class="tn-text-xl">绿道科技 · 产品详情</text>
+					<text class="tn-text-xl">小匠科技 · 产品详情</text>
 					<text class="tn-icon-star tn-padding-left-sm tn-text-xxl"></text>
 				</view>
 			</view>
@@ -248,35 +248,7 @@
 				showSkuModal: false,
 
 				cardCur: 0,
-				swiperList: [{
-					id: 0,
-					type: 'image',
-					title: '免费开源',
-					name: '商业合作请联系作者',
-					text: '微信：tnkewo',
-					url: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1680077186016-assets/web-upload/e2ce2561-0532-471e-b612-41863c81da98.jpeg',
-				}, {
-					id: 1,
-					type: 'image',
-					title: '图鸟南南',
-					name: '欢迎加入东东们',
-					text: '如果你也有不错的作品',
-					url: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1675956894200-assets/web-upload/8cbc12f4-f04a-4271-a38f-07b5ccabe214.jpeg',
-				}, {
-					id: 2,
-					type: 'image',
-					title: '图鸟西西',
-					name: '一起玩转scss',
-					text: '用最少的代码做最骚的效果',
-					url: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1675956894159-assets/web-upload/0e1e0010-211f-4a21-b7dd-2799b1f39188.jpeg',
-				}, {
-					id: 3,
-					type: 'image',
-					title: '图鸟北北',
-					name: '微信号 tnkewo',
-					text: '商业合作请联系作者',
-					url: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1676020663234-assets/web-upload/2eb50c08-599b-4c5b-9613-afa0ea719bdd.jpeg',
-				}],
+				swiperList: [],
 				countOptions: [{
 					icon: 'star',
 					text: '收藏'
@@ -383,16 +355,7 @@
 			// 预览图片
 			previewProductImage() {
 				wx.previewImage({
-					urls: ['https://resource.tuniaokj.com/images/uniapp_market/1.jpg',
-						'https://resource.tuniaokj.com/images/uniapp_market/1.jpg',
-						'https://resource.tuniaokj.com/images/uniapp_market/1.jpg',
-						'https://resource.tuniaokj.com/images/uniapp_market/1.jpg',
-						'https://resource.tuniaokj.com/images/uniapp_market/1.jpg',
-						'https://resource.tuniaokj.com/images/uniapp_market/1.jpg',
-						'https://resource.tuniaokj.com/images/uniapp_market/1.jpg',
-						'https://resource.tuniaokj.com/images/uniapp_market/1.jpg',
-						'https://resource.tuniaokj.com/images/uniapp_market/1.jpg',
-						'https://resource.tuniaokj.com/images/uniapp_market/1.jpg'
+					urls: [
 					]
 				})
 			},

@@ -208,7 +208,7 @@
 			changePlay(index) {
 
 				this.isPlay = !this.isPlay
-				console.log('66666', this.isPlay)
+				
 				const videoContext = uni.createVideoContext(`video-${this.list[index]['id']}`, this)
 				if (this.isPlay) {
 					// #ifdef H5

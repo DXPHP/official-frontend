@@ -263,7 +263,7 @@
             date: '2021年12月20日',
             color: 'orange',
             label: ['空间设计'],
-            title: '图鸟UI素材已上传语雀',
+            title: '小匠UI素材已上传语雀',
             desc: '语雀素材地址资源',
             mainImage: 'https://resource.tuniaokj.com/images/shop/phonecase2.jpg',
             viewUser: {

@@ -34,7 +34,7 @@
 								</view>
 								<view class="tn-padding-top-xs" style="min-height: 90rpx;">
 									<text class="tn-text-df tn-color-gray clamp-text-2 tn-text-justify">
-										{{ item.content }}
+										{{ item.subtitle }}
 									</text>
 								</view>
 								<view class="tn-flex tn-flex-row-between tn-flex-col-between tn-margin-top-sm">
@@ -89,90 +89,9 @@
 			return {
 
 				cardCur: 0,
-				swiperList: [{
-					id: 0,
-					type: 'image',
-					title: '我不喜欢带伞',
-					name: '因为雨水从不滴落在我心上',
-					url: 'https://resource.tuniaokj.com/images/swiper/banner-animate3.png',
-				}, {
-					id: 1,
-					type: 'image',
-					title: '图鸟南南',
-					name: '欢迎加入东东们',
-					url: 'https://resource.tuniaokj.com/images/swiper/banner-animate2.png',
-				}, {
-					id: 2,
-					type: 'image',
-					title: '图鸟北北',
-					name: '微信号 tnkewo',
-					url: 'https://resource.tuniaokj.com/images/swiper/banner-animate3.png',
-				}, {
-					id: 3,
-					type: 'image',
-					title: '图鸟猪猪',
-					name: '努力成为大佬',
-					url: 'https://resource.tuniaokj.com/images/shop/banner2.jpg',
-				}],
+				swiperList: [],
 
-				news: [{
-						userAvatar: 'https://resource.tuniaokj.com/images/blogger/blogger_beibei.jpg',
-						userName: '可我会像',
-						date: '2021年12月20日',
-						color: 'cyan',
-						label: ['模型'],
-						title: '3D家具模型了解一下？',
-						desc: '家具模型应有尽有',
-						mainImage: 'https://resource.tuniaokj.com/images/shop/prototype1.jpg',
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 987
-						},
-						collectionCount: 567,
-						commentCount: 69,
-						likeCount: 65
-					},
-					{
-						userAvatar: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg',
-						userName: '可我会像',
-						date: '2021年12月20日',
-						color: 'blue',
-						label: ['神器'],
-						title: '为什么资讯不显示时间？',
-						desc: '你确定你经常更新文章吗？',
-						mainImage: 'https://resource.tuniaokj.com/images/shop/computer2.jpg',
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 321
-						},
-						collectionCount: 654,
-						commentCount: 232,
-						likeCount: 543
-					}
+				news: [
 				],
 				loadStatus: 'loading',
 				listStatus: 0,

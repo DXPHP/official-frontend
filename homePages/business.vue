@@ -40,7 +40,7 @@
 								</view>
 								<view class="tn-padding-top-xs" style="min-height: 90rpx;">
 									<text class="tn-text-df tn-color-gray clamp-text-2 tn-text-justify">
-										{{ item.content }}
+										{{ item.subtitle }}
 									</text>
 								</view>
 								<view class="tn-flex tn-flex-row-between tn-flex-col-between tn-margin-top-sm">

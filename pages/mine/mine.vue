@@ -375,7 +375,7 @@
 				});
 			},
 
-			// 跳转到图鸟UI
+			// 跳转到小匠UI
 			navTuniaoUI() {
 				// uni.navigateToMiniProgram({
 				// 	appId: 'wxf3d81a452b88ff4b'

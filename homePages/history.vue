@@ -31,7 +31,7 @@
                <view class="tn-margin-sm tn-padding-top-xs" style="width: 100%;">
                  <view class="" style="min-height: 105rpx;">
                    <text class="tn-text-df tn-color-gray clamp-text-2 tn-text-justify">
-                     推出图鸟UI，嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻
+                     推出小匠UI，嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻
                    </text>
                    
                  </view>
@@ -98,13 +98,13 @@
                <view class="tn-margin-sm tn-padding-top-xs" style="width: 100%;">
                  <view class="" style="min-height: 105rpx;">
                    <text class="tn-text-df tn-color-gray clamp-text-2 tn-text-justify">
-                     注册图鸟科技，蜗居小小工作室
+                     注册小匠科技，蜗居小小工作室
                    </text>
                    
                  </view>
                  <view class="tn-flex tn-flex-row-between tn-flex-col-between">
                    <view class="justify-content-item tn-tag-content__item tn-margin-right tn-text-sm tn-text-bold">
-                     <text class="tn-tag-content__item--prefix">#</text> 图鸟科技
+                     <text class="tn-tag-content__item--prefix">#</text> 小匠科技
                    </view>
                    <view class="justify-content-item tn-color-gray tn-text-center tn-color-gray--disabled" style="padding-top: 5rpx;">
                      <!-- <text class="tn-icon-footprint tn-padding-right-xs tn-text-lg"></text>
@@ -200,7 +200,7 @@
                <view class="tn-margin-sm tn-padding-top-xs" style="width: 100%;">
                  <view class="" style="min-height: 105rpx;">
                    <text class="tn-text-df tn-color-gray clamp-text-2 tn-text-justify">
-                     注册图鸟工作室，在大学宿舍内，迈出了图鸟的第一步
+                     注册小匠工作室，在大学宿舍内，迈出了小匠的第一步
                    </text>
                    
                  </view>

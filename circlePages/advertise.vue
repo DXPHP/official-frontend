@@ -98,7 +98,7 @@
           </view>
           <view class="tn-padding-right tn-color-black">
             <view class="tn-padding-right tn-padding-left-sm">
-              <text class="tn-text-lg tn-text-bold">图鸟北北</text>
+              <text class="tn-text-lg tn-text-bold">小匠北北</text>
               <text class="tn-padding-left-sm">打杂UI</text>
             </view>
             <view class="tn-padding-right tn-padding-top-xs tn-padding-left-sm tn-text-ellipsis">
@@ -129,7 +129,7 @@
     <tn-landscape :show="show2" @close="closeLandscape">
       <view class="tn-text-center" @click="navTuniaoUI">
         <image src="https://resource.tuniaokj.com/images/landscape/2022-new-year.png" mode="widthFix"></image>
-        <text class="tn-text-lg tn-color-white tn-padding-top-lg">—— 图鸟UI，2022年已上线 ——</text>
+        <text class="tn-text-lg tn-color-white tn-padding-top-lg">—— 小匠UI，2022年已上线 ——</text>
       </view>
     </tn-landscape>
         
@@ -157,28 +157,28 @@
         }, {
           id: 1,
           type: 'image',
-          title: '图鸟南南',
+          title: '小匠南南',
           name: '欢迎加入东东们',
           text: '如果你也有不错的作品',
           url: 'https://resource.tuniaokj.com/images/swiper/read.jpg',
         }, {
           id: 2,
           type: 'image',
-          title: '图鸟西西',
+          title: '小匠西西',
           name: '一起玩转scss',
           text: '用最少的代码做最骚的效果',
           url: 'https://resource.tuniaokj.com/images/swiper/deer.jpg',
         }, {
           id: 3,
           type: 'image',
-          title: '图鸟北北',
+          title: '小匠北北',
           name: '微信号 tnkewo',
           text: '商业合作请联系作者',
           url: 'https://resource.tuniaokj.com/images/swiper/swiper3.jpg',
         }, {
           id: 4,
           type: 'image',
-          title: '图鸟猪猪',
+          title: '小匠猪猪',
           name: '努力成为大佬',
           text: '一起加油吖',
           url: 'https://resource.tuniaokj.com/images/shop/banner2.jpg',
@@ -268,7 +268,7 @@
         this.show2 = false
       },
       
-      // 跳转到图鸟UI
+      // 跳转到小匠UI
       navTuniaoUI() {
         uni.navigateToMiniProgram({
           appId: 'wxf3d81a452b88ff4b'

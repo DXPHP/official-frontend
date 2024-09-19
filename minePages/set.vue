@@ -9,7 +9,7 @@
 		</tn-nav-bar>
 
 		<view class="tn-margin-top" :style="{paddingTop: vuex_custom_bar_height + 'px'}">
-			<!-- 这个是图鸟UI响应用户需求，推出的一个uni_modules组件，插件市场点击右上角，导入即可 https://ext.dcloud.net.cn/plugin?id=10172 -->
+			<!-- 这个是小匠UI响应用户需求，推出的一个uni_modules组件，插件市场点击右上角，导入即可 https://ext.dcloud.net.cn/plugin?id=10172 -->
 			<wx-user-info-modal v-model="showAuthorizationModal" @updated="updatedUserInfoEvent"></wx-user-info-modal>
 
 			<view class="tn-flex tn-flex-row-between tn-strip-bottom tn-padding" @tap.stop="openAuthorizationModal">
@@ -18,7 +18,7 @@
 						{{user.nickname || '暂无昵称'}}
 					</view>
 					<!--   <view class="tn-color-gray tn-padding-top-xs">
-            静下心来，做好图鸟
+            静下心来，做好小匠
           </view> -->
 				</view>
 				<view class="justify-content-item tn-text-lg tn-color-grey">

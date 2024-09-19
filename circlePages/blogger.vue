@@ -424,7 +424,7 @@
             'https://resource.tuniaokj.com/images/blogger/blogger_avatar_2.jpeg',
             'https://resource.tuniaokj.com/images/blogger/blogger_avatar_3.jpeg',
           ],
-          username: '图鸟北北',
+          username: '小匠北北',
           desc: '你是不是傻，菜的一撇的北北'
         },
         tipsDataMessage: {
@@ -438,7 +438,7 @@
         content: [
           {
             userAvatar: 'https://resource.tuniaokj.com/images/blogger/blogger_beibei.jpg',
-            userName: '图鸟北北',
+            userName: '小匠北北',
             date: '2021年12月20日',
             label: ['开源','创意','UI框架'],
             desc: '开源可商用组件，助你开发酷炫UI一臂之力',
@@ -458,7 +458,7 @@
           },
           {
             userAvatar: 'https://resource.tuniaokj.com/images/blogger/blogger_beibei.jpg',
-            userName: '图鸟北北',
+            userName: '小匠北北',
             date: '2021年12月20日',
             label: ['开源','创意','UI框架'],
             desc: '开源可商用组件，助你开发酷炫UI一臂之力',
@@ -481,7 +481,7 @@
           },
           {
             userAvatar: 'https://resource.tuniaokj.com/images/blogger/blogger_beibei.jpg',
-            userName: '图鸟北北',
+            userName: '小匠北北',
             date: '2021年12月20日',
             label: [],
             desc: '',
@@ -505,7 +505,7 @@
           },
           {
             userAvatar: 'https://resource.tuniaokj.com/images/blogger/blogger_beibei.jpg',
-            userName: '图鸟北北',
+            userName: '小匠北北',
             date: '2021年12月20日',
             label: ['开源','创意'],
             desc: '开源可商用组件',
@@ -530,7 +530,7 @@
           },
           {
             userAvatar: 'https://resource.tuniaokj.com/images/blogger/blogger_beibei.jpg',
-            userName: '图鸟北北',
+            userName: '小匠北北',
             date: '2021年12月20日',
             label: ['开源','链接'],
             desc: 'https://www.yuque.com/tuniao',
@@ -555,7 +555,7 @@
           },
           {
             userAvatar: 'https://resource.tuniaokj.com/images/blogger/blogger_beibei.jpg',
-            userName: '图鸟北北',
+            userName: '小匠北北',
             date: '2021年12月20日',
             label: ['开源','创意'],
             desc: '开源可商用组件',

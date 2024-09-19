@@ -1,11 +1,11 @@
 {
     "id": "tuniao-site-template",
-    "name": "图鸟模板-官网",
-    "displayName": "图鸟模板-官网",
+    "name": "小匠模板-官网",
+    "displayName": "小匠模板-官网",
     "version": "1.2.2",
     "description": "企业官网，是基于 图鸟UI 进行开发的纯前端模板，支持微信小程序、APP和H5。",
     "keywords": [
-        "图鸟",
+        "小匠",
         "模板",
         "酷炫",
         "前端",

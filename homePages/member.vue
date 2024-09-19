@@ -23,7 +23,7 @@
               至尊 
               <text style="font-style:italic;padding-left: 6rpx;">VIP</text>
             </view>
-            <view class='tn-color-white tn-text-sm tn-padding-top-sm'>广州图鸟科技有限公司</view>
+            <view class='tn-color-white tn-text-sm tn-padding-top-sm'>广州小匠科技有限公司</view>
           </view>
           <view class="tn-margin-right">
             <tn-button shape="round" backgroundColor="#F1C68E" fontColor="#634738" padding="10rpx 0" width="160rpx" shadow>
@@ -42,7 +42,7 @@
               <text class="tn-text-bold tn-text-xl">至尊</text>
               <text class="tn-icon-vip-text tn-text-center" style="font-size: 92rpx;"></text>
             </view>
-            <view class='tn-color-white tn-text-sm'>尊享图鸟UI所有开源项目源码</view>
+            <view class='tn-color-white tn-text-sm'>尊享小匠UI所有开源项目源码</view>
           </view>
           <view class="">
             <tn-button shape="round" backgroundColor="#F1C68E00" fontColor="#F1C68E" padding="10rpx 0" width="260rpx" shadow>
@@ -135,7 +135,7 @@
       return {
         setList: [
         	{
-        		title: "图鸟UI",
+        		title: "小匠UI",
             title2: "UI组件",
             common: "免费商用",
             common2: "插件市场获取",
@@ -143,7 +143,7 @@
             vip2: "会员群直接获取"
         	},
         	{
-        		title: "图鸟VUE3 ",
+        		title: "小匠VUE3 ",
             title2: "UI组件",
         		common: "免费商用",
         		common2: "插件市场获取",

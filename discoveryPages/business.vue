@@ -23,7 +23,7 @@
         <view class='king-item tn-color-indigo tn-icon-science'>
           <view class="resume2 tn-main-gradient-blue--light tn-shadow-blur" style="padding: 20rpx 20rpx;">
             <text class="tn-margin-top-sm">
-              基因图鸟UI进行开发，适配APP、微信小程序、H5的Uniapp应用
+              基因小匠UI进行开发，适配APP、微信小程序、H5的Uniapp应用
             </text>
           </view>
 

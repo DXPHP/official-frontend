@@ -35,7 +35,7 @@
                 话题社区
               </view>
               <view class="tn-padding-right tn-padding-top-xs tn-text-ellipsis tn-text-sm">
-                <text class="tn-padding-right-sm">来自图鸟内部成员的浪漫，在这里发现创意</text>
+                <text class="tn-padding-right-sm">来自小匠内部成员的浪漫，在这里发现创意</text>
               </view>
             </view>
           </view>
@@ -55,7 +55,7 @@
     <tn-modal v-model="show1" :custom="true">
       <view class="custom-modal-content">
         <image @tap="previewQRCodeImage" src='https://resource.tuniaokj.com/images/advertise/qrcode.jpg' mode='aspectFill' style="width: 100%;"></image>
-        <view class="tn-text-center tn-padding-top">欢迎加入图鸟【开源技术】群</view>
+        <view class="tn-text-center tn-padding-top">欢迎加入小匠【开源技术】群</view>
         <view class="tn-text-center tn-padding-top tn-text-lg">点击上图，可识别微信二维码</view>
       </view>
     </tn-modal>
@@ -250,7 +250,7 @@
         content: [
           {
             userAvatar: 'https://resource.tuniaokj.com/images/blogger/onepiece-3.jpg',
-            userName: '图鸟北北',
+            userName: '小匠北北',
             date: '侏罗纪时间',
             label: ['开源','创意','UI框架'],
             desc: '开源可商用组件，助你开发酷炫UI一臂之力',
@@ -274,7 +274,7 @@
           },
           {
             userAvatar: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg',
-            userName: '图鸟北北',
+            userName: '小匠北北',
             date: '侏罗纪时间',
             label: ['开源','创意','UI框架'],
             desc: '开源可商用组件，助你开发酷炫UI一臂之力',
@@ -297,7 +297,7 @@
           },
           {
             userAvatar: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg',
-            userName: '图鸟北北',
+            userName: '小匠北北',
             date: '侏罗纪时间',
             label: [],
             desc: '',
@@ -321,7 +321,7 @@
           },
           {
             userAvatar: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg',
-            userName: '图鸟北北',
+            userName: '小匠北北',
             date: '侏罗纪时间',
             label: ['开源','创意'],
             desc: '开源可商用组件',
@@ -346,7 +346,7 @@
           },
           {
             userAvatar: 'https://resource.tuniaokj.com/images/blogger/blogger_beibei.jpg',
-            userName: '图鸟北北',
+            userName: '小匠北北',
             date: '侏罗纪时间',
             label: ['开源','链接'],
             desc: 'https://www.yuque.com/tuniao',
@@ -371,7 +371,7 @@
           },
           {
             userAvatar: 'https://resource.tuniaokj.com/images/blogger/content_1.jpeg',
-            userName: '图鸟北北',
+            userName: '小匠北北',
             date: '侏罗纪时间',
             label: ['开源','创意'],
             desc: '开源可商用组件',

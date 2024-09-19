@@ -155,7 +155,7 @@
         <view class='king-item tn-color-red tn-icon-circle-fill'>
           <view class="resume text-lg">
             <text>2022-05 ~ 2022-05</text>
-            <text class='fr'>图鸟模板</text>
+            <text class='fr'>小匠模板</text>
           </view>
           <!-- <view class="resume2">
               <text>东东工作室</text>
@@ -164,7 +164,7 @@
             style="background-image:url(https://resource.tuniaokj.com/images/advertise/7.jpg);">
           </view>
           <view class="resume2">
-            <text>项目介绍：基于酷炫UI的一套模板，更多详情可微信小程序搜索“图鸟模板”</text>
+            <text>项目介绍：基于酷炫UI的一套模板，更多详情可微信小程序搜索“小匠模板”</text>
           </view>
           <view class="resume2">
             <text>职责描述：想法的整理，原型设计，Ul设计，前端界面编程等等</text>
@@ -173,7 +173,7 @@
         <view class='king-item tn-color-red tn-icon-circle-fill'>
           <view class="resume text-lg">
             <text>2021-12 ~ 2022-03</text>
-            <text class='fr'>图鸟UI</text>
+            <text class='fr'>小匠UI</text>
           </view>
           <!-- <view class="resume2">
               <text>东东工作室</text>
@@ -182,7 +182,7 @@
             style="background-image:url(https://resource.tuniaokj.com/images/advertise/8.jpg);">
           </view>
           <view class="resume2">
-            <text>项目介绍：酷炫UI组件库，更多详情可微信小程序搜索“图鸟UI”</text>
+            <text>项目介绍：酷炫UI组件库，更多详情可微信小程序搜索“小匠UI”</text>
           </view>
           <view class="resume2">
             <text>职责描述：想法的整理，原型设计，Ul设计，前端界面编程等等</text>
@@ -191,7 +191,7 @@
         <view class='king-item tn-color-red tn-icon-circle-fill'>
           <view class="resume text-lg">
             <text>2019-10 ~ 2020-12</text>
-            <text class='fr'>图鸟官网</text>
+            <text class='fr'>小匠官网</text>
           </view>
           <!-- <view class="resume2">
               <text>东东工作室</text>
@@ -200,7 +200,7 @@
             style="background-image:url(https://cdn.nlark.com/yuque/0/2021/jpeg/280373/1629527289065-assets/web-upload/422cb1af-62b6-4574-8bc3-e2d0d9f023ea.jpeg);">
           </view>
           <view class="resume2">
-            <text>项目介绍：科技类小程序官网，更多详情可微信小程序搜索“图鸟”</text>
+            <text>项目介绍：科技类小程序官网，更多详情可微信小程序搜索“小匠”</text>
           </view>
           <view class="resume2">
             <text>职责描述：想法的整理，原型设计，Ul设计，前端界面编程</text>

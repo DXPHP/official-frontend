@@ -9,27 +9,27 @@
 					<!-- 图标logo -->
 					<view class="custom-nav__back" @click="tn('/homePages/about')">
 						<!-- 图片模式-->
-						<view class="logo-pic tn-shadow-blur"
-							style="background-image:url('https://resource.tuniaokj.com/images/logo/logo2.png')">
+						<!-- <view class="logo-pic tn-shadow-blur"
+							style="background-image:url('')">
 							<view class="logo-image">
 							</view>
-						</view>
+						</view> -->
 						<!-- 如果有图片那就放图片，如果没有，那就删掉上面的放字体icon -->
 						<!-- <view class="tn-icon-left"></view> -->
 					</view>
 					<!-- 搜索框 -->
-					<view class="custom-nav__search tn-flex tn-flex-col-center tn-flex-row-center"
+					<!-- <view class="custom-nav__search tn-flex tn-flex-col-center tn-flex-row-center"
 						@click="tn('/homePages/search')">
 						<view class="custom-nav__search__box tn-flex tn-flex-col-center tn-flex-row-left"
 							style="background-color: rgba(230,230,230,0.3);">
-							<!-- <view class="custom-nav__search__icon tn-icon-search tn-color-white"></view>
-              <view class="custom-nav__search__text tn-padding-left-xs tn-color-white">搜索 图鸟模板</view> -->
+							<view class="custom-nav__search__icon tn-icon-search tn-color-white"></view>
+							<view class="custom-nav__search__text tn-padding-left-xs tn-color-white">搜索 </view>
 							<view class="tn-color-white" style="width: 100%;">
 								<tn-notice-bar :list="searlist" mode="vertical" leftIconName="search"
 									:duration="6000"></tn-notice-bar>
 							</view>
 						</view>
-					</view>
+					</view> -->
 				</view>
 			</tn-nav-bar>
 		</view>
@@ -41,16 +41,16 @@
 			<tn-nav-bar fixed :isBack="false" :bottomShadow="false" backgroundColor="#FFFFFF00">
 				<view class="custom-nav tn-flex tn-flex-col-center tn-flex-row-left">
 					<!-- 图标logo -->
-					<view class="custom-nav__back" @click="tn('/homePages/about')">
-						<!-- 图片模式-->
-						<view class="logo-pic tn-shadow-blur"
-							style="background-image:url('https://resource.tuniaokj.com/images/logo/logo2.png')">
+					<!-- <view class="custom-nav__back" @click="tn('/homePages/about')"> -->
+					<!-- 图片模式-->
+					<!-- <view class="logo-pic tn-shadow-blur"
+							style="background-image:url('')">
 							<view class="logo-image">
 							</view>
-						</view>
-						<!-- 如果有图片那就放图片，如果没有，那就删掉上面的放字体icon -->
-						<!-- <view class="tn-icon-left"></view> -->
-					</view>
+						</view> -->
+					<!-- 如果有图片那就放图片，如果没有，那就删掉上面的放字体icon -->
+					<!-- <view class="tn-icon-left"></view> -->
+					<!-- </view> -->
 					<!-- 搜索框 -->
 					<!-- <view class="custom-nav__search tn-flex tn-flex-col-center tn-flex-row-center"
 						@click="tn('/homePages/search')">
@@ -246,8 +246,9 @@
 			</block>
 		</view>
 
+
 		<!-- 标题-->
-		<view class="tn-flex tn-flex-row-between tn-flex-col-center tn-margin-top"  @click="switchTab(2)">
+		<view class="tn-flex tn-flex-row-between tn-flex-col-center tn-margin-top" @click="switchTab(2)">
 			<view class="justify-content-item tn-margin tn-text-bold tn-text-xl blue-title">
 				热门案例
 			</view>
@@ -305,7 +306,7 @@
 						</view>
 						<view class="tn-padding-top-xs" style="min-height: 90rpx;">
 							<text class="tn-text-df tn-color-gray clamp-text-2 tn-text-justify">
-								{{ item.content }}
+								{{ item.subtitle }}
 							</text>
 						</view>
 						<view class="tn-flex tn-flex-row-between tn-flex-col-between tn-margin-top-sm">
@@ -388,7 +389,7 @@
 				<view
 					class="tn-flex tn-flex-direction-row tn-flex-col-center tn-flex-row-between tn-color-white tn-shadow-blur tn-col-3 tn-margin-top-sm"
 					@click="tn()">
-					<view class="partner__item home-shadow" >
+					<view class="partner__item home-shadow">
 						<view class="item__image">
 							<tn-lazy-load :threshold="6000" height="144" :image="item.image" :index="item.id"
 								imgMode="aspectFill" style="border-radius: 10rpx;"></tn-lazy-load>
@@ -410,37 +411,8 @@
 			</view>
 		</view> -->
 
-		<!-- 功能入口-->
-		<!-- <view
-			class="tn-info__container tn-flex tn-flex-wrap tn-flex-col-center tn-flex-row-between tn-margin-left tn-margin-right">
-			<block v-for="(item, index) in tuniaoData" :key="index">
-				<view
-					class="tn-info__item tn-flex tn-flex-direction-row tn-flex-col-center tn-flex-row-between tn-color-white tn-shadow-blur"
-					:style="'background-color:'+ item.color +';'" @click="tn(item.url)">
-					<view class="tn-info__item__left tn-flex tn-flex-direction-row tn-flex-col-center tn-flex-row-left">
-						<view class="tn-info__item__left__content">
-							<view class="tn-info__item__left__content--title tn-text-bold" style="font-size: 38rpx;">
-								{{ item.title }}
-							</view>
-							<view class="tn-info__item__left__content--data tn-padding-top-xs">
-								{{ item.value }}
-								<text class="tn-icon-right tn-padding-left-xs"></text>
-							</view>
-						</view>
-					</view>
-					<view class="tn-info__item__right">
-						<view class="tn-info__item__right--icon">
-							<view :class="[`tn-icon-${item.icon}`]"></view>
-						</view>
-					</view>
-					<view class="tn-info__item__bottom">
-						<view class='name tn-text-sm tn-color-gray' style="margin-left: -10rpx;">
-							<text class="tn-icon-code tn-padding-right-xs" style="opacity: 0;"></text>
-						</view>
-					</view>
-				</view>
-			</block>
-		</view> -->
+
+
 
 		<view class='tn-tabbar-height'></view>
 
@@ -460,46 +432,10 @@
 				cooperationList: [],
 				caseList: [],
 				menusList: [],
-				swiperList: [{
-					id: 0,
-					type: 'image',
-					title: '',
-					name: '',
-					text: '',
-					url: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1681955091346-assets/web-upload/e05d86a5-1cec-40b0-8198-734d8b8379da.jpeg',
-				}, {
-					id: 1,
-					type: 'image',
-					title: '合作勾搭',
-					name: '作者微信 tnkewo',
-					text: '',
-					url: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1683257848160-assets/web-upload/357eefff-1d01-4502-87b7-26a50e3c63d1.jpeg',
-				}, {
-					id: 2,
-					type: 'image',
-					title: '海量分享',
-					name: '总有你想不到的创意',
-					text: '',
-					url: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1683257844089-assets/web-upload/787ff088-886a-4d5c-9fcb-7120f60a39ba.jpeg',
-				}, {
-					id: 3,
-					type: 'image',
-					title: '酷炫多彩',
-					name: '更多彩蛋等你探索',
-					text: '',
-					url: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1683257844146-assets/web-upload/b82e6f1e-9a3d-4ca6-931e-c3095a542899.jpeg',
-				}, {
-					id: 4,
-					type: 'image',
-					title: '适配多端',
-					name: 'APP、微信小程序、H5、Finclip',
-					text: '',
-					url: 'https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1683257844093-assets/web-upload/e5dc583c-1ddd-470d-bd3a-da752b87ff57.jpeg',
-				}],
+				swiperList: [],
 
 				list: [
-					'官网通用模板全新上线，感谢大佬的信任！',
-					'感谢各位图鸟群友的问题反馈和意见反馈！'
+
 				],
 
 				searlist: [
@@ -509,175 +445,20 @@
 					'搜索 个人中心模板'
 				],
 
-				tuniaoData: [{
-						title: '企业文化',
-						icon: 'image-text-fill',
-						color: '#5177EE',
-						value: '查看详情',
-						url: '/homePages/culture'
-					},
-					{
-						title: '发展历程',
-						icon: 'calendar-fill',
-						color: '#19cf8a',
-						value: '查看详情',
-						url: '/homePages/history'
-					},
-					{
-						title: '集体相册',
-						icon: 'image-fill',
-						color: '#5F4FD9',
-						value: '查看详情',
-						url: '/homePages/photo'
-					},
-					{
-						title: '宣传短片',
-						icon: 'theme-fill',
-						color: '#954FF6',
-						value: '查看详情',
-						url: '/homePages/video'
-					},
-					{
-						title: '荣誉证书',
-						icon: 'trophy-fill',
-						color: '#F33F5A',
-						value: '查看详情',
-						url: '/homePages/honor'
-					},
-					{
-						title: '公司地址',
-						icon: 'location-fill',
-						color: '#FF7043',
-						value: '查看详情',
-						url: '/homePages/map'
-					}
-				],
-				goodsList: [{
-						title: '酷炫发现页面',
-						userName: '试试就逝世',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1661311316649-assets/web-upload/4de21afc-9abe-4c2a-b9fb-919d5537eb88.jpeg',
-						userImage: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1664005699098-assets/web-upload/e8b29292-72fc-4c1e-9d7c-fd9dba31cb62.jpeg',
-						storeType: 1, // 1 自营 2 第三方店铺
-						newProduct: true, // 是否为新品
-						tags: ['首页'],
-						price: 1.29,
-						likeCount: 2,
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 338
-						},
-					},
-					{
-						title: '圈子页面',
-						userName: '你的名字',
-						mainImage: 'https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1661311317595-assets/web-upload/d0effa8c-78f5-477f-b070-481840860bfe.jpeg',
-						userImage: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg',
-						storeType: 1, // 1 自营 2 第三方店铺
-						newProduct: false, // 是否为新品
-						tags: ['表单', '新建'],
-						price: 0.05,
-						likeCount: 21,
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 289
-						},
-					},
-				],
-				news: [{
-						userAvatar: 'https://resource.tuniaokj.com/images/blogger/blogger_beibei.jpg',
-						userName: '可我会像',
-						date: '2021年12月20日',
-						color: 'cyan',
-						label: ['模型'],
-						title: '3D家具模型了解一下？',
-						desc: '家具模型应有尽有',
-						mainImage: 'https://resource.tuniaokj.com/images/shop/prototype1.jpg',
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 987
-						},
-						collectionCount: 567,
-						commentCount: 69,
-						likeCount: 65
-					},
-					{
-						userAvatar: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg',
-						userName: '可我会像',
-						date: '2021年12月20日',
-						color: 'blue',
-						label: ['神器'],
-						title: '为什么资讯不显示时间？',
-						desc: '你确定你经常更新文章吗？',
-						mainImage: 'https://resource.tuniaokj.com/images/shop/computer2.jpg',
-						viewUser: {
-							latestUserAvatar: [{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-								},
-								{
-									src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-								},
-							],
-							viewUserCount: 321
-						},
-						collectionCount: 654,
-						commentCount: 232,
-						likeCount: 543
-					}
-				],
+				goodsList: [],
+				news: [],
 				company: {
 					address: "广东省广州市海珠区赤岗街道23号",
 					lat: "23.10647",
 					lng: "113.32446",
-					name: "帆布国际装修有限公司"
+					name: "小匠国际装修有限公司"
 				},
 				id: 0, // 使用 marker点击事件 需要填写id
 				title: 'map',
-				
+
 				covers: [{
 					latitude: 23.10647,
-					longitude:113.32446,
+					longitude: 113.32446,
 					iconPath: 'https://cdn.nlark.com/yuque/0/2023/png/280373/1675936271542-assets/web-upload/8f3d0a29-cad4-4e4d-995b-0e08467dff02.png'
 				}]
 
@@ -721,7 +502,7 @@
 				this.cardCur = e.detail.current
 			},
 			switchTab(e) {
-				this.$emit('change',e)
+				this.$emit('change', e)
 			},
 			// 跳转
 			tn(e) {

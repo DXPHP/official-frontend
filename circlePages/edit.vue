@@ -123,7 +123,7 @@
           },
           {
             color: 'blue',
-            title: "图鸟",
+            title: "小匠",
           },
           {
             color: 'green',
