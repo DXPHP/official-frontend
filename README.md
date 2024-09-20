@@ -10,7 +10,7 @@
 ![输入图片说明](https://official.duoduotu.cloud/uploads/demo/qrcode.png)
 小程序没有上线，和H5体验差不多，小程序多一个微信授权登录和微信支付 
 
-后端体验地址  http://139.196.18.12/admin    账号: test   密码: 123456 ，体验账号没有删除权限
+后端体验地址   https://official.duoduotu.cloud/admin    账号: test   密码: 123456 ，体验账号没有删除权限
 
 ## 适用范围  
 
