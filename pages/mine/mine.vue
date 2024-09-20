@@ -193,7 +193,9 @@
 	import {
 		notifiedCount
 	} from '@/api/user.js'
-
+	// import {
+	// 	isLogin
+	// } from '@/utils/commonUtils.js'
 	import {
 		getStorage
 	} from '@/common/db.js';
@@ -216,6 +218,7 @@
 			}
 		},
 		created() {
+			// isLogin()
 			appinfo().then(res => {
 				this.appInfo = res.data
 			})

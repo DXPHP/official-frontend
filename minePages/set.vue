@@ -119,6 +119,9 @@
 		updateUserInfo
 	} from '@/utils/updateUtils.js'
 	import {
+		isLogin
+	} from '@/utils/commonUtils.js'
+	import {
 		uploadFilePromise
 	} from '@/utils/uploadFileUtils.js'
 
@@ -160,6 +163,7 @@
 
 		},
 		onLoad() {
+			isLogin()
 			let userInfo = getStorage(storage_userInfo)
 			if (userInfo) {
 				this.user = JSON.parse(userInfo).userinfo

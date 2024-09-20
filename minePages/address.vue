@@ -165,6 +165,7 @@
 						}
 						this.loadStatus = 'nomore'; //数据加载完毕
 					} else {
+						this.list = []
 						this.listStatus = 1;
 					}
 				}).catch(err => {

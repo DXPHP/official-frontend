@@ -178,7 +178,7 @@
 						phone: data.phone,
 						province: data.province,
 					}
-					if (data.isDefault == 1) {
+					if (data.is_default == 1) {
 						this.isDefault = ['']
 					} else {
 						this.isDefault = []
@@ -231,9 +231,9 @@
 				}
 
 				if (this.isDefault.length > 0) {
-					params.isDefault = 1
+					params.is_default = 1
 				} else {
-					params.isDefault = 0
+					params.is_default = 0
 				}
 				if (this.isEdit) {
 					params.id = this.id
