@@ -46,7 +46,7 @@ function statusCodeProcess(responseData) {
 		code,
 		msg
 	} = responseData;
-
+	console.log('responseData', responseData)
 	// 根据状态码进行不同的处理
 	switch (code) {
 		case 1: // 请求成功
@@ -174,13 +174,17 @@ export function httpRequest(url, method = 'GET', data = {}, header = {}) {
 				try {
 					// 应用响应拦截器
 					const responseData = responseInterceptor(res);
-					// 如果 responseInterceptor 返回了一个 Promise，我们需要等待它
-					if (responseData instanceof Promise && (await responseData.catch())) {
-						responseData.then(resolve).catch(reject);
-					} else {
+					// console.log('responseData1111', responseData)
+					if (!responseData) return
+
+					if (responseData.code == 1) {
 						resolve(responseData);
+					} else {
+						reject(responseData)
 					}
+
 				} catch (error) {
+					console.log('error', error)
 					// 捕获响应拦截器中抛出的错误
 					reject(error);
 				}
