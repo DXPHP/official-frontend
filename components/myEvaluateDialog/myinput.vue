@@ -46,7 +46,7 @@
 		data() {
 			return {
 				isLoading: false,
-				appBox: 0,
+				appBox: 0,  //0是输入框状态  1是表情选择状态
 				isFocus: false,
 				KeyboardHeight: 0,
 				myeditor: '',
@@ -89,6 +89,7 @@
 			},
 			// 监听键盘
 			keyboardheightchange(e) {
+				// console.log('监听键盘高度高度', e)
 				if (e.detail.height > 0 && (this.boxHeight != (e.detail.height + 46 - this
 						.statusBarHeight))) {
 					// console.log('监听键盘高度重新给弹框赋值高度', e)
@@ -172,7 +173,11 @@
 				this.isLoading = false
 			},
 			InputFocus(e) {
+				console.log('66666',e)
 				this.appBox = 0
+				// #ifdef H5
+				this.boxHeight = 46
+				// #endif
 			},
 			InputBlur(e) {}
 

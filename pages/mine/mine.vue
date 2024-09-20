@@ -1,20 +1,10 @@
 <template>
 	<view class="page-e tn-safe-area-inset-bottom">
-		<!-- 顶部自定义导航 -->
-		<!-- <tn-nav-bar :isBack="false" :bottomShadow="false" backgroundColor="none">
-      <view class="custom-nav tn-flex tn-flex-col-center tn-flex-row-left" @click="tn('/minePages/message')">
-        <view class="custom-nav__back">
-          <view class="tn-icon-notice tn-color-gray" style="font-size: 50rpx;">
-          </view>
-        </view>
-      </view>
-    </tn-nav-bar> -->
-
+		<!-- 背景图 -->
 		<view class="top-backgroup">
 			<image src='https://resource.tuniaokj.com/images/my/my-bg4.png' mode='widthFix' class='backgroud-image'>
 			</image>
 		</view>
-
 		<view class="tn-margin-left tn-margin-right" :style="{paddingTop: vuex_custom_bar_height + 'px'}">
 			<!-- 图标logo/头像 -->
 			<view class="tn-flex tn-flex-row-between tn-flex-col-center tn-margin-bottom" style="margin-top: -450rpx;">
@@ -30,14 +20,9 @@
 						<view class="tn-padding-right">
 							<view class="tn-padding-right tn-padding-left-sm">
 								<text class="tn-color-wallpaper tn-text-xl tn-text-bold">{{userInfo.nickname}}</text>
-								<!-- <text class=" tn-round tn-text-xs tn-bg-red tn-color-white tn-margin-left-sm" style="padding: 10rpx 20rpx;">
-                  未实名
-                </text> -->
 							</view>
-							<view class="tn-padding-right tn-padding-top-xs tn-padding-left-sm tn-text-ellipsis"
-								@click="copyUid">
-								<!-- <text class="tn-color-gray">Uid: 10262008</text>
-								<text class="tn-color-blue--disabled tn-padding-left-xs tn-text-sm tn-icon-copy"></text> -->
+							<view class="tn-padding-right tn-padding-top-xs tn-padding-left-sm tn-text-ellipsis">
+
 							</view>
 						</view>
 
@@ -49,72 +34,8 @@
 				</view>
 			</view>
 
-			<!-- 没有授权，则显示这个授权按钮-->
-			<!-- <view class="tn-flex tn-flex-row-between" @click="tn('/minePages/login')">
-        <view class="tn-flex-1 justify-content-item tn-margin-xs tn-text-center">
-          <tn-button shape="round" backgroundColor="#1D2541" fontColor="#ffffff" padding="20rpx 0" width="40%" shadow>
-            <text class="tn-icon-wechat tn-padding-right-xs tn-text-xl"></text>
-            <text class="">授权登录</text>
-          </tn-button>
-        </view>
-      </view> -->
-
-			<!--  <view class="tn-margin-top-xl">
-        <view class="button-number tn-flex tn-flex-row-between tn-flex-col-center tn-shadow-blur" style="background: linear-gradient(-120deg, #3E445A, #31374A, #2B3042, #262B3C);">
-         
-         <view class="tn-margin-left" @click="tn('/homePages/member')">
-            <view class="tn-flex tn-flex-col-center" style="color: #F1C68E;margin-top: -20rpx;">
-              <text class="tn-text-bold tn-text-xl">至尊</text>
-              <text class="tn-icon-vip-text tn-text-center" style="font-size: 92rpx;"></text>
-            </view>
-            <view class='tn-color-white tn-text-sm'>会员福利，助力事业一骑绝尘</view>
-          </view>
-         <view class="tn-margin-right">
-            <tn-button shape="round" backgroundColor="#F1C68E" fontColor="#634738" padding="10rpx 0" width="160rpx" shadow @click="tn('/homePages/member')">
-              <text class="tn-text-bold">权 益z</text>
-            </tn-button>
-          </view>
-          
-          <view class="tnwave waveAnimation">
-            <view class="waveWrapperInner bgTop">
-              <view class="wave waveTop" style="background-image: url('https://resource.tuniaokj.com/images/wave/wave-2.png')"></view>
-            </view>
-            <view class="waveWrapperInner bgMiddle">
-              <view class="wave waveMiddle" style="background-image: url('https://resource.tuniaokj.com/images/wave/wave-2.png')"></view>
-            </view>
-            <view class="waveWrapperInner bgBottom">
-              <view class="wave waveBottom" style="background-image: url('https://resource.tuniaokj.com/images/wave/wave-1.png')"></view>
-            </view>
-          </view>
-          
-        </view>
-      </view>  -->
-
-
-
-			<!-- 方式5 start-->
-			<!-- <view class="tn-flex">
-        <view class="tn-flex-1 wallpaper-shadow tn-bg-white" style="margin: 50rpx 15rpx 0 0;padding: 30rpx 0;" @click="tn('/pageB/edit/edit')">
-          <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
-            <view class="icon5__item--icon tn-flex tn-flex-row-center tn-flex-col-center" style="background-image:url('https://cdn.nlark.com/yuque/0/2022/png/280373/1666764808285-assets/web-upload/b83d1b36-7355-4f36-bc02-9f06b8c0867c.png');background-size:100% 100%;background-size: cover;">
-            </view>
-            <view class="tn-text-center" style="font-size: 30rpx;">
-              <view class="tn-text-ellipsis">发布帖子</view>
-            </view>
-          </view>
-        </view>
-        <view class="tn-flex-1 wallpaper-shadow tn-bg-white" style="margin: 50rpx 0 0 15rpx;padding: 30rpx 0;" @click="tn('/pageA/create/create')">
-          <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
-            <view class="icon5__item--icon tn-flex tn-flex-row-center tn-flex-col-center" style="background-image:url('https://cdn.nlark.com/yuque/0/2022/png/280373/1666764788528-assets/web-upload/955b13dd-7715-4627-b8cc-04ae3d85051a.png');background-size:100% 100%;background-size: cover;">
-            </view>
-            <view class="tn-text-center" style="font-size: 30rpx;">
-              <view class="tn-text-ellipsis">预存抵扣</view>
-            </view>
-          </view>
-        </view>
-      </view> -->
-
 			<!-- 更多信息-->
+
 			<!-- 方式12 start-->
 			<view class="wallpaper-shadow tn-margin-top-lg  tn-padding-bottom-sm tn-bg-white"
 				style="position: relative;z-index: 99;">
@@ -131,16 +52,7 @@
 							</view>
 						</view>
 					</view>
-					<!--    <view class="tn-padding-sm tn-margin-xs tn-radius" @click="tn('/homePages/member')">
-            <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
-              <view class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-bg-blue--light">
-                <view class="tn-icon-vip tn-color-wallpaper"></view>
-              </view>
-              <view class="tn-text-center">
-                <text class="tn-text-ellipsis">会员权益</text>
-              </view>
-            </view>
-          </view> -->
+
 					<view class="tn-padding-sm tn-margin-xs tn-radius" @click="navAddress">
 						<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
 							<view
@@ -183,7 +95,6 @@
 				</view>
 			</view>
 
-
 			<!-- 更多信息-->
 			<view class="wallpaper-shadow tn-margin-top-lg tn-padding-top-sm tn-padding-bottom-sm">
 				<tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30" @click="copySource">
@@ -207,20 +118,7 @@
 						<view class="tn-color-gray tn-icon-right"></view>
 					</view>
 				</tn-list-cell>
-				<!--        <tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30" @click="tn('/pageA/help/help')">
-          <view class="tn-flex tn-flex-col-center">
-            <view
-              class="icon1__item--icon tn-flex tn-flex-row-center tn-flex-col-center" style="color: #7C8191;">
-              <view class="tn-icon-message-fill"></view>
-            </view>
-            <view class="tn-flex tn-flex-row-between" style="width: 100%;">
-              <view class="tn-margin-left-sm">常见问题</view>
-              <view class="tn-color-gray tn-icon-right"></view>
-            </view>
-          </view>
-        </tn-list-cell> -->
 			</view>
-
 			<view class="wallpaper-shadow tn-margin-top-lg tn-margin-bottom-lg tn-padding-top-sm tn-padding-bottom-sm">
 				<tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30">
 					<button class="tn-flex tn-flex-col-center tn-button--clear-style" open-type="contact">
@@ -246,7 +144,6 @@
 						</view>
 					</button>
 				</tn-list-cell>
-
 				<tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30">
 					<button class="tn-flex tn-flex-col-center tn-button--clear-style"
 						@click="tn('/minePages/feedBack')">
@@ -260,21 +157,6 @@
 						</view>
 					</button>
 				</tn-list-cell>
-
-				<!-- <tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30" @click="callPhoneNumber"
-					data-number="18266666666">
-					<view class="tn-flex tn-flex-col-center">
-						<view class="icon1__item--icon tn-flex tn-flex-row-center tn-flex-col-center"
-							style="color: #7C8191;">
-							<view class="tn-icon-tel-circle-fill"></view>
-						</view>
-						<view class="tn-margin-left-sm tn-flex-1">技术热线</view>
-						<view
-							class="tn-margin-left-sm tn-color-wallpaper tn-text-sm tn-padding-left-xs tn-padding-right-xs tn-bg-gray--light tn-round">
-							{{appInfo.customer_service}}
-						</view>
-					</view>
-				</tn-list-cell> -->
 				<tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30"
 					@click="tn('/minePages/setApp')" data-number="18266666666">
 					<view class="tn-flex tn-flex-col-center">
@@ -292,32 +174,13 @@
 			</view>
 
 		</view>
-
 		<view class="tn-text-center tn-margin-top-xl tn-padding-bottom-xl">
 			<view @click="navTuniaoUI">
 				<text class="tn-color-blue tn-padding-xs">{{appInfo.app_name}}</text>
 				<text class="">{{appInfo.app_version}}</text>
 			</view>
-			<!-- <button class=" tn-button--clear-style" open-type="feedback">
-    		<view class="tn-margin tn-text-center">
-    			<text>UI期待你的需求</text>
-    			<text class="tn-color-blue">留言</text>
-    		</view>
-    	</button> -->
+
 		</view>
-
-		<tn-modal v-model="show1" :custom="true">
-			<view class="custom-modal-content">
-				<image @tap="previewQRCodeImage" src='https://resource.tuniaokj.com/images/advertise/qrcode.jpg'
-					mode='aspectFill' style="width: 100%;"></image>
-				<view class="tn-text-center tn-padding-top" @click="copyWechat">
-					<text class="">客服微信：tnkewo </text>
-					<text class="tn-color-blue--disabled tn-padding-left-xs tn-text-df tn-icon-copy"></text>
-				</view>
-				<view class="tn-text-center tn-padding-top tn-text-lg">点击上图，可识别微信二维码</view>
-			</view>
-		</tn-modal>
-
 		<view class='tn-tabbar-height'></view>
 
 	</view>
@@ -345,7 +208,6 @@
 		data() {
 			return {
 				messageNum: 0,
-				show1: false,
 				appInfo: {},
 				userInfo: {
 					nickname: '',

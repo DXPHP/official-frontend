@@ -1,31 +1,41 @@
 <template>
 	<view class="start-index">
+		<!-- 首页 -->
 		<view v-if="tabberPageLoadFlag[0]" :style="{display: currentIndex === 0 ? '' : 'none'}">
 			<scroll-view class="custom-tabbar-page" scroll-y enable-back-to-top @scrolltolower="tabbarPageScrollLower">
 				<Home ref="home" @change="switchTabbar"></Home>
 			</scroll-view>
 		</view>
+
+		<!-- 产品 -->
 		<view v-if="tabberPageLoadFlag[1]" :style="{display: currentIndex === 1 ? '' : 'none'}">
 			<scroll-view class="custom-tabbar-page" scroll-y enable-back-to-top @scrolltolower="tabbarPageScrollLower">
 				<Comm ref="comm"></Comm>
 			</scroll-view>
 		</view>
+
+		<!-- 案例 -->
 		<view v-if="tabberPageLoadFlag[2]" :style="{display: currentIndex === 2 ? '' : 'none'}">
 			<scroll-view class="custom-tabbar-page" scroll-y enable-back-to-top @scrolltolower="tabbarPageScrollLower">
 				<Discovery ref="discovery"></Discovery>
 			</scroll-view>
 		</view>
+
+		<!-- 资讯 -->
 		<view v-if="tabberPageLoadFlag[3]" :style="{display: currentIndex === 3 ? '' : 'none'}">
 			<scroll-view class="custom-tabbar-page" scroll-y enable-back-to-top @scrolltolower="tabbarPageScrollLower">
 				<News ref="news"></News>
 			</scroll-view>
 		</view>
+
+		<!-- 我的 -->
 		<view v-if="tabberPageLoadFlag[4]" :style="{display: currentIndex === 4 ? '' : 'none'}">
 			<scroll-view class="custom-tabbar-page" scroll-y enable-back-to-top @scrolltolower="tabbarPageScrollLower">
 				<Mine ref="mine"></Mine>
 			</scroll-view>
 		</view>
 
+		<!-- 底部导航 -->
 		<tn-tabbar v-model="currentIndex" :list="tabbarList" activeColor="#838383" inactiveColor="#AAAAAA"
 			activeIconColor="#3668FC" :animation="true" :safeAreaInsetBottom="true" @change="switchTabbar"></tn-tabbar>
 	</view>
@@ -54,20 +64,15 @@
 				// 底部tabbar菜单数据
 				tabbarList: [{
 						title: '首页',
-						// activeIcon: '/static/tabbar/tn-tabbar0-curnew.png',
-						// inactiveIcon: '/static/tabbar/tn-tabbar0.png'
 						activeIcon: 'home-in-fill',
 						inactiveIcon: 'home-in'
 					},
 					{
 						title: '产品',
-						/* activeIcon: '/static/tabbar/tn-tabbar1-curnew.png',
-						inactiveIcon: '/static/tabbar/tn-tabbar1.png' */
 						activeIcon: 'iot-fill',
 						inactiveIcon: 'iot'
 					},
 					{
-						// 服务、案例、品牌、合作、发现、探索
 						title: '案例',
 						activeIcon: 'reload-planet-fill',
 						inactiveIcon: 'rocket',
@@ -78,16 +83,12 @@
 					},
 					{
 						title: '资讯',
-						/* activeIcon: '/static/tabbar/tn-tabbar2-curnew.png',
-						inactiveIcon: '/static/tabbar/tn-tabbar2.png' */
 						activeIcon: 'topics-fill',
 						inactiveIcon: 'topics',
-						// count: 12
+
 					},
 					{
 						title: '我的',
-						/* activeIcon: '/static/tabbar/tn-tabbar3-curnew.png',
-						inactiveIcon: '/static/tabbar/tn-tabbar3.png' */
 						activeIcon: 'my-circle-fill',
 						inactiveIcon: 'my-circle'
 					}

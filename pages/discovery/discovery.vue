@@ -1,121 +1,5 @@
 <template>
 	<view class="page-c">
-		<!-- 顶部自定义导航 -->
-		<!-- <tn-nav-bar fixed alpha customBack>
-      <view slot="back" class='tn-custom-nav-bar__back'>
-        <text class='icon tn-icon-notice'></text>
-        <text class='icon tn-icon-caring'></text>
-      </view>
-    </tn-nav-bar> -->
-
-		<!-- <view class="top-backgroup">
-			<image
-				src='https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1666862894380-assets/web-upload/e3a97a87-7b21-442a-be37-f6dae7750eae.jpeg'
-				mode='widthFix' class='backgroud-image'></image>
-		</view> -->
-
-		<!-- 	<swiper class="card-swiper" :circular="true" :autoplay="false" duration="500" interval="5000"
-			previous-margin="170rpx" next-margin="170rpx" @change="cardSwiper" style="margin-top: -470rpx;">
-			<swiper-item v-for="(item,index) in swiperList" :key="index" :class="cardCur==index?'cur':''">
-				<view class="tnphone-white-min swiper-item  wow fadeInLeft2">
-					<view class="skin wow fadeInRight2">
-						<view class="screen wow fadeInUp2">
-					
-							<view class="peak wow">
-								<view class="sound"></view>
-								<view class="lens"></view>
-							</view>
-						
-
-							<view class="image-banner">
-								<image :src="item.url" mode="aspectFill" v-if="item.type=='image'"></image>
-							</view>
-
-						</view>
-					</view>
-				</view>
-			</swiper-item>
-		</swiper> -->
-
-
-		<!--    <view class="">
-      <view class="nav_title--wrap">
-        <view class="nav_title tn-cool-bg-color-15">
-          <text class="tn-icon-star tn-padding-right-sm tn-text-xxl"></text>
-          <text class="tn-text-xl">小 / 匠 / 业 / 务</text>
-          <text class="tn-icon-star tn-padding-left-sm tn-text-xxl"></text>
-        </view>
-      </view>
-    </view> -->
-
-
-		<!-- 方式4 start-->
-		<!-- <view class="tn-flex tn-flex-wrap">
-			<view v-for="(item, index) in iconData" :key="index" style="width: 25%;"
-				@click="tn('/discoveryPages/business')">
-				<view class="tn-margin-bottom tn-margin-top-sm">
-					<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
-			
-						<view
-							class="icon4__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur tn-cool-color-icon4"
-							:class="['tn-cool-bg-color-' + item.color]">
-							<view :class="['tn-icon-' + item.icon]"></view>
-						</view>
-						<view class="tn-color-gray--dark tn-text-center">
-							<text class="tn-text-ellipsis">{{ item.title }}</text>
-						</view>
-					</view>
-				</view>
-			</view>
-		</view> -->
-		<!-- 方式4 end-->
-
-
-		<!-- 方式4 start-->
-		<!-- <view class="tn-flex">
-      <view class="tn-flex-1 tn-padding-sm tn-radius" @click="tn('/activityPages/planet')">
-        <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
-          <view class="icon4__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur">
-            <view class="tn-icon-discover-planet-fill tn-cool-color-icon4 tn-cool-bg-color-5"></view>
-          </view>  
-          <view class="tn-color-gray--dark tn-text-center">
-            <text class="tn-text-ellipsis">开源项目</text>
-          </view>
-        </view>
-      </view>
-      <view class="tn-flex-1 tn-padding-sm tn-radius" @click="tn('/activityPages/project')">
-        <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
-          <view class="icon4__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur">
-            <view class="tn-icon-trophy-fill tn-cool-color-icon4 tn-cool-bg-color-15"></view>
-          </view>  
-          <view class="tn-color-gray--dark tn-text-center">
-            <text class="tn-text-ellipsis">官方赛事</text>
-          </view>
-        </view>
-      </view>
-      <view class="tn-flex-1 tn-padding-sm tn-radius" @click="tn('/activityPages/map')">
-        <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
-          <view class="icon4__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur">
-            <view class="tn-icon-seal tn-cool-color-icon4 tn-cool-bg-color-8"></view>
-          </view>  
-          <view class="tn-color-gray--dark tn-text-center">
-            <text class="tn-text-ellipsis">创业联盟</text>
-          </view>
-        </view>
-      </view>
-      <view class="tn-flex-1 tn-padding-sm tn-radius" @click="tn('/activityPages/study')">
-        <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
-          <view class="icon4__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur">
-            <view class="tn-icon-creative-fill tn-cool-color-icon4 tn-cool-bg-color-3"></view>
-          </view>  
-          <view class="tn-color-gray--dark tn-text-center">
-            <text class="tn-text-ellipsis">课程学习</text>
-          </view>
-        </view>
-      </view>
-    </view> -->
-		<!-- 方式4 end-->
-
 		<view class="tn-margin-top-xl">
 			<view class="nav_title--wrap">
 				<view class="nav_title tn-main-gradient-aquablue">
@@ -125,8 +9,6 @@
 				</view>
 			</view>
 		</view>
-
-
 		<!-- 图文 -->
 		<view class="tn-flex tn-flex-direction-column tn-margin-bottom-xl">
 			<block v-for="(item,index) in list" :key="index">
@@ -144,30 +26,6 @@
 						</view>
 					</view>
 
-					<!-- <view class="tn-blogger-content2__label tn-text-justify tn-margin-top tn-margin-bottom-sm">
-            <text class="tn-blogger-content2__label__desc tn-text-bold tn-text-lg">{{ item.desc }}</text>  
-          </view>
-          
-          <view class="tn-flex tn-flex-row-between tn-flex-col-center tn-margin-top-xs">
-            
-            <view class="justify-content-item tn-text-center">
-              <view v-for="(label_item,label_index) in item.label" :key="label_index"
-                class="justify-content-item tn-tag-content__item tn-margin-right tn-text-sm tn-text-bold">
-                <text class="tn-tag-content__item--prefix">#</text> {{ label_item }}
-              </view>
-            </view>
-            
-            <view class="justify-content-item tn-flex tn-flex-col-center">
-              <view style="margin-right: 0rpx;margin-left: 10rpx;">
-                <view class="tn-color-gray">
-                  <text class="tn-icon-rocket tn-padding-right-xs tn-text-lg"></text>
-                  <text class="tn-padding-right tn-text-df">{{ item.collectionCount }}</text>
-                  <text class="tn-icon-like-lack tn-padding-right-xs tn-text-lg"></text>
-                  <text class="tn-text-df">{{ item.likeCount }}</text>
-                </view>
-              </view>
-            </view>
-          </view> -->
 				</view>
 
 

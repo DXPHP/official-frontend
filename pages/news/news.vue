@@ -1,25 +1,6 @@
 <template>
 	<view class="news tn-safe-area-inset-bottom">
-
-		<!-- <swiper class="card-swiper" :circular="true" :autoplay="true" duration="500" interval="18000"
-			@change="cardSwiper">
-			<swiper-item v-for="(item,index) in swiperList" :key="index" :class="cardCur==index?'cur':''">
-				<view class="swiper-item image-banner">
-					<image :src="item.url" mode="aspectFill" v-if="item.type=='image'"></image>
-				</view>
-				<view class="tn-text-df tn-text-bold tnloukong">{{item.title}}</view>
-				<view class="swiper-item-text">
-					<view class="tn-text-lg tn-text-bold tn-color-white">{{item.name}}</view>
-				</view>
-			</swiper-item>
-		</swiper>
-		<view class="indication">
-			<block v-for="(item,index) in swiperList" :key="index">
-				<view class="spot" :class="cardCur==index?'active':''"></view>
-			</block>
-		</view> -->
 		<view :style="{paddingTop: vuex_custom_bar_height + 'px'}">
-
 		</view>
 		<view class="" style="padding-bottom: 60rpx;;z-index: 999; position: relative;">
 			<!-- 不建议写时间，因为写了时间，你就要经常更新文章了鸭-->

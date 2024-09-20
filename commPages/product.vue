@@ -40,8 +40,9 @@
 			</view>
 			<view class="tn-flex tn-flex-row-between tn-margin-top">
 				<view class="justify-content-item tn-text-bold tn-color-purplered">
+					<text class="tn-padding-right-xs" style="font-size: 30rpx;">￥</text>
 					<text class="" style="font-size: 50rpx;">{{info.data.price}}</text>
-					<text class="tn-padding-left-xs" style="font-size: 30rpx;">￥</text>
+					
 				</view>
 				<view class="justify-content-item tn-color-gray tn-padding-top-xs">
 					<view class="">已售 {{info.data.sales}}</view>

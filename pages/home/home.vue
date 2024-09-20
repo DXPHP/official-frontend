@@ -1,86 +1,13 @@
 <template>
 	<view class="template-index tn-safe-area-inset-bottom">
-
-		<!-- 安卓酷炫顶部自定义导航，为什么要分成安卓和苹果的导航？你试试就知道为什么了，很多骚操作在苹果不生效 -->
-		<view v-if="isAndroid" class=""
-			style="width: 100%;height: 220rpx;background: linear-gradient(0deg, rgba(255,255,255,0), rgba(0,0,0,0.16));position: fixed;top: 0;z-index: 1;">
-			<tn-nav-bar fixed :isBack="false" :bottomShadow="false" backgroundColor="#FFFFFF00">
-				<view class="custom-nav tn-flex tn-flex-col-center tn-flex-row-left">
-					<!-- 图标logo -->
-					<view class="custom-nav__back" @click="tn('/homePages/about')">
-						<!-- 图片模式-->
-						<!-- <view class="logo-pic tn-shadow-blur"
-							style="background-image:url('')">
-							<view class="logo-image">
-							</view>
-						</view> -->
-						<!-- 如果有图片那就放图片，如果没有，那就删掉上面的放字体icon -->
-						<!-- <view class="tn-icon-left"></view> -->
-					</view>
-					<!-- 搜索框 -->
-					<!-- <view class="custom-nav__search tn-flex tn-flex-col-center tn-flex-row-center"
-						@click="tn('/homePages/search')">
-						<view class="custom-nav__search__box tn-flex tn-flex-col-center tn-flex-row-left"
-							style="background-color: rgba(230,230,230,0.3);">
-							<view class="custom-nav__search__icon tn-icon-search tn-color-white"></view>
-							<view class="custom-nav__search__text tn-padding-left-xs tn-color-white">搜索 </view>
-							<view class="tn-color-white" style="width: 100%;">
-								<tn-notice-bar :list="searlist" mode="vertical" leftIconName="search"
-									:duration="6000"></tn-notice-bar>
-							</view>
-						</view>
-					</view> -->
-				</view>
-			</tn-nav-bar>
-		</view>
-
-
-		<!-- 苹果简单顶部自定义导航 -->
-		<view v-else class="">
-
-			<tn-nav-bar fixed :isBack="false" :bottomShadow="false" backgroundColor="#FFFFFF00">
-				<view class="custom-nav tn-flex tn-flex-col-center tn-flex-row-left">
-					<!-- 图标logo -->
-					<!-- <view class="custom-nav__back" @click="tn('/homePages/about')"> -->
-					<!-- 图片模式-->
-					<!-- <view class="logo-pic tn-shadow-blur"
-							style="background-image:url('')">
-							<view class="logo-image">
-							</view>
-						</view> -->
-					<!-- 如果有图片那就放图片，如果没有，那就删掉上面的放字体icon -->
-					<!-- <view class="tn-icon-left"></view> -->
-					<!-- </view> -->
-					<!-- 搜索框 -->
-					<!-- <view class="custom-nav__search tn-flex tn-flex-col-center tn-flex-row-center"
-						@click="tn('/homePages/search')">
-						<view class="custom-nav__search__box tn-flex tn-flex-col-center tn-flex-row-left"
-							style="background-color: rgba(230,230,230,0.3);">
-							
-							<view class="tn-color-white" style="width: 100%;">
-								<tn-notice-bar :list="searlist" mode="vertical" leftIconName="search"
-									:duration="6000"></tn-notice-bar>
-							</view>
-						</view>
-					</view> -->
-				</view>
-			</tn-nav-bar>
-		</view>
-
+	
 		<!-- 轮播banner-->
-		<swiper class="card-swiper" @click="tn('')" :circular="true" :autoplay="true" duration="500" interval="8000"
+		<swiper class="card-swiper" :circular="true" :autoplay="true" duration="500" interval="8000"
 			@change="cardSwiper">
 			<swiper-item v-for="(item,index) in swiperList" :key="index" :class="cardCur==index?'cur':''">
 				<view class="swiper-item image-banner">
 					<image :src="item.image" mode="aspectFill" v-if="item.image"></image>
 				</view>
-				<!-- <view class="swiper-item-text">
-					<view class="tn-text-bold tn-color-white" style="font-size: 90rpx;">{{item.title}}</view>
-					<view class="tn-color-white tn-padding-top" style="font-size: 30rpx;">{{item.name}}</view>
-					<view class="tn-text-sm tn-text-bold tn-color-white tn-padding-top-sm tn-padding-bottom-sm">
-						{{item.text}}
-					</view>
-				</view> -->
 			</swiper-item>
 		</swiper>
 		<view class="indication">
@@ -89,12 +16,10 @@
 			</block>
 		</view>
 
-
 		<!-- 通知-->
 		<view class="tn-bg-white tn-margin-top" style="border-radius: 20rpx;">
 			<tn-notice-bar :list="list" mode="vertical" leftIconName="notice"></tn-notice-bar>
 		</view>
-
 
 		<!-- 金刚区 start-->
 		<view class="tn-flex tn-padding-top tn-margin-bottom tn-margin-top-xs">
@@ -111,86 +36,7 @@
 					</view>
 				</view>
 			</view>
-			<!-- <view class="tn-flex-1 tn-radius" @click="tn('/homePages/base')" style="width: 20%;">
-				<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
-					<view
-						class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur tn-bg-red tn-color-white">
-						<view class="tn-icon-identity-fill tn-three"></view>
-					</view>
-					<view class="tn-color-gray--dark tn-text-center tn-text-df">
-						<text class="tn-text-ellipsis">基本信息</text>
-					</view>
-				</view>
-			</view> -->
-
-			<!-- <view class="tn-flex-1 tn-radius" @click="tn('/homePages/brand')" style="width: 20%;">
-				<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
-					<view
-						class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur tn-bg-blue tn-color-white">
-						<view class="tn-icon-plant-fill"></view>
-					</view>
-					<view class="tn-color-gray--dark tn-text-center tn-text-df">
-						<text class="tn-text-ellipsis">品牌介绍</text>
-					</view>
-				</view>
-			</view> -->
-			<!-- 	<view class="tn-flex-1 tn-radius" @click="tn('/homePages/cooperate')" style="width: 20%;">
-				<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
-					<view
-						class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur tn-bg-cyan tn-color-white">
-						<view class="tn-icon-trusty-fill"></view>
-					</view>
-					<view class="tn-color-gray--dark tn-text-center tn-text-df">
-						<text class="tn-text-ellipsis">合作共赢</text>
-					</view>
-				</view>
-			</view> -->
-			<!-- <view class="tn-flex-1 tn-radius" @click="tn('/homePages/group')" style="width: 20%;">
-				<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
-					<view
-						class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur tn-bg-red tn-color-white">
-						<view class="tn-icon-flower-fill"></view>
-					</view>
-					<view class="tn-color-gray--dark tn-text-center tn-text-df">
-						<text class="tn-text-ellipsis">话题社区</text>
-					</view>
-				</view>
-			</view> -->
-			<!-- <view class="tn-flex-1 tn-radius" @click="tn('/homePages/video')" style="width: 20%;">
-				<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
-					<view
-						class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur tn-bg-orange tn-color-white">
-						<view class="tn-icon-discover-fill"></view>
-					</view>
-					<view class="tn-color-gray--dark tn-text-center tn-text-df">
-						<text class="tn-text-ellipsis">宣传短片</text>
-					</view>
-				</view>
-			</view> -->
-			<!-- <view class="tn-flex-1 tn-radius" @click="tn('')" style="width: 20%;">
-        <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
-          <view class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur tn-bg-purple tn-color-white">
-            <view class="tn-icon-menu-circle-fill"></view>
-          </view>  
-          <view class="tn-color-gray--dark tn-text-center tn-text-df">
-            <text class="tn-text-ellipsis">敬请期待</text>
-          </view>
-        </view>
-      </view> -->
 		</view>
-		<!-- 金刚区 end-->
-
-
-		<!-- 胶囊banner -->
-		<!-- 	<view class="tn-flex tn-flex-wrap tn-padding-xs tn-margin-top" @click="tn('/homePages/member')">
-			<view class="" style="width: 100%;">
-				<view class="image-piccapsule tn-shadow-blur"
-					style="background-image:url('https://cdn.nlark.com/yuque/0/2022/png/280373/1649746862795-assets/web-upload/f8e5a420-53d1-4c8c-b06f-35031672088c.png');">
-					<view class="image-capsule">
-					</view>
-				</view>
-			</view>
-		</view> -->
 
 		<!-- 标题-->
 		<view class="tn-flex tn-flex-row-between tn-flex-col-center tn-margin-top" @click="switchTab(1)">
@@ -217,11 +63,6 @@
 							<view class="item__title-container">
 								<text class="item__title tn-color-cat clamp-text-2">{{ item.name }}</text>
 							</view>
-							<!-- 	<view v-if="item.tags && item.tags.length > 0" class="item__tags-container">
-								<view v-for="(tagItem, tagIndex) in item.tags" :key="tagIndex" class="item__tag">
-									{{ tagItem }}
-								</view>
-							</view> -->
 
 							<view class="tn-flex tn-flex-row-between tn-flex-col-between tn-margin-top-xs">
 								<view class="justify-content-item tn-color-red">
@@ -236,16 +77,10 @@
 							</view>
 						</view>
 					</view>
-					<!-- 
-					<view class="tn-info__item__bottom">
-						<view class='name tn-text-sm tn-color-gray' style="margin-left: -10rpx;">
-							<text class="tn-icon-code tn-padding-right-xs" style="opacity: 0;"></text>
-						</view>
-					</view> -->
+
 				</view>
 			</block>
 		</view>
-
 
 		<!-- 标题-->
 		<view class="tn-flex tn-flex-row-between tn-flex-col-center tn-margin-top" @click="switchTab(2)">
@@ -284,7 +119,6 @@
 			</view>
 		</view>
 
-
 		<!-- 标题-->
 		<view class="tn-flex tn-flex-row-between tn-flex-col-center tn-margin-top" @click="switchTab(3)">
 			<view class="justify-content-item tn-margin tn-text-bold tn-text-xl blue-title">
@@ -310,12 +144,7 @@
 							</text>
 						</view>
 						<view class="tn-flex tn-flex-row-between tn-flex-col-between tn-margin-top-sm">
-							<!-- <view v-for="(label_item,label_index) in item.label" :key="label_index"
-								class="justify-content-item tn-tag-content__item tn-margin-right tn-text-sm tn-text-bold">
-								<text class="tn-tag-content__item--prefix">#</text> {{ label_item }}
-							</view> -->
-							<view class="">
-
+							<view>
 							</view>
 							<view class="justify-content-item tn-color-gray tn-text-center" style="padding-top: 5rpx;">
 								<text class="tn-icon-eye tn-padding-right-xs tn-text-lg"></text>
@@ -338,8 +167,6 @@
 				企业地址
 			</view>
 			<view class="justify-content-item tn-margin-right tn-text-df tn-color-gray">
-				<!-- <text class="tn-padding-xs">更多</text>
-				<text class="tn-icon-right"></text> -->
 			</view>
 		</view>
 		<view class="tn-shadow-blur tn-margin">
@@ -357,9 +184,6 @@
 								<view
 									class="tn-padding-right tn-padding-top-xs tn-text-ellipsis tn-text-xs tn-color-gray">
 									<text class="">{{company.address}}</text>
-									<!-- 	<text class="">距离你12.8km</text>
-									<text class="tn-padding-left-xs">驾车24分钟</text>
-									<text class="tn-padding-left-xs">公交地铁2小时</text> -->
 								</view>
 							</view>
 						</view>
@@ -371,7 +195,6 @@
 					</view>
 				</view>
 			</view>
-
 		</view>
 
 		<!-- 标题-->
@@ -380,8 +203,6 @@
 				合作客户
 			</view>
 			<view class="justify-content-item tn-margin-right tn-text-df tn-color-gray">
-				<!-- <text class="tn-padding-xs">更多</text>
-				<text class="tn-icon-right"></text> -->
 			</view>
 		</view>
 		<view class="tn-info__container tn-flex tn-flex-wrap tn-flex-col-center tn-margin-left tn-margin-right">
@@ -398,24 +219,7 @@
 				</view>
 			</block>
 		</view>
-
-
-		<!-- 标题-->
-		<!-- 	<view class="tn-flex tn-flex-row-between tn-flex-col-center tn-margin-top" @click="tn('')">
-			<view class="justify-content-item tn-margin tn-text-bold tn-text-xl blue-title">
-				关于我们
-			</view>
-			<view class="justify-content-item tn-margin-right tn-text-df tn-color-gray">
-				<text class="tn-padding-xs">更多</text>
-				<text class="tn-icon-right"></text>
-			</view>
-		</view> -->
-
-
-
-
 		<view class='tn-tabbar-height'></view>
-
 	</view>
 </template>
 

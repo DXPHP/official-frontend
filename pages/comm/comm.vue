@@ -1,12 +1,8 @@
 <template>
 	<view class="order tn-safe-area-inset-bottom">
-
 		<!-- 顶部自定义导航 -->
 		<tn-nav-bar :isBack="false" :bottomShadow="false" backgroundColor="#FFFFFF">
 			<view class="custom-nav tn-flex tn-flex-col-center tn-flex-row-left">
-				<!-- <view class="custom-nav__back" @click="tn('/homePages/search')">
-					<view class="tn-icon-search-menu-fill"></view>
-				</view> -->
 				<view class="" style="width: 62vw;overflow: hidden;margin-top: 36rpx;">
 					<tn-tabs :list="scrollList" :current="current" @change="tabChange" activeColor="#000" :bold="true"
 						:fontSize="36"></tn-tabs>
@@ -15,186 +11,81 @@
 		</tn-nav-bar>
 
 		<view class="tn-margin-top-sm" :style="{paddingTop: vuex_custom_bar_height - 10 + 'px'}">
-		<!-- 	<swiper class="card-swiper" @click="tn('/homePages/navigation')" :circular="true" :autoplay="true"
-				duration="500" interval="8000" @change="cardSwiper">
-				<swiper-item v-for="(item,index) in list" :key="index" :class="cardCur==index?'cur':''">
-					<view class="swiper-item image-banner"
-						:style="'background-image:url('+ item.image + ');background-size: cover;border-radius: 15rpx;'">
-					</view>
-					<view class="swiper-item-text">
-            <view class="tn-text-bold tn-color-white" style="font-size: 50rpx;">{{item.title}}</view>
-            <view class="tn-color-white tn-padding-top" style="font-size: 30rpx;">{{item.name}}</view>
-            <view class="tn-text-sm tn-text-bold tn-color-white tn-padding-top-sm tn-padding-bottom-sm">{{item.text}}</view>
-          </view>
-				</swiper-item>
-			</swiper> -->
-			<!-- <view class="indication">
-				<block v-for="(item,index) in swiperList" :key="index">
-					<view class="spot" :class="cardCur==index?'active':''"></view>
-				</block>
-			</view> -->
-		</view>
-
-
-		<view class="">
-			<view class="">
-
-				<view class="" style="padding: 30rpx 20rpx;">
-					<tn-waterfall ref="waterfall" v-model="list" >
-						<template v-slot:left="{ leftList }">
-							<view v-for="(item, index) in leftList" :key="item.id" class="product__item home-shadow"
-								@click="tn('/commPages/product?id='+item.id)">
-								<view class="item__image">
-									<tn-lazy-load :threshold="6000" height="100%" :image="item.image" :index="item.id"
-										imgMode="widthFix"></tn-lazy-load>
+			<view class="tn-padding-right-sm tn-padding-left-sm tn-padding-top-xl tn-padding-bottom-xl">
+				<!-- 瀑布流 -->
+				<tn-waterfall ref="waterfall" v-model="list">
+					<template v-slot:left="{ leftList }">
+						<view v-for="(item, index) in leftList" :key="item.id" class="product__item home-shadow"
+							@click="tn('/commPages/product?id='+item.id)">
+							<view class="item__image">
+								<tn-lazy-load :threshold="6000" height="100%" :image="item.image" :index="item.id"
+									imgMode="widthFix"></tn-lazy-load>
+							</view>
+							<view class="item__data tn-margin-left-sm tn-margin-right-sm">
+								<view class="item__title-container">
+									<text class="item__title tn-color-cat clamp-text-2">{{ item.name }}</text>
 								</view>
-								<view class="item__data tn-margin-left-sm tn-margin-right-sm">
-									<view class="item__title-container">
-										<text class="item__title tn-color-cat clamp-text-2">{{ item.name }}</text>
+								<view v-if="item.tags && item.tags.length > 0" class="item__tags-container">
+									<view v-for="(tagItem, tagIndex) in item.tags" :key="tagIndex" class="item__tag">
+										{{ tagItem }}
 									</view>
-									<view v-if="item.tags && item.tags.length > 0" class="item__tags-container">
-										<view v-for="(tagItem, tagIndex) in item.tags" :key="tagIndex"
-											class="item__tag">{{ tagItem }}</view>
+								</view>
+								<view class="tn-flex tn-flex-row-between tn-flex-col-between tn-margin-top-xs">
+									<view class="justify-content-item tn-color-red">
+										<text class="tn-text-sm">￥</text>
+										<text class="tn-text-xl">{{ item.price }}</text>
 									</view>
-									<!-- <view class="item__price-container tn-color-red">
-                    <text class="item__price--unit">￥</text>
-                    <text class="item__price--integer">{{ item.price }}</text>
-                    <text class="tn-color-gray tn-text-sm tn-padding-left-sm" style="font-size: 24rpx;">{{ item.likes }} 人咨询</text>
-                  </view> -->
-
-									<view class="tn-flex tn-flex-row-between tn-flex-col-between tn-margin-top-xs">
-										<view class="justify-content-item tn-color-red">
-											<text class="tn-text-sm">￥</text>
-											<text class="tn-text-xl">{{ item.price }}</text>
-										</view>
-										<view class="justify-content-item tn-color-gray tn-text-center"
-											style="padding-top: 5rpx;">
-											<text class="tn-icon-like tn-padding-right-xs tn-text-lg"></text>
-											<text class="tn-text-df">{{ item.likes }}</text>
-										</view>
+									<view class="justify-content-item tn-color-gray tn-text-center"
+										style="padding-top: 5rpx;">
+										<text class="tn-icon-like tn-padding-right-xs tn-text-lg"></text>
+										<text class="tn-text-df">{{ item.likes }}</text>
 									</view>
-
-
-									<!-- <view class="tn-flex tn-flex-row-between tn-flex-col-center tn-padding-top-xs">
-                    <view class="justify-content-item">
-                      <view class="tn-flex tn-flex-col-center tn-flex-row-left">
-                        <view class="logo-pic">
-                          <view class="logo-image">
-                            <view class="" :style="'background-image:url('+ item.userImage +');width: 40rpx;height: 40rpx;background-size: cover;'">
-                            </view>
-                          </view>
-                        </view>
-                        <view class="tn-padding-left-xs">
-                          <text class="tn-color-gray tn-text-sm">{{ item.userName }}</text>
-                        </view>
-                  
-                      </view>
-                    </view>
-                    <view class="justify-content-item">
-                      <text class="tn-icon-fire tn-color-gray tn-padding-right-xs"></text>
-                      <text class="tn-color-gray">{{ item.viewUser.viewUserCount }}</text>
-                    </view>
-                  </view> -->
-
-
 								</view>
 							</view>
-						</template>
-						<template v-slot:right="{ rightList }">
-							<!-- <view class="tn-text-bold home-shadow tn-main-gradient-blue tn-color-white"
-								style="height: 160rpx;margin: 0 10rpx 20rpx 10rpx;border-radius: 10rpx;"
-								@click="tn('/commPages/nav')">
-								<view class="tn-padding-left tn-padding-top-lg">
-									导航 · 智途生态
-								</view>
-								<view class="tn-padding-left tn-padding-top-xs">
-									看看都有什么
-									<text class="tn-icon-link tn-padding-left-xs"></text>
-								</view>
-							</view> -->
-							<view v-for="(item, index) in rightList" :key="item.id" class="product__item home-shadow"
-								@click="tn('/commPages/product?id='+item.id)">
-								<view class="item__image">
-									<tn-lazy-load :threshold="6000" height="100%" :image="item.image" :index="item.id"
-										imgMode="widthFix"></tn-lazy-load>
-								</view>
-								<view class="item__data tn-margin-left-sm tn-margin-right-sm">
-									<view class="item__title-container">
-										<text class="item__title tn-color-cat clamp-text-2">{{ item.name }}</text>
-									</view>
-									<view class="item__tags-container">
-										<view v-for="(tagItem, tagIndex) in item.tags" :key="tagIndex"
-											class="item__tag">{{ tagItem }}</view>
-									</view>
-									<!-- <view class="item__price-container tn-color-red">
-                    <text class="item__price--unit">￥</text>
-                    <text class="item__price--integer">{{ item.price }}</text>
-                    <text class="tn-color-gray tn-text-sm tn-padding-left-sm" style="font-size: 24rpx;">{{ item.likes }} 人咨询</text>
-                  </view> -->
-									<view class="tn-flex tn-flex-row-between tn-flex-col-between tn-margin-top-xs">
-										<view class="justify-content-item tn-color-red">
-											<text class="tn-text-sm">￥</text>
-											<text class="tn-text-xl">{{ item.price }}</text>
-										</view>
-										<view class="justify-content-item tn-color-gray tn-text-center"
-											style="padding-top: 5rpx;">
-											<text class="tn-icon-like tn-padding-right-xs tn-text-lg"></text>
-											<text class="tn-text-df">{{ item.likes }}</text>
-										</view>
-									</view>
-									<!-- <view class="tn-flex tn-flex-row-between tn-flex-col-center tn-padding-top-xs">
-                    <view class="justify-content-item">
-                      <view class="tn-flex tn-flex-col-center tn-flex-row-left">
-                        <view class="logo-pic">
-                          <view class="logo-image">
-                            <view class="" :style="'background-image:url('+ item.userImage +');width: 40rpx;height: 40rpx;background-size: cover;'">
-                            </view>
-                          </view>
-                        </view>
-                        <view class="tn-padding-left-xs">
-                          <text class="tn-color-gray tn-text-sm">{{ item.userName }}</text>
-                        </view>
-                  
-                      </view>
-                    </view>
-                    <view class="justify-content-item">
-                      <text class="tn-icon-fire tn-color-gray tn-padding-right-xs"></text>
-                      <text class="tn-color-gray">{{ item.viewUser.viewUserCount }}</text>
-                    </view>
-                  </view> -->
-								</view>
+						</view>
+					</template>
+					<template v-slot:right="{ rightList }">
+						<view v-for="(item, index) in rightList" :key="item.id" class="product__item home-shadow"
+							@click="tn('/commPages/product?id='+item.id)">
+							<view class="item__image">
+								<tn-lazy-load :threshold="6000" height="100%" :image="item.image" :index="item.id"
+									imgMode="widthFix"></tn-lazy-load>
 							</view>
-						</template>
-					</tn-waterfall>
-				</view>
+							<view class="item__data tn-margin-left-sm tn-margin-right-sm">
+								<view class="item__title-container">
+									<text class="item__title tn-color-cat clamp-text-2">{{ item.name }}</text>
+								</view>
+								<view class="item__tags-container">
+									<view v-for="(tagItem, tagIndex) in item.tags" :key="tagIndex" class="item__tag">
+										{{ tagItem }}
+									</view>
+								</view>
 
+								<view class="tn-flex tn-flex-row-between tn-flex-col-between tn-margin-top-xs">
+									<view class="justify-content-item tn-color-red">
+										<text class="tn-text-sm">￥</text>
+										<text class="tn-text-xl">{{ item.price }}</text>
+									</view>
+									<view class="justify-content-item tn-color-gray tn-text-center"
+										style="padding-top: 5rpx;">
+										<text class="tn-icon-like tn-padding-right-xs tn-text-lg"></text>
+										<text class="tn-text-df">{{ item.likes }}</text>
+									</view>
+								</view>
 
-
+							</view>
+						</view>
+					</template>
+				</tn-waterfall>
 
 			</view>
-
-
 			<view class="tn-padding-top-lg tn-flex tn-flex-col-center tn-flex-row-center">
 				<tn-load-more :status="loadStatus" v-if="listStatus === 0"></tn-load-more>
 				<tn-empty mode="network" v-if="listStatus === 2"></tn-empty>
 				<tn-empty mode="data" v-if="listStatus === 1"></tn-empty>
 			</view>
-
-			<!-- <view class="">
-        <view class="" style="padding: 15vh 20rpx;">
-          <view class="tn-text-center" style="font-size: 200rpx;padding-top: 30rpx;">
-            <text class="tn-icon-wea-wind tn-color-gray--light"></text>
-          </view>
-          <view class="tn-color-gray--disabled tn-text-center tn-text-lg">内容被台风吹走了</view>
-        </view>
-      </view> -->
-
-
-
 		</view>
 		<view class='tn-tabbar-height'></view>
-
-
 	</view>
 </template>
 
