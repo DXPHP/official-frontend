@@ -225,7 +225,10 @@
 		methods: {
 			updateInfo() {
 				let info = getStorage(storage_userInfo)
-				this.userInfo = JSON.parse(info).userinfo
+				if (info) {
+					this.userInfo = JSON.parse(info).userinfo
+				}
+
 				notifiedCount().then(res => {
 					this.messageNum = res.data.count
 				})

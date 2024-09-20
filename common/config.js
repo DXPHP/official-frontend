@@ -7,8 +7,8 @@ const storageKey = {
 }
 
 // 开发测试环境的域名
-// let baseURL = 'http://139.196.18.12/'  //线上
-let baseURL = 'http://192.168.1.21:88/'
+// let baseURL = 'http://139.196.18.12/' //线上
+let baseURL = 'http://192.168.1.21:88/'  //本地开发
 
 // 正式环境时切换正式环境的域名
 if (process.env.NODE_ENV !== 'development') {
