@@ -306,7 +306,7 @@
 				if (this.currentModeIndex === 1) {
 					if (!this.signUp.mobile) return this.$tn.message.toast('请先输入手机号')
 					if (!this.signUp.password) return this.$tn.message.toast('请先输入密码')
-					if (!this.signUp.password) return this.$tn.message.toast('请先输入验证码')
+					if (!this.signUp.code) return this.$tn.message.toast('请先输入验证码')
 					this.$tn.message.loading('注册中')
 					let res = await register({
 						...this.signUp
@@ -405,7 +405,8 @@
 						event: 'register'
 					}).then(res => {
 						this.$tn.message.closeLoading()
-						this.$tn.message.toast('验证码已经发送')
+						this.$tn.message.toast('验证码已经发送，演示统一验证码为 1234')
+						this.signUp.code = 1234
 						// 通知组件开始计时
 						this.$refs.code.start()
 					})
