@@ -12,7 +12,7 @@ let baseURL = 'http://139.196.18.12/'  //线上
 
 // 正式环境时切换正式环境的域名
 if (process.env.NODE_ENV !== 'development') {
-	baseURL = 'http://139.196.18.12/'
+	baseURL = 'https://official.duoduotu.cloud/'
 }
 
 export {
