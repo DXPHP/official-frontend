@@ -19,8 +19,7 @@
 
 				<view class="tn-form-item1" @click="prependClick">
 					<tn-form-item required label="所在地区" prop="userInfo.area" ref="item1" rightIcon="right">
-						<view  class="tn-flex tn-flex-row-between tn-flex-col-center"
-							style="width: 100%;">
+						<view class="tn-flex tn-flex-row-between tn-flex-col-center" style="width: 100%;">
 							<view>
 							</view>
 							<view class="">
@@ -68,7 +67,7 @@
 					设为默认地址
 				</view>
 				<view class="p-10 box_radius flex1">
-					<tn-checkbox-group v-model="is_default">
+					<tn-checkbox-group v-model="isDefault">
 						<tn-checkbox activeColor="#3668fc" shape="circle"></tn-checkbox>
 					</tn-checkbox-group>
 				</view>
@@ -80,14 +79,14 @@
 			@confirm="regionConfirm"></tn-picker>
 
 		<view class="stick-bottom">
-			<tn-button v-if="is_edit" size="lg" width="600rpx" backgroundColor="tn-main-gradient-red"
-				fontColor="#ffffff" @click="submit">保存修改</tn-button>
-			<tn-button v-if="!is_edit" size="lg" width="600rpx" backgroundColor="tn-main-gradient-red"
+			<tn-button v-if="isEdit" size="lg" width="600rpx" backgroundColor="tn-main-gradient-red" fontColor="#ffffff"
+				@click="submit">保存修改</tn-button>
+			<tn-button v-if="!isEdit" size="lg" width="600rpx" backgroundColor="tn-main-gradient-red"
 				fontColor="#ffffff" @click="submit">确认新建</tn-button>
-			<!-- <view class="btn" v-if="is_edit" @click="submit">
+			<!-- <view class="btn" v-if="isEdit" @click="submit">
 				保存修改
 			</view>
-			<view class="btn" v-if="!is_edit" @click="submit">
+			<view class="btn" v-if="!isEdit" @click="submit">
 				确认新建
 			</view> -->
 		</view>
@@ -106,12 +105,10 @@
 		data() {
 			return {
 				showRegion: false,
-				name_value: '',
-				is_edit: '',
-				is_default: [],
+				isEdit: '',
+				isDefault: [],
 				isChoosed: 0,
 				isChoosedId: '',
-				first_edit_address: true,
 				id: '',
 				model1: {
 					userInfo: {
@@ -125,8 +122,7 @@
 						}
 					},
 				},
-				// 地址
-				// chooseLocation: requirePlugin('chooseLocation'),
+
 				rules: {
 					'userInfo.area': {
 						type: 'string',
@@ -167,7 +163,7 @@
 		onLoad(e) {
 			if (e && e.id) {
 				this.id = e.id
-				this.is_edit = true
+				this.isEdit = true
 				addressDetail({
 					id: this.id
 				}).then(res => {
@@ -182,10 +178,10 @@
 						phone: data.phone,
 						province: data.province,
 					}
-					if (data.is_default == 1) {
-						this.is_default = ['']
+					if (data.isDefault == 1) {
+						this.isDefault = ['']
 					} else {
-						this.is_default = []
+						this.isDefault = []
 					}
 					let location = {
 						district_id: data.district_id,
@@ -208,11 +204,8 @@
 		methods: {
 			prependClick() {
 				this.showRegion = true
-
-
 			},
 			regionConfirm(val) {
-				console.log('55555', val)
 				this.model1.userInfo.area = val.province.label + '' + val.city.label + '' + val.area.label
 				this.model1.userInfo.province = val.province.label
 				this.model1.userInfo.city = val.city.label
@@ -231,25 +224,24 @@
 				if (!this.model1.userInfo.detail.trim()) return this.$tn.message.toast('请先输入详细地址')
 				if (!this.model1.userInfo.contact.trim()) return this.$tn.message.toast('请先输入姓名')
 				if (!this.model1.userInfo.phone.trim()) return this.$tn.message.toast('请先输入联系电话')
-				// console.log('form', this.model1.userInfo)
-				// this.$refs.uForm.validate().then(res => {
+
 				let params = {
 					...this.model1.userInfo,
 					...this.model1.userInfo.location
 				}
 
-				if (this.is_default.length > 0) {
-					params.is_default = 1
+				if (this.isDefault.length > 0) {
+					params.isDefault = 1
 				} else {
-					params.is_default = 0
+					params.isDefault = 0
 				}
-				if (this.is_edit) {
+				if (this.isEdit) {
 					params.id = this.id
 				}
 				delete params.location
 				delete params.area
 				let that = this
-				// console.log('params', params)
+
 
 				addressEdit(params).then(res => {
 					this.$tn.message.toast(res.msg)
@@ -266,10 +258,7 @@
 					this.$tn.message.toast(errors.msg)
 				})
 
-				// }).catch(errors => {
-				// 	console.log('errors', errors)
-				// 	this.$tn.message.toast(errors[0].message)
-				// })
+
 			}
 
 		}

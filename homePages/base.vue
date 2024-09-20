@@ -51,20 +51,17 @@
 			<view class="" style="padding: 30rpx 20rpx;">
 				<tn-waterfall ref="waterfall" v-model="companyInfo.album" @finish="handleWaterFallFinish">
 					<template v-slot:left="{ leftList }">
-						<view v-for="(item, index) in leftList" :key="item.id" class="product__item" @click="tn('/homePages/photo?id='+item.id)">
+						<view v-for="(item, index) in leftList" :key="item.id" class="product__item"
+							@click="tn('/homePages/photo?id='+item.id)">
 							<view class="item__image">
 								<tn-lazy-load :threshold="6000" height="100%" :image="item.image" :index="item.id"
 									imgMode="widthFix"></tn-lazy-load>
 							</view>
-							<!-- <text class="item__title tn-color-black">{{ item.title }}</text> -->
 							<view class="item__data">
 								<view class="item__title-container">
 									<text class="item__title tn-color-black">{{ item.name }}</text>
 								</view>
-								<!-- <view v-if="item.tags && item.tags.length > 0" class="item__tags-container">
-									<view v-for="(tagItem, tagIndex) in item.tags" :key="tagIndex" class="item__tag">
-										{{ tagItem }}</view>
-								</view> -->
+
 							</view>
 						</view>
 					</template>
@@ -75,15 +72,11 @@
 								<tn-lazy-load :threshold="6000" height="100%" :image="item.image" :index="item.id"
 									imgMode="widthFix"></tn-lazy-load>
 							</view>
-							<!-- <text class="item__title tn-color-black">{{ item.title }}</text> -->
 							<view class="item__data">
 								<view class="item__title-container">
 									<text class="item__title tn-color-black">{{ item.name }}</text>
 								</view>
-								<!-- 	<view v-if="item.tags && item.tags.length > 0" class="item__tags-container">
-									<view v-for="(tagItem, tagIndex) in item.tags" :key="tagIndex" class="item__tag">
-										{{ tagItem }}</view>
-								</view> -->
+
 							</view>
 						</view>
 					</template>
@@ -104,11 +97,7 @@
 					<view class='king-item  tn-icon-circle-fill tn-color-red'>
 						<view class="article-shadow tn-bg-white" @click="tn('')">
 							<view class="tn-flex">
-								<!-- <view class="image-pic tn-margin-left-sm tn-margin-top-sm tn-margin-bottom-sm img-solid"
-									style="background-image:url('https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1663571007436-assets/web-upload/e3fdeb91-d8d1-4187-8d91-593559543af3.jpeg');width: 160rpx;height: 160rpx;background-size: cover;">
-									<view class="image-article">
-									</view>
-								</view> -->
+
 								<view class="tn-margin-sm tn-padding-top-xs" style="width: 100%;">
 									<view class="" style="min-height: 105rpx;">
 										<text class="tn-text-df tn-color-gray clamp-text-2 tn-text-justify">
@@ -119,26 +108,18 @@
 									<view class="tn-flex tn-flex-row-between tn-flex-col-between">
 										<view
 											class="justify-content-item tn-tag-content__item tn-margin-right tn-text-sm tn-text-bold">
-											{{item.that_time}}<!-- <text class="tn-tag-content__item--prefix">#</text> 随便聊聊 -->
+											{{item.that_time}}
 										</view>
 										<view
 											class="justify-content-item tn-color-gray tn-text-center tn-color-gray--disabled"
 											style="padding-top: 5rpx;">
-											<!-- <text class="tn-icon-footprint tn-padding-right-xs tn-text-lg"></text>
-						       <text class="tn-padding-right tn-text-df">232</text> -->
-											<!-- <text class="tn-icon-rocket tn-padding-right-xs tn-text-lg"></text>
-											<text class="tn-text-df">129</text> -->
+
 										</view>
 									</view>
 								</view>
 							</view>
 						</view>
 					</view>
-
-
-
-
-
 				</view>
 			</view>
 			<!--发展历程 end-->
@@ -163,7 +144,6 @@
 										</view>
 									</view>
 								</view>
-
 								<view class="" style="padding: 0 15rpx 15rpx 15rpx;">
 									<view class="">
 										<view class=" ">
@@ -220,14 +200,7 @@
 				</view>
 				<!-- 比例图文 end-->
 			</view>
-
 		</view>
-
-		<!-- <view class="" style="height: 100rpx;background-color: antiquewhite;width: 100%;" v-for="(item,index) in 20">
-			
-		</view> -->
-
-
 	</view>
 </template>
 
@@ -273,7 +246,7 @@
 		onLoad() {
 			this.getData()
 			this.getBaseData()
-		
+
 		},
 		onReady() {
 
@@ -318,7 +291,7 @@
 			unfixed(n) {
 				this.isFixed = false
 			},
-			
+
 			// 瀑布流加载完毕事件
 			handleWaterFallFinish() {
 				this.loadStatus = 'loadmore'

@@ -9,7 +9,7 @@
 		</tn-nav-bar>
 
 		<view class="tn-margin-top" :style="{paddingTop: vuex_custom_bar_height + 'px'}">
-			<!-- 这个是智途UI响应用户需求，推出的一个uni_modules组件，插件市场点击右上角，导入即可 https://ext.dcloud.net.cn/plugin?id=10172 -->
+			<!-- 这个是图鸟UI响应用户需求，推出的一个uni_modules组件，插件市场点击右上角，导入即可 https://ext.dcloud.net.cn/plugin?id=10172 -->
 			<wx-user-info-modal v-model="showAuthorizationModal" @updated="updatedUserInfoEvent"></wx-user-info-modal>
 
 			<view class="tn-flex tn-flex-row-between tn-strip-bottom tn-padding" @tap.stop="openAuthorizationModal">
@@ -17,9 +17,7 @@
 					<view class="tn-text-bold tn-text-lg">
 						{{user.nickname || '暂无昵称'}}
 					</view>
-					<!--   <view class="tn-color-gray tn-padding-top-xs">
-            静下心来，做好智途
-          </view> -->
+
 				</view>
 				<view class="justify-content-item tn-text-lg tn-color-grey">
 					<view class="logo-pic tn-shadow">
@@ -32,20 +30,7 @@
 				</view>
 			</view>
 
-			<!-- <view class="tn-flex tn-flex-row-between tn-strip-bottom-min tn-padding" @click="showModal1">
-        <view class="justify-content-item">
-          <view class="tn-text-bold tn-text-lg">
-            用户昵称
-          </view>
-          <view class="tn-color-gray tn-padding-top-xs">
-            不许凶我
-          </view>
-        </view>
-        <view class="justify-content-item tn-text-lg tn-color-grey">
-          <view class="tn-icon-right tn-padding-top"></view>
-        </view>
-		
-      </view> -->
+
 
 			<view class="tn-flex tn-flex-row-between tn-strip-bottom-min tn-padding" @click="showModal2">
 				<view class="justify-content-item">
@@ -61,82 +46,7 @@
 				</view>
 			</view>
 
-			<!-- 	<view class="tn-flex tn-flex-row-between tn-strip-bottom-min tn-padding" @click="showModal3">
-				<view class="justify-content-item">
-					<view class="tn-text-bold tn-text-lg">
-						姓名
-					</view>
-					<view class="tn-color-gray tn-padding-top-xs">
-						{{user.realName || '未填写'}}
-					</view>
-				</view>
-				<view class="justify-content-item tn-text-lg tn-color-grey">
-					<view class="tn-icon-right tn-padding-top"></view>
-				</view>
-			</view> -->
-			<!-- <picker @change="bindPickerChange" :value="index" :range="array">
-				<view class="tn-flex tn-flex-row-between tn-strip-bottom-min tn-padding">
-					<view class="justify-content-item">
-						<view class="tn-text-bold tn-text-lg">
-							性别
-						</view>
-						<view class="tn-color-gray tn-padding-top-xs">
 
-							<view class="tn-color-gray">{{array[index]}}</view>
-						</view>
-					</view>
-					<view class="justify-content-item tn-text-lg tn-color-grey">
-						<view class="tn-icon-right tn-padding-top"></view>
-					</view>
-				</view>
-			</picker> -->
-			<!-- 	<picker @change="bindDateChange" mode="date" :value="date" :start="startDate" :end="endDate">
-				<view class="tn-flex tn-flex-row-between tn-strip-bottom-min tn-padding">
-					<view class="justify-content-item">
-						<view class="tn-text-bold tn-text-lg">
-							生日
-						</view>
-						<view class="tn-color-gray tn-padding-top-xs">
-							{{date}}
-						</view>
-					</view>
-					<view class="justify-content-item tn-text-lg tn-color-grey">
-						<view class="tn-icon-right tn-padding-top"></view>
-					</view>
-				</view>
-			</picker> -->
-			<!-- 	<picker @change="bindPickerChange1" :value="index1" :range="array1">
-				<view class="tn-flex tn-flex-row-between tn-strip-bottom-min tn-padding">
-					<view class="justify-content-item">
-						<view class="tn-text-bold tn-text-lg">
-							职业
-						</view>
-						<view class="tn-color-gray tn-padding-top-xs">
-							{{array1[index1]}}
-						</view>
-					</view>
-					<view class="justify-content-item tn-text-lg tn-color-grey">
-						<view class="tn-icon-right tn-padding-top"></view>
-					</view>
-				</view>
-			</picker> -->
-			<tn-modal v-model="show1" :custom="true" :showCloseBtn="true">
-				<view class="custom-modal-content">
-					<view class="">
-						<view class="tn-text-lg tn-text-bold tn-color-purplered tn-text-center tn-padding">修改昵称</view>
-						<view class="tn-bg-gray--light"
-							style="border-radius: 10rpx;padding: 20rpx 30rpx;margin: 50rpx 0 60rpx 0;">
-							<input placeholder="不许凶我" name="input" placeholder-style="color:#AAAAAA"
-								maxlength="20"></input>
-						</view>
-					</view>
-					<view class="tn-flex-1 justify-content-item tn-margin-sm tn-text-center">
-						<tn-button backgroundColor="#3668FC" padding="40rpx 0" width="60%" fontBold>
-							<text class="tn-color-white">保 存</text>
-						</tn-button>
-					</view>
-				</view>
-			</tn-modal>
 
 			<tn-modal v-model="show2" :custom="true" :showCloseBtn="true">
 				<view class="custom-modal-content">
@@ -148,9 +58,7 @@
 						</view>
 					</view>
 					<view class="tn-flex-1 justify-content-item tn-margin-sm tn-text-center">
-						<!-- <tn-button backgroundColor="#3668FC" padding="40rpx 0" width="60%" fontBold>
-              <text class="tn-color-white">获取手机号</text>
-            </tn-button> -->
+
 						<tn-button backgroundColor="#3668FC" padding="40rpx 0" width="60%" shadow fontBold
 							open-type="getPhoneNumber" @getphonenumber="bindWechatPhone">
 							<text class="tn-color-white">获取手机号</text>
@@ -159,24 +67,7 @@
 				</view>
 			</tn-modal>
 
-			<tn-modal v-model="show3" :custom="true" :showCloseBtn="true">
-				<view class="custom-modal-content">
-					<view class="">
-						<view class="tn-text-lg tn-text-bold tn-color-purplered tn-text-center tn-padding">请输入真实姓名
-						</view>
-						<view class="tn-bg-gray--light"
-							style="border-radius: 10rpx;padding: 20rpx 30rpx;margin: 50rpx 0 60rpx 0;">
-							<input placeholder="请填写姓名" name="input" placeholder-style="color:#AAAAAA"
-								maxlength="20"></input>
-						</view>
-					</view>
-					<view class="tn-flex-1 justify-content-item tn-margin-sm tn-text-center">
-						<tn-button backgroundColor="#3668FC" padding="40rpx 0" width="60%" fontBold>
-							<text class="tn-color-white">保 存</text>
-						</tn-button>
-					</view>
-				</view>
-			</tn-modal>
+
 
 			<!-- 为app或者h5时修改用户昵称和头像使用到-->
 			<tn-modal v-model="show4" :custom="true" :showCloseBtn="true">
@@ -250,15 +141,8 @@
 		data() {
 			return {
 				showAuthorizationModal: false,
-				show1: false,
 				show2: false,
-				show3: false,
 				show4: false,
-				index: 0,
-				array: ['女', '男', '保密'],
-				date: '2000-01-29',
-				index1: 1,
-				array1: ['计算机/电子', '高级UI设计', '会计/金融', '政府/非盈利组织/其他'],
 				user: {
 					mobile: '',
 					nickname: '',
@@ -273,15 +157,14 @@
 			}
 		},
 		computed: {
-			startDate() {
-				return this.getDate('start');
-			},
-			endDate() {
-				return this.getDate('end');
-			}
+
 		},
 		onLoad() {
-			this.user = JSON.parse(getStorage(storage_userInfo)).userinfo
+			let userInfo = getStorage(storage_userInfo)
+			if (userInfo) {
+				this.user = JSON.parse(userInfo).userinfo
+			}
+
 		},
 		methods: {
 			getImage() {
@@ -292,7 +175,6 @@
 							title: '加载中~'
 						})
 						const tempFilePaths = chooseImageRes.tempFilePaths;
-						console.log('tempFilePaths', tempFilePaths)
 						const result = await uploadFilePromise(tempFilePaths[0])
 						this.info.avatar = result.fullurl
 						// this.is_upload = false
@@ -319,14 +201,7 @@
 				});
 			},
 
-			// 弹出模态框
-			showModal1(event) {
-				this.openModal1()
-			},
-			// 打开模态框
-			openModal1() {
-				this.show1 = true
-			},
+
 
 			// 弹出模态框
 			showModal2(event) {
@@ -337,50 +212,13 @@
 				this.show2 = true
 			},
 
-			// 弹出模态框
-			showModal3(event) {
-				this.openModal3()
-			},
-			// 打开模态框
-			openModal3() {
-				this.show3 = true
-			},
-
-			bindPickerChange: function(e) {
-				this.index = e.detail.value
-			},
-
-			bindPickerChange1: function(e) {
-				this.index1 = e.detail.value
-			},
-
-			bindDateChange: function(e) {
-				this.date = e.detail.value
-			},
-
-			getDate(type) {
-				const date = new Date();
-				let year = date.getFullYear();
-				let month = date.getMonth() + 1;
-				let day = date.getDate();
-
-				if (type === 'start') {
-					year = year - 60;
-				} else if (type === 'end') {
-					year = year + 2;
-				}
-				month = month > 9 ? month : '0' + month;
-				day = day > 9 ? day : '0' + day;
-				return `${year}-${month}-${day}`;
-			},
-
 			// 打开获取用户信息弹框
 			openAuthorizationModal() {
 				// #ifdef MP-WEIXIN 
 				this.showAuthorizationModal = true
 				// #endif
 				// #ifndef MP-WEIXIN
-				console.log('useeee', this.user)
+
 				this.info = {
 					nickname: this.user.nickname,
 					avatar: this.user.avatar

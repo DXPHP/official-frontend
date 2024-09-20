@@ -14,16 +14,13 @@
 		<view class="tn-margin-top-xs" :style="{paddingTop: vuex_custom_bar_height + 'px'}">
 			<view class="nav_title--wrap">
 				<view class="nav_title tn-main-gradient-blue">
-					<!-- <text class="tn-icon-rocket tn-padding-right-sm"></text> -->
 					{{info.data.title}}
-					<!-- <text class="tn-icon-rocket tn-padding-left-sm"></text> -->
 				</view>
 			</view>
 
 
 			<view class="news-img tn-padding">
 				<rich-text :nodes="info.data.content"></rich-text>
-				<!-- <image src='https://resource.tuniaokj.com/images/advertise/3.jpg' mode='widthFix' class=''></image> -->
 
 			</view>
 
@@ -33,17 +30,13 @@
 		<view class="tn-margin-top tn-padding-top-sm tn-margin-bottom">
 			<view class="see">
 				<view class="justify-content-item tn-flex tn-flex-col-center">
-					<!-- <view style="margin-left: 15rpx;margin-right: 6rpx;transform: scale(0.85);">
-						<tn-avatar-group :lists="groupList" size="sm"></tn-avatar-group>
-					</view>
-					<text class="tn-color-gray">86人</text> -->
+
 				</view>
 				<view class="justify-content-item tn-color-gray tn-text-center tn-margin-right"
 					style="padding-top: 5rpx;">
 					<text class="tn-icon-eye tn-text-lg" style="padding-right: 5rpx;"></text>
 					<text class="tn-padding-right tn-text-df">{{info.data.view}}</text>
-					<!-- <text class="tn-icon-like-lack tn-text-lg" style="padding-right: 5rpx;"></text>
-					<text class="tn-text-df">{{info.data.likes}}</text> -->
+
 				</view>
 
 			</view>
@@ -99,22 +92,6 @@
 		data() {
 			return {
 
-				groupList: [{
-						src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-					},
-					{
-						src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-					},
-					{
-						src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-					},
-					{
-						src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-					},
-					{
-						src: 'https://resource.tuniaokj.com/images/blogger/blogger_beibei.jpg'
-					},
-				],
 				id: '',
 				info: {
 					data: {
@@ -143,7 +120,7 @@
 					likes_type: 1
 				}).then(res => {
 					this.getData(1)
-					
+
 					uni.showToast({
 						icon: 'none',
 						title: res.msg

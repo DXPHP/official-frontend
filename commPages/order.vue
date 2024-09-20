@@ -119,13 +119,13 @@
 			}
 		},
 		onLoad(e) {
-			console.log('7777777', e)
+
 			if (e && e.info) {
 				const good = JSON.parse(e.info)
 				this.goodInfo = good
 				setStorage('goodInfo', JSON.stringify(this.goodInfo))
 			} else {
-				console.log('没传值')
+
 				this.goodInfo = JSON.parse(getStorage('goodInfo')) || {}
 			}
 			const copyAddress = JSON.parse(getStorage('defaultAddress')) || {}
@@ -137,8 +137,7 @@
 					}
 				})
 			})
-			// console.log('goodInfo', this.goodInfo)
-			// console.log('addressInfo', this.addressInfo)
+			
 		},
 		methods: {
 			// 跳转

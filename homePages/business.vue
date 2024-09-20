@@ -7,27 +7,6 @@
 				<text class='icon tn-icon-home-capsule-fill'></text>
 			</view>
 		</tn-nav-bar>
-
-
-		<!-- 页面内容 start-->
-		<!-- 	<swiper class="card-swiper" :circular="true" :autoplay="true" duration="500" interval="18000"
-			@change="cardSwiper">
-			<swiper-item v-for="(item,index) in list" :key="index" :class="cardCur==index?'cur':''">
-				<view class="swiper-item image-banner">
-					<image :src="item.images[0]" mode="aspectFill"></image>
-				</view>
-				<view class="tn-text-df tn-text-bold tnloukong">{{item.title}}</view>
-				<view class="swiper-item-text">
-					<view class="tn-text-lg tn-text-bold tn-color-white">{{item.name}}</view>
-				</view>
-			</swiper-item>
-		</swiper> -->
-		<!-- <view class="indication">
-			<block v-for="(item,index) in list" :key="index">
-				<view class="spot" :class="cardCur==index?'active':''"></view>
-			</block>
-		</view> -->
-		<!-- <view class="" style="padding-bottom: 60rpx;margin-top: -100rpx;z-index: 999; position: relative;"> -->
 		<view :style="{paddingTop: vuex_custom_bar_height + 'px'}">
 			<view class="">
 				<block v-for="(item, index) in list" :key="index">
@@ -50,8 +29,7 @@
 									</view>
 									<view class="justify-content-item tn-color-gray tn-text-center"
 										style="padding-top: 5rpx;">
-										<!-- <text class="tn-icon-rocket tn-padding-right-xs tn-text-lg"></text>
-		              <text class="tn-padding-right tn-text-df">{{ item.collectionCount }}</text> -->
+										
 										<text class="tn-icon-eye tn-padding-right-xs tn-text-lg"></text>
 										<text class="tn-text-df">{{ item.likes }}</text>
 									</view>
@@ -74,7 +52,7 @@
 
 		</view>
 
-		<!-- 页面内容 end-->
+	
 		<button class='' open-type="contact">
 			<view class="wechat tnxuanfu">
 				<view class="bg0 pa">
@@ -194,10 +172,7 @@
 					url: e,
 				});
 			},
-			// 跳转到
-			navTuniaoUI(e) {
-				wx.vibrateShort();
-			}
+			
 		}
 	}
 </script>

@@ -7,10 +7,7 @@
 				<text class='icon tn-icon-home-capsule-fill'></text>
 			</view>
 		</tn-nav-bar>
-
-
 		<view>
-
 			<swiper class="card-swiper" :circular="false" vertical="true" :autoplay="false" duration="500"
 				interval="5000" @change="cardSwiper">
 				<swiper-item v-for="(item,index) in list" :key="index" :class="cardCur==index?'cur':''">
@@ -25,13 +22,6 @@
 					</view>
 					<view class="swiper-item-icon image-banner">
 						<view class="">
-							<!-- <view class="user-pic button-0">
-								<view class="user-image">
-									<view class="tn-shadow-blur"
-										:style="'background-image:url('+ item.url + ');width: 87rpx;height: 87rpx;background-size: cover;overflow: hidden;'">
-									</view>
-								</view>
-							</view> -->
 							<view @click.stop="sendGood(index)"
 								class="icon15__item--icon tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center tn-shadow-blur button-1">
 								<view :class="item.is_likes?'tn-icon-like-fill text-red':'tn-icon-like'"
@@ -55,24 +45,20 @@
 								<button class="tn-flex-col-center tn-button--clear-style" open-type="share">
 									<view class="tn-icon-send-fill" style="font-size: 70rpx;"></view>
 									<view class="tn-margin-top-xs" style="font-size: 20rpx;position: relative;">
-										<!-- {{item.view}} -->
+
 									</view>
 								</button>
-
 							</view>
 						</view>
-
 						<view class="swiper-item-text">
 							<view class="tn-color-white tn-text-xl">
 								<text class="tn-icon-topics tn-padding-right-xs"></text>
 								<text class="tn-text-bold">
-									<!-- {{item.user}} -->
 									{{item.title}}
 								</text>
-
 							</view>
 							<view class="tn-color-white tn-padding-top-xs tn-text-lg clamp-text-2" style="width: 72%;">
-								<!-- {{item.title}} -->
+
 							</view>
 						</view>
 
@@ -80,11 +66,6 @@
 
 				</swiper-item>
 			</swiper>
-			<!-- <view class="indication">
-          <block v-for="(item,index) in swiperList" :key="index">
-              <view class="spot" :class="cardCur==index?'active':''"></view>
-          </block>
-      </view> -->
 			<view>
 				<myEvaluateDialog ref="pinglun" @closeScrollview="closeScrollview" comment_type="5">
 				</myEvaluateDialog>
@@ -98,35 +79,6 @@
 		</view>
 
 
-		<!-- <view class="edit tnxuanfu" @click="goBack">
-			<view class="bg0 pa">
-				<view class="bg1">
-					<image src="https://resource.tuniaokj.com/images/my/my6.png" class="button-shop shadow"></image>
-				</view>
-			</view>
-			<view class="hx-box pa">
-				<view class="pr">
-					<view class="hx-k1 pa0">
-						<view class="span"></view>
-					</view>
-					<view class="hx-k2 pa0">
-						<view class="span"></view>
-					</view>
-					<view class="hx-k3 pa0">
-						<view class="span"></view>
-					</view>
-					<view class="hx-k4 pa0">
-						<view class="span"></view>
-					</view>
-					<view class="hx-k5 pa0">
-						<view class="span"></view>
-					</view>
-					<view class="hx-k6 pa0">
-						<view class="span"></view>
-					</view>
-				</view>
-			</view>
-		</view> -->
 
 	</view>
 </template>
@@ -208,7 +160,7 @@
 			changePlay(index) {
 
 				this.isPlay = !this.isPlay
-				
+
 				const videoContext = uni.createVideoContext(`video-${this.list[index]['id']}`, this)
 				if (this.isPlay) {
 					// #ifdef H5
@@ -580,22 +532,7 @@
 	}
 
 
-	/* 悬浮 */
-	.tnxuanfu {
-		animation: suspension 3s ease-in-out infinite;
-	}
 
-	@keyframes suspension {
-
-		0%,
-		100% {
-			transform: translateY(0);
-		}
-
-		50% {
-			transform: translateY(-0.8rem);
-		}
-	}
 
 	/* 悬浮按钮 */
 	.button-shop {

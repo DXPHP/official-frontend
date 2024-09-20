@@ -116,7 +116,6 @@
 		// #endif
 		onLoad() {
 			this.action = baseURL + '/api/common/upload'
-			console.log('777777', this.action)
 			this.token = getStorage(storage_token)
 		},
 		methods: {
@@ -127,8 +126,6 @@
 
 			// 提交表单
 			submit() {
-
-				console.log('form', this.model1.userInfo)
 				this.$refs.uForm.validate().then(res => {
 					let params = {
 						...this.model1.userInfo
@@ -141,7 +138,7 @@
 					console.log('files', files, this.$refs.imageUpload)
 					let mapimg = files.map(res => res.response.data.url)
 					params.image = mapimg.join(',')
-					console.log('params', params)
+					// console.log('params', params)
 					feedback(params).then(res => {
 						this.$tn.message.toast(res.msg)
 						setTimeout(function() {

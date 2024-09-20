@@ -33,32 +33,7 @@
 						<view class="tn-color-gray tn-icon-right"></view>
 					</view>
 				</tn-list-cell>
-				<!-- 	<tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30">
-					<button class="tn-flex tn-flex-col-center tn-button--clear-style" open-type="getPhoneNumber"
-						@getphonenumber="bindWechatPhone">
-						<view class="icon1__item--icon tn-flex tn-flex-row-center tn-flex-col-center"
-							style="color: #7C8191;">
-							<view class="tn-icon-tip-fill"></view>
-						</view>
-						<view class="tn-flex tn-flex-row-between" style="width: 100%;">
-							<view class="tn-margin-left-sm">绑定手机号</view>
-							<view class="tn-color-gray tn-icon-right"></view>
-						</view>
-					</button>
-				</tn-list-cell> -->
-				<!-- 	  <tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30" @click="callPhoneNumber" data-number="18266666666">
-			    <view class="tn-flex tn-flex-col-center">
-			      <view
-			        class="icon1__item--icon tn-flex tn-flex-row-center tn-flex-col-center" style="color: #7C8191;">
-			        <view class="tn-icon-tel-circle-fill"></view>
-			      </view>
-			      <view class="tn-margin-left-sm tn-flex-1">技术热线</view>
-			      <view
-			        class="tn-margin-left-sm tn-color-wallpaper tn-text-sm tn-padding-left-xs tn-padding-right-xs tn-bg-gray--light tn-round">
-			        188****8888</view>
-			    </view>
-			  </tn-list-cell> -->
-
+		
 				<tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30" @click="Logout"
 					data-number="18266666666">
 					<view class="tn-flex tn-flex-col-center">
@@ -82,9 +57,7 @@
 <script>
 	import template_page_mixin from '@/libs/mixin/template_page_mixin.js'
 	import {
-		getStorage,
-		removeStorage,
-		setStorage
+		removeStorage	
 	} from '@/common/db.js';
 	import {
 		storageKey
@@ -101,46 +74,7 @@
 		mixins: [template_page_mixin],
 		data() {
 			return {
-				show: false,
-				systemSettingList: [{
-						id: 10,
-						text: '清除缓存',
-						src: '',
-						info: '44.5MB',
-					},
-					{
-						id: 20,
-						text: '意见反馈',
-						src: '',
-						info: '',
-					},
-					{
-						id: 30,
-						text: '检查更新',
-						src: '',
-						info: '',
-					},
-					{
-						id: 40,
-						text: '关于我们',
-						src: '',
-						info: '',
-					},
-				],
-				// 缓存大小
-				cacheSize: '-',
-				// 最新版本号
-				newVersion: '-',
-				version: {
-					content: "",
-					downUrl: "",
-					id: 0,
-					newVersion: "",
-					title: "",
-					type: 0,
-					upGrade: 0,
-				},
-				isUpdate: false,
+				show: false
 			}
 		},
 
@@ -171,175 +105,13 @@
 				})
 			},
 
-			clearCache() {
-				uni.showLoading({
-					title: "正在清除~"
-				})
-				setTimeout(function() {
-					uni.showToast({
-						title: '清除成功！',
-						icon: 'none',
-						success() {
-							uni.hideLoading()
-						}
-					});
-				}, 1200);
-			},
+	
 
-			getCache() {
-				// #ifdef APP-PLUS
-				let self = this;
-				plus.cache.calculate(size => {
-					if (size < 1024) {
-						self.cacheSize = size + 'B';
-					} else if (size / 1024 >= 1 && size / 1024 / 1024 < 1) {
-						self.cacheSize = Math.floor((size / 1024) * 100) / 100 + 'KB';
-					} else if (size / 1024 / 1024 >= 1) {
-						self.cacheSize = Math.floor((size / 1024 / 1024) * 100) / 100 + 'M';
-					}
-
-				});
-				// #endif
-			},
-
-			// 检查版本更新
-			getVersion() {
-				let that = this;
-				let os = uni.getSystemInfoSync().platform == 'ios' ? 2 : 1
-				// uni.request({
-				// 	url: `${config.baseUrl}getAppNewVersion/` + os,
-				// 	data: {
-				// 		// text: 'uni.request'
-				// 	},
-
-				// 	success: (res) => {
-				// 		console.log("当前版本二", res.data.data)
-				// 		that.version = res.data.data;
-				// 		this.checkVersion();
-				// 	}
-				// });
-			},
-			checkVersion() {
-				// checkUpdate()
-			},
-
-			toNotificationSettings() {
-				// #ifdef APP-PLUS
-				if (plus.os.name == 'Android') { // 判断是Android
-					var main = plus.android.runtimeMainActivity();
-					var pkName = main.getPackageName();
-					var uid = main.getApplicationInfo().plusGetAttribute("uid");
-					var NotificationManagerCompat = plus.android.importClass(
-						"android.support.v4.app.NotificationManagerCompat");
-					//android.support.v4升级为androidx
-					if (NotificationManagerCompat == null) {
-						NotificationManagerCompat = plus.android.importClass(
-							"androidx.core.app.NotificationManagerCompat");
-					}
-					console.log("NotificationManagerCompat", NotificationManagerCompat)
-					var areNotificationsEnabled = NotificationManagerCompat.from(main).areNotificationsEnabled();
-					// 未开通‘允许通知’权限，则弹窗提醒开通，并点击确认后，跳转到系统设置页面进行设置  
-					// console.log("areNotificationsEnabled",areNotificationsEnabled)
-					var Intent = plus.android.importClass('android.content.Intent');
-					var Build = plus.android.importClass("android.os.Build");
-					//android 8.0引导  
-					if (Build.VERSION.SDK_INT >= 26) {
-						var intent = new Intent('android.settings.APP_NOTIFICATION_SETTINGS');
-						intent.putExtra('android.provider.extra.APP_PACKAGE', pkName);
-					} else if (Build.VERSION.SDK_INT >= 21) { //android 5.0-7.0  
-						var intent = new Intent('android.settings.APP_NOTIFICATION_SETTINGS');
-						intent.putExtra("app_package", pkName);
-						intent.putExtra("app_uid", uid);
-					} else { //(<21)其他--跳转到该应用管理的详情页  
-						intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-						var uri = Uri.fromParts("package", mainActivity.getPackageName(),
-							null);
-						intent.setData(uri);
-					}
-					// 跳转到该应用的系统通知设置页  
-					main.startActivity(intent);
-				} else if (plus.os.name == 'iOS') { // 判断是ISO
-					var isOn = undefined;
-					var types = 0;
-					var app = plus.ios.invoke('UIApplication', 'sharedApplication');
-					var settings = plus.ios.invoke(app, 'currentUserNotificationSettings');
-					if (settings) {
-						types = settings.plusGetAttribute('types');
-						plus.ios.deleteObject(settings);
-					} else {
-						types = plus.ios.invoke(app, 'enabledRemoteNotificationTypes');
-					}
-					plus.ios.deleteObject(app);
-					isOn = (0 != types);
-					var app = plus.ios.invoke('UIApplication', 'sharedApplication');
-					var setting = plus.ios.invoke('NSURL', 'URLWithString:', 'app-settings:');
-					plus.ios.invoke(app, 'openURL:', setting);
-					plus.ios.deleteObject(setting);
-					plus.ios.deleteObject(app);
-				}
-				// #endif MP-WEIXIN
-				if (plus.os.name == 'Android') { // 判断是Android
-					var main = plus.android.runtimeMainActivity();
-					var pkName = main.getPackageName();
-					var uid = main.getApplicationInfo().plusGetAttribute("uid");
-					var NotificationManagerCompat = plus.android.importClass(
-						"android.support.v4.app.NotificationManagerCompat");
-					//android.support.v4升级为androidx
-					if (NotificationManagerCompat == null) {
-						NotificationManagerCompat = plus.android.importClass(
-							"androidx.core.app.NotificationManagerCompat");
-					}
-					console.log("NotificationManagerCompat", NotificationManagerCompat)
-					var areNotificationsEnabled = NotificationManagerCompat.from(main).areNotificationsEnabled();
-					// 未开通‘允许通知’权限，则弹窗提醒开通，并点击确认后，跳转到系统设置页面进行设置  
-					// console.log("areNotificationsEnabled",areNotificationsEnabled)
-					var Intent = plus.android.importClass('android.content.Intent');
-					var Build = plus.android.importClass("android.os.Build");
-					//android 8.0引导  
-					if (Build.VERSION.SDK_INT >= 26) {
-						var intent = new Intent('android.settings.APP_NOTIFICATION_SETTINGS');
-						intent.putExtra('android.provider.extra.APP_PACKAGE', pkName);
-					} else if (Build.VERSION.SDK_INT >= 21) { //android 5.0-7.0  
-						var intent = new Intent('android.settings.APP_NOTIFICATION_SETTINGS');
-						intent.putExtra("app_package", pkName);
-						intent.putExtra("app_uid", uid);
-					} else { //(<21)其他--跳转到该应用管理的详情页  
-						intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-						var uri = Uri.fromParts("package", mainActivity.getPackageName(),
-							null);
-						intent.setData(uri);
-					}
-					// 跳转到该应用的系统通知设置页  
-					main.startActivity(intent);
-				} else if (plus.os.name == 'iOS') { // 判断是ISO
-					var isOn = undefined;
-					var types = 0;
-					var app = plus.ios.invoke('UIApplication', 'sharedApplication');
-					var settings = plus.ios.invoke(app, 'currentUserNotificationSettings');
-					if (settings) {
-						types = settings.plusGetAttribute('types');
-						plus.ios.deleteObject(settings);
-					} else {
-						types = plus.ios.invoke(app, 'enabledRemoteNotificationTypes');
-					}
-					plus.ios.deleteObject(app);
-					isOn = (0 != types);
-					var app = plus.ios.invoke('UIApplication', 'sharedApplication');
-					var setting = plus.ios.invoke('NSURL', 'URLWithString:', 'app-settings:');
-					plus.ios.invoke(app, 'openURL:', setting);
-					plus.ios.deleteObject(setting);
-					plus.ios.deleteObject(app);
-				}
-			},
-
-
+	
 		},
 
 		onShow() {
-			this.getCache()
-			// #ifdef APP-PLUS
-			this.getVersion();
-			// #endif
+			
 		}
 	}
 </script>

@@ -1,6 +1,5 @@
 <template>
 	<view class="template-news tn-safe-area-inset-bottom">
-
 		<view class="tn-navbg" :style="{height: vuex_custom_bar_height + 'px'}">
 			<!-- 顶部自定义导航 -->
 			<tn-nav-bar fixed alpha customBack>
@@ -10,48 +9,31 @@
 				</view>
 			</tn-nav-bar>
 		</view>
-
 		<view class="tn-margin-top-xs" :style="{paddingTop: vuex_custom_bar_height + 'px'}">
 			<view class="nav_title--wrap">
 				<view class="nav_title tn-main-gradient-blue">
-					<!-- <text class="tn-icon-rocket tn-padding-right-sm"></text> -->
 					{{info.data.title}}
-					<!-- <text class="tn-icon-rocket tn-padding-left-sm"></text> -->
 				</view>
 			</view>
-
-
 			<view class="news-img tn-padding">
 				<rich-text :nodes="info.data.content"></rich-text>
-				<!-- <image src='https://resource.tuniaokj.com/images/advertise/3.jpg' mode='widthFix' class=''></image> -->
-
 			</view>
-
-
 		</view>
-
 		<view class="tn-margin-top tn-padding-top-sm tn-margin-bottom">
 			<view class="see">
 				<view class="justify-content-item tn-flex tn-flex-col-center">
-					<!-- <view style="margin-left: 15rpx;margin-right: 6rpx;transform: scale(0.85);">
-						<tn-avatar-group :lists="groupList" size="sm"></tn-avatar-group>
-					</view>
-					<text class="tn-color-gray">86人</text> -->
+					
 				</view>
 				<view class="justify-content-item tn-color-gray tn-text-center tn-margin-right"
 					style="padding-top: 5rpx;">
 					<text class="tn-icon-eye tn-text-lg" style="padding-right: 5rpx;"></text>
 					<text class="tn-padding-right tn-text-df">{{info.data.view}}</text>
-					<!-- <text class="tn-icon-like-lack tn-text-lg" style="padding-right: 5rpx;"></text>
-					<text class="tn-text-df">{{info.data.likes}}</text> -->
 				</view>
 
 			</view>
 		</view>
-
 		<!-- 悬浮按钮-->
 		<view class="evaluate-box" v-if="!commentShow">
-
 			<view class="evaluate-input" @click="toComment(id,0)">
 				点击开始评论
 			</view>
@@ -59,7 +41,6 @@
 				<view class="evaluate-icon" @click="sendGood">
 					<text :class="info.is_likes?'tn-icon-like-fill text-red':'tn-icon-like'"
 						style="font-size: 60rpx;margin-right: 10rpx;"></text>
-
 					<view class="m-l-8">
 						{{info.data.likes}}
 					</view>
@@ -71,15 +52,12 @@
 					</view>
 				</view>
 			</view>
-
 		</view>
 		<view>
 			<myEvaluateDialog ref="pinglun" @closeScrollview="closeScrollview" comment_type="3">
 			</myEvaluateDialog>
 		</view>
-
 		<view class='tn-tabbar-height'></view>
-
 	</view>
 </template>
 
@@ -98,23 +76,6 @@
 		mixins: [template_page_mixin],
 		data() {
 			return {
-
-				groupList: [{
-						src: 'https://resource.tuniaokj.com/images/blogger/avatar_1.jpeg'
-					},
-					{
-						src: 'https://resource.tuniaokj.com/images/blogger/avatar_2.jpeg'
-					},
-					{
-						src: 'https://resource.tuniaokj.com/images/blogger/avatar_3.jpeg'
-					},
-					{
-						src: 'https://resource.tuniaokj.com/images/blogger/avatar_4.jpeg'
-					},
-					{
-						src: 'https://resource.tuniaokj.com/images/blogger/blogger_beibei.jpg'
-					},
-				],
 				id: '',
 				info: {
 					data: {

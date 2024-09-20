@@ -21,23 +21,15 @@
 			}
 		},
 		{
-			"path" : "pages/login/login",
-			"style" : 
-			{
-				"navigationBarTitleText" : ""
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": ""
 			}
 		}
 	],
 	"subPackages": [{
 			"root": "homePages",
 			"pages": [{
-					"path": "search",
-					"style": {
-						"navigationBarTitleText": "全局搜索",
-						"enablePullDownRefresh": false
-					}
-				},
-				{
 					"path": "business",
 					"style": {
 						"navigationBarTitleText": "商业合作",
@@ -51,27 +43,7 @@
 						"enablePullDownRefresh": false
 					}
 				},
-				{
-					"path": "member",
-					"style": {
-						"navigationBarTitleText": "会员权益",
-						"enablePullDownRefresh": false
-					}
-				},
-				{
-					"path": "group",
-					"style": {
-						"navigationBarTitleText": "话题社区",
-						"enablePullDownRefresh": false
-					}
-				},
-				{
-					"path": "brand",
-					"style": {
-						"navigationBarTitleText": "品牌介绍",
-						"enablePullDownRefresh": false
-					}
-				},
+
 				{
 					"path": "about",
 					"style": {
@@ -87,19 +59,13 @@
 					}
 				},
 				{
-					"path": "history",
-					"style": {
-						"navigationBarTitleText": "发展历程",
-						"enablePullDownRefresh": false
-					}
-				},
-				{
 					"path": "photo",
 					"style": {
 						"navigationBarTitleText": "集体相册",
 						"enablePullDownRefresh": false
 					}
 				},
+
 				{
 					"path": "video",
 					"style": {
@@ -107,20 +73,8 @@
 						"enablePullDownRefresh": true
 					}
 				},
-				{
-					"path": "honor",
-					"style": {
-						"navigationBarTitleText": "荣誉证书",
-						"enablePullDownRefresh": false
-					}
-				},
-				{
-					"path": "map",
-					"style": {
-						"navigationBarTitleText": "公司地址",
-						"enablePullDownRefresh": false
-					}
-				},
+
+
 				{
 					"path": "base",
 					"style": {
@@ -128,18 +82,11 @@
 						"enablePullDownRefresh": false
 					}
 				}
-				
+
 			]
 		}, {
 			"root": "commPages",
 			"pages": [{
-					"path": "nav",
-					"style": {
-						"navigationBarTitleText": "智途导航",
-						"enablePullDownRefresh": false
-					}
-				},
-				{
 					"path": "product",
 					"style": {
 						"navigationBarTitleText": "产品详情",
@@ -153,7 +100,7 @@
 						"enablePullDownRefresh": false
 					}
 				}
-				
+
 			]
 		}, {
 			"root": "discoveryPages",
@@ -178,7 +125,7 @@
 						"enablePullDownRefresh": false
 					}
 				}
-				
+
 			]
 		}, {
 			"root": "newsPages",
@@ -234,163 +181,49 @@
 					}
 				},
 				{
-					"path" : "setApp",
-					"style" : 
-					{
-						"navigationBarTitleText" : "设置"
+					"path": "setApp",
+					"style": {
+						"navigationBarTitleText": "设置"
 					}
 				},
 				{
-					"path" : "address",
-					"style" : 
-					{
-						"navigationBarTitleText" : "我的地址"
+					"path": "address",
+					"style": {
+						"navigationBarTitleText": "我的地址"
 					}
 				},
 				{
-					"path" : "editAddress",
-					"style" : 
-					{
-						"navigationBarTitleText" : "编辑地址"
+					"path": "editAddress",
+					"style": {
+						"navigationBarTitleText": "编辑地址"
 					}
 				},
 				{
-					"path" : "like",
-					"style" : 
-					{
-						"navigationBarTitleText" : "我的点赞"
+					"path": "like",
+					"style": {
+						"navigationBarTitleText": "我的点赞"
 					}
 				},
 				{
-					"path" : "message",
-					"style" : 
-					{
-						"navigationBarTitleText" : "我的消息"
+					"path": "message",
+					"style": {
+						"navigationBarTitleText": "我的消息"
 					}
 				},
 				{
-					"path" : "agreement",
-					"style" : 
-					{
-						"navigationBarTitleText" : "政策协议"
+					"path": "agreement",
+					"style": {
+						"navigationBarTitleText": "政策协议"
 					}
 				}
-				
-				
-				
-				
-				
-			]
-		},
-		{
-			"root": "circlePages",
-			"pages": [{
-					"path": "blogger",
-					"style": {
-						"navigationBarTitleText": "博主_Me",
-						"enablePullDownRefresh": false
-					}
-				},
-				{
-					"path": "blogger_other",
-					"style": {
-						"navigationBarTitleText": "博主_Ta",
-						"enablePullDownRefresh": false
-					}
-				},
-				{
-					"path": "edit",
-					"style": {
-						"navigationBarTitleText": "编辑发布",
-						"enablePullDownRefresh": false
-					}
-				},
-				{
-					"path": "advertise",
-					"style": {
-						"navigationBarTitleText": "广告页",
-						"enablePullDownRefresh": false
-					}
-				},
-				{
-					"path": "news",
-					"style": {
-						"navigationBarTitleText": "资讯详情",
-						"enablePullDownRefresh": false
-					}
-				},
-				{
-					"path": "king",
-					"style": {
-						"navigationBarTitleText": "名片王者",
-						"enablePullDownRefresh": false
-					}
-				},
-				{
-					"path": "business",
-					"style": {
-						"navigationBarTitleText": "智能名片",
-						"enablePullDownRefresh": false
-					}
-				},
-				{
-					"path": "group",
-					"style": {
-						"navigationBarTitleText": "精选圈子",
-						"enablePullDownRefresh": false
-					}
-				},
-				{
-					"path": "ranking",
-					"style": {
-						"navigationBarTitleText": "积分排行",
-						"enablePullDownRefresh": false
-					}
-				},
-				{
-					"path": "details",
-					"style": {
-						"navigationBarTitleText": "圈子详情",
-						"enablePullDownRefresh": false
-					}
-				},
-				{
-					"path": "reserve",
-					"style": {
-						"navigationBarTitleText": "预约接龙",
-						"enablePullDownRefresh": false
-					}
-				},
-				{
-					"path": "create",
-					"style": {
-						"navigationBarTitleText": "活动创建",
-						"enablePullDownRefresh": false
-					}
-				},
-				{
-					"path": "build",
-					"style": {
-						"navigationBarTitleText": "打造圈子",
-						"enablePullDownRefresh": false
-					}
-				},
-				{
-					"path": "chat",
-					"style": {
-						"navigationBarTitleText": "一起群聊",
-						"enablePullDownRefresh": false
-					}
-				},
-				{
-					"path": "chatting",
-					"style": {
-						"navigationBarTitleText": "对话聊天",
-						"enablePullDownRefresh": false
-					}
-				}
+
+
+
+
+
 			]
 		}
+
 	],
 	"globalStyle": {
 		"navigationStyle": "custom",

@@ -10,7 +10,7 @@
 				</view>
 			</tn-nav-bar>
 		</view>
-<view class="top-backgroup">
+		<view class="top-backgroup">
 			<image
 				src='https://cdn.nlark.com/yuque/0/2022/jpeg/280373/1666862894380-assets/web-upload/e3a97a87-7b21-442a-be37-f6dae7750eae.jpeg'
 				mode='widthFix' class='backgroud-image'></image>
@@ -22,7 +22,7 @@
 					<view class="tnphone-white-min swiper-item  wow fadeInLeft2">
 						<view class="skin wow fadeInRight2">
 							<view class="screen wow fadeInUp2">
-						
+
 								<view class="peak wow">
 									<view class="sound"></view>
 									<view class="lens"></view>
@@ -39,16 +39,13 @@
 			</swiper>
 			<view class="nav_title--wrap">
 				<view class="nav_title tn-main-gradient-blue">
-					<!-- <text class="tn-icon-rocket tn-padding-right-sm"></text> -->
 					{{info.data.title}}
-					<!-- <text class="tn-icon-rocket tn-padding-left-sm"></text> -->
 				</view>
 			</view>
 
 
 			<view class="news-img tn-padding">
 				<rich-text :nodes="info.data.content"></rich-text>
-				<!-- <image src='https://resource.tuniaokj.com/images/advertise/10.jpg' mode='widthFix' class=''></image> -->
 			</view>
 
 
@@ -57,17 +54,13 @@
 		<view class="tn-margin-top tn-padding-top-sm tn-margin-bottom">
 			<view class="see">
 				<view class="justify-content-item tn-flex tn-flex-col-center">
-					<!-- <view style="margin-left: 15rpx;margin-right: 6rpx;transform: scale(0.85);">
-						<tn-avatar-group :lists="groupList" size="sm"></tn-avatar-group>
-					</view>
-					<text class="tn-color-gray">86人</text> -->
+
 				</view>
 				<view class="justify-content-item tn-color-gray tn-text-center tn-margin-right"
 					style="padding-top: 5rpx;">
 					<text class="tn-icon-eye tn-text-lg" style="padding-right: 5rpx;"></text>
 					<text class="tn-padding-right tn-text-df">{{info.data.view}}</text>
-					<!-- <text class="tn-icon-like-lack tn-text-lg" style="padding-right: 5rpx;"></text>
-					<text class="tn-text-df">{{info.likes}}</text> -->
+
 				</view>
 
 			</view>
@@ -77,21 +70,6 @@
 
 
 
-		<!-- 悬浮按钮-->
-		<!-- <view class="tn-flex tn-flex-row-between tn-footerfixed">
-      <view class="tn-flex-1 justify-content-item tn-margin-xs tn-text-center">
-        <tn-button backgroundColor="#FBBD12" padding="40rpx 0" width="90%" :fontSize="28">
-          <text class="tn-color-white">点赞鼓励</text>
-          <text class="tn-icon-like-lack tn-padding-left-xs tn-color-white"></text>
-        </tn-button>
-      </view>
-      <view class="tn-flex-1 justify-content-item tn-margin-xs tn-text-center">
-        <tn-button backgroundColor="#05C160" padding="40rpx 0" width="90%" :fontSize="28" open-type="share">
-          <text class="tn-color-white">分享好友</text>
-          <text class="tn-icon-wechat tn-padding-left-xs tn-color-white"></text>
-        </tn-button>
-      </view>
-    </view> -->
 		<!-- 悬浮按钮-->
 		<view class="evaluate-box" v-if="!commentShow">
 
@@ -222,8 +200,8 @@
 		border-radius: 15rpx;
 		box-shadow: 0rpx 0rpx 50rpx 0rpx rgba(0, 0, 0, 0.07);
 	}
-	
-	
+
+
 	/* .tnphone-white-min 细边框*/
 	.tnphone-white-min {
 		width: 380rpx;
@@ -239,7 +217,7 @@
 		cursor: default;
 		position: relative
 	}
-	
+
 	.tnphone-white-min .skin {
 		width: 100%;
 		height: 100%;
@@ -247,7 +225,7 @@
 		background: #E9E5F3;
 		padding: 10rpx;
 	}
-	
+
 	.tnphone-white-min .screen {
 		width: 100%;
 		height: 100%;
@@ -256,7 +234,7 @@
 		position: relative;
 		overflow: hidden
 	}
-	
+
 	.tnphone-white-min .head {
 		width: 100%;
 		height: 90rpx;
@@ -264,7 +242,7 @@
 		position: absolute;
 		padding: 45rpx 15rpx 10rpx 15rpx;
 	}
-	
+
 	.tnphone-white-min .peak {
 		left: 22%;
 		width: 56%;
@@ -274,7 +252,7 @@
 		background: #E9E5F3;
 		position: absolute
 	}
-	
+
 	.tnphone-white-min .sound {
 		width: 48rpx;
 		height: 6rpx;
@@ -287,7 +265,7 @@
 		margin-top: -10rpx;
 		box-shadow: 0rpx 4rpx 4rpx 0rpx #444 inset
 	}
-	
+
 	.tnphone-white-min .lens {
 		width: 6rpx;
 		height: 6rpx;
@@ -299,7 +277,7 @@
 		margin-left: 34rpx;
 		margin-top: -10rpx
 	}
-	
+
 	.tnphone-white-min .talk {
 		width: 50%;
 		height: 6rpx;
@@ -310,7 +288,7 @@
 		left: 50%;
 		margin-left: -25%
 	}
-	
+
 	.tnphone-white-min .area-l,
 	.tnphone-white-min .area-r {
 		width: 70rpx;
@@ -318,7 +296,7 @@
 		position: absolute;
 		top: 6rpx
 	}
-	
+
 	.tnphone-white-min .area-l {
 		left: 0;
 		text-align: center;
@@ -328,7 +306,7 @@
 		font-weight: 600;
 		padding-left: 20rpx;
 	}
-	
+
 	.tnphone-white-min .area-r {
 		right: 0;
 		text-align: center;
@@ -338,7 +316,7 @@
 		font-weight: 600;
 		padding-right: 20rpx;
 	}
-	
+
 	.tnphone-white-min .fa-feed {
 		float: left;
 		font-size: 12rpx !important;
@@ -346,23 +324,23 @@
 		margin-top: 4rpx;
 		margin-right: 8rpx
 	}
-	
+
 	.tnphone-white-min .fa-battery-full {
 		float: left;
 		font-size: 12rpx !important;
 		margin-top: 6rpx
 	}
-	
+
 	.tnphone-white-min .fa-chevron-left {
 		float: left;
 		margin-top: 4rpx
 	}
-	
+
 	.tnphone-white-min .fa-cog {
 		float: right;
 		margin-top: 4rpx
 	}
-	
+
 	.tnphone-white-min .btn01 {
 		width: 3rpx;
 		height: 28rpx;
@@ -372,7 +350,7 @@
 		top: 105rpx;
 		left: -3rpx
 	}
-	
+
 	.tnphone-white-min .btn02 {
 		width: 3rpx;
 		height: 54rpx;
@@ -382,7 +360,7 @@
 		top: 160rpx;
 		left: -3rpx
 	}
-	
+
 	.tnphone-white-min .btn03 {
 		width: 3rpx;
 		height: 54rpx;
@@ -392,7 +370,7 @@
 		top: 230rpx;
 		left: -3rpx
 	}
-	
+
 	.tnphone-white-min .btn04 {
 		width: 3rpx;
 		height: 86rpx;
@@ -402,25 +380,25 @@
 		top: 180rpx;
 		right: -3rpx
 	}
-	
+
 	/* 顶部背景图 start */
 	.top-backgroup {
 		height: 450rpx;
 		z-index: -1;
-	
+
 		.backgroud-image {
 			width: 100%;
 			height: 446rpx;
 			// z-index: -1;
 		}
 	}
-	
+
 	/* 顶部背景图 end */
 	/* 轮播样机样式 start*/
 	.card-swiper {
 		height: 810rpx !important;
 	}
-	
+
 	.card-swiper swiper-item {
 		width: 260rpx !important;
 		// left: 170rpx;
@@ -430,30 +408,31 @@
 		padding: 0rpx 15rpx 90rpx 15rpx;
 		overflow: initial;
 	}
-	
+
 	.card-swiper swiper-item .swiper-item {
 		display: block;
 		transform: scale(0.45);
 		transition: all 0.2s ease-in 0s;
 		overflow: hidden;
 	}
-	
+
 	.card-swiper swiper-item.cur .swiper-item {
 		transform: scale(0.65);
 		transition: all 0.2s ease-in 0s;
 	}
-	
+
 	.image-banner {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 	}
-	
+
 	.image-banner image {
 		width: 100%;
 		height: 770rpx;
 		// border: 1rpx solid red;
 	}
+
 	// 评论 start
 	.evaluate-box {
 		z-index: 999;

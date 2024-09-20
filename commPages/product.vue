@@ -51,88 +51,6 @@
 
 		<!-- 边距间隔 -->
 		<view class="tn-strip-bottom"></view>
-
-
-		<!-- 更多信息-->
-		<!-- <view class="tn-padding-top-sm tn-padding-bottom-sm">
-			<tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30">
-				<view class="tn-flex tn-flex-col-center">
-					<view class="tn-flex-1">前端语言</view>
-					<view class="tn-margin-left-sm tn-color-gray" style="font-size: 28rpx;">Uniapp vue2</view>
-				</view>
-			</tn-list-cell>
-			<tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30">
-				<view class="tn-flex tn-flex-col-center">
-					<view class="tn-flex-1">后端语言</view>
-					<view class="tn-margin-left-sm tn-color-gray" style="font-size: 28rpx;">敬请期待</view>
-				</view>
-			</tn-list-cell>
-			<tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30">
-				<view class="tn-flex tn-flex-col-center">
-					<view class="tn-flex-1">适合群体</view>
-					<view class="tn-margin-left-sm tn-color-gray" style="font-size: 28rpx;">任何公司</view>
-				</view>
-			</tn-list-cell>
-		</view> -->
-
-
-		<!-- 边距间隔 -->
-		<!-- <view class="tn-strip-bottom"></view>
-    
-    <view class="tn-margin">
-      <view class="tn-flex tn-flex-row-between">
-        <view class="justify-content-item tn-text-bold tn-text-xl">
-          产品标签
-        </view>
-      </view>
-    </view>
-    
-    <view class="">
-      <view class="tn-tag-content tn-margin tn-text-justify">
-        <view v-for="(item, index) in tagList" :key="index" class="tn-tag-content__item tn-margin-right tn-round tn-text-sm tn-text-bold" :class="[`tn-bg-${item.color}--light tn-color-${item.color}`]">
-          <text class="tn-tag-content__item--prefix">#</text> {{ item.title }}
-        </view>
-      </view>
-    </view> -->
-
-		<!-- 边距间隔 -->
-		<!-- <view class="tn-strip-bottom"></view> -->
-
-		<!-- <view class="tn-margin-top-sm">
-			<view class="nav_title--wrap">
-				<view class="nav_title tn-cool-bg-color-6">
-					<text class="tn-icon-star tn-padding-right-sm tn-text-xxl"></text>
-					<text class="tn-text-xl">智途科技 · 界面预览</text>
-					<text class="tn-icon-star tn-padding-left-sm tn-text-xxl"></text>
-				</view>
-			</view>
-		</view> -->
-		<!-- 
-		<tn-scroll-list :indicator="false">
-			<view class="tn-flex tn-margin">
-				<view class="tn-margin-right-sm" v-for="(item, index) in 10" :key="index">
-					<view class="image-pic" @tap="previewProductImage"
-						style="background-image:url('https://resource.tuniaokj.com/images/uniapp_market/1.jpg');">
-						<view class="image-good">
-						</view>
-					</view>
-				</view>
-			</view>
-		</tn-scroll-list> -->
-
-
-
-		<!-- 边距间隔 -->
-		<view class="tn-strip-bottom"></view>
-
-
-		<!-- <view class="tn-margin">
-      <view class="tn-flex tn-flex-row-between">
-        <view class="justify-content-item tn-text-bold tn-text-xl">
-          商品详情
-        </view>
-      </view>
-    </view> -->
 		<view class="tn-margin-top-sm">
 			<view class="nav_title--wrap">
 				<view class="nav_title tn-cool-bg-color-6">
@@ -142,24 +60,12 @@
 				</view>
 			</view>
 		</view>
-
 		<view class="content-backgroup tn-margin">
 			<rich-text :nodes="info.data.detail"></rich-text>
-			<!-- <image
-				src='https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1680077186004-assets/web-upload/c3551495-0ef4-4666-9fc5-cd4c5bc251de.jpeg'
-				mode='widthFix' class='backgroud-image'></image>
-			<image
-				src='https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1680077186004-assets/web-upload/c3551495-0ef4-4666-9fc5-cd4c5bc251de.jpeg'
-				mode='widthFix' class='backgroud-image'></image>
-			<image
-				src='https://cdn.nlark.com/yuque/0/2023/jpeg/280373/1680077186004-assets/web-upload/c3551495-0ef4-4666-9fc5-cd4c5bc251de.jpeg'
-				mode='widthFix' class='backgroud-image'></image> -->
+
 		</view>
-
-
 		<view id="top-info" class="tn-footerfixed tn-safe-area-inset-bottom tn-bg-white"
 			:style="{transform: `translateY(${topInfoTranslateY}px)`}">
-			<!-- <view class="footerfixed tn-bg-white tn-safe-area-inset-bottom"> -->
 			<view class="tn-flex tn-flex-row-between tn-flex-col-center">
 				<view class="tn-flex-2 justify-content-item tn-color-gray">
 					<view class="tn-flex tn-flex-row-center">
@@ -186,39 +92,8 @@
 					</tn-button>
 				</view>
 			</view>
-			<!-- </view> -->
-			<!-- <view class="justify-content-item tn-padding-bottom">
-        <view class="tn-flex tn-flex-col-center tn-flex-row-left">
-          <view class="user-pic">
-            <view class="user-image">
-              <view class="tn-shadow-blur" style="background-image:url('https://resource.tuniaokj.com/images/blogger/blogger_beibei.jpg');width: 100rpx;height: 100rpx;background-size: cover;">
-              </view>
-            </view>
-          </view>
-          <view class="tn-padding-right tn-color-black">
-            <view class="tn-padding-right tn-padding-left-sm">
-              <text class="tn-text-xl tn-text-bold tn-color-black">徐猪猪</text>
-              <text class="tn-padding-left-sm tn-color-gray">总经理</text>
-            </view>
-            <view class="tn-padding-right tn-padding-top-xs tn-padding-left-sm tn-text-ellipsis">
-              <text class="tn-color-gray">佛山猛犸空间家具有限公司</text>
-            </view>
-          </view>
-        </view>
-      </view>
-      <view class="justify-content-item tn-flex-col-center tn-flex-row-center tn-text-center tn-padding-bottom">
-        <view class="">
-          <text class="tn-icon-wechat-fill tn-color-green--dark" style="font-size: 50rpx;"></text>
-        </view>
-        <view class="">
-          <text class="tn-text-sm">加微信</text>
-        </view>
-      </view> -->
-		</view>
 
-		<!--  <view class="footerfixed dd-glass tn-padding-left-sm tn-padding-right tn-padding-top-xs tn-padding-bottom-sm">
-      <tn-goods-nav :options="countOptions" :buttonGroups="customButtonGroups" buttonType="round" :safeAreaInsetBottom="true" @optionClick="onOptionClick" @buttonClick="onButtonClick"></tn-goods-nav>
-    </view> -->
+		</view>
 
 		<!-- 选择弹框 -->
 		<!-- popup会有延迟，采用这种方式来优化弹窗的优化体验-->
@@ -246,67 +121,8 @@
 			return {
 				/* 选择弹窗*/
 				showSkuModal: false,
-
 				cardCur: 0,
 				swiperList: [],
-				countOptions: [{
-					icon: 'star',
-					text: '收藏'
-				}, {
-					icon: 'share-circle',
-					text: '分享',
-				}],
-				customButtonGroups: [{
-					text: '咨询客服',
-					backgroundColor: 'tn-cool-bg-color-5',
-					color: '#FFFFFF'
-				}, {
-					text: '立即购买',
-					backgroundColor: 'tn-cool-bg-color-15--reverse',
-					color: '#FFFFFF'
-				}],
-				tagList: [{
-						color: 'red',
-						title: "真皮",
-					},
-					{
-						color: 'cyan',
-						title: "简约",
-					},
-					{
-						color: 'blue',
-						title: "猛犸",
-					},
-					{
-						color: 'green',
-						title: "互联网",
-					},
-					{
-						color: 'orange',
-						title: "免费",
-					},
-					{
-						color: 'purplered',
-						title: "配色",
-					},
-					{
-						color: 'purple',
-						title: "软件开发",
-					},
-					{
-						color: 'brown',
-						title: "插画",
-					},
-					{
-						color: 'yellowgreen',
-						title: "C4D",
-					},
-					{
-						color: 'grey',
-						title: "海报",
-					}
-				],
-
 				topInfo: {
 					height: 0,
 				},
@@ -332,7 +148,7 @@
 					phoneNumber: num
 				});
 			},
-			
+
 			sendGood() {
 				likes({
 					relation_id: this.id,
@@ -355,8 +171,7 @@
 			// 预览图片
 			previewProductImage() {
 				wx.previewImage({
-					urls: [
-					]
+					urls: []
 				})
 			},
 
@@ -376,7 +191,7 @@
 				});
 			},
 			confirm(e) {
-				console.log('没拿到返回的数据了', e)
+				
 				let info = {
 					name: this.info.name,
 					...e.val,
@@ -421,9 +236,10 @@
 </script>
 
 <style lang="scss" scoped>
-	.text-red{
+	.text-red {
 		color: #E83A30;
 	}
+
 	.template-product {}
 
 	.tn-tabbar-height {

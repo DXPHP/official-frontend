@@ -12,8 +12,8 @@
 					<view class="im-menus font-size-28" hover-class="tap" @click.stop="showAppBox(1)">🙂</view>
 					<!-- <view class="im-menus font-size-28 mr-10" hover-class="tap" v-if="!msg" @click="chooseImg">📷</view> -->
 					<view v-if="msg">
-						<button  class="button_box" @tap.stop="sendMsg(msg,'')"
-							:disabled="isLoading" :loading="isLoading">发送</button>
+						<button class="button_box" @tap.stop="sendMsg(msg,'')" :disabled="isLoading"
+							:loading="isLoading">发送</button>
 					</view>
 				</view>
 			</view>
@@ -180,7 +180,7 @@
 	}
 </script>
 <style lang="scss" scoped>
-	.input-box{
+	.input-box {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -189,24 +189,31 @@
 		background-color: #e2e2e2;
 		border-radius: 8rpx;
 	}
+
 	.flex {
 		display: flex;
 	}
-	.bg_white{
+
+	.bg_white {
 		background-color: #ffffff;
 	}
-	.m-t-10{
+
+	.m-t-10 {
 		margin-top: 10rpx;
 	}
-	.m-b-10{
+
+	.m-b-10 {
 		margin-bottom: 10rpx;
 	}
-	.p-t-10{
+
+	.p-t-10 {
 		padding-top: 10rpx;
 	}
-	.button_box{
+
+	.button_box {
 		background-color: aqua;
 	}
+
 	.button_box ::after {
 		border: none
 	}

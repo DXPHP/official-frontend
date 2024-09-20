@@ -13,9 +13,7 @@
 					<text class="tn-icon-loading"></text><text
 						class="tn-padding-left-xs tn-text-lg tn-text-bold">{{filterStatus()}}</text>
 				</view>
-				<!-- 	<view class=" tn-padding-xs tn-text-gray">
-					{{orderInfo.order_status_desc}}
-				</view> -->
+
 			</view>
 			<view class=" tn-margin-top-xs tn-radius tn-bg-white tn-padding-xs">
 				<view class="tn-flex tn-flex-col-center tn-padding-xs">
@@ -45,12 +43,7 @@
 					物流单号：{{orderInfo.express_number}} <text class="copy_text"
 						@click="copy(orderInfo.express_number)">复制</text>
 				</view>
-				<!-- <view class="wuliu_tag tn-flex tn-flex-col-center tn-radius "
-					@click="tn('/pages_index/loginstics_tracking/loginstics_tracking')">
-					<text class="text_ellipsis"
-						style="width: 650rpx;">{{orderInfo.status=='待收货'?'派送中，【深圳市】【深证某某某】安排某某某某某某':'您已签收，签收时间为2023-12-25 12:00:00'}}</text>
-					<u-icon name="arrow-right"></u-icon>
-				</view> -->
+
 			</view>
 			<view class=" tn-margin-top-xs tn-radius tn-bg-white tn-padding-xs">
 				<view class="tn-flex tn-padding-xs tn-margin-top-xs tn-padding-xs">
@@ -81,9 +74,7 @@
 					<view class="tn-flex tn-flex-col-center tn-flex-row-between tn-padding-xs">
 						<text class="tn-text-gray">商品总额</text><text>￥{{orderInfo.goods_price}}</text>
 					</view>
-					<!-- <view class="tn-flex tn-flex-col-center tn-flex-row-between tn-padding-xs">
-						<text class="tn-text-gray">邮费</text><text>￥{{orderInfo.shipping_price}}</text>
-					</view> -->
+
 					<view class="tn-flex tn-flex-col-center tn-flex-row-between tn-padding-xs">
 						<text class="tn-text-gray">实付款</text><text
 							class="tn-color-red-dark">￥{{orderInfo.goods_price}}</text>
@@ -125,9 +116,7 @@
 				<view class="">
 				</view>
 				<view class="tn-flex tn-flex-col-center tn-padding-xs">
-					<!-- 	<view class="cancel_btn m-r-10" v-if="orderInfo.status=='待发货'">
-						取消订单
-					</view> -->
+
 					<view class="tn-margin-xs" v-if="type=='shopOrder' && orderInfo.order_status_text=='待发货'"
 						@click="tn('/pages_index/deliver_goods/deliver_goods?id='+orderInfo.order_id)">
 						<tn-button width="100%" backgroundColor="tn-main-gradient-red"
@@ -137,33 +126,17 @@
 						<tn-button width="100%" backgroundColor="tn-main-gradient-red"
 							fontColor="#ffffff">立即支付</tn-button>
 					</view>
-					<view class="tn-margin-xs" v-if="type=='order'"
-						@click="makePhoneCall(orderInfo.service_phone)">
+					<view class="tn-margin-xs" v-if="type=='order'" @click="makePhoneCall(orderInfo.service_phone)">
 						<tn-button width="100%" backgroundColor="tn-main-gradient-red"
 							fontColor="#ffffff">联系客服</tn-button>
 					</view>
-					<view class="tn-margin-xs" v-if="type=='order' && orderInfo.order_status_text=='待收货'" @click="receipt">
+					<view class="tn-margin-xs" v-if="type=='order' && orderInfo.order_status_text=='待收货'"
+						@click="receipt">
 						<tn-button width="100%" backgroundColor="tn-main-gradient-red"
 							fontColor="#ffffff">确认收货</tn-button>
 					</view>
 
-					
-					<!-- <view class="right_btn m-l-10" v-if="type=='shopOrder' && orderInfo.order_status_text=='待发货'"
-						@click="tn('/pages_index/deliver_goods/deliver_goods?id='+orderInfo.order_id)">
-						去发货
-					</view> -->
-					<!-- <view class="left_btn m-l-10" v-if="type=='order' && orderInfo.order_status=='0'"
-						@click="paySubmit">
-						立即支付
-					</view> -->
-					<!-- 	<view class="left_btn m-l-10" v-if="type=='order'"
-						@click="makePhoneCall(orderInfo.service_phone)">
-						联系客服
-					</view> -->
-					<!-- 	<view class="right_btn m-l-10" @click="receipt"
-						v-if="type=='order' && orderInfo.order_status_text=='待收货'">
-						确认收货
-					</view> -->
+
 				</view>
 			</view>
 		</view>
@@ -228,6 +201,7 @@
 			getData() {
 				let that = this
 				if (that.type && that.type == 'shopOrder') {
+					// 被购买的商品详情-----暂无
 					// shop_orderDetail
 					// 	({
 					// 		details_id: that.id
@@ -253,7 +227,7 @@
 							transaction_id: that.orderInfo.transaction_id //用户交易单号
 						},
 						success: e => {
-							// console.log('进入success',e)
+
 							if (e.extraData.status === 'success') {
 								// 用户确认收货成功，再执行自己的代码
 								uni.showToast({
@@ -337,7 +311,7 @@
 					url: e,
 				});
 			},
-			
+
 			copy(text) {
 				// 调用uni.setClipboardData()函数进行复制操作
 				uni.setClipboardData({
