@@ -289,7 +289,7 @@
 						...this.signIn
 					})
 					this.$tn.message.closeLoading()
-					console.log('resresres', res)
+					// console.log('resresres', res)
 					setStorage(storage_token, res.data.userinfo.token)
 					setStorage(storage_userInfo,
 						JSON.stringify(
@@ -345,9 +345,9 @@
 								}
 								let res_token = await authLogin(params)
 								setStorage(storage_token, res_token.data.userinfo.token)
-								console.log('res_token', res_token)
+								// console.log('res_token', res_token)
 								let res_user = await userinfo()
-								console.log('res_user', res_user)
+								// console.log('res_user', res_user)
 								that.$tn.message.closeLoading()
 								setStorage(storage_userInfo,
 									JSON.stringify(
@@ -362,13 +362,13 @@
 							},
 							fail: (err1) => {
 								that.$tn.message.closeLoading()
-								console.log('err1', err1);
+								// console.log('err1', err1);
 							},
 						})
 					},
 					fail: (err) => {
 						that.$tn.message.closeLoading()
-						console.log('err', err);
+						// console.log('err', err);
 					},
 				});
 			},

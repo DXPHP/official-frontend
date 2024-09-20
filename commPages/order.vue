@@ -174,7 +174,7 @@
 							}, 2000);
 						},
 						fail(e1) {
-							console.log('支付失败', e1)
+							// console.log('支付失败', e1)
 							that.$tn.message.toast('支付失败')
 						}
 					})

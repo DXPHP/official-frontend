@@ -96,7 +96,6 @@
 
 		},
 		created() {
-			console.log('888888888')
 			this.getList()
 		},
 		// 下拉刷新

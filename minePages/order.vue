@@ -479,7 +479,7 @@
 			},
 			// 触底刷新
 			inReachBottom() {
-				console.log('chu4444')
+			
 				// 如果数据加载完毕 不再调用方法
 				if (this.loadStatus == 'nomore') return;
 				// 否则调用数据加载方法
@@ -505,7 +505,7 @@
 						that.getList()
 					},
 					fail(e1) {
-						console.log('支付失败', e1)
+						// console.log('支付失败', e1)
 						that.$tn.message.toast('支付失败')
 					}
 				})
@@ -544,7 +544,7 @@
 				} catch (error) {
 					// 在这里处理错误  
 					this.listStatus = 2;
-					console.error('捕获到错误：', error);
+					// console.error('捕获到错误：', error);
 					// 你可以根据错误类型或错误信息来执行不同的操作  
 				}
 
@@ -592,7 +592,7 @@
 
 				this.$refs.tabs.setFinishCurrent(current)
 				this.swiperIndex = current
-				console.log('滑动值发生该百年')
+				// console.log('滑动值发生该百年')
 				this.tabsIndex = current
 				this.getList()
 

@@ -192,7 +192,7 @@
 			},
 			// 选中任一radio时，由radio-group触发
 			radioGroupChange(e) {
-				console.log('5555', e, this.defalutAddress)
+		
 				if (this.isChoosed) {
 					this.radioChangeChoosed(e.detail.value)
 				} else {

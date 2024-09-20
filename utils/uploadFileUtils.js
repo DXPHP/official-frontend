@@ -10,7 +10,7 @@ const {
 } = storageKey
 // 图片上传---公共
 export function uploadFilePromise(url) {
-	console.log('urlurl', url)
+	// console.log('urlurl', url)
 	return new Promise((resolve, reject) => {
 		// uni.showLoading({
 		// 	title: '上传中~'
@@ -26,7 +26,7 @@ export function uploadFilePromise(url) {
 				user: 'test'
 			},
 			success: (res) => {
-				console.log('res', res)
+				// console.log('res', res)
 				let data = JSON.parse(res.data)
 				if (data.code == 0) uni.$u.toast(data.msg || '上传出错了')
 				// uni.hideLoading()
@@ -36,7 +36,7 @@ export function uploadFilePromise(url) {
 
 			},
 			fail(err) {
-				console.log('err11', err)
+		
 				// uni.hideLoading()
 				reject(JSON.parse(res.data))
 

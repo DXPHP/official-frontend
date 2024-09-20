@@ -158,7 +158,7 @@
 				} catch (error) {
 					// 在这里处理错误  
 					this.listStatus = 2;
-					console.error('捕获到错误：', error);
+					// console.error('捕获到错误：', error);
 					// 你可以根据错误类型或错误信息来执行不同的操作  
 				}
 

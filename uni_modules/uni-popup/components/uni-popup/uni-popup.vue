@@ -295,7 +295,7 @@
 					direction = this.type
 				}
 				if (!this.config[direction]) {
-					console.error('缺少类型：', direction)
+					// console.error('缺少类型：', direction)
 					return
 				}
 				this[this.config[direction]]()

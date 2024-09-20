@@ -160,7 +160,7 @@
 						res.select = false
 					})
 					this.tagList1 = data
-					console.log('监听到了传入的数据', val, this.tagList1)
+					// console.log('监听到了传入的数据', val, this.tagList1)
 				},
 				immediate: true
 			}
@@ -169,12 +169,12 @@
 			// 处理点击事件
 			handleClick1(index) {
 				this.tagList1[index].select = !this.tagList1[index].select
-				console.log('点击率变化', this.tagList1[index].select)
+				
 				if (this.tagList1[index].select) {
 					this.tagList1.forEach(res => {
-						console.log('点击率变化888')
+					
 						if (res.spec_id != this.tagList1[index].spec_id) {
-							console.log('点击率变化6666666', res.spec_id)
+							
 							res.select = false
 						}else{
 							this.dataInfo.price=res.price

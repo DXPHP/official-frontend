@@ -39,5 +39,5 @@ export function deepClone(obj, hash = new WeakMap()) {
 
 
 export function toast(val) {
-	console.log('this66666666', this)
+
 }

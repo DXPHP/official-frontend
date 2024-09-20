@@ -217,7 +217,7 @@
 			},
 			// 处理页面滚动事件
 			handlePageScroll(scrollTop) {
-				console.log(scrollTop);
+				// console.log(scrollTop);
 				if (this.prevScrollTop > scrollTop) {
 
 					// 内容下滑，即手指从下往上滚

@@ -249,7 +249,7 @@
 				this.user.nickname = info.nickname
 				this.showAuthorizationModal = false
 				this.updatedUserInfo()
-				console.log('获取到的用户信息', info)
+				// console.log('获取到的用户信息', info)
 			},
 			// 获取到的用户信息
 			updatedUserInfoEvent1() {

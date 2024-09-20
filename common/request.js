@@ -46,7 +46,7 @@ function statusCodeProcess(responseData) {
 		code,
 		msg
 	} = responseData;
-	console.log('responseData', responseData)
+	// console.log('responseData', responseData)
 	// 根据状态码进行不同的处理
 	switch (code) {
 		case 1: // 请求成功
@@ -54,7 +54,6 @@ function statusCodeProcess(responseData) {
 			return responseData;
 		case 401: // 未授权
 			// 重定向到登录页面，或者提示用户登录
-			console.log('55555')
 			// console.error(msg);
 			removeStorage(storage_token)
 			removeStorage(storage_userInfo)
@@ -79,14 +78,14 @@ function statusCodeProcess(responseData) {
 let that = this
 // 响应拦截器
 function responseInterceptor(response) {
-	console.log('thisis', that)
+	// console.log('this', that)
 	// 假设 response.data 是实际的数据，response.statusCode 是状态码
 	// 注意：uni.request 的实际结构可能不同，你需要根据实际情况调整
 	const {
 		data,
 		statusCode
 	} = response;
-	console.log('请求返回', response)
+	// console.log('请求返回', response)
 	// 根据状态码进行不同的处理
 	switch (statusCode) {
 		case 200: // 请求成功
@@ -100,7 +99,7 @@ function responseInterceptor(response) {
 
 		case 400: // 客户端错误，如请求参数
 			// 可以抛出一个错误，以便调用者知道发生了什么
-			console.error('Bad Request: ' + (data.message || data.msg || 'Invalid request parameters'));
+			// console.error('Bad Request: ' + (data.message || data.msg || 'Invalid request parameters'));
 			uni.showToast({
 				icon: 'none',
 				title: '未知错误，请联系管理员'
@@ -112,14 +111,14 @@ function responseInterceptor(response) {
 
 		case 403: // 禁止访问
 			// 抛出一个错误，告知用户他们没有权限访问该
-			console.error('Forbidden: You do not have access to this resource');
+			// console.error('Forbidden: You do not have access to this resource');
 			uni.showToast({
 				icon: 'none',
 				title: '禁止访问，请联系管理员'
 			})
 		case 404: // 未找到资源
 			// 抛出一个错误，告知用户资源不
-			console.error('Not Found: The resource you requested could not be found');
+			// console.error('Not Found: The resource you requested could not be found');
 			uni.showToast({
 				icon: 'none',
 				title: '未找到资源，请联系管理员'
@@ -130,7 +129,7 @@ function responseInterceptor(response) {
 				icon: 'none',
 				title: '网络出错了，请联系管理员'
 			})
-			console.error('Internal Server Error:', data);
+			// console.error('Internal Server Error:', data);
 
 			// 你可以添加更多的状态码处理...
 
@@ -140,7 +139,7 @@ function responseInterceptor(response) {
 				title: '未知错误，请联系管理员'
 			})
 			// 对于未知的状态码，可能也想要记录错误日志并抛出一个
-			console.error('Unknown Error:', statusCode, data);
+			// console.error('Unknown Error:', statusCode, data);
 
 	}
 }
@@ -153,7 +152,7 @@ export function httpRequest(url, method = 'GET', data = {}, header = {}) {
 		if (paramsSerializer(data)) {
 			url += '?' + paramsSerializer(data);
 		}
-		console.log('拼好的请求路径', url, paramsSerializer(data));
+		// console.log('拼好的请求路径', url, paramsSerializer(data));
 	}
 
 	// 应用请求拦截器
@@ -184,7 +183,7 @@ export function httpRequest(url, method = 'GET', data = {}, header = {}) {
 					}
 
 				} catch (error) {
-					console.log('error', error)
+					// console.log('error', error)
 					// 捕获响应拦截器中抛出的错误
 					reject(error);
 				}

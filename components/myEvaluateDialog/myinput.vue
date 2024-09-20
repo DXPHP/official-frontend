@@ -46,7 +46,7 @@
 		data() {
 			return {
 				isLoading: false,
-				appBox: 0,  //0是输入框状态  1是表情选择状态
+				appBox: 0, //0是输入框状态  1是表情选择状态
 				isFocus: false,
 				KeyboardHeight: 0,
 				myeditor: '',
@@ -173,10 +173,10 @@
 				this.isLoading = false
 			},
 			InputFocus(e) {
-				console.log('66666',e)
+				let that = this
+				// console.log('键盘聚焦',e)
 				this.appBox = 0
 				// #ifdef H5
-				this.boxHeight = 46
 				// #endif
 			},
 			InputBlur(e) {}

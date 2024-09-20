@@ -352,7 +352,7 @@
 
 		},
 		created() {
-			console.log('userInfo', uni.getStorageSync(storage_userInfo))
+			// console.log('userInfo', uni.getStorageSync(storage_userInfo))
 			let data = uni.getStorageSync(storage_userInfo)
 			let userInfo = JSON.parse(data).userinfo || {}
 

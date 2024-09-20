@@ -33,7 +33,7 @@ function updateCustomBarInfo () {
         })
       },
       fail: (err) => {
-        console.log("获取设备信息失败", err);
+        // console.log("获取设备信息失败", err);
         reject()
       }
     })
