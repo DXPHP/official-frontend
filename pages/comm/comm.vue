@@ -91,8 +91,10 @@
 
 <script>
 	import {
-		goodsList
+		goodsList,
+		cateList
 	} from '@/api/home.js'
+
 	export default {
 		name: 'Comm',
 		data() {
@@ -104,19 +106,12 @@
 					//  pageSize: 10,
 				},
 				current: 0,
-				type: '1',
+				type: '0',
 				scrollList: [{
-						name: '推荐',
-						type: '1'
+						name: '全部',
+						type: '0'
 					},
-					{
-						name: '最新',
-						type: '2'
-					},
-					{
-						name: '最热',
-						type: '3'
-					}
+					
 				],
 				cardCur: 0,
 				swiperList: [],
@@ -132,7 +127,9 @@
 		},
 		/* 瀑布流*/
 		created() {
+			this.getCateList()
 			this.getList()
+			
 		},
 		methods: {
 			// 模拟触底加载
@@ -163,6 +160,7 @@
 					if (this.params.page == 1) this.list = []; // 如果数据是第一页 需置空数据列表重新加载
 					if (curPageLen != 0) {
 						this.list = this.list.concat(list); //追加新数据
+						// console.log('有数据list',this.list)
 						// 如果传回数组长度小于10 数据加载完毕。 反之数据可以继续加载
 						curPageLen < 10 ? this.loadStatus = 'nomore' : this.loadStatus = 'loading';
 					} else {
@@ -183,6 +181,17 @@
 
 			},
 			/* ------------------加载数据列表 end------------------------  */
+
+			async getCateList() {
+				let res = await cateList()
+				this.scrollList = res.data.list.map(res1 => {
+					let obj = {
+						type: res1.id,
+						name: res1.name
+					}
+					return obj
+				})
+			},
 			// 跳转
 			tn(e) {
 				uni.navigateTo({

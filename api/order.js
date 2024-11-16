@@ -26,3 +26,5 @@ export const orderDetail = (data) => httpRequest(`order/orderDetail`, 'GET',
 export const confirm = (data) => httpRequest(`order/confirm`, 'POST',
 	data
 )
+
+

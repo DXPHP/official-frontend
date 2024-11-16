@@ -35,6 +35,10 @@ export const casesList = (data) => httpRequest(`index/casesList`, 'GET',
 export const goodsList = (data) => httpRequest(`index/goodsList`, 'GET',
 	data
 )
+// 产品分类
+export const cateList = (data) => httpRequest(`index/cateList`, 'GET',
+	data
+)
 //资讯详情
 export const newsDetail = (data) => httpRequest(`index/newsDetail`, 'GET',
 	data
