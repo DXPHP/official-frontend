@@ -150,8 +150,7 @@
 			async getList(refresh) {
 				let params = {
 					...this.params,
-					type: this.type
-
+					cate_id: this.type
 				}
 				try {
 					let res = await goodsList(params)
