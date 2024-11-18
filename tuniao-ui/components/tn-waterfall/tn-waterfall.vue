@@ -43,8 +43,15 @@
 			copyValue(nVal, oVal) {
 				// 取出数组发生变化的部分
 				let startIndex = Array.isArray(oVal) && oVal.length > 0 ? oVal.length : 0
-				// 拼接原有数据
-				this.tempList = this.tempList.concat(this.cloneData(nVal.slice(startIndex)))
+				//判断追加，如果新数组能截取出数据，则追加，否则重新赋值
+				if (nVal.slice(startIndex).length > 0) {
+					// 拼接原有数据
+					this.tempList = this.tempList.concat(this.cloneData(nVal.slice(startIndex)))
+				} else {
+					this.leftList = []
+					this.rightList = []
+					this.tempList = this.cloneData(nVal)
+				}
 				this.splitData()
 			}
 		},
@@ -79,18 +86,15 @@
 				// 解决多次快速滚动会导致数据乱的问题
 				if (!item) return
 
-				// 如果左边小于或者等于右边，就添加到左边，否则添加到右边
-				if (leftRect.height < rightRect.height) {
+
+				// 如果左边和右边数组都为空时，添加到左边
+				if (this.leftList.length == 0 && this.rightList.length == 0) {
+					this.leftList.push(item)
+					// 如果左边小于或者等于右边，就添加到左边，否则添加到右边
+				} else if (leftRect.height <= rightRect.height) {
 					this.leftList.push(item)
 				} else if (leftRect.height > rightRect.height) {
 					this.rightList.push(item)
-				} else {
-					// 为了保证前两项添加时，左右两边都还没有内容，这时候根据队列长度判断下一项该放在哪一边
-					if (this.leftList.length <= this.rightList.length) {
-						this.leftList.push(item)
-					} else {
-						this.rightList.push(item)
-					}
 				}
 
 				// 移除临时数组中已处理的数据
